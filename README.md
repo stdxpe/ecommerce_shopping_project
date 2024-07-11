@@ -1,5 +1,5 @@
 # ECommerse Shopping Project
-Complete ECommerce Shopping App Project with Flutter, Firebase Auth, Cloud Firestore, Firebase Storage and Hive
+Complete ECommerce Project with Flutter, Firebase Auth, Cloud Firestore, Firebase Storage and Hive
 
 ![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
 

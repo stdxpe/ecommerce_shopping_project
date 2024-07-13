@@ -1,4 +1,6 @@
-class AppStrings {
+part of 'utilities_library_imports.dart';
+
+abstract class AppStrings {
   /// [APP WIDE GLOBAL VARIABLE]
   /// ALL STATIC STRINGS - EN
 

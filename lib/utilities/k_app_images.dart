@@ -1,4 +1,6 @@
-class AppImages {
+part of 'utilities_library_imports.dart';
+
+abstract class AppImages {
   /// [APP WIDE GLOBAL VARIABLE]
   /// LOCAL PATHS OF IMAGES
 

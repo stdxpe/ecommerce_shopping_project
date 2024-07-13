@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-class AppSystemChromeSetups {
+class SystemChromeSetup {
   ///
   /// Device Screen Orientation is Portrait Mode Only
 

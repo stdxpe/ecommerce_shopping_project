@@ -22,7 +22,7 @@ abstract class AppTheme {
     //     ),
     //   ),
     textTheme: AppTextThemes.textTheme,
-    primaryTextTheme: AppTextThemes.textTheme.copyWith(),
+    primaryTextTheme: AppTextThemes.textTheme,
 
     extensions: [
       _lightModeColorPalette,
@@ -56,7 +56,7 @@ abstract class AppTheme {
       foregroundColor: _darkModeColorPalette.appBarForeground,
     ),
     textTheme: AppTextThemes.textTheme,
-    primaryTextTheme: AppTextThemes.textTheme.copyWith(),
+    primaryTextTheme: AppTextThemes.textTheme,
     extensions: [
       _darkModeColorPalette,
     ],

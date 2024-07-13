@@ -13,7 +13,7 @@ class ScreenUtilSetup extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(1179, 2556),
       minTextAdapt: true,
-      splitScreenMode: true,
+      // splitScreenMode: true,
       ensureScreenSize: true,
       builder: (_, child) {
         return MaterialApp(

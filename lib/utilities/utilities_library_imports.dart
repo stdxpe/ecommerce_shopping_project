@@ -13,3 +13,4 @@ part 'package:ecommerce_shopping_project/utilities/k_colors_extension.dart';
 part 'package:ecommerce_shopping_project/utilities/k_constants.dart';
 part 'package:ecommerce_shopping_project/utilities/k_extensions.dart';
 part 'package:ecommerce_shopping_project/utilities/k_text_themes.dart';
+part 'package:ecommerce_shopping_project/utilities/k_box_shadows.dart';

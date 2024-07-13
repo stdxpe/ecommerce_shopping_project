@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'utilities/utilities_library_imports.dart';
 
-import 'package:ecommerce_shopping_project/utilities/dark_sample.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
+import 'utilities/utilities_library_imports.dart';
 
 void main() {
   runApp(const MyApp());

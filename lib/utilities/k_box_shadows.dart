@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'utilities_library_imports.dart';
 
 abstract class BoxShadows {
   /// [APP WIDE GLOBAL VARIABLE]

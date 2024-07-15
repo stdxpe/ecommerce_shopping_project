@@ -11,9 +11,10 @@ abstract class AppStrings {
   static const String signUp = 'Sign Up';
   static const String signIn = 'Sign In';
   static const String signUpWithEmail = 'Sign Up with Email';
-  static const String continueWithFacebook = 'Continue with Facebook';
+  static const String continueWithGoogle = 'Continue with Google';
   static const String alreadyHaveAnAccount = 'Already have an account?';
   static const String dontHaveAnAccount = 'Don\'t have an account?';
+  static const String continueButton = 'Continue';
 
   static const String collectionTitleRightButton = 'See All';
   static const String kStringItemsFound = ' items found';
@@ -25,10 +26,16 @@ abstract class AppStrings {
   static const String onboardingScreenButton = 'Start Shopping';
 
   /// SIGN IN SCREEN
-  static const String signInScreenTitle = 'Sign into\nyour account';
+  static const String signInScreenTitle = 'Log into\nyour account';
+  static const String signInScreenTextFieldEmail = 'Email';
+  static const String signInScreenTextFieldPassword = 'Password';
+  static const String signInScreenTextFieldRememberMe = 'Remember Me';
 
   /// SIGN UP SCREEN
   static const String signUpScreenTitle = 'Create\nyour account';
+  static const String signUpScreenTextFieldEmail = 'Email';
+  static const String signUpScreenTextFieldPassword = 'Password';
+  static const String signUpScreenTextFieldConfirmPassword = 'Confirm Password';
 
   /// FORGOT PASSWORD SCREEN
   static const String forgotPasswordScreenTitle = 'Forgot Password?';

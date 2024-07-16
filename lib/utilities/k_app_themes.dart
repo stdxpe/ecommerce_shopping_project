@@ -12,6 +12,7 @@ abstract class AppTheme {
       backgroundColor: _lightModeColorPalette.appBarBackground,
       foregroundColor: _lightModeColorPalette.appBarForeground,
     ),
+    // inputDecorationTheme:
     // bottomSheetTheme:
     // snackBarTheme:
     // Usage example: 'Card(
@@ -103,6 +104,8 @@ abstract class AppTheme {
     navigationBarBackground: ColorPalette.navigationBarBackground,
     navigationBarActive: ColorPalette.navigationBarActive,
     navigationBarPassive: ColorPalette.navigationBarPassive,
+    permaBlackColor: ColorPalette.permaBlackColor,
+    permaWhiteColor: ColorPalette.permaWhiteColor,
   );
 
   /// [DARK THEME and COLOR PALETTE MAPPING]
@@ -136,6 +139,8 @@ abstract class AppTheme {
     navigationBarBackground: ColorPalette.darkModeNavigationBarBackground,
     navigationBarActive: ColorPalette.darkModeNavigationBarActive,
     navigationBarPassive: ColorPalette.darkModeNavigationBarPassive,
+    permaBlackColor: ColorPalette.darkModePermaBlackColor,
+    permaWhiteColor: ColorPalette.darkModePermaWhiteColor,
   );
 }
 

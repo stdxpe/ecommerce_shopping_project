@@ -27,6 +27,8 @@ class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
     required this.navigationBarBackground,
     required this.navigationBarActive,
     required this.navigationBarPassive,
+    required this.permaBlackColor,
+    required this.permaWhiteColor,
   });
 
   final Color scaffoldBackground;
@@ -54,6 +56,8 @@ class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
   final Color navigationBarBackground;
   final Color navigationBarActive;
   final Color navigationBarPassive;
+  final Color permaBlackColor;
+  final Color permaWhiteColor;
 
   @override
   ThemeExtension<AppColorsExtension> copyWith({
@@ -82,6 +86,8 @@ class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
     Color? navigationBarBackground,
     Color? navigationBarActive,
     Color? navigationBarPassive,
+    Color? permaBlackColor,
+    Color? permaWhiteColor,
   }) {
     return AppColorsExtension(
       scaffoldBackground: scaffoldBackground ?? this.scaffoldBackground,
@@ -114,6 +120,8 @@ class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
           navigationBarBackground ?? this.navigationBarBackground,
       navigationBarActive: navigationBarActive ?? this.navigationBarActive,
       navigationBarPassive: navigationBarPassive ?? this.navigationBarPassive,
+      permaBlackColor: permaBlackColor ?? this.permaBlackColor,
+      permaWhiteColor: permaWhiteColor ?? this.permaWhiteColor,
     );
   }
 
@@ -166,6 +174,8 @@ class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
           Color.lerp(navigationBarActive, other.navigationBarActive, t)!,
       navigationBarPassive:
           Color.lerp(navigationBarPassive, other.navigationBarPassive, t)!,
+      permaBlackColor: Color.lerp(permaBlackColor, other.permaBlackColor, t)!,
+      permaWhiteColor: Color.lerp(permaWhiteColor, other.permaWhiteColor, t)!,
     );
   }
 }

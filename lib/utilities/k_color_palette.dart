@@ -30,6 +30,8 @@ abstract class ColorPalette {
   static const Color navigationBarBackground = Color(0xFF232429);
   static const Color navigationBarActive = Color(0xFF0D0D0D);
   static const Color navigationBarPassive = Color(0xFF898989);
+  static const Color permaBlackColor = Color(0xFF000000);
+  static const Color permaWhiteColor = Color(0xFFFFFFFF);
   // color: context.theme.appColors.error
 
   /// [DARK MODE THEME COLOR PALETTE]
@@ -58,4 +60,6 @@ abstract class ColorPalette {
   static const Color darkModeNavigationBarBackground = Color(0xFF000000);
   static const Color darkModeNavigationBarActive = Color(0xFF898989);
   static const Color darkModeNavigationBarPassive = Color(0xFF0D0D0D);
+  static const Color darkModePermaBlackColor = Color(0xFF000000);
+  static const Color darkModePermaWhiteColor = Color(0xFFFFFFFF);
 }

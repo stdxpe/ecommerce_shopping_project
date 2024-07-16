@@ -22,7 +22,7 @@ abstract class AppTextThemes {
         /// HS: App Subtitle (40.sp / w700)
         headlineSmall: TextStyle(
           fontSize: 66.sp,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.w700,
           letterSpacing: 0,
         ),
 

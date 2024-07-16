@@ -31,6 +31,15 @@ abstract class BoxShadows {
     );
   }
 
+  static BoxShadow kBoxShadowOnboardingCard({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 15),
+      spreadRadius: 0,
+      blurRadius: 20,
+    );
+  }
+
   static BoxShadow kBoxShadowTitle({required Color color}) {
     return BoxShadow(
       color: color,

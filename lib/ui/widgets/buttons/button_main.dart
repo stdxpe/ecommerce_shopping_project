@@ -95,7 +95,7 @@ class ButtonMain extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 if (icon != null) icon!,
-                if (icon != null) SizedBox(width: 25.h),
+                if (icon != null) SizedBox(width: 30.h),
                 FittedBox(
                   child: Text(
                     text,

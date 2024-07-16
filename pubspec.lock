@@ -78,6 +78,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_any_logo:
+    dependency: "direct main"
+    description:
+      name: flutter_any_logo
+      sha256: fef531885788ad62154c57653501ae30077775d68cc1003e1d6489fcb005dd8c
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -96,6 +104,11 @@ packages:
     version: "5.9.3"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"

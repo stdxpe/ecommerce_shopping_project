@@ -7,7 +7,8 @@ import 'package:ecommerce_shopping_project/ui/widgets/sliders/onboarding_slider.
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({super.key, this.onPressed});
+  final Function? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,9 @@ class OnboardingScreen extends StatelessWidget {
           const OnboardingSlider(),
           SizedBox(height: 142.h),
           ButtonMain(
-            onPressed: () {},
+            onPressed: () {
+              if (onPressed != null) onPressed!();
+            },
             text: AppStrings.continueButton,
           ),
           SizedBox(height: 107.h),

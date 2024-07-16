@@ -12,8 +12,8 @@ abstract class AppStrings {
   static const String signIn = 'Sign In';
   static const String signUpWithEmail = 'Sign Up with Email';
   static const String continueWithGoogle = 'Continue with Google';
-  static const String alreadyHaveAnAccount = 'Already have an account?';
-  static const String dontHaveAnAccount = 'Don\'t have an account?';
+  static const String alreadyHaveAnAccount = 'Already have an account?  ';
+  static const String dontHaveAnAccount = 'Don\'t have an account?  ';
   static const String continueButton = 'Continue';
 
   static const String collectionTitleRightButton = 'See All';

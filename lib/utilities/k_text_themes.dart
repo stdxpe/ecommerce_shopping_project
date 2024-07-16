@@ -1,18 +1,18 @@
 part of 'utilities_library_imports.dart';
 
-class AppTextThemes {
+abstract class AppTextThemes {
   /// [APP WIDE GLOBAL VARIABLE]
 
-  static TextTheme get textTheme => GoogleFonts.interTextTheme().copyWith(
+  static TextTheme get textTheme => const TextTheme().copyWith(
         /// HL: App Title
-        headlineLarge: GoogleFonts.inter(
+        headlineLarge: TextStyle(
           fontWeight: FontWeight.w800,
           fontSize: 190.sp,
           letterSpacing: 12,
         ),
 
         /// HM: Login/SignUp Title
-        headlineMedium: GoogleFonts.inter(
+        headlineMedium: TextStyle(
           fontSize: 86.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
@@ -20,14 +20,14 @@ class AppTextThemes {
 
         /// HS: Title Onboarding
         /// HS: App Subtitle (40.sp / w700)
-        headlineSmall: GoogleFonts.inter(
+        headlineSmall: TextStyle(
           fontSize: 66.sp,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w900,
           letterSpacing: 0,
         ),
 
         /// TL: Main Title
-        titleLarge: GoogleFonts.inter(
+        titleLarge: TextStyle(
           fontSize: 66.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
@@ -35,77 +35,77 @@ class AppTextThemes {
 
         /// TM: Main Title Text Button
         /// TM: Already have account (w500, w700)
-        titleMedium: GoogleFonts.inter(
-          fontSize: 40.sp,
+        titleMedium: TextStyle(
           fontWeight: FontWeight.w700,
+          fontSize: 40.sp,
           letterSpacing: 0,
         ),
 
         /// TS: items found/steps
-        titleSmall: GoogleFonts.inter(
+        titleSmall: TextStyle(
           fontSize: 39.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
 
         /// LL: Button texts
-        labelLarge: GoogleFonts.inter(
+        labelLarge: TextStyle(
           fontSize: 45.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
         ),
 
         /// LM: Textfields
-        labelMedium: GoogleFonts.inter(
+        labelMedium: TextStyle(
           fontSize: 47.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
 
         /// LS: Checkboxes
-        labelSmall: GoogleFonts.inter(
+        labelSmall: TextStyle(
           fontSize: 35.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
 
         /// BL: Card Primary
-        bodyLarge: GoogleFonts.inter(
+        bodyLarge: TextStyle(
           fontSize: 47.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: -2,
         ),
 
         /// BM: Card Secondary
-        bodyMedium: GoogleFonts.inter(
+        bodyMedium: TextStyle(
           fontSize: 37.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: -2,
         ),
 
         /// BS: Card Tertiary
-        bodySmall: GoogleFonts.inter(
+        bodySmall: TextStyle(
           fontSize: 37.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: -2,
         ),
 
         /// DL: Details Title / Price (60.sp)
-        displayLarge: GoogleFonts.inter(
+        displayLarge: TextStyle(
           fontSize: 68.sp,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
         ),
 
         /// DM: Details Text
-        displayMedium: GoogleFonts.inter(
+        displayMedium: TextStyle(
           fontSize: 39.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
 
         /// DS: Sheet Texts
-        displaySmall: GoogleFonts.inter(
+        displaySmall: TextStyle(
           fontSize: 40.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,

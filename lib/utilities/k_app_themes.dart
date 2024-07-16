@@ -5,7 +5,8 @@ abstract class AppTheme {
   /// ALL THEME SETTINGS
 
   /// [LIGHT THEME]
-  static final light = ThemeData.light().copyWith(
+  static final light = ThemeData(fontFamily: 'Inter').copyWith(
+    brightness: Brightness.light,
     scaffoldBackgroundColor: _lightModeColorPalette.scaffoldBackground,
     appBarTheme: const AppBarTheme().copyWith(
       systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -50,6 +51,7 @@ abstract class AppTheme {
 
   /// [DARK THEME]
   static final dark = ThemeData.dark().copyWith(
+    brightness: Brightness.dark,
     scaffoldBackgroundColor: _darkModeColorPalette.scaffoldBackground,
     appBarTheme: const AppBarTheme().copyWith(
       systemOverlayStyle: SystemUiOverlayStyle.light,

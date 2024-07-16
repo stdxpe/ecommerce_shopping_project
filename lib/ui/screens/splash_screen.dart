@@ -37,6 +37,7 @@ class SplashScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: context.theme.textTheme.headlineLarge!.copyWith(
                       fontSize: 190.sp,
+                      fontWeight: FontWeight.w800,
                       height: 0.8,
                       shadows: [
                         BoxShadows.kBoxShadowTitle(

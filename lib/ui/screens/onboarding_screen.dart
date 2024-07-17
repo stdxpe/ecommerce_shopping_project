@@ -28,6 +28,7 @@ class OnboardingScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: context.theme.textTheme.headlineSmall!.copyWith(
                     color: context.theme.colorPalette.title,
+                    letterSpacing: 0,
                     height: 0.8,
                   ),
                 ),
@@ -62,7 +63,9 @@ class OnboardingScreen extends StatelessWidget {
           SizedBox(height: 107.h),
           Align(
             child: ButtonAlreadyHaveAccount(
-              onPressed: () {},
+              onPressed: () {
+                if (onPressed != null) onPressed!();
+              },
               textStatic: AppStrings.alreadyHaveAnAccount,
               buttonText: AppStrings.signIn,
               textStaticColor:

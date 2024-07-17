@@ -60,7 +60,6 @@ class _OnboardingSliderState extends State<OnboardingSlider> {
                           ),
                         ),
                         borderRadius: BorderRadius.circular(
-                          // Constants.kRadiusCardSecondary.r,
                           Constants.kRadiusCardPrimary.r,
                         ),
                         boxShadow: [
@@ -86,9 +85,8 @@ class _OnboardingSliderState extends State<OnboardingSlider> {
                     dotWidth: 30.w,
                     dotHeight: 30.w,
                     spacing: 34.w,
-                    activeDotColor: context.theme.colorPalette.permaBlackColor,
-                    dotColor: context.theme.colorPalette.permaBlackColor
-                        .withOpacity(0.3),
+                    activeDotColor: context.theme.colorPalette.title,
+                    dotColor: context.theme.colorPalette.title.withOpacity(0.3),
                   ),
                 ),
               );

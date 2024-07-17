@@ -17,7 +17,7 @@ abstract class AppStrings {
   static const String continueButton = 'Continue';
 
   static const String collectionTitleRightButton = 'See All';
-  static const String kStringItemsFound = ' items found';
+  static const String itemsFound = ' items found';
 
   /// ONBOARDING SCREEN
   static const String onboardingScreenTitle = 'Swipe to browse';
@@ -159,6 +159,7 @@ abstract class AppStrings {
   static const String filtersScreenSortBy = 'Sort by';
 
   /// PAYMENT SCREEN
+  static const String paymentStep = 'Step ';
   static const String paymentScreenTitleShipping = 'Shipping';
   static const String paymentScreenTitlePayment = 'Payment';
   static const String paymentScreenTitleSummary = 'Summary';

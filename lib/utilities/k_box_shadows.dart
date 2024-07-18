@@ -4,6 +4,24 @@ abstract class BoxShadows {
   /// [APP WIDE GLOBAL VARIABLE]
   /// RETURNS BOX SHADOWS (ALSO TAKES COLOR PARAMETER AS INPUT)
 
+  static BoxShadow kBoxShadowTopBanner({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 2),
+      spreadRadius: 2.5,
+      blurRadius: 10,
+    );
+  }
+
+  static BoxShadow kBoxShadowProductCard({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 3),
+      spreadRadius: 0.1,
+      blurRadius: 5,
+    );
+  }
+
   static BoxShadow kBoxShadowPrimary({required Color color}) {
     return BoxShadow(
       color: color,

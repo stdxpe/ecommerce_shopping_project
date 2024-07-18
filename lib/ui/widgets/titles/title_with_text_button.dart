@@ -24,12 +24,12 @@ class TitleWithTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red.withOpacity(0.5),
+      // color: Colors.red.withOpacity(0.5),
       padding: EdgeInsets.only(
-        top: paddingTop ?? 77.h,
-        bottom: paddingBottom ?? 60.h,
-        left: paddingHorizontal ?? 15.w,
-        right: paddingHorizontal ?? 15.w,
+        top: paddingTop ?? Constants.kPaddingTitleTop.h,
+        bottom: paddingBottom ?? Constants.kPaddingTitleBottom.h,
+        left: paddingHorizontal ?? Constants.kPaddingMainHorizontal.w,
+        right: paddingHorizontal ?? Constants.kPaddingMainHorizontal.w,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

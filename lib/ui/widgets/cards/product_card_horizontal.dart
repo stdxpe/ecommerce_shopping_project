@@ -34,7 +34,9 @@ class ProductCardHorizontal extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isCardElevated!
+              ? context.theme.colorPalette.cardBackground
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(
             Constants.kRadiusCardPrimary.r,
           ),
@@ -47,7 +49,9 @@ class ProductCardHorizontal extends StatelessWidget {
         ),
         child: Card(
           margin: EdgeInsets.zero,
-          color: Colors.white,
+          color: isCardElevated!
+              ? context.theme.colorPalette.cardBackground
+              : Colors.transparent,
           borderOnForeground: true,
           clipBehavior: Clip.none,
           shape: RoundedRectangleBorder(

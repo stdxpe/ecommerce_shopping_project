@@ -36,11 +36,6 @@ class ProductCardVertical extends StatelessWidget {
 
     double cardTotalHeight = cardTotalWidth + textSectionHeight.h;
 
-    print(context.mediaQuery.size.width / 3);
-    print('cardHeight $cardTotalWidth');
-    print('textSectionHeight ${textSectionHeight.h}');
-    print('cardTotalHeight $cardTotalHeight');
-
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
@@ -48,13 +43,15 @@ class ProductCardVertical extends StatelessWidget {
         width: cardTotalWidth,
         clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
         decoration: BoxDecoration(
-          color: isCardElevated! ? Colors.white : Colors.transparent,
+          color: isCardElevated!
+              ? context.theme.colorPalette.cardBackground
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(
             isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
           ),
           boxShadow: [
             if (isCardElevated!)
-              BoxShadows.kBoxShadowPrimary(
+              BoxShadows.kBoxShadowProductCard(
                 color: context.theme.colorPalette.shadowPrimary,
               ),
           ],
@@ -90,22 +87,22 @@ class ProductCardVertical extends StatelessWidget {
                 ),
               ),
             ),
+
+            /// CARD TEXT SECTION
             Container(
               padding: EdgeInsets.symmetric(
                 vertical: paddingTextVertical.h,
                 horizontal: isCardElevated!
                     ? Constants.kPaddingVerticalCardLeftAndRightIfElevated.w
                     : Constants.kPaddingVerticalCardLeftAndRight.w,
-                // horizontal: paddingTextHorizontal.w,
               ),
-              // color: Colors.black.withOpacity(0.2),
               height: textSectionHeight.h,
               width: cardTotalWidth,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     // color: Colors.yellow,
                     height: fontSizePrimary.h,
                     child: Text(
@@ -121,7 +118,7 @@ class ProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: paddingTextBetween.h),
-                  Container(
+                  SizedBox(
                     // color: Colors.yellowAccent,
                     height: fontSizeSecondary.h,
                     child: Text(

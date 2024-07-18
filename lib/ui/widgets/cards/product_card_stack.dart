@@ -30,13 +30,13 @@ class ProductCardStack extends StatelessWidget {
               Constants.kRadiusCardPrimary.r,
             ),
             boxShadow: [
-              BoxShadows.kBoxShadowPrimary(
+              BoxShadows.kBoxShadowProductCard(
                 color: context.theme.colorPalette.shadowPrimary,
               ),
             ],
           ),
           child: Card(
-            elevation: 1,
+            elevation: 2,
             margin: EdgeInsets.zero,
             borderOnForeground: true,
             clipBehavior: Clip.hardEdge,
@@ -97,7 +97,7 @@ class ProductCardStack extends StatelessWidget {
                           shadows: [
                             BoxShadows.kBoxShadowProductCardText(
                               color: context.theme.colorPalette.permaWhiteColor
-                                  .withOpacity(0.54),
+                                  .withOpacity(0.1),
                             ),
                           ],
                         ),
@@ -115,7 +115,7 @@ class ProductCardStack extends StatelessWidget {
                         shadows: [
                           BoxShadows.kBoxShadowProductCardText(
                             color: context.theme.colorPalette.permaWhiteColor
-                                .withOpacity(0.54),
+                                .withOpacity(0.2),
                           ),
                         ],
                       ),

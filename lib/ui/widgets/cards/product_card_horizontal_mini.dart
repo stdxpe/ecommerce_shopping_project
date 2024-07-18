@@ -15,6 +15,7 @@ class ProductCardHorizontalMini extends StatelessWidget {
     required this.paddingTextVertical,
     required this.paddingTextHorizontal,
     required this.paddingTextBetween,
+    this.isCardElevated = true,
   });
 
   final Product product;
@@ -25,6 +26,7 @@ class ProductCardHorizontalMini extends StatelessWidget {
   final double paddingTextVertical;
   final double paddingTextHorizontal;
   final double paddingTextBetween;
+  final bool? isCardElevated;
 
   @override
   Widget build(BuildContext context) {
@@ -32,27 +34,32 @@ class ProductCardHorizontalMini extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isCardElevated!
+              ? context.theme.colorPalette.cardBackground
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(
             Constants.kRadiusCardPrimary.r,
           ),
           boxShadow: [
-            BoxShadows.kBoxShadowPrimary(
-              color: context.theme.colorPalette.shadowPrimary,
-            ),
+            if (isCardElevated!)
+              BoxShadows.kBoxShadowPrimary(
+                color: context.theme.colorPalette.shadowPrimary,
+              ),
           ],
         ),
         child: Card(
           margin: EdgeInsets.zero,
-          color: Colors.white,
+          elevation: 0,
+          color: isCardElevated!
+              ? context.theme.colorPalette.cardBackground
+              : Colors.transparent,
           borderOnForeground: true,
-          clipBehavior: Clip.hardEdge,
+          clipBehavior: Clip.none,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               Constants.kRadiusCardPrimary.r,
             ),
           ),
-          elevation: 0,
 
           /// TOTAL CARD
           child: SizedBox(
@@ -63,8 +70,8 @@ class ProductCardHorizontalMini extends StatelessWidget {
                 /// CARD IMAGE
                 Card(
                   margin: EdgeInsets.zero,
-                  elevation: 2,
-                  borderOnForeground: true,
+                  elevation: 0,
+                  clipBehavior: Clip.none,
                   child: Container(
                     height: cardHeight.h,
                     width: cardHeight.h,
@@ -75,15 +82,29 @@ class ProductCardHorizontalMini extends StatelessWidget {
                           product.mainPhoto,
                         ),
                       ),
-                      borderRadius: BorderRadius.circular(
-                        Constants.kRadiusCardPrimary.r,
+                      borderRadius: BorderRadius.only(
+                        topLeft:
+                            Radius.circular(Constants.kRadiusCardPrimary.r),
+                        bottomLeft:
+                            Radius.circular(Constants.kRadiusCardPrimary.r),
+                        topRight: Radius.circular(isCardElevated!
+                            ? 0
+                            : Constants.kRadiusCardPrimary.r),
+                        bottomRight: Radius.circular(isCardElevated!
+                            ? 0
+                            : Constants.kRadiusCardPrimary.r),
                       ),
+                      boxShadow: [
+                        if (!isCardElevated!)
+                          BoxShadows.kBoxShadowPrimary(
+                            color: context.theme.colorPalette.shadowPrimary,
+                          ),
+                      ],
                     ),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.white,
                     padding: EdgeInsets.symmetric(
                       horizontal: paddingTextHorizontal.w,
                     ),

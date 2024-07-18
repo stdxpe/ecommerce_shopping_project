@@ -12,6 +12,7 @@ class ProductCardVertical extends StatelessWidget {
     required this.fontSizePrimary,
     required this.fontSizeSecondary,
     required this.paddingTextVertical,
+    required this.paddingTextHorizontal,
     required this.paddingTextBetween,
   });
 
@@ -20,6 +21,7 @@ class ProductCardVertical extends StatelessWidget {
   final double fontSizePrimary;
   final double fontSizeSecondary;
   final double paddingTextVertical;
+  final double paddingTextHorizontal;
   final double paddingTextBetween;
 
   @override
@@ -41,25 +43,18 @@ class ProductCardVertical extends StatelessWidget {
 
     return Align(
       alignment: Alignment.topCenter,
-      child: Card(
-        borderOnForeground: true,
-        margin: EdgeInsets.zero,
-        color: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          // side: BorderSide.none,
-          borderRadius: BorderRadius.circular(0),
-        ),
-        elevation: 0,
-
-        /// TOTAL CARD
-        child: Container(
-          height: cardTotalHeight,
-          width: cardTotalWidth,
-          // color: Colors.red.withOpacity(0.2),
-          child: Column(
-            children: [
-              /// CARD IMAGE
-              Container(
+      child: SizedBox(
+        height: cardTotalHeight,
+        width: cardTotalWidth,
+        // color: Colors.red.withOpacity(0.2),
+        child: Column(
+          children: [
+            /// CARD IMAGE
+            Card(
+              margin: EdgeInsets.zero,
+              elevation: 1,
+              borderOnForeground: true,
+              child: Container(
                 clipBehavior: Clip.hardEdge,
                 height: cardTotalWidth,
                 width: cardTotalWidth,
@@ -81,57 +76,60 @@ class ProductCardVertical extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: paddingTextVertical.h),
-                // color: Colors.black.withOpacity(0.2),
-                height: textSectionHeight.h,
-                width: cardTotalWidth,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      // color: Colors.yellow,
-                      height: fontSizePrimary.h,
-                      child: Text(
-                        product.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.theme.textTheme.bodyLarge!.copyWith(
-                          color: context.theme.colorPalette.cardTextPrimary,
-                          fontSize: fontSizePrimary.h,
-                          height: 1,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: paddingTextBetween.h),
-                    Container(
-                      // color: Colors.yellowAccent,
-                      height: fontSizeSecondary.h,
-                      child: Text(
-                        '\$${product.price.toStringAsFixed(2)}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.theme.textTheme.bodyMedium!.copyWith(
-                          color: context.theme.colorPalette.cardTextSecondary,
-                          fontSize: fontSizeSecondary.h,
-                          fontWeight: FontWeight.w700,
-                          height: 1,
-                          shadows: [
-                            BoxShadows.kBoxShadowProductCardText(
-                              color: context.theme.colorPalette.permaWhiteColor
-                                  .withOpacity(0.54),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                vertical: paddingTextVertical.h,
+                horizontal: paddingTextHorizontal.w,
               ),
-            ],
-          ),
+              // color: Colors.black.withOpacity(0.2),
+              height: textSectionHeight.h,
+              width: cardTotalWidth,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    // color: Colors.yellow,
+                    height: fontSizePrimary.h,
+                    child: Text(
+                      product.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.theme.textTheme.bodyLarge!.copyWith(
+                        color: context.theme.colorPalette.cardTextPrimary,
+                        fontSize: fontSizePrimary.h,
+                        height: 1,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: paddingTextBetween.h),
+                  Container(
+                    // color: Colors.yellowAccent,
+                    height: fontSizeSecondary.h,
+                    child: Text(
+                      '\$${product.price.toStringAsFixed(2)}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.theme.textTheme.bodyMedium!.copyWith(
+                        color: context.theme.colorPalette.cardTextSecondary,
+                        fontSize: fontSizeSecondary.h,
+                        fontWeight: FontWeight.w700,
+                        height: 1,
+                        shadows: [
+                          BoxShadows.kBoxShadowProductCardText(
+                            color: context.theme.colorPalette.permaWhiteColor
+                                .withOpacity(0.54),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

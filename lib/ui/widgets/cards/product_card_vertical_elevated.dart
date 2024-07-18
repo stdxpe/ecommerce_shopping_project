@@ -12,8 +12,8 @@ class ProductCardVerticalElevated extends StatelessWidget {
     required this.fontSizePrimary,
     required this.fontSizeSecondary,
     required this.paddingTextVertical,
-    required this.paddingTextBetween,
     required this.paddingTextHorizontal,
+    required this.paddingTextBetween,
   });
 
   final Product product;
@@ -76,24 +76,22 @@ class ProductCardVerticalElevated extends StatelessWidget {
             child: Column(
               children: [
                 /// CARD IMAGE
-                Container(
-                  clipBehavior: Clip.hardEdge,
-                  height: cardTotalWidth,
-                  width: cardTotalWidth,
-                  decoration: BoxDecoration(
-                    // color: Colors.green.withOpacity(0.5),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        product.mainPhoto,
+                Card(
+                  margin: EdgeInsets.zero,
+                  elevation: 2,
+                  child: Container(
+                    clipBehavior: Clip.hardEdge,
+                    height: cardTotalWidth,
+                    width: cardTotalWidth,
+                    decoration: BoxDecoration(
+                      // color: Colors.green.withOpacity(0.5),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          product.mainPhoto,
+                        ),
                       ),
                     ),
-
-                    // boxShadow: [
-                    //   BoxShadows.kBoxShadowPrimary(
-                    //     color: context.theme.colorPalette.shadowPrimary,
-                    //   ),
-                    // ],
                   ),
                 ),
                 Container(
@@ -101,7 +99,6 @@ class ProductCardVerticalElevated extends StatelessWidget {
                     vertical: paddingTextVertical.h,
                     horizontal: paddingTextHorizontal.w,
                   ),
-                  // color: Colors.black.withOpacity(0.2),
                   height: textSectionHeight.h,
                   width: cardTotalWidth,
                   child: Column(

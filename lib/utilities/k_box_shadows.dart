@@ -7,9 +7,9 @@ abstract class BoxShadows {
   static BoxShadow kBoxShadowPrimary({required Color color}) {
     return BoxShadow(
       color: color,
-      offset: const Offset(0, 8),
+      offset: const Offset(0, 3),
       spreadRadius: 0.1,
-      blurRadius: 25,
+      blurRadius: 12.5,
     );
   }
 
@@ -55,6 +55,15 @@ abstract class BoxShadows {
       offset: const Offset(0, 2),
       spreadRadius: 5,
       blurRadius: 2,
+    );
+  }
+
+  static BoxShadow kBoxShadowProductCardText({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 0.5),
+      spreadRadius: 0,
+      blurRadius: 0,
     );
   }
 }

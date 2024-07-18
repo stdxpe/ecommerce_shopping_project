@@ -73,21 +73,25 @@ abstract class AppTextThemes {
         bodyLarge: TextStyle(
           fontSize: 47.sp,
           fontWeight: FontWeight.w700,
-          letterSpacing: -2,
+          // letterSpacing: -2,
+          letterSpacing: -0.5,
+          height: 1.2,
         ),
 
         /// BM: Card Secondary
         bodyMedium: TextStyle(
           fontSize: 37.sp,
           fontWeight: FontWeight.w700,
-          letterSpacing: -2,
+          // letterSpacing: -2,
+          letterSpacing: 0,
+          height: 1,
         ),
 
         /// BS: Card Tertiary
         bodySmall: TextStyle(
           fontSize: 37.sp,
           fontWeight: FontWeight.w700,
-          letterSpacing: -2,
+          letterSpacing: 0,
         ),
 
         /// DL: Details Title / Price (60.sp)

@@ -23,9 +23,26 @@ abstract class Constants {
   static const double kPaddingButtonBottomMain = 50;
   static const double kPaddingButtonTopMain = 60;
 
-  static const double kPaddingCardContentTop = 60;
-  static const double kPaddingCardContentLeft = 50;
-  static const double kPaddingCardContentsBetween = 11;
+  static const double kPaddingCardFontHeightPrimary = 46;
+  static const double kPaddingCardFontHeightSecondary = 37;
+  static const double kPaddingCardFontHeightTertiary = 35;
+
+  static const double kPaddingStackCardContentTop = 60;
+  static const double kPaddingStackCardContentLeft = 50;
+  static const double kPaddingStackCardContentsBetween = 11;
+
+  static const double kPaddingVerticalCardTopAndBottom = 40;
+  static const double kPaddingVerticalCardLeftAndRight = 5;
+  static const double kPaddingVerticalCardLeftAndRightIfElevated = 30;
+  static const double kPaddingVerticalCardTextsBetween = 12;
+
+  static const double kPaddingHorizontalCardTopAndBottom = 40;
+  static const double kPaddingHorizontalCardeftAndRight = 30;
+  static const double kPaddingHorizontalCardTextsBetween = 30;
+
+  static const double kPaddingHorizontalCardDetailedTopAndBottom = 15;
+  static const double kPaddingHorizontalCardDetailedLeftAndRight = 30;
+  static const double kPaddingHorizontalCardDetailedTextsBetween = 20;
 
   static const double kPaddingDetailsScreenTitleTop = 100;
   static const double kPaddingDetailsScreenBetweenElementsVertical = 65;

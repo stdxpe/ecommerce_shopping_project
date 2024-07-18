@@ -49,22 +49,22 @@ class ProfileCardUserInfo extends StatelessWidget {
         height: cardHeight.h,
         width: cardWidth.w,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.theme.colorPalette.sheetBackground,
           boxShadow: [
             BoxShadows.kBoxShadowPrimary(
-              color: context.theme.colorPalette.shadowPrimary,
+              color: context.theme.colorPalette.shadowSecondary,
             ),
           ],
         ),
         child: Card(
+          elevation: 0,
           margin: EdgeInsets.zero,
-          color: Colors.white,
+          color: context.theme.colorPalette.sheetBackground,
           borderOnForeground: true,
           clipBehavior: Clip.none,
           shape: const RoundedRectangleBorder(
             side: BorderSide.none,
           ),
-          elevation: 0,
 
           /// TOTAL CARD
           child: Row(
@@ -84,7 +84,7 @@ class ProfileCardUserInfo extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadows.kBoxShadowPrimary(
-                      color: context.theme.colorPalette.shadowPrimary,
+                      color: context.theme.colorPalette.shadowSecondary,
                     ),
                   ],
                 ),
@@ -139,7 +139,6 @@ class ProfileCardUserInfo extends StatelessWidget {
                                         .theme.colorPalette.cardTextSecondary,
                                     fontSize: fontSizeSecondary.h,
                                     fontWeight: FontWeight.w700,
-                                    letterSpacing: 0.5,
                                     height: 1,
                                     shadows: [
                                       BoxShadows.kBoxShadowProductCardText(
@@ -165,7 +164,6 @@ class ProfileCardUserInfo extends StatelessWidget {
                                         .theme.colorPalette.cardTextSecondary,
                                     fontSize: fontSizeSecondary.h,
                                     fontWeight: FontWeight.w700,
-                                    letterSpacing: 0.5,
                                     height: 1,
                                     shadows: [
                                       BoxShadows.kBoxShadowProductCardText(

@@ -34,14 +34,12 @@ class ProfileCardButton extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(
             Constants.kRadiusCardPrimary.r,
           ),
         ),
         child: Card(
           margin: EdgeInsets.zero,
-          // color: Colors.white,
           color: ColorPalette.sheetBackground,
           clipBehavior: Clip.hardEdge,
           shape: const RoundedRectangleBorder(
@@ -50,7 +48,7 @@ class ProfileCardButton extends StatelessWidget {
           elevation: 1,
 
           /// TOTAL CARD
-          child: Container(
+          child: SizedBox(
             // color: Colors.green.withOpacity(0.5),
             height: cardHeight.h,
             width: cardWidth.w,
@@ -60,12 +58,10 @@ class ProfileCardButton extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    // color: Colors.red.withOpacity(0.5),
-                    alignment: Alignment.center,
+                    height: cardHeight.h,
                     padding: EdgeInsets.symmetric(
                       horizontal: paddingCardHorizontal.w,
                     ),
-                    height: cardHeight.h,
                     child: Row(
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

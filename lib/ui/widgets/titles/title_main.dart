@@ -29,10 +29,10 @@ class TitleMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: paddingTop ?? 20.h,
-        bottom: paddingBottom ?? 60.h,
-        left: paddingHorizontal ?? 15.w,
-        right: paddingHorizontal ?? 15.w,
+        top: paddingTop ?? Constants.kPaddingScreensTitleTop.h,
+        bottom: paddingBottom ?? Constants.kPaddingTitleBottom.h,
+        left: paddingHorizontal ?? Constants.kPaddingMainHorizontal.w,
+        right: paddingHorizontal ?? Constants.kPaddingMainHorizontal.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,6 +49,8 @@ class TitleMain extends StatelessWidget {
               ),
             ),
           if (stepNumber != null) SizedBox(height: 0.h),
+          // Constants.kPaddingTitleAndItemsFoundAndStepsBetweenVertical.w,
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

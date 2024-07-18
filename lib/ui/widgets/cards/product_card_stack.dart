@@ -8,10 +8,12 @@ class ProductCardStack extends StatelessWidget {
   const ProductCardStack({
     super.key,
     required this.product,
+    this.bottomText,
     required this.onPressed,
     required this.cardWidth,
   });
   final Product product;
+  final String? bottomText;
   final Function onPressed;
   final double cardWidth;
 
@@ -47,10 +49,10 @@ class ProductCardStack extends StatelessWidget {
               height: cardWidth.w,
               width: cardWidth.w,
               padding: EdgeInsets.only(
-                top: Constants.kPaddingCardContentTop.h,
-                bottom: Constants.kPaddingCardContentTop.h,
-                left: Constants.kPaddingCardContentLeft.w,
-                right: Constants.kPaddingCardContentLeft.w,
+                top: Constants.kPaddingStackCardContentTop.h,
+                bottom: Constants.kPaddingStackCardContentTop.h,
+                left: Constants.kPaddingStackCardContentLeft.w,
+                right: Constants.kPaddingStackCardContentLeft.w,
               ),
               decoration: BoxDecoration(
                 // color: Colors.green.withOpacity(0.5),
@@ -83,7 +85,8 @@ class ProductCardStack extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: Constants.kPaddingCardContentsBetween.h),
+                      SizedBox(
+                          height: Constants.kPaddingStackCardContentsBetween.h),
                       Text(
                         '\$${product.price.toStringAsFixed(2)}',
                         maxLines: 1,
@@ -101,21 +104,22 @@ class ProductCardStack extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text(
-                    'Size:  M',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.theme.textTheme.bodySmall!.copyWith(
-                      color: context.theme.colorPalette.cardTextTertiary,
-                      fontSize: 37.sp,
-                      shadows: [
-                        BoxShadows.kBoxShadowProductCardText(
-                          color: context.theme.colorPalette.permaWhiteColor
-                              .withOpacity(0.54),
-                        ),
-                      ],
+                  if (bottomText != null)
+                    Text(
+                      bottomText!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.theme.textTheme.bodySmall!.copyWith(
+                        color: context.theme.colorPalette.cardTextTertiary,
+                        fontSize: 37.sp,
+                        shadows: [
+                          BoxShadows.kBoxShadowProductCardText(
+                            color: context.theme.colorPalette.permaWhiteColor
+                                .withOpacity(0.54),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
                 ],
               ),
             ),

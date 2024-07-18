@@ -15,6 +15,7 @@ class ProductCardHorizontal extends StatelessWidget {
     required this.paddingTextVertical,
     required this.paddingTextHorizontal,
     required this.paddingTextBetween,
+    this.isCardElevated = true,
   });
 
   final Product product;
@@ -25,6 +26,7 @@ class ProductCardHorizontal extends StatelessWidget {
   final double paddingTextVertical;
   final double paddingTextHorizontal;
   final double paddingTextBetween;
+  final bool? isCardElevated;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +38,12 @@ class ProductCardHorizontal extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             Constants.kRadiusCardPrimary.r,
           ),
-          // boxShadow: [
-          //   BoxShadows.kBoxShadowPrimary(
-          //     color: context.theme.colorPalette.shadowPrimary,
-          //   ),
-          // ],
+          boxShadow: [
+            if (isCardElevated!)
+              BoxShadows.kBoxShadowPrimary(
+                color: context.theme.colorPalette.shadowPrimary,
+              ),
+          ],
         ),
         child: Card(
           margin: EdgeInsets.zero,
@@ -64,10 +67,9 @@ class ProductCardHorizontal extends StatelessWidget {
                 /// CARD IMAGE
                 Card(
                   margin: EdgeInsets.zero,
-                  elevation: 1,
+                  elevation: isCardElevated! ? 1 : 2,
                   borderOnForeground: true,
                   child: Container(
-                    // clipBehavior: Clip.hardEdge,
                     height: cardHeight.h,
                     width: cardHeight.h,
                     decoration: BoxDecoration(
@@ -82,9 +84,10 @@ class ProductCardHorizontal extends StatelessWidget {
                         Constants.kRadiusCardPrimary.r,
                       ),
                       boxShadow: [
-                        BoxShadows.kBoxShadowPrimary(
-                          color: context.theme.colorPalette.shadowPrimary,
-                        ),
+                        if (!isCardElevated!)
+                          BoxShadows.kBoxShadowPrimary(
+                            color: context.theme.colorPalette.shadowPrimary,
+                          ),
                       ],
                     ),
                   ),

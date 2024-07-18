@@ -17,6 +17,7 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
     required this.paddingTextVertical,
     required this.paddingTextHorizontal,
     required this.paddingTextBetween,
+    this.isCardElevated = false,
   });
 
   final Product product;
@@ -29,6 +30,7 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
   final double paddingTextVertical;
   final double paddingTextHorizontal;
   final double paddingTextBetween;
+  final bool? isCardElevated;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +42,12 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             Constants.kRadiusCardPrimary.r,
           ),
-
-          /// Uncomment below for Elevated Card
-          // boxShadow: [
-          //   BoxShadows.kBoxShadowPrimary(
-          //     color: context.theme.colorPalette.shadowPrimary,
-          //   ),
-          // ],
-          //
+          boxShadow: [
+            if (isCardElevated!)
+              BoxShadows.kBoxShadowPrimary(
+                color: context.theme.colorPalette.shadowPrimary,
+              ),
+          ],
         ),
         child: Card(
           margin: EdgeInsets.zero,

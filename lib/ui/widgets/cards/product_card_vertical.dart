@@ -12,8 +12,8 @@ class ProductCardVertical extends StatelessWidget {
     required this.fontSizePrimary,
     required this.fontSizeSecondary,
     required this.paddingTextVertical,
-    required this.paddingTextHorizontal,
     required this.paddingTextBetween,
+    this.isCardElevated = false,
   });
 
   final Product product;
@@ -21,8 +21,8 @@ class ProductCardVertical extends StatelessWidget {
   final double fontSizePrimary;
   final double fontSizeSecondary;
   final double paddingTextVertical;
-  final double paddingTextHorizontal;
   final double paddingTextBetween;
+  final bool? isCardElevated;
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +43,28 @@ class ProductCardVertical extends StatelessWidget {
 
     return Align(
       alignment: Alignment.topCenter,
-      child: SizedBox(
+      child: Container(
         height: cardTotalHeight,
         width: cardTotalWidth,
-        // color: Colors.red.withOpacity(0.2),
+        clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
+        decoration: BoxDecoration(
+          color: isCardElevated! ? Colors.white : Colors.transparent,
+          borderRadius: BorderRadius.circular(
+            isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
+          ),
+          boxShadow: [
+            if (isCardElevated!)
+              BoxShadows.kBoxShadowPrimary(
+                color: context.theme.colorPalette.shadowPrimary,
+              ),
+          ],
+        ),
         child: Column(
           children: [
             /// CARD IMAGE
             Card(
               margin: EdgeInsets.zero,
-              elevation: 1,
+              elevation: isCardElevated! ? 1 : 2,
               borderOnForeground: true,
               child: Container(
                 clipBehavior: Clip.hardEdge,
@@ -67,12 +79,13 @@ class ProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   borderRadius: BorderRadius.circular(
-                    Constants.kRadiusCardPrimary.r,
+                    isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
                   ),
                   boxShadow: [
-                    BoxShadows.kBoxShadowPrimary(
-                      color: context.theme.colorPalette.shadowPrimary,
-                    ),
+                    if (!isCardElevated!)
+                      BoxShadows.kBoxShadowPrimary(
+                        color: context.theme.colorPalette.shadowPrimary,
+                      ),
                   ],
                 ),
               ),
@@ -80,7 +93,10 @@ class ProductCardVertical extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(
                 vertical: paddingTextVertical.h,
-                horizontal: paddingTextHorizontal.w,
+                horizontal: isCardElevated!
+                    ? Constants.kPaddingVerticalCardLeftAndRightIfElevated.w
+                    : Constants.kPaddingVerticalCardLeftAndRight.w,
+                // horizontal: paddingTextHorizontal.w,
               ),
               // color: Colors.black.withOpacity(0.2),
               height: textSectionHeight.h,

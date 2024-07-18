@@ -62,7 +62,7 @@ class ProductCardHorizontal extends StatelessWidget {
           elevation: 0,
 
           /// TOTAL CARD
-          child: Container(
+          child: SizedBox(
             height: cardHeight.h,
             width: cardWidth.w,
             // color: Colors.red.withOpacity(0.2),
@@ -109,7 +109,7 @@ class ProductCardHorizontal extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
+                        SizedBox(
                           // color: Colors.yellow,
                           height: fontSizePrimary.h,
                           child: Text(
@@ -125,7 +125,7 @@ class ProductCardHorizontal extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: paddingTextBetween.h),
-                        Container(
+                        SizedBox(
                           // color: Colors.yellowAccent,
                           height: fontSizeSecondary.h,
                           child: Text(

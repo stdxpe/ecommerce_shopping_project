@@ -33,7 +33,7 @@ class _BannerSliderState extends State<BannerSlider> {
       height: 800.h,
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadows.kBoxShadowSecondary(
+          BoxShadows.kBoxShadowTopBanner(
             color: context.theme.colorPalette.shadowSecondary,
           ),
         ],

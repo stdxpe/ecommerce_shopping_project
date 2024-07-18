@@ -36,10 +36,11 @@ class TitleWithTextButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Flexible(
-            flex: 5,
+            flex: 7,
             child: Text(
               title,
               maxLines: 1,
+              textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis,
               style: context.theme.textTheme.titleLarge!.copyWith(
                 color: context.theme.colorPalette.title,
@@ -58,6 +59,7 @@ class TitleWithTextButton extends StatelessWidget {
               child: Text(
                 buttonText,
                 maxLines: 1,
+                textAlign: TextAlign.end,
                 style: context.theme.textTheme.titleMedium!.copyWith(
                   color: context.theme.colorPalette.textButtonFaded,
                   fontSize: 40.sp,

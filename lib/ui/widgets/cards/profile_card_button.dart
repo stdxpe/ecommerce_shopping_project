@@ -9,122 +9,102 @@ class ProfileCardButton extends StatelessWidget {
     super.key,
     required this.buttonText,
     this.icon,
-    this.useBackIcon = true,
     this.widget,
-    required this.cardWidth,
-    required this.cardHeight,
-    required this.fontSizePrimary,
-    required this.paddingCardHorizontal,
-    required this.paddingBetweenHorizontal,
+    this.useForwardIcon = true,
+    this.useBottomDivider = false,
+    this.cardHeight = 150,
+    this.paddingCardHorizontal = Constants.kPaddingMainHorizontal,
+    this.paddingBetweenHorizontal =
+        Constants.kPaddingHorizontalCardTextsBetween,
   });
 
   final String buttonText;
   final IconData? icon;
-  final bool? useBackIcon;
   final Widget? widget;
-  final double cardWidth;
-  final double cardHeight;
-  final double fontSizePrimary;
-  final double paddingCardHorizontal;
-  final double paddingBetweenHorizontal;
+  final bool? useForwardIcon;
+  final bool? useBottomDivider;
+  final double? cardHeight;
+  final double? paddingCardHorizontal;
+  final double? paddingBetweenHorizontal;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            Constants.kRadiusCardPrimary.r,
-          ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Divider(
+          thickness: 0.5,
+          endIndent: 0,
+          indent: 0,
+          height: 0,
+          color: context.colorPalette.text.withOpacity(0.26),
         ),
-        child: Card(
-          margin: EdgeInsets.zero,
-          color: ColorPalette.sheetBackground,
-          clipBehavior: Clip.hardEdge,
-          shape: const RoundedRectangleBorder(
-            side: BorderSide.none,
-          ),
-          elevation: 1,
-
-          /// TOTAL CARD
-          child: SizedBox(
-            // color: Colors.green.withOpacity(0.5),
-            height: cardHeight.h,
-            width: cardWidth.w,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                    height: cardHeight.h,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: paddingCardHorizontal.w,
-                    ),
-                    child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          // color: Colors.blue.withOpacity(0.5),
-                          alignment: Alignment.center,
-                          height: cardHeight.h * 0.5,
-                          width: cardHeight.h * 0.5,
-                          child: FittedBox(
-                            alignment: Alignment.center,
-                            child: Icon(
-                              icon,
-                              size: cardHeight.h * 0.5,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: paddingBetweenHorizontal.w),
-                        Flexible(
-                          flex: 1,
-                          child: Container(
-                            // color: Colors.yellow,
-                            height: fontSizePrimary.h * 2,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              buttonText,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.start,
-                              style:
-                                  context.theme.textTheme.bodyLarge!.copyWith(
-                                color:
-                                    context.theme.colorPalette.cardTextPrimary,
-                                fontSize: fontSizePrimary.h,
-                                height: 1,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(width: paddingBetweenHorizontal.w),
-                Container(
-                  // color: Colors.blue.withOpacity(0.5),
+        Container(
+          color: context.colorPalette.sheetBackground,
+          height: cardHeight!.h,
+          width: 1.sw,
+          padding:
+              EdgeInsets.symmetric(horizontal: paddingCardHorizontal!.w * 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                height: cardHeight!.h * 0.4,
+                width: cardHeight!.h * 0.4,
+                child: FittedBox(
                   alignment: Alignment.center,
-                  height: cardHeight.h * 0.33,
-                  width: cardHeight.h * 0.33,
-                  child: FittedBox(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      CupertinoIcons.forward,
-                      size: cardHeight.h * 0.33,
+                  child: Icon(
+                    icon,
+                    size: cardHeight!.h * 0.4,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: paddingBetweenHorizontal!.w),
+                  // color: Colors.yellow,
+                  // height: fontSizePrimary.h * 2,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    buttonText,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: context.colorPalette.cardTextPrimary,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                height: cardHeight!.h * 0.33,
+                width: cardHeight!.h * 0.33,
+                child: FittedBox(
+                  alignment: Alignment.center,
+                  child: Icon(
+                    CupertinoIcons.forward,
+                    size: cardHeight!.h * 0.33,
+                    color: context.colorPalette.text.withOpacity(0.5),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-      ),
+        if (useBottomDivider!)
+          Divider(
+            thickness: 0.5,
+            endIndent: 0,
+            indent: 0,
+            height: 0,
+            color: context.colorPalette.text.withOpacity(0.26),
+          ),
+      ],
     );
   }
 }

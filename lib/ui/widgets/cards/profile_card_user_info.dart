@@ -10,195 +10,131 @@ class ProfileCardUserInfo extends StatelessWidget {
     required this.email,
     required this.phoneNumber,
     required this.profilePhoto,
-    required this.cardWidth,
     required this.cardHeight,
-    required this.fontSizePrimary,
-    required this.fontSizeSecondary,
-    required this.fontSizeTertiary,
-    required this.paddingTextVertical,
-    required this.paddingTextHorizontal,
-    required this.paddingTextBetween,
-    required this.paddingImageVertical,
-    required this.paddingImageHorizontal,
   });
 
   final String username;
   final String email;
   final String phoneNumber;
   final String profilePhoto;
-  final double cardWidth;
   final double cardHeight;
-  final double fontSizePrimary;
-  final double fontSizeSecondary;
-  final double fontSizeTertiary;
-  final double paddingTextVertical;
-  final double paddingTextHorizontal;
-  final double paddingImageVertical;
-  final double paddingImageHorizontal;
-  final double paddingTextBetween;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: paddingImageHorizontal.w,
-          vertical: paddingImageVertical.h,
-        ),
-        height: cardHeight.h,
-        width: cardWidth.w,
-        decoration: BoxDecoration(
-          color: context.theme.colorPalette.sheetBackground,
-          boxShadow: [
-            BoxShadows.kBoxShadowPrimary(
-              color: context.theme.colorPalette.shadowSecondary,
-            ),
-          ],
-        ),
-        child: Card(
-          elevation: 0,
-          margin: EdgeInsets.zero,
-          color: context.theme.colorPalette.sheetBackground,
-          borderOnForeground: true,
-          clipBehavior: Clip.none,
-          shape: const RoundedRectangleBorder(
-            side: BorderSide.none,
-          ),
+    double paddingImageVertical = Constants.kPaddingProfileCardTopAndBottom;
+    double paddingImageHorizontal = Constants.kPaddingProfileCardeftAndRight;
 
-          /// TOTAL CARD
-          child: Row(
-            children: [
-              /// CARD IMAGE
-              Container(
-                height: cardHeight.h,
-                width: cardHeight.h,
-                padding: EdgeInsets.zero,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      profilePhoto,
-                    ),
-                  ),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadows.kBoxShadowPrimary(
-                      color: context.theme.colorPalette.shadowSecondary,
-                    ),
-                  ],
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+
+      width: 1.sw,
+      height: cardHeight.h + paddingImageVertical.h * 2,
+      padding: EdgeInsets.symmetric(
+        horizontal: paddingImageHorizontal.w,
+        vertical: paddingImageVertical.h,
+      ),
+      decoration: BoxDecoration(
+        color: context.theme.colorPalette.sheetBackground,
+        // color: Colors.green,
+        // color: Colors.red,
+        boxShadow: [
+          BoxShadows.kBoxShadowPrimary(
+            color: context.theme.colorPalette.shadowSecondary,
+          ),
+        ],
+      ),
+
+      /// IMAGE and EDIT ICON
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: cardHeight.h,
+            width: cardHeight.h,
+            padding: EdgeInsets.zero,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  profilePhoto,
                 ),
               ),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadows.kBoxShadowPrimary(
+                  color: context.theme.colorPalette.shadowSecondary,
+                ),
+              ],
+            ),
+          ),
+          // SizedBox(width: Constants.kPaddingProfileCardTextsHorizontal.h),
 
-              /// CARD TEXTS
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: paddingTextHorizontal.w,
-                    vertical: paddingTextVertical.h,
+          /// TEXTS
+          Expanded(
+            child: Container(
+              // color: Colors.red.withOpacity(0.5),
+              padding: EdgeInsets.symmetric(
+                vertical: Constants.kPaddingProfileCardTextsVertical.h,
+                horizontal: Constants.kPaddingProfileCardTextsHorizontal.w,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    username,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textTheme.bodyLarge!.copyWith(
+                      color: context.colorPalette.cardTextPrimary,
+                    ),
                   ),
-                  child: Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            // color: Colors.yellow,
-                            height: fontSizePrimary.h,
-                            child: Text(
-                              username,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style:
-                                  context.theme.textTheme.bodyLarge!.copyWith(
-                                color:
-                                    context.theme.colorPalette.cardTextPrimary,
-                                fontSize: fontSizePrimary.h,
-                                height: 1,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                // color: Colors.yellow,
-                                height: fontSizeSecondary.h,
-                                child: Text(
-                                  email,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: context.theme.textTheme.bodyMedium!
-                                      .copyWith(
-                                    color: context
-                                        .theme.colorPalette.cardTextSecondary,
-                                    fontSize: fontSizeSecondary.h,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1,
-                                    shadows: [
-                                      BoxShadows.kBoxShadowProductCardText(
-                                        color: context
-                                            .theme.colorPalette.permaWhiteColor
-                                            .withOpacity(0.54),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: paddingTextBetween.h),
-                              SizedBox(
-                                // color: Colors.yellowAccent,
-                                height: fontSizeSecondary.h,
-                                child: Text(
-                                  phoneNumber,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: context.theme.textTheme.bodyMedium!
-                                      .copyWith(
-                                    color: context
-                                        .theme.colorPalette.cardTextSecondary,
-                                    fontSize: fontSizeSecondary.h,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1,
-                                    shadows: [
-                                      BoxShadows.kBoxShadowProductCardText(
-                                        color: context
-                                            .theme.colorPalette.permaWhiteColor
-                                            .withOpacity(0.54),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                      Text(
+                        phoneNumber,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: context.colorPalette.cardTextSecondary,
+                        ),
                       ),
-                      Container(
-                        // color: Colors.blue.withOpacity(0.5),
-                        alignment: Alignment.center,
-                        height: fontSizePrimary.h,
-                        width: fontSizePrimary.h,
-                        child: FittedBox(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.edit_note,
-                            size: fontSizePrimary.h,
-                          ),
+                      SizedBox(
+                        height: Constants.kPaddingProfileCardTextsBetween.h,
+                      ),
+                      Text(
+                        email,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textTheme.bodyMedium!.copyWith(
+                          color: context.colorPalette.cardTextSecondary,
                         ),
                       ),
                     ],
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              // color: Colors.blue.withOpacity(0.5),
+
+              height: Constants.kPaddingProfileCardFontHeightPrimary.h,
+              width: Constants.kPaddingProfileCardFontHeightPrimary.h,
+              child: Icon(
+                Icons.edit_note,
+                size: Constants.kPaddingProfileCardFontHeightPrimary.h,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

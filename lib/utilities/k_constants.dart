@@ -48,6 +48,15 @@ abstract class Constants {
   static const double kPaddingDetailsScreenBetweenElementsVertical = 65;
   static const double kPaddingDetailsScreenHorizontalMain = 30;
 
+  static const double kPaddingProfileCardFontHeightPrimary = 60;
+  static const double kPaddingProfileCardFontHeightSecondary = 35;
+  static const double kPaddingProfileCardFontHeightTertiary = 35;
+  static const double kPaddingProfileCardTopAndBottom = 25;
+  static const double kPaddingProfileCardeftAndRight = 30;
+  static const double kPaddingProfileCardTextsVertical = 20;
+  static const double kPaddingProfileCardTextsHorizontal = 30;
+  static const double kPaddingProfileCardTextsBetween = 10;
+
   /// GLOBAL BORDER RADIUSSES
   static const double kRadiusButtonMain = 100;
   static const double kRadiusDialogPopups = 50;

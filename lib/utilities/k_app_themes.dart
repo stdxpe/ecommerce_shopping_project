@@ -147,15 +147,27 @@ abstract class AppTheme {
 }
 
 /// [EASY ACCESS to COLOR PALETTE in UI]
-/// Usage example: Theme.of(context).appColors;
+/// Usage example: Theme.of(context).colorPalette;
 extension AppThemeExtension on ThemeData {
   AppColorsExtension get colorPalette =>
       extension<AppColorsExtension>() ?? AppTheme._lightModeColorPalette;
 }
 
+/// [EASY ACCESS to COLOR PALETTE in UI]
+/// Usage example: `context.colorPalette` instead of `Theme.of(context).colorPalette`
+extension ColorPaletteGetterExtension on BuildContext {
+  AppColorsExtension get colorPalette => Theme.of(this).colorPalette;
+}
+
 /// [EASY ACCESS to THEME DATA in UI]
 /// Usage example: `context.theme` instead of `Theme.of(context)`
 /// Final usage will look like this: context.theme.colorPalette.
-extension ThemeGetter on BuildContext {
+extension ThemeGetterExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
+}
+
+/// [EASY ACCESS to TEXT THEMES in UI]
+/// Usage example: `context.textTheme` instead of `Theme.of(context).textTheme`
+extension TextThemeGetterExtension on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
 }

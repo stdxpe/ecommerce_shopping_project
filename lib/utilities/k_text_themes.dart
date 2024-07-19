@@ -72,7 +72,7 @@ abstract class AppTextThemes {
         /// BL: Card Primary
         bodyLarge: TextStyle(
           // fontSize: 46.sp,
-          fontSize: Constants.kPaddingCardFontHeightPrimary.sp,
+          fontSize: Constants.kPaddingCardFontHeightPrimary.h,
           fontWeight: FontWeight.w700,
           // letterSpacing: -2,
           letterSpacing: -0.5,
@@ -82,7 +82,7 @@ abstract class AppTextThemes {
         /// BM: Card Secondary
         bodyMedium: TextStyle(
           // fontSize: 37.sp,
-          fontSize: Constants.kPaddingCardFontHeightSecondary.sp,
+          fontSize: Constants.kPaddingCardFontHeightSecondary.h,
           fontWeight: FontWeight.w700,
           // letterSpacing: -2,
           letterSpacing: 0,
@@ -91,7 +91,7 @@ abstract class AppTextThemes {
 
         /// BS: Card Tertiary
         bodySmall: TextStyle(
-          fontSize: Constants.kPaddingCardFontHeightTertiary.sp,
+          fontSize: Constants.kPaddingCardFontHeightTertiary.h,
           // fontSize: 35.sp
           fontWeight: FontWeight.w700,
           letterSpacing: 0,

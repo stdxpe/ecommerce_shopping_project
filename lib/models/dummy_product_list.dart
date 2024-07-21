@@ -7,7 +7,8 @@ var dummyProductList = [
     mainPhoto: 'assets/images/pose1.jpg',
   ),
   Product(
-    title: 'MOS Sale-Fit Shirt Shirtasdfasdfsdfgsdfg',
+    title:
+        'MOS Sale-Fit Shirt Shirtasdfasdfsdfgsdfg Shirtasdfasdfsdfgsdfg Shirtasdfasdfsdfgsdfg Shirtasdfasdfsdfgsdfg',
     price: 133.99,
     mainPhoto: 'assets/images/pose2.jpg',
   ),

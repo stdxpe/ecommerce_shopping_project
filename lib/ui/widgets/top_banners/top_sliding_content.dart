@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DummyTopSlidingContent extends StatelessWidget {
@@ -42,60 +43,56 @@ class DummyTopSlidingContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'SPRING COLLECTION',
-                textAlign: TextAlign.center,
-                style: context.theme.textTheme.displayLarge!.copyWith(
-                  color: context.theme.colorPalette.permaWhiteColor,
-                  fontSize: 40.sp,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0,
-                  shadows: [
-                    BoxShadows.kBoxShadowText(
-                      color: context.theme.colorPalette.permaBlackColor
-                          .withOpacity(0.54),
-                    ),
-                  ],
-                ),
+              TextCustom(
+                text: 'SPRING COLLECTION',
+                textStyle: context.textTheme.bodyMedium!,
+                color: context.colorPalette.permaWhiteColor,
+                fontSizeCustom: 42,
+                fontWeightCustom: FontWeight.w600,
+                textAlignCustom: TextAlign.center,
+                boxShadowsCustom: [
+                  BoxShadows.kBoxShadowText(
+                    color:
+                        context.colorPalette.permaBlackColor.withOpacity(0.54),
+                  ),
+                ],
               ),
               Divider(
                 thickness: 1,
                 height: 20,
-                endIndent: 200,
-                color: context.theme.colorPalette.permaWhiteColor,
+                endIndent: 590.w,
+                color: context.colorPalette.permaWhiteColor,
               ),
               const SizedBox(height: 10),
-              Text(
-                '20% OFF',
-                textAlign: TextAlign.center,
-                style: context.theme.textTheme.displayLarge!.copyWith(
-                  color: context.theme.colorPalette.permaWhiteColor,
-                  fontSize: 150.sp,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -2.w,
-                  shadows: [
-                    BoxShadows.kBoxShadowText(
-                      color: context.theme.colorPalette.permaBlackColor
-                          .withOpacity(0.54),
-                    ),
-                  ],
-                ),
+              TextCustom(
+                text: '20% OFF',
+                textStyle: context.textTheme.displayLarge!,
+                color: context.colorPalette.permaWhiteColor,
+                fontSizeCustom: 150,
+                fontWeightCustom: FontWeight.w800,
+                fontLetterSpacingCustom: -1,
+                textAlignCustom: TextAlign.center,
+                boxShadowsCustom: [
+                  BoxShadows.kBoxShadowText(
+                    color:
+                        context.colorPalette.permaBlackColor.withOpacity(0.54),
+                  ),
+                ],
               ),
-              Text(
-                'For Selected Spring Style',
-                textAlign: TextAlign.center,
-                style: context.theme.textTheme.displayLarge!.copyWith(
-                  color: context.theme.colorPalette.permaWhiteColor,
-                  fontSize: 40.sp,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0,
-                  shadows: [
-                    BoxShadows.kBoxShadowText(
-                      color: context.theme.colorPalette.permaBlackColor
-                          .withOpacity(0.54),
-                    ),
-                  ],
-                ),
+              TextCustom(
+                text: 'For Selected Spring Style',
+                textStyle: context.textTheme.displayLarge!,
+                color: context.colorPalette.permaWhiteColor,
+                fontSizeCustom: 40,
+                fontWeightCustom: FontWeight.w600,
+                fontLetterSpacingCustom: 0,
+                textAlignCustom: TextAlign.center,
+                boxShadowsCustom: [
+                  BoxShadows.kBoxShadowText(
+                    color:
+                        context.colorPalette.permaBlackColor.withOpacity(0.54),
+                  ),
+                ],
               ),
             ],
           ),

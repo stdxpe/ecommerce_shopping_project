@@ -51,7 +51,7 @@ abstract class AppStrings {
   static const String verificationScreenButton = 'Send a new code';
 
   /// HOME SCREEN
-  ///
+  static const String dealsOfTheWeek = 'Deals of the Week';
 
   /// WISHLIST SCREEN
   static const String wishlistScreenTitle = 'Wishlist';

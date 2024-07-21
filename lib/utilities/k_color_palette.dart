@@ -8,8 +8,8 @@ abstract class ColorPalette {
   static const Color scaffoldBackground = Color(0xFFFFFFFF);
   static const Color appBarBackground = Color(0xFFFFFFFF);
   static const Color appBarForeground = Color(0xFF000000);
-  static const Color shadowPrimary = Colors.black54;
-  static const Color shadowSecondary = Colors.black38;
+  static Color shadowPrimary = Colors.black54.withOpacity(0.35);
+  static Color shadowSecondary = Colors.black38;
   static const Color buttonMainBackgroundPrimary = Color(0xFF232429);
   static const Color buttonMainForegroundPrimary = Color(0xFFFFFFFF);
   static const Color buttonMainBackgroundSecondary = Color(0xFFFFFFFF);

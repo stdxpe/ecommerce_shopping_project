@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ButtonAlreadyHaveAccount extends StatelessWidget {
@@ -27,25 +28,25 @@ class ButtonAlreadyHaveAccount extends StatelessWidget {
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            textStatic ?? '',
-            textAlign: TextAlign.center,
-            style: context.theme.textTheme.titleMedium!.copyWith(
-              fontSize: fontSize,
-              color: textStaticColor,
-              fontWeight: FontWeight.w500,
-            ),
+          TextCustom(
+            text: textStatic ?? '',
+            textStyle: context.textTheme.titleMedium!,
+            color:
+                textStaticColor ?? context.colorPalette.title.withOpacity(0.75),
+            fontSizeCustom: fontSize,
+            fontWeightCustom: FontWeight.w500,
+            textAlignCustom: TextAlign.center,
           ),
-          Text(
-            buttonText,
-            textAlign: TextAlign.center,
-            style: context.theme.textTheme.titleMedium!.copyWith(
-              fontSize: fontSize,
-              color: buttonTextColor,
-              fontWeight: FontWeight.w700,
-            ),
+          TextCustom(
+            text: buttonText,
+            textStyle: context.textTheme.titleMedium!,
+            color: buttonTextColor ?? context.colorPalette.title,
+            fontSizeCustom: fontSize,
+            fontWeightCustom: FontWeight.w700,
+            textAlignCustom: TextAlign.center,
           ),
         ],
       ),

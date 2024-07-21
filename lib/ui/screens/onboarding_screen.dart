@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/onboarding_slider.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -20,36 +21,24 @@ class OnboardingScreen extends StatelessWidget {
         children: [
           SizedBox(height: 289.h),
           Align(
-            child: SizedBox(
-              width: 532.w,
-              child: FittedBox(
-                child: Text(
-                  AppStrings.onboardingScreenTitle,
-                  textAlign: TextAlign.center,
-                  style: context.theme.textTheme.headlineSmall!.copyWith(
-                    color: context.theme.colorPalette.title,
-                    letterSpacing: 0,
-                    height: 0.8,
-                  ),
-                ),
-              ),
+            alignment: Alignment.center,
+            child: TextCustom(
+              text: AppStrings.onboardingScreenTitle,
+              textStyle: context.textTheme.headlineSmall!,
+              color: context.colorPalette.title,
             ),
           ),
           SizedBox(height: 92.h),
           Align(
-            child: SizedBox(
-              // width: 775.w,
-              child: FittedBox(
-                child: Text(
-                  AppStrings.onboardingScreenSubtitle,
-                  textAlign: TextAlign.center,
-                  style: context.theme.textTheme.headlineSmall!.copyWith(
-                    color: context.theme.colorPalette.title,
-                    fontSize: 40.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+            alignment: Alignment.center,
+            child: TextCustom(
+              text: AppStrings.onboardingScreenSubtitle,
+              textStyle: context.textTheme.headlineSmall!,
+              color: context.colorPalette.title,
+              fontSizeCustom: 40,
+              fontWeightCustom: FontWeight.w600,
+              maxLines: 2,
+              textAlignCustom: TextAlign.center,
             ),
           ),
           const OnboardingSlider(),
@@ -61,18 +50,12 @@ class OnboardingScreen extends StatelessWidget {
             text: AppStrings.continueButton,
           ),
           SizedBox(height: 107.h),
-          Align(
-            child: ButtonAlreadyHaveAccount(
-              onPressed: () {
-                if (onPressed != null) onPressed!();
-              },
-              textStatic: AppStrings.alreadyHaveAnAccount,
-              buttonText: AppStrings.signIn,
-              textStaticColor:
-                  context.theme.colorPalette.title.withOpacity(0.75),
-              buttonTextColor: context.theme.colorPalette.title,
-              fontSize: 40.sp,
-            ),
+          ButtonAlreadyHaveAccount(
+            onPressed: () {
+              if (onPressed != null) onPressed!();
+            },
+            textStatic: AppStrings.alreadyHaveAnAccount,
+            buttonText: AppStrings.signIn,
           ),
           SizedBox(height: 232.h),
         ],

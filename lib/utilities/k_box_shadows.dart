@@ -19,6 +19,8 @@ abstract class BoxShadows {
       offset: const Offset(0, 3),
       spreadRadius: 0.1,
       blurRadius: 5,
+      // TODO: HERE TEST
+      // blurRadius: 12.5,
     );
   }
 
@@ -41,6 +43,15 @@ abstract class BoxShadows {
   }
 
   static BoxShadow kBoxShadowTertiary({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 8),
+      spreadRadius: 0.1,
+      blurRadius: 25,
+    );
+  }
+
+  static BoxShadow kBoxShadowButton({required Color color}) {
     return BoxShadow(
       color: color,
       offset: const Offset(0, 8),
@@ -82,6 +93,15 @@ abstract class BoxShadows {
       offset: const Offset(0, 0.5),
       spreadRadius: 0,
       blurRadius: 0,
+    );
+  }
+
+  static BoxShadow kBoxShadowImage({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 2),
+      spreadRadius: 0,
+      blurRadius: 1.5,
     );
   }
 }

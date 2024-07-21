@@ -36,7 +36,6 @@ class TextCustom extends StatelessWidget {
     return Container(
       // color: Colors.yellow,
       padding: EdgeInsets.zero,
-
       height: fontSizeFinal!.h * textHeightFinal! * maxLines!,
       child: Text(
         text,

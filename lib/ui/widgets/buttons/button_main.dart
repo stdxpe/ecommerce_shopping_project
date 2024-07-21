@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,7 +45,7 @@ class ButtonMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double localPaddingHorizontal =
-        paddingHorizontal ?? Constants.kPaddingButtonHorizontalMain.w;
+        paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w;
 
     return Container(
       height: height ?? 150.h,
@@ -55,14 +56,14 @@ class ButtonMain extends StatelessWidget {
         paddingVertical ?? 0,
       ),
       decoration: BoxDecoration(
-        color: context.theme.colorPalette.buttonMainBackgroundPrimary,
+        // color: context.colorPalette.buttonMainBackgroundPrimary,
         borderRadius: BorderRadius.all(
-          Radius.circular(100.r),
+          Radius.circular(Constants.kRadiusButtonMain.r),
         ),
         boxShadow: [
           if (useShadow!)
-            BoxShadows.kBoxShadowPrimary(
-              color: context.theme.colorPalette.shadowSecondary,
+            BoxShadows.kBoxShadowButton(
+              color: context.colorPalette.shadowSecondary,
             ),
         ],
       ),
@@ -79,40 +80,34 @@ class ButtonMain extends StatelessWidget {
             width: borderWidth ?? 0,
           ),
           foregroundColor: foregroundColor ??
-              context.theme.colorPalette.buttonMainForegroundPrimary,
+              context.colorPalette.buttonMainForegroundPrimary,
           backgroundColor: backgroundColor ??
-              context.theme.colorPalette.buttonMainBackgroundPrimary,
+              context.colorPalette.buttonMainBackgroundPrimary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100.r),
+            borderRadius: BorderRadius.circular(Constants.kRadiusButtonMain.r),
           ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(0.0),
-          child: FittedBox(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                if (icon != null) icon!,
-                if (icon != null) SizedBox(width: 30.h),
-                FittedBox(
-                  child: Text(
-                    text,
-                    style: context.theme.textTheme.labelLarge!.copyWith(
-                      color: foregroundColor ??
-                          context
-                              .theme.colorPalette.buttonMainForegroundPrimary,
-                      fontSize: fontSize ?? 45.sp,
-                      fontWeight: fontWeight ??
-                          context.theme.textTheme.labelLarge!.fontWeight,
-                      letterSpacing: fontLetterSpacing ??
-                          context.theme.textTheme.labelLarge!.letterSpacing!.w,
-                    ),
-                  ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              if (icon != null) icon!,
+              if (icon != null) SizedBox(width: 30.h),
+              Flexible(
+                child: TextCustom(
+                  text: text,
+                  textStyle: context.textTheme.labelLarge!,
+                  color: foregroundColor ??
+                      context.colorPalette.buttonMainForegroundPrimary,
+                  fontSizeCustom: fontSize,
+                  fontWeightCustom: fontWeight,
+                  fontLetterSpacingCustom: fontLetterSpacing,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_mode_transition.dart';
 
 class DarkSample extends StatefulWidget {

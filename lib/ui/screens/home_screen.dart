@@ -1,7 +1,14 @@
+import 'package:card_swiper/card_swiper.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/sliders/product_card_deals_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_deals.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_horizontal.dart';
@@ -10,6 +17,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/ho
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/banner_slider.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_with_text_button.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -21,10 +29,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   surfaceTintColor: Colors.white,
-      // ),
+      appBar: const AppBarMain(),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -37,15 +42,22 @@ class HomeScreen extends StatelessWidget {
                 child: const BannerSlider()),
             TitleWithTextButton(
               onPressed: () {},
+              title: AppStrings.dealsOfTheWeek,
+              buttonText: '',
+            ),
+            ProductCardDealsSlider(
+              productsList: dummyDealsOfTheWeekProductList,
+            ),
+            TitleWithTextButton(
+              onPressed: () {},
               title: 'Listview Stack',
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardStack(
               productsList: dummyProductList,
               cardWidth: 500,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             TitleWithTextButton(
               onPressed: () {},
@@ -53,13 +65,12 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardHorizontal(
-              isCardElevated: true,
+              // isCardElevated: false,
               productsList: dummyProductList,
               cardWidth: 700,
               cardHeight: 190,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             const SizedBox(height: 15),
             TitleWithTextButton(
@@ -70,10 +81,9 @@ class HomeScreen extends StatelessWidget {
             VerticalListviewProductCardHorizontalMini(
               isCardElevated: true,
               productsList: dummyProductShortList,
-              cardHeight: 250,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              cardHeight: 200,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             const SizedBox(height: 15),
             TitleWithTextButton(
@@ -82,12 +92,11 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             VerticalListviewProductCardHorizontalDetailed(
-              isCardElevated: true,
+              // isCardElevated: false,
               productsList: dummyProductShortList,
               cardHeight: 300,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             TitleWithTextButton(
               onPressed: () {},
@@ -98,18 +107,16 @@ class HomeScreen extends StatelessWidget {
               isCardElevated: true,
               productsList: dummyProductList,
               itemCountOnRow: 2,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             const SizedBox(height: 15),
             HorizontalListviewProductCardVerticalAlternate(
-              isCardElevated: true,
+              isCardElevated: false,
               productsList: dummyProductList,
               cardWidth: 400,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             TitleWithTextButton(
               onPressed: () {},
@@ -120,9 +127,8 @@ class HomeScreen extends StatelessWidget {
               isCardElevated: true,
               productsList: dummyProductList,
               itemCountOnRow: 3,
-              paddingMain: Constants.kPaddingMainHorizontal,
-              paddingBetweenElements:
-                  Constants.kPaddingMainBetweenCardsHorizontal,
+              paddingMain: Constants.kMainPaddingHorizontal,
+              paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
             const SizedBox(height: 50),
           ],

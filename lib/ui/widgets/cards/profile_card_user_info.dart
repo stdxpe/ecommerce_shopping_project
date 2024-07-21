@@ -21,8 +21,8 @@ class ProfileCardUserInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double paddingImageVertical = Constants.kPaddingProfileCardTopAndBottom;
-    double paddingImageHorizontal = Constants.kPaddingProfileCardeftAndRight;
+    double paddingImageVertical = Constants.kProfileCardPaddingVertical;
+    double paddingImageHorizontal = Constants.kProfileCardPaddingHorizontal;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
@@ -77,7 +77,7 @@ class ProfileCardUserInfo extends StatelessWidget {
             child: Container(
               // color: Colors.red.withOpacity(0.5),
               padding: EdgeInsets.symmetric(
-                vertical: Constants.kPaddingProfileCardTextsVertical.h,
+                vertical: Constants.kProfileCardSpacingBTWItemsVertical.h,
                 horizontal: Constants.kPaddingProfileCardTextsHorizontal.w,
               ),
               child: Column(

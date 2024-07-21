@@ -13,9 +13,9 @@ class ProfileCardButton extends StatelessWidget {
     this.useForwardIcon = true,
     this.useBottomDivider = false,
     this.cardHeight = 150,
-    this.paddingCardHorizontal = Constants.kPaddingMainHorizontal,
+    this.paddingCardHorizontal = Constants.kMainPaddingHorizontal,
     this.paddingBetweenHorizontal =
-        Constants.kPaddingHorizontalCardTextsBetween,
+        Constants.kHorizontalCardSpacingBTWItemsVertical,
   });
 
   final String buttonText;

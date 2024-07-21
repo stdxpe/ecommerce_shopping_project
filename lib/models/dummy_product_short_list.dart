@@ -8,7 +8,8 @@ var dummyProductShortList = [
     mainPhoto: AppImages.productImage10,
   ),
   Product(
-    title: 'Cropped Stock-Fit',
+    title:
+        'CroppedCroppedCroppedCroppedCroppedCroppedCroppedCroppedCropped Stock-Fit',
     price: 69.992342345231115111452345234535234523345234,
     mainPhoto: AppImages.productImage11,
   ),

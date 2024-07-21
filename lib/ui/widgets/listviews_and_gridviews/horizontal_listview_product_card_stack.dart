@@ -22,7 +22,6 @@ class HorizontalListviewProductCardStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: cardWidth.w,
-      width: 1.sw,
       child: ListView.builder(
           padding: EdgeInsets.symmetric(horizontal: paddingMain.w),
           physics: const ClampingScrollPhysics(),
@@ -39,7 +38,7 @@ class HorizontalListviewProductCardStack extends StatelessWidget {
                 cardWidth: cardWidth,
 
                 /// TODO: Bottom Text and Product Model Class relation?
-                bottomText: 'Size: M',
+                bottomText: 'Size: M  |  Color: Red',
               ),
             );
           }),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal.dart';
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HorizontalListviewProductCardHorizontal extends StatelessWidget {
   const HorizontalListviewProductCardHorizontal({
@@ -26,7 +25,6 @@ class HorizontalListviewProductCardHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 1.sw,
       height: cardHeight.h,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: paddingMain.w),
@@ -42,12 +40,6 @@ class HorizontalListviewProductCardHorizontal extends StatelessWidget {
               isCardElevated: isCardElevated,
               cardWidth: cardWidth,
               cardHeight: cardHeight,
-              fontSizePrimary: Constants.kPaddingCardFontHeightPrimary,
-              fontSizeSecondary: Constants.kPaddingCardFontHeightSecondary,
-              paddingTextVertical: Constants.kPaddingHorizontalCardTopAndBottom,
-              paddingTextHorizontal:
-                  Constants.kPaddingHorizontalCardeftAndRight,
-              paddingTextBetween: Constants.kPaddingHorizontalCardTextsBetween,
               product: productsList[index],
             ),
           );

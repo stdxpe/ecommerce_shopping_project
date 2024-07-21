@@ -15,6 +15,7 @@ class TextCustom extends StatelessWidget {
     this.textAlignCustom = TextAlign.start,
     this.boxShadowsCustom,
     this.foregroundPaintCustom,
+    this.isHeightConstraintRelated = true,
   });
 
   final String text;
@@ -28,6 +29,7 @@ class TextCustom extends StatelessWidget {
   final TextAlign? textAlignCustom;
   final List<BoxShadow>? boxShadowsCustom;
   final Paint? foregroundPaintCustom;
+  final bool? isHeightConstraintRelated;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,9 @@ class TextCustom extends StatelessWidget {
     return Container(
       // color: Colors.yellow,
       padding: EdgeInsets.zero,
-      height: fontSizeFinal!.h * textHeightFinal! * maxLines!,
+      height: (isHeightConstraintRelated == true)
+          ? fontSizeFinal!.h * textHeightFinal! * maxLines!
+          : null,
       child: Text(
         text,
         maxLines: maxLines,
@@ -45,7 +49,7 @@ class TextCustom extends StatelessWidget {
         textScaler: TextScaler.noScaling,
         style: textStyle.copyWith(
           color: (foregroundPaintCustom != null) ? null : color,
-          fontSize: fontSizeFinal.h,
+          fontSize: fontSizeFinal!.h,
           height: fontHeightCustom,
           fontWeight: fontWeightCustom ?? textStyle.fontWeight,
           letterSpacing: fontLetterSpacingCustom ?? textStyle.letterSpacing,

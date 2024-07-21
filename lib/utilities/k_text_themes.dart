@@ -76,29 +76,24 @@ abstract class AppTextThemes {
         ),
 
         /// BL: Card Primary
-        bodyLarge: TextStyle(
-          // fontSize: 46.sp,
-          // fontSize: 66,
-          fontSize: Constants.kPaddingCardFontHeightPrimary.h,
+        bodyLarge: const TextStyle(
+          fontSize: 46,
           fontWeight: FontWeight.w700,
           letterSpacing: -0.5,
           height: 1.2,
         ),
 
         /// BM: Card Secondary
-        bodyMedium: TextStyle(
-          // fontSize: 37.sp,
-          fontSize: Constants.kPaddingCardFontHeightSecondary.h,
+        bodyMedium: const TextStyle(
+          fontSize: 37,
           fontWeight: FontWeight.w700,
-          // letterSpacing: -2,
           letterSpacing: 0,
           height: 1,
         ),
 
         /// BS: Card Tertiary
-        bodySmall: TextStyle(
-          // fontSize: 35.sp
-          fontSize: Constants.kPaddingCardFontHeightTertiary.h,
+        bodySmall: const TextStyle(
+          fontSize: 35,
           fontWeight: FontWeight.w500,
           letterSpacing: 0,
           height: 1,

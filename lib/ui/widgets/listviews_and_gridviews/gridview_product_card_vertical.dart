@@ -27,10 +27,13 @@ class GridviewProductCardVertical extends StatelessWidget {
     double cardWidth = Constants.kRawFigmaDesignWidth;
     int itemCount = productsList.length - ((productsList.length) % 3);
 
-    double fontSizePrimary = Constants.kPaddingCardFontHeightPrimary;
-    double fontSizeSecondary = Constants.kPaddingCardFontHeightSecondary;
-    double paddingTextVertical = Constants.kPaddingVerticalCardTopAndBottom;
-    double paddingTextBetween = Constants.kPaddingVerticalCardTextsBetween;
+    double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
+        context.textTheme.bodyLarge!.height!);
+    double fontSizeSecondary = (context.textTheme.bodyMedium!.fontSize!.h) *
+        context.textTheme.bodyMedium!.height!;
+    double paddingTextVertical = Constants.kVerticalCardPaddingVertical.h;
+    double paddingTextBetween =
+        Constants.kVerticalCardSpacingBTWItemsVertical.h;
 
     double textSectionHeight = paddingTextVertical +
         paddingTextVertical +
@@ -43,7 +46,7 @@ class GridviewProductCardVertical extends StatelessWidget {
 
     double cardTotalWidth = (cardWidth - totalPadding) / itemCountOnRow!;
 
-    double cardTotalHeight = cardTotalWidth.w + textSectionHeight.h;
+    double cardTotalHeight = cardTotalWidth.w + textSectionHeight;
 
     return SizedBox(
       width: 1.sw,
@@ -64,10 +67,6 @@ class GridviewProductCardVertical extends StatelessWidget {
               product: dummyProductList[index],
               cardWidth: cardTotalWidth,
               isCardElevated: isCardElevated,
-              fontSizePrimary: fontSizePrimary,
-              fontSizeSecondary: fontSizeSecondary,
-              paddingTextVertical: paddingTextVertical,
-              paddingTextBetween: paddingTextBetween,
             );
           }),
     );

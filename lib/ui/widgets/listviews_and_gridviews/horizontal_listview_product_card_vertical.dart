@@ -26,10 +26,13 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     double cardWidth = Constants.kRawFigmaDesignWidth;
 
-    double fontSizePrimary = Constants.kPaddingCardFontHeightPrimary;
-    double fontSizeSecondary = Constants.kPaddingCardFontHeightSecondary;
-    double paddingTextVertical = Constants.kPaddingVerticalCardTopAndBottom;
-    double paddingTextBetween = Constants.kPaddingVerticalCardTextsBetween;
+    double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
+        context.textTheme.bodyLarge!.height!);
+    double fontSizeSecondary = (context.textTheme.bodyMedium!.fontSize!.h) *
+        context.textTheme.bodyMedium!.height!;
+    double paddingTextVertical = Constants.kVerticalCardPaddingVertical.h;
+    double paddingTextBetween =
+        Constants.kVerticalCardSpacingBTWItemsVertical.h;
 
     double textSectionHeight = paddingTextVertical +
         paddingTextVertical +
@@ -41,10 +44,9 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
         (2 * paddingMain) + ((itemCountOnRow! - 1) * paddingBetweenElements);
     double cardTotalWidth = (cardWidth - totalPadding) / itemCountOnRow!;
 
-    double cardTotalHeight = cardTotalWidth.w + textSectionHeight.h;
+    double cardTotalHeight = cardTotalWidth.w + textSectionHeight;
 
     return SizedBox(
-      width: 1.sw,
       height: cardTotalHeight,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: paddingMain.w),
@@ -60,10 +62,6 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
               product: dummyProductList[index],
               cardWidth: cardTotalWidth,
               isCardElevated: isCardElevated,
-              fontSizePrimary: fontSizePrimary,
-              fontSizeSecondary: fontSizeSecondary,
-              paddingTextVertical: paddingTextVertical,
-              paddingTextBetween: paddingTextBetween,
             ),
           );
         },

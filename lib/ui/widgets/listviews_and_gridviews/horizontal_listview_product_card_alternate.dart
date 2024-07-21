@@ -24,20 +24,24 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fontSizePrimary = Constants.kPaddingCardFontHeightPrimary;
-    double fontSizeSecondary = Constants.kPaddingCardFontHeightSecondary;
-    double paddingTextVertical = Constants.kPaddingVerticalCardTopAndBottom;
-    double paddingTextBetween = Constants.kPaddingVerticalCardTextsBetween;
+    double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
+            context.textTheme.bodyLarge!.height!) *
+        2;
+    double fontSizeSecondary = context.textTheme.bodyMedium!.fontSize!.h;
+    double paddingTextVertical = Constants.kVerticalCardPaddingVertical.h;
+    double paddingTextBetween =
+        Constants.kVerticalCardSpacingBTWItemsVertical.h;
 
     double textSectionHeight = paddingTextVertical +
-        paddingTextVertical +
-        paddingTextBetween +
         fontSizePrimary +
-        fontSizeSecondary;
+        fontSizeSecondary +
+        paddingTextBetween +
+        paddingTextVertical;
 
-    double cardTotalHeight = cardWidth.w + textSectionHeight.h;
+    double cardTotalHeight = cardWidth.w + textSectionHeight;
 
-    return SizedBox(
+    return Container(
+      color: Colors.red.withOpacity(0.5),
       width: 1.sw,
       height: cardTotalHeight,
       child: ListView.builder(
@@ -54,10 +58,7 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
                 product: dummyProductList[index],
                 isCardElevated: isCardElevated,
                 cardWidth: cardWidth,
-                fontSizePrimary: fontSizePrimary,
-                fontSizeSecondary: fontSizeSecondary,
-                paddingTextVertical: paddingTextVertical,
-                paddingTextBetween: paddingTextBetween,
+                maxLineCount: 2,
               ),
             );
           }),

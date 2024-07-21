@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProductCardVertical extends StatelessWidget {
@@ -9,32 +10,35 @@ class ProductCardVertical extends StatelessWidget {
     super.key,
     required this.product,
     required this.cardWidth,
-    required this.fontSizePrimary,
-    required this.fontSizeSecondary,
-    required this.paddingTextVertical,
-    required this.paddingTextBetween,
     this.isCardElevated = false,
+    this.maxLineCount = 1,
   });
 
   final Product product;
   final double cardWidth;
-  final double fontSizePrimary;
-  final double fontSizeSecondary;
-  final double paddingTextVertical;
-  final double paddingTextBetween;
   final bool? isCardElevated;
+  final int? maxLineCount;
 
   @override
   Widget build(BuildContext context) {
+    double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
+            context.textTheme.bodyLarge!.height!) *
+        maxLineCount!;
+    double fontSizeSecondary = (context.textTheme.bodyMedium!.fontSize!.h) *
+        context.textTheme.bodyMedium!.height!;
+    double paddingTextVertical = Constants.kVerticalCardPaddingVertical.h;
+    double paddingTextBetween =
+        Constants.kVerticalCardSpacingBTWItemsVertical.h;
+
     double textSectionHeight = paddingTextVertical +
-        paddingTextVertical +
-        paddingTextBetween +
         fontSizePrimary +
-        fontSizeSecondary;
+        paddingTextBetween +
+        fontSizeSecondary +
+        paddingTextVertical;
 
     double cardTotalWidth = cardWidth.w;
 
-    double cardTotalHeight = cardTotalWidth + textSectionHeight.h;
+    double cardTotalHeight = cardTotalWidth + textSectionHeight;
 
     return Align(
       alignment: Alignment.topCenter,
@@ -44,7 +48,7 @@ class ProductCardVertical extends StatelessWidget {
         clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
         decoration: BoxDecoration(
           color: isCardElevated!
-              ? context.theme.colorPalette.cardBackground
+              ? context.colorPalette.cardBackground
               : Colors.transparent,
           borderRadius: BorderRadius.circular(
             isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
@@ -52,92 +56,63 @@ class ProductCardVertical extends StatelessWidget {
           boxShadow: [
             if (isCardElevated!)
               BoxShadows.kBoxShadowProductCard(
-                color: context.theme.colorPalette.shadowPrimary,
+                color: context.colorPalette.shadowPrimary,
               ),
           ],
         ),
         child: Column(
           children: [
             /// CARD IMAGE
-            Card(
-              margin: EdgeInsets.zero,
-              elevation: isCardElevated! ? 1 : 2,
-              borderOnForeground: true,
-              child: Container(
-                clipBehavior: Clip.hardEdge,
-                height: cardTotalWidth,
-                width: cardTotalWidth,
-                decoration: BoxDecoration(
-                  // color: Colors.green.withOpacity(0.5),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      product.mainPhoto,
-                    ),
+            Container(
+              clipBehavior: Clip.hardEdge,
+              height: cardTotalWidth,
+              width: cardTotalWidth,
+              decoration: BoxDecoration(
+                // color: Colors.green.withOpacity(0.5),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    product.mainPhoto,
                   ),
-                  borderRadius: BorderRadius.circular(
-                    isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
-                  ),
-                  boxShadow: [
-                    if (!isCardElevated!)
-                      BoxShadows.kBoxShadowPrimary(
-                        color: context.theme.colorPalette.shadowPrimary,
-                      ),
-                  ],
                 ),
+                borderRadius: BorderRadius.circular(
+                  isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
+                ),
+                boxShadow: [
+                  if (isCardElevated == false)
+                    BoxShadows.kBoxShadowImage(
+                      color: context.colorPalette.shadowPrimary,
+                    ),
+                ],
               ),
             ),
 
             /// CARD TEXT SECTION
             Container(
               padding: EdgeInsets.symmetric(
-                vertical: paddingTextVertical.h,
+                vertical: paddingTextVertical,
                 horizontal: isCardElevated!
-                    ? Constants.kPaddingVerticalCardLeftAndRightIfElevated.w
-                    : Constants.kPaddingVerticalCardLeftAndRight.w,
+                    ? Constants.kVerticalCardPaddingHorizontalIfElevated.w
+                    : Constants.kVerticalCardPaddingHorizontal.w,
               ),
-              height: textSectionHeight.h,
+              height: textSectionHeight,
               width: cardTotalWidth,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    // color: Colors.yellow,
-                    height: fontSizePrimary.h,
-                    child: Text(
-                      product.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.theme.textTheme.bodyLarge!.copyWith(
-                        color: context.theme.colorPalette.cardTextPrimary,
-                        fontSize: fontSizePrimary.h,
-                        height: 1,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                  TextCustom(
+                    text: product.title,
+                    textStyle: context.textTheme.bodyLarge!,
+                    color: context.colorPalette.cardTextPrimary,
+                    maxLines: maxLineCount,
+                    isHeightConstraintRelated: false,
                   ),
-                  SizedBox(height: paddingTextBetween.h),
-                  SizedBox(
-                    // color: Colors.yellowAccent,
-                    height: fontSizeSecondary.h,
-                    child: Text(
-                      '\$${product.price.toStringAsFixed(2)}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: context.theme.textTheme.bodyMedium!.copyWith(
-                        color: context.theme.colorPalette.cardTextSecondary,
-                        fontSize: fontSizeSecondary.h,
-                        fontWeight: FontWeight.w700,
-                        height: 1,
-                        shadows: [
-                          BoxShadows.kBoxShadowProductCardText(
-                            color: context.theme.colorPalette.permaWhiteColor
-                                .withOpacity(0.54),
-                          ),
-                        ],
-                      ),
-                    ),
+                  SizedBox(height: paddingTextBetween),
+                  TextCustom(
+                    text: '\$${product.price.toStringAsFixed(2)}',
+                    textStyle: context.textTheme.bodyMedium!,
+                    color: context.colorPalette.cardTextSecondary,
                   ),
                 ],
               ),

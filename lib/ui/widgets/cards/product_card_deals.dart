@@ -86,6 +86,7 @@ class ProductCardDeals extends StatelessWidget {
                     textStyle: context.textTheme.bodyLarge!,
                     color: context.colorPalette.cardTextPrimary,
                     maxLines: 2,
+                    fontHeightCustom: 1.1,
                     fontSizeCustom: 65,
                     fontWeightCustom: FontWeight.w700,
                     isHeightConstraintRelated: false,

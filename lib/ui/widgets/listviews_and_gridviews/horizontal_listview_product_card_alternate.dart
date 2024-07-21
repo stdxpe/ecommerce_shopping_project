@@ -41,8 +41,7 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
     double cardTotalHeight = cardWidth.w + textSectionHeight;
 
     return Container(
-      color: Colors.red.withOpacity(0.5),
-      width: 1.sw,
+      // color: Colors.red.withOpacity(0.5),
       height: cardTotalHeight,
       child: ListView.builder(
           padding: EdgeInsets.symmetric(horizontal: paddingMain.w),

@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,12 +13,18 @@ class ScreenUtilSetup extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(1179, 2556),
+
+      /// TODO: Here
+      enableScaleText: () => true,
       minTextAdapt: true,
       ensureScreenSize: true,
       builder: (_, child) {
         return MaterialApp(
+          // useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           title: 'ECommerce Shopping Project',
-          debugShowCheckedModeBanner: false,
+          // debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.light,
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,

@@ -16,7 +16,7 @@ abstract class AppStrings {
   static const String dontHaveAnAccount = 'Don\'t have an account?  ';
   static const String continueButton = 'Continue';
 
-  static const String collectionTitleRightButton = 'See All';
+  static const String collectionTitleRightButton = 'See all';
   static const String itemsFound = ' items found';
 
   /// ONBOARDING SCREEN

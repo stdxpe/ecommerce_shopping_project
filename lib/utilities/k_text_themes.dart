@@ -5,10 +5,11 @@ abstract class AppTextThemes {
 
   static TextTheme get textTheme => const TextTheme().copyWith(
         /// HL: App Title
-        headlineLarge: TextStyle(
+        headlineLarge: const TextStyle(
+          fontSize: 190,
           fontWeight: FontWeight.w800,
-          fontSize: 190.sp,
           letterSpacing: 12,
+          height: 1,
         ),
 
         /// HM: Login/SignUp Title
@@ -20,39 +21,44 @@ abstract class AppTextThemes {
 
         /// HS: Title Onboarding
         /// HS: App Subtitle (40.sp / w700)
-        headlineSmall: TextStyle(
-          fontSize: 66.sp,
+        headlineSmall: const TextStyle(
+          fontSize: 66,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
+          height: 1,
         ),
 
         /// TL: Main Title
-        titleLarge: TextStyle(
-          fontSize: 66.sp,
+        titleLarge: const TextStyle(
+          fontSize: 66,
           fontWeight: FontWeight.w700,
-          letterSpacing: 0,
+          letterSpacing: -0.5,
+          height: 1,
         ),
 
         /// TM: Main Title Text Button
         /// TM: Already have account (w500, w700)
-        titleMedium: TextStyle(
-          fontWeight: FontWeight.w700,
-          fontSize: 40.sp,
+        titleMedium: const TextStyle(
+          fontSize: 39,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0,
+          height: 1,
         ),
 
         /// TS: items found/steps
-        titleSmall: TextStyle(
-          fontSize: 39.sp,
+        titleSmall: const TextStyle(
+          fontSize: 39,
           fontWeight: FontWeight.w600,
-          letterSpacing: 0,
+          letterSpacing: -0.25,
+          height: 1,
         ),
 
         /// LL: Button texts
-        labelLarge: TextStyle(
-          fontSize: 45.sp,
-          fontWeight: FontWeight.w700,
+        labelLarge: const TextStyle(
+          fontSize: 45,
+          fontWeight: FontWeight.w600,
           letterSpacing: 0,
+          height: 1.1,
         ),
 
         /// LM: Textfields
@@ -72,9 +78,9 @@ abstract class AppTextThemes {
         /// BL: Card Primary
         bodyLarge: TextStyle(
           // fontSize: 46.sp,
+          // fontSize: 66,
           fontSize: Constants.kPaddingCardFontHeightPrimary.h,
           fontWeight: FontWeight.w700,
-          // letterSpacing: -2,
           letterSpacing: -0.5,
           height: 1.2,
         ),
@@ -91,10 +97,11 @@ abstract class AppTextThemes {
 
         /// BS: Card Tertiary
         bodySmall: TextStyle(
-          fontSize: Constants.kPaddingCardFontHeightTertiary.h,
           // fontSize: 35.sp
-          fontWeight: FontWeight.w700,
+          fontSize: Constants.kPaddingCardFontHeightTertiary.h,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0,
+          height: 1,
         ),
 
         /// DL: Details Title / Price (60.sp)
@@ -119,7 +126,6 @@ abstract class AppTextThemes {
         ),
       );
 }
-
 
 /// HL: App Title
 /// HM: Login/SignUp Title

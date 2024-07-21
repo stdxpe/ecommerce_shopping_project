@@ -1,61 +1,70 @@
 part of 'utilities_library_imports.dart';
 
+/// [APP WIDE GLOBAL VARIABLE]
+
 abstract class Constants {
-  /// [APP WIDE GLOBAL VARIABLE]
-  /// LAYOUT, ALIGNMENT, PADDING AND BORDER RADIUS CONSTANTS
-
-  /// RAW FIGMA DESIGN SIZE
-  static const double kRawFigmaDesignWidth = 1179;
-  static const double kRawFigmaDesignHeight = 2556;
-
   /// GLOBAL PADDINGS
-  static const double kPaddingTitleTop = 77;
-  static const double kPaddingScreensTitleTop = 20;
-  static const double kPaddingTitleBottom = 60;
-  static const double kPaddingTitleAndSubtitleBetweenVertical = 25;
-  static const double kPaddingTitleAndItemsFoundAndStepsBetweenVertical = 10;
+  /// Naming Convention:  k + Item + Padding/Spacing + (BTW+Item) +  Direction
 
-  static const double kPaddingMainHorizontal = 15;
-  static const double kPaddingMainBetweenCardsHorizontal = 30;
-  static const double kPaddingMainBetweenCardsVertical = 30;
+  /// All Screens
+  static const double kMainPaddingHorizontal = 15;
+  static const double kMainSpacingBTWCardsHorizontal = 30;
+  static const double kMainSpacingBTWCardsVertical = 30;
 
-  static const double kPaddingButtonHorizontalMain = 90;
-  static const double kPaddingButtonBottomMain = 50;
-  static const double kPaddingButtonTopMain = 60;
+  /// Main Title
+  static const double kMainTitlePaddingTop = 20;
+  static const double kMainTitlePaddingTopForHomeScreen = 77;
+  static const double kMainTitlePaddingBottom = 60;
+  static const double kMainTitleSpacingBTWItemsFoundBTWStepsVertical = 10;
+  static const double kAppTitleSpacingBTWAppSubtitleVertical = 25;
 
-  static const double kPaddingCardFontHeightPrimary = 46;
-  static const double kPaddingCardFontHeightSecondary = 37;
-  static const double kPaddingCardFontHeightTertiary = 35;
+  /// Button
+  static const double kButtonPaddingHorizontal = 90;
+  static const double kButtonPaddingTop = 60;
+  static const double kButtonPaddingBottom = 50;
 
-  static const double kPaddingStackCardContentTop = 60;
-  static const double kPaddingStackCardContentLeft = 50;
-  static const double kPaddingStackCardContentsBetween = 11;
+  /// Vertical Product Card
+  static const double kVerticalCardPaddingVertical = 40;
+  static const double kVerticalCardPaddingHorizontal = 5;
+  static const double kVerticalCardPaddingHorizontalIfElevated = 30;
+  static const double kVerticalCardSpacingBTWItemsVertical = 12;
 
-  static const double kPaddingVerticalCardTopAndBottom = 40;
-  static const double kPaddingVerticalCardLeftAndRight = 5;
-  static const double kPaddingVerticalCardLeftAndRightIfElevated = 30;
-  static const double kPaddingVerticalCardTextsBetween = 12;
+  /// Horizontal Product Card
+  static const double kHorizontalCardPaddingVertical = 40;
+  static const double kHorizontalCardPaddingHorizontal = 30;
+  static const double kHorizontalCardSpacingBTWItemsVertical = 30;
 
-  static const double kPaddingHorizontalCardTopAndBottom = 40;
-  static const double kPaddingHorizontalCardeftAndRight = 30;
-  static const double kPaddingHorizontalCardTextsBetween = 30;
+  /// Horizontal Product Card - Detailed
+  static const double kHorizontalCardDetailedPaddingVertical = 10;
+  static const double kHorizontalCardDetailedPaddingHorizontal = 30;
+  static const double kHorizontalCardDetailedSpacingBTWItemsVertical = 20;
 
-  static const double kPaddingHorizontalCardDetailedTopAndBottom = 15;
-  static const double kPaddingHorizontalCardDetailedLeftAndRight = 30;
-  static const double kPaddingHorizontalCardDetailedTextsBetween = 20;
+  /// Stack Product Card
+  static const double kStackCardPaddingVertical = 60;
+  static const double kStackCardPaddingHorizontal = 50;
+  static const double kStackCardSpacingBTWItemsVertical = 11;
 
-  static const double kPaddingDetailsScreenTitleTop = 100;
-  static const double kPaddingDetailsScreenBetweenElementsVertical = 65;
-  static const double kPaddingDetailsScreenHorizontalMain = 30;
+  /// Details Screen Related
+  static const double kDetailsScreenTitlePaddingTop = 100;
+  static const double kDetailsScreenMainPaddingHorizontal = 30;
+  static const double kDetailsScreenSpacingBTWItemsVertical = 65;
 
+  /// Profile Screen Related
+  /// TODO: HERE
+  static const double kProfileCardPaddingVertical = 25;
+  static const double kProfileCardPaddingHorizontal = 30;
+  static const double kProfileCardSpacingBTWItemsVertical = 20;
+  static const double kPaddingProfileCardTextsHorizontal = 30;
+  static const double kPaddingProfileCardTextsBetween = 10;
   static const double kPaddingProfileCardFontHeightPrimary = 60;
   static const double kPaddingProfileCardFontHeightSecondary = 35;
   static const double kPaddingProfileCardFontHeightTertiary = 35;
-  static const double kPaddingProfileCardTopAndBottom = 25;
-  static const double kPaddingProfileCardeftAndRight = 30;
-  static const double kPaddingProfileCardTextsVertical = 20;
-  static const double kPaddingProfileCardTextsHorizontal = 30;
-  static const double kPaddingProfileCardTextsBetween = 10;
+
+  /// Font Heights
+  /// TODO: HERE?
+  static const double kPaddingCardFontHeightPrimary = 46;
+  static const double kPaddingCardFontHeightSecondary = 37;
+  static const double kPaddingCardFontHeightTertiary = 35;
 
   /// GLOBAL BORDER RADIUSSES
   static const double kRadiusButtonMain = 100;
@@ -63,5 +72,9 @@ abstract class Constants {
   static const double kRadiusSliderCards = 30;
   static const double kRadiusCreditCards = 35;
   static const double kRadiusCardPrimary = 25;
-  static const double kRadiusCardSecondary = 20;
+  static const double kRadiusCardSecondary = 15;
+
+  /// RAW FIGMA DESIGN SIZE
+  static const double kRawFigmaDesignWidth = 1179;
+  static const double kRawFigmaDesignHeight = 2556;
 }

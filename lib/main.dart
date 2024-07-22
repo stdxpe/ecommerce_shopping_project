@@ -2,6 +2,9 @@
 // ignore_for_file: unused_import
 
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +39,16 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
-      homeScreen: DarkSample(),
+      // homeScreen: DarkSample(),
       // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: HomeScreen(),
+      homeScreen: ProductDetailsScreen(
+        product: dummyProductShortList[0],
+      ),
+      // homeScreen: CollectionDetailsScreen(
+      //   product: dummyDealsOfTheWeekProductList[1],
+      // ),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
       // homeScreen: ProfileScreen(),

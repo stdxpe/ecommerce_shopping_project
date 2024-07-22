@@ -1,13 +1,14 @@
-import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_staggered.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:ecommerce_shopping_project/models/dummy_collection_list.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stack.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -25,6 +26,11 @@ class DiscoverScreen extends StatelessWidget {
             onPressed: () {},
             textColor: Colors.white,
             collection: dummyCollectionList[0],
+          ),
+          SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
+          StaggeredGridCardComponentLeft(
+            onPressed: () {},
+            productList: dummyProductList,
           ),
           SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
           CollectionCardAlternate(

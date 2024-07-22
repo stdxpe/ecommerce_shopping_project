@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             VerticalListviewProductCardHorizontalDetailed(
-              // isCardElevated: false,
+              isCardElevated: false,
               productsList: dummyProductShortList,
               cardHeight: 300,
               paddingMain: Constants.kMainPaddingHorizontal,
@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             GridviewProductCardVertical(
-              isCardElevated: true,
+              isCardElevated: false,
               productsList: dummyProductList,
               itemCountOnRow: 3,
               paddingMain: Constants.kMainPaddingHorizontal,

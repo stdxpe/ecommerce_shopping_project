@@ -1,7 +1,7 @@
-import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ButtonMain extends StatelessWidget {
@@ -57,11 +57,13 @@ class ButtonMain extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         // color: context.colorPalette.buttonMainBackgroundPrimary,
+        // color: backgroundColor,
+        // color: Colors.red,
         borderRadius: BorderRadius.all(
           Radius.circular(Constants.kRadiusButtonMain.r),
         ),
         boxShadow: [
-          if (useShadow!)
+          if (useShadow == true)
             BoxShadows.kBoxShadowButton(
               color: context.colorPalette.shadowSecondary,
             ),
@@ -72,7 +74,9 @@ class ButtonMain extends StatelessWidget {
           onPressed();
         },
         style: ElevatedButton.styleFrom(
-          elevation: 1,
+          /// Uncomment for Click Effect Color
+          /// overlayColor: Colors.blue,
+          elevation: null,
           side: BorderSide(
             color: (borderWidth != null && borderWidth != 0)
                 ? borderColor ?? Colors.black87

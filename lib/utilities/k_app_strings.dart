@@ -125,6 +125,8 @@ abstract class AppStrings {
 
   /// DETAILS SCREEN
   static const String productDetailsScreenReviews = ' Reviews';
+  static const String detailsScreenButtonAddToShoppingCart =
+      'Add to Shopping Cart';
   static const String productDetailsScreenMessageProductAddedToWishlistMessage =
       'Go to Shopping Cart';
   static const String productDetailsScreenPopupButtonGoToShoppingCart =

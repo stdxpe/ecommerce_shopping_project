@@ -7,8 +7,8 @@ abstract class BoxShadows {
   static BoxShadow kBoxShadowTopBanner({required Color color}) {
     return BoxShadow(
       color: color,
-      offset: const Offset(0, 2),
-      spreadRadius: 2.5,
+      offset: const Offset(0, 0),
+      spreadRadius: 0,
       blurRadius: 10,
     );
   }

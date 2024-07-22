@@ -9,7 +9,7 @@ var dummyDealsOfTheWeekProductList = [
     // mainPhoto: AppImages.productImage10,
   ),
   Product(
-    title: 'Cropped International Sale Fit',
+    title: 'Edition Valencia Linen Shirt',
     price: 69.992342345231115111452345234535234523345234,
     mainPhoto: 'assets/images/pose12_reversed.jpg',
   ),
@@ -22,9 +22,9 @@ var dummyDealsOfTheWeekProductList = [
 
 var dummyProductShortList = [
   Product(
-    title: 'PCR Sale-X',
+    title: 'Edition Valencia Linen Shirt',
     price: 69.992342345231115111452345234535234523345234,
-    mainPhoto: AppImages.productImage10,
+    mainPhoto: AppImages.productImage12,
   ),
   Product(
     title:
@@ -35,7 +35,7 @@ var dummyProductShortList = [
   Product(
     title: 'Nike AirMax XXXL-CRX',
     price: 69.992342345231115111452345234535234523345234,
-    mainPhoto: AppImages.productImage12,
+    mainPhoto: AppImages.productImage10,
   ),
   Product(
     title: 'Gucci Pantcaon',

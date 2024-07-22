@@ -13,8 +13,8 @@ abstract class AppTextThemes {
         ),
 
         /// HM: Login/SignUp Title
-        headlineMedium: TextStyle(
-          fontSize: 86.sp,
+        headlineMedium: const TextStyle(
+          fontSize: 86,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
         ),
@@ -62,15 +62,15 @@ abstract class AppTextThemes {
         ),
 
         /// LM: Textfields
-        labelMedium: TextStyle(
-          fontSize: 47.sp,
+        labelMedium: const TextStyle(
+          fontSize: 47,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
 
         /// LS: Checkboxes
-        labelSmall: TextStyle(
-          fontSize: 35.sp,
+        labelSmall: const TextStyle(
+          fontSize: 35,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),
@@ -100,22 +100,22 @@ abstract class AppTextThemes {
         ),
 
         /// DL: Details Title / Price (60.sp)
-        displayLarge: TextStyle(
-          fontSize: 68.sp,
+        displayLarge: const TextStyle(
+          fontSize: 68,
           fontWeight: FontWeight.w700,
           letterSpacing: 0,
         ),
 
         /// DM: Details Text
-        displayMedium: TextStyle(
-          fontSize: 39.sp,
-          fontWeight: FontWeight.w600,
+        displayMedium: const TextStyle(
+          fontSize: 39,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0,
         ),
 
         /// DS: Sheet Texts
-        displaySmall: TextStyle(
-          fontSize: 40.sp,
+        displaySmall: const TextStyle(
+          fontSize: 40,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),

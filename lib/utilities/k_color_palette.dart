@@ -32,6 +32,10 @@ abstract class ColorPalette {
   static const Color navigationBarPassive = Color(0xFF898989);
   static const Color permaBlackColor = Color(0xFF000000);
   static const Color permaWhiteColor = Color(0xFFFFFFFF);
+  static const Color favoriteRed = Colors.red;
+  static const Color ratedStarColor = Colors.amber;
+  static const Color unratedStarColor = Colors.black26;
+
   // color: context.theme.appColors.error
 
   /// [DARK MODE THEME COLOR PALETTE]
@@ -62,4 +66,7 @@ abstract class ColorPalette {
   static const Color darkModeNavigationBarPassive = Color(0xFF0D0D0D);
   static const Color darkModePermaBlackColor = Color(0xFF000000);
   static const Color darkModePermaWhiteColor = Color(0xFFFFFFFF);
+  static const Color darkModeFavoriteRed = Colors.red;
+  static const Color darkModeRatedStarColor = Colors.amber;
+  static const Color darkModeUnratedStarColor = Colors.black26;
 }

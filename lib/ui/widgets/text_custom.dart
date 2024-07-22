@@ -16,6 +16,7 @@ class TextCustom extends StatelessWidget {
     this.boxShadowsCustom,
     this.foregroundPaintCustom,
     this.isHeightConstraintRelated = true,
+    this.isLineThrough = false,
   });
 
   final String text;
@@ -30,6 +31,7 @@ class TextCustom extends StatelessWidget {
   final List<BoxShadow>? boxShadowsCustom;
   final Paint? foregroundPaintCustom;
   final bool? isHeightConstraintRelated;
+  final bool? isLineThrough;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class TextCustom extends StatelessWidget {
         textAlign: textAlignCustom,
         textScaler: TextScaler.noScaling,
         style: textStyle.copyWith(
+          decoration: isLineThrough! ? TextDecoration.lineThrough : null,
           color: (foregroundPaintCustom != null) ? null : color,
           fontSize: fontSizeFinal!.h,
           height: fontHeightCustom,

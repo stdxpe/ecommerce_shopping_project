@@ -5,16 +5,18 @@ import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class CollectionCardStack extends StatelessWidget {
-  const CollectionCardStack({
+class CollectionCardAlternate extends StatelessWidget {
+  const CollectionCardAlternate({
     super.key,
     required this.collection,
     required this.onPressed,
+    required this.cardHeight,
     required this.textColor,
     this.paddingMain = Constants.kMainPaddingHorizontal,
   });
   final Collection collection;
   final Function onPressed;
+  final double cardHeight;
   final Color textColor;
   final double? paddingMain;
 
@@ -26,7 +28,7 @@ class CollectionCardStack extends StatelessWidget {
       },
       child: Align(
         child: Container(
-          height: context.mediaQuery.size.width - paddingMain! * 2.w,
+          height: cardHeight,
           width: context.mediaQuery.size.width - paddingMain! * 2.w,
           margin: EdgeInsets.symmetric(horizontal: paddingMain!.w),
           clipBehavior: Clip.hardEdge,
@@ -46,32 +48,28 @@ class CollectionCardStack extends StatelessWidget {
               ),
             ],
           ),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: TextCustom(
+          child: Padding(
+            padding: EdgeInsets.only(left: 40.w, bottom: 135.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextCustom(
+                  text: collection.subtitle,
+                  textStyle: context.textTheme.bodyMedium!,
+                  color: textColor.withOpacity(0.75),
+                  fontSizeCustom: 45,
+                  fontWeightCustom: FontWeight.w600,
+                ),
+                SizedBox(height: 10.h),
+                TextCustom(
                   text: collection.title,
                   textStyle: context.textTheme.bodyLarge!,
                   color: textColor,
-                  fontSizeCustom: 100,
+                  fontSizeCustom: 87,
                 ),
-              ),
-              Positioned.fill(
-                top: 200.h,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: TextCustom(
-                    text: collection.subtitle,
-                    textStyle: context.textTheme.bodyMedium!,
-                    fontSizeCustom: 45,
-                    fontWeightCustom: FontWeight.w600,
-                    fontLetterSpacingCustom: 0.5,
-                    color: textColor.withOpacity(0.75),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

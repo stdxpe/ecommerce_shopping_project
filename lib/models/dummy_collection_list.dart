@@ -18,9 +18,16 @@ List dummyCollectionList = [
   ),
   Collection(
     id: '0',
-    imageUrl: AppImages.productImage9,
-    subtitle: 'Up to 40% Off',
-    title: 'Summer Collection',
-    description: 'Womens Clothing',
+    imageUrl: AppImages.productImage6,
+    title: 'Spring Style',
+    subtitle: 'Womens Clothing',
+    description: 'Starts at \$189.99',
+  ),
+  Collection(
+    id: '0',
+    imageUrl: AppImages.productImage12,
+    title: 'Spring Style',
+    subtitle: 'Womens Clothing',
+    description: 'Starts at \$189.99',
   ),
 ];

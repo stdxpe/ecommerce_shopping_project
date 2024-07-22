@@ -16,7 +16,7 @@ class Login extends StatelessWidget {
         height: 1.sh,
         width: 1.sw,
         padding: EdgeInsets.zero,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           // color: Colors.green.withOpacity(0.5),
           color: Color(0xFF574A18),
         ),

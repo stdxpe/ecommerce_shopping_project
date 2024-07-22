@@ -96,10 +96,6 @@ class ProductDetailsScreen extends StatelessWidget {
                             maxLines: 4,
                             isHeightConstraintRelated: false,
                           ),
-                          SizedBox(
-                            height: Constants
-                                .kDetailsScreenSpacingBTWItemsVertical.h,
-                          ),
                         ],
                       ),
                     ),

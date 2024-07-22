@@ -2,7 +2,6 @@ library utilities;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// These imports are utilized by the following sections.
 part 'package:ecommerce_shopping_project/utilities/k_app_images.dart';

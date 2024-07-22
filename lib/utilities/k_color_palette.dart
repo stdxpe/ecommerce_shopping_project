@@ -34,7 +34,7 @@ abstract class ColorPalette {
   static const Color permaWhiteColor = Color(0xFFFFFFFF);
   static const Color favoriteRed = Colors.red;
   static const Color ratedStarColor = Colors.amber;
-  static const Color unratedStarColor = Colors.black26;
+  static const Color unratedStarColor = Colors.black12;
 
   // color: context.theme.appColors.error
 
@@ -68,5 +68,5 @@ abstract class ColorPalette {
   static const Color darkModePermaWhiteColor = Color(0xFFFFFFFF);
   static const Color darkModeFavoriteRed = Colors.red;
   static const Color darkModeRatedStarColor = Colors.amber;
-  static const Color darkModeUnratedStarColor = Colors.black26;
+  static const Color darkModeUnratedStarColor = Colors.black12;
 }

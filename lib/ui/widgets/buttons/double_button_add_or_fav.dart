@@ -34,6 +34,8 @@ class DoubleButtonAddOrFav extends StatelessWidget {
                   context.colorPalette.buttonMainBackgroundSecondary,
               foregroundColor:
                   context.colorPalette.buttonMainForegroundSecondary,
+              // backgroundColor: context.colorPalette.buttonMainBackgroundPrimary,
+              // foregroundColor: context.colorPalette.buttonMainForegroundPrimary,
               // borderWidth: 2,
               // useShadow: false,
               paddingHorizontal: 0,

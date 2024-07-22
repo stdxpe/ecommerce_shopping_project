@@ -5,6 +5,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,8 @@ void main() {
 class RootApp extends StatelessWidget {
   const RootApp({super.key});
 
+// Loading bars
+// https://pub.dev/packages/loading_animation_widget
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
@@ -43,9 +46,10 @@ class RootApp extends StatelessWidget {
       // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: HomeScreen(),
-      homeScreen: ProductDetailsScreen(
-        product: dummyProductShortList[0],
-      ),
+      // homeScreen: ProductDetailsScreen(
+      //   product: dummyProductShortList[0],
+      // ),
+      homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: CollectionDetailsScreen(
       //   product: dummyDealsOfTheWeekProductList[1],
       // ),

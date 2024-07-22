@@ -42,7 +42,6 @@ dependencies:
   card_swiper: ^3.0.1
   smooth_page_indicator: ^1.2.0
   flutter_rating_bar: ^4.0.1
-  rating_summary: ^1.0.2+1
   zoom_pinch_overlay: ^1.4.3
 
 dev_dependencies:

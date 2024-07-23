@@ -13,14 +13,21 @@ abstract class BoxShadows {
     );
   }
 
+  static BoxShadow kBoxShadowBottomSheet({required Color color}) {
+    return BoxShadow(
+      color: color,
+      offset: const Offset(0, 0),
+      spreadRadius: 0.5,
+      blurRadius: 10,
+    );
+  }
+
   static BoxShadow kBoxShadowProductCard({required Color color}) {
     return BoxShadow(
       color: color,
       offset: const Offset(0, 3),
       spreadRadius: 0.1,
       blurRadius: 5,
-      // TODO: HERE TEST
-      // blurRadius: 12.5,
     );
   }
 

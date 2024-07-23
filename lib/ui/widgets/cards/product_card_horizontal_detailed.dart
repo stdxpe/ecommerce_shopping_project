@@ -102,6 +102,8 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
                       text: bottomInfo,
                       textStyle: context.textTheme.bodySmall!,
                       color: context.colorPalette.cardTextTertiary,
+                      fontWeightCustom: FontWeight.w400,
+                      fontSizeCustom: 32,
                     ),
                   ],
                 ),

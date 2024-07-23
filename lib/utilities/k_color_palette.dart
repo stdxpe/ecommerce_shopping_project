@@ -33,6 +33,7 @@ abstract class ColorPalette {
   static const Color permaBlackColor = Color(0xFF000000);
   static const Color permaWhiteColor = Color(0xFFFFFFFF);
   static const Color favoriteRed = Colors.red;
+  static const Color textButtonGreen = Colors.green;
   static const Color ratedStarColor = Colors.amber;
   static const Color unratedStarColor = Colors.black12;
 
@@ -67,6 +68,7 @@ abstract class ColorPalette {
   static const Color darkModePermaBlackColor = Color(0xFF000000);
   static const Color darkModePermaWhiteColor = Color(0xFFFFFFFF);
   static const Color darkModeFavoriteRed = Colors.red;
+  static const Color darkModeTextButtonGreen = Colors.green;
   static const Color darkModeRatedStarColor = Colors.amber;
   static const Color darkModeUnratedStarColor = Colors.black12;
 }

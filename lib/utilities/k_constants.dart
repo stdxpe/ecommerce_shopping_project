@@ -22,6 +22,7 @@ abstract class Constants {
   static const double kButtonPaddingHorizontal = 90;
   static const double kButtonPaddingTop = 60;
   static const double kButtonPaddingBottom = 50;
+  static const double kButtonSpacingBTWButtonsHorizontal = 30;
 
   /// Vertical Product Card
   static const double kVerticalCardPaddingVertical = 40;

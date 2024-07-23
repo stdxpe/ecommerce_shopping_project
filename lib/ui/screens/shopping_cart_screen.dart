@@ -43,9 +43,10 @@ class ShoppingCartScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Align(
+              Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetShoppingCart(
+                  onPressed: () {},
                   totalAmount: 210.99,
                   shippingFee: 5.99,
                 ),

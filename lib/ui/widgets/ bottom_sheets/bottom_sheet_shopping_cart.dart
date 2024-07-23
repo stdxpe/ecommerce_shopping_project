@@ -8,10 +8,13 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class BottomSheetShoppingCart extends StatelessWidget {
   const BottomSheetShoppingCart({
     super.key,
+    required this.onPressed,
     required this.totalAmount,
     required this.shippingFee,
     this.paddingHorizontal,
   });
+
+  final Function() onPressed;
   final double totalAmount;
   final double shippingFee;
   final double? paddingHorizontal;
@@ -19,23 +22,24 @@ class BottomSheetShoppingCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.grey.withOpacity(0.3),
       decoration: BoxDecoration(
+        // color: Colors.grey.withOpacity(0.3),
         color: context.colorPalette.sheetBackground,
         boxShadow: [
           BoxShadows.kBoxShadowBottomSheet(
-            color: context.colorPalette.shadowPrimary,
+            color: context.colorPalette.shadowPrimary.withOpacity(0.2),
           ),
         ],
       ),
       padding: EdgeInsets.only(
         left: paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w,
         right: paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w,
-        top: 90.h,
         bottom: Constants.kButtonPaddingBottom.h,
+        top: 60.h,
       ),
       child: Column(
         children: [
+          SizedBox(height: 30.h),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,8 +95,10 @@ class BottomSheetShoppingCart extends StatelessWidget {
           ),
           SizedBox(height: 130.h),
           ButtonMain(
-            onPressed: () {},
-            text: AppStrings.continueButton,
+            onPressed: () {
+              onPressed();
+            },
+            text: AppStrings.shoppingCartScreenButton,
             backgroundColor: context.colorPalette.buttonMainBackgroundPrimary,
             foregroundColor: context.colorPalette.buttonMainForegroundPrimary,
             paddingHorizontal: 0,

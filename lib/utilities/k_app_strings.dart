@@ -58,7 +58,7 @@ abstract class AppStrings {
 
   /// SHOPPING CART SCREEN
   static const String shoppingCartScreenTitle = 'Shopping Cart';
-  static const String shoppingCartScreenButton = 'Continue';
+  static const String shoppingCartScreenButton = 'Continue to Payment';
   static const String totalAmount = 'Total Amount';
 
   /// PROFILE SCREEN
@@ -175,12 +175,17 @@ abstract class AppStrings {
   static const String paymentScreenTitleFailedResultMessage = 'Failed!';
   static const String paymentScreenSubtitleFailedResultMessage =
       'An error occured during the process. Please try again.';
-  static const String paymentScreenResultMessageButton = 'Continue';
 
+  static const String paymentScreenSummarySheetSectionAddress =
+      'Shipping Address';
+  static const String paymentScreenSummarySheetSectionPayment = 'Payment';
+
+  static const String paymentScreenResultMessageButton = 'Continue';
   static const String paymentScreenButtonContinue = 'Continue';
   static const String paymentScreenButtonBack = 'Back';
   static const String paymentScreenButtonPay = 'Pay ';
   static const String paymentScreenButtonContinueShopping = 'Continue Shopping';
+  static const String paymentScreenButtonChange = 'Change';
 
   static const String paymentScreenAddressSwitchText = 'Save this address';
   static const String paymentScreenCreditCardSwitchText =

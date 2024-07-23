@@ -5,6 +5,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_summary.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -56,7 +57,8 @@ class RootApp extends StatelessWidget {
       //   product: dummyDealsOfTheWeekProductList[1],
       // ),
       // homeScreen: WishlistScreen(),
-      homeScreen: ShoppingCartScreen(),
+      // homeScreen: ShoppingCartScreen(),
+      homeScreen: PaymentScreenSummary(),
       // homeScreen: ProfileScreen(),
       // homeScreen: Login(),
       // homeScreen: FiltersScreen(),

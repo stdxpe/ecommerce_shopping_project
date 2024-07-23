@@ -176,6 +176,8 @@ abstract class AppStrings {
   static const String paymentScreenSubtitleFailedResultMessage =
       'An error occured during the process. Please try again.';
 
+  static const String paymentScreenShippingSheetButton = 'Continue';
+  static const String paymentScreenPaymentSheetButton = 'Continue';
   static const String paymentScreenSummarySheetSectionAddress =
       'Shipping Address';
   static const String paymentScreenSummarySheetSectionPayment = 'Payment';

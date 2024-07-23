@@ -18,5 +18,6 @@ abstract class AppImages {
   static const String productImage11 = "assets/images/pose11.jpg";
   static const String productImage12 = "assets/images/pose12.jpg";
 
-  static const String creditCardBackground = "assets/images/world_map.jpg";
+  static const String creditCardBackground = "assets/images/world_map_dots.jpg";
+  static const String creditCardBackgroundWide = "assets/images/world_map.jpg";
 }

@@ -43,6 +43,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0
   flutter_rating_bar: ^4.0.1
   zoom_pinch_overlay: ^1.4.3
+  flutter_credit_card: ^4.0.1
 
 dev_dependencies:
   flutter_test:

@@ -35,7 +35,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   children: [
                     DetailsScreenSlider(
                       // imageHeight: 1426.h,
-                      imageHeight: context.mediaQuery.size.height * 0.63,
+                      imageHeight: context.mediaQuery.size.height * 0.58,
                       imagesList: const [
                         /// TODO: Images gotta come from Product model class.
                         AppImages.productImage10,

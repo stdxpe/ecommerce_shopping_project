@@ -46,7 +46,8 @@ class TitlePaymentSummarySection extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextCustom(
-              text: textButtonText ?? AppStrings.paymentScreenButtonChange,
+              text: textButtonText ??
+                  AppStrings.paymentScreenSummarySheetSectionButtonChange,
               textStyle: context.textTheme.bodyMedium!,
               color: ColorPalette.textButtonGreen,
               fontWeightCustom: FontWeight.w600,

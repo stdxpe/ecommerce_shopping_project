@@ -81,7 +81,7 @@ class BottomSheetPaymentSummary extends StatelessWidget {
                   onPressed: () {
                     onPressed();
                   },
-                  text: '${AppStrings.paymentScreenButtonPay}\$147.99',
+                  text: '${AppStrings.paymentScreenSummarySheetButton}\$147.99',
                   backgroundColor:
                       context.colorPalette.buttonMainBackgroundPrimary,
                   foregroundColor:

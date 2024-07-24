@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_method.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_result.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class PaymentScreenPayment extends StatelessWidget {
-  const PaymentScreenPayment({super.key});
+class PaymentScreenResult extends StatelessWidget {
+  const PaymentScreenResult({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +27,18 @@ class PaymentScreenPayment extends StatelessWidget {
                 child: ListView(
                   padding: EdgeInsets.zero,
                   physics: const ClampingScrollPhysics(),
-                  children: [
-                    const TitleMain(
-                      title: AppStrings.paymentScreenTitlePayment,
-                      stepNumber: 2,
+                  children: const [
+                    TitleMain(
+                      title: AppStrings.paymentScreenTitleResult,
+                      stepNumber: 4,
                     ),
-
                     // SizedBox(height: 100),
-
-                    /// CREDIT CARDS SLIDER
-                    CreditCardsSlider(),
                   ],
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetPaymentMethod(
+                child: BottomSheetPaymentResult(
                   onPressed: () {},
                 ),
               ),

@@ -1,3 +1,6 @@
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_method.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_shipping.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
@@ -6,9 +9,10 @@ import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PaymentScreenSummary extends StatelessWidget {
-  const PaymentScreenSummary({super.key});
+class PaymentScreenShipping extends StatelessWidget {
+  const PaymentScreenShipping({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +34,18 @@ class PaymentScreenSummary extends StatelessWidget {
                 child: ListView(
                   padding: EdgeInsets.zero,
                   physics: const ClampingScrollPhysics(),
-                  children: [
-                    const TitleMain(
-                      title: AppStrings.paymentScreenTitleSummary,
-                      stepNumber: 3,
+                  children: const [
+                    TitleMain(
+                      title: AppStrings.paymentScreenTitleShipping,
+                      stepNumber: 1,
                     ),
-                    VerticalListviewProductCardHorizontalDetailed(
-                      isCardElevated: false,
-                      // productsList: dummyProductList,
-                      productsList: dummyProductShortList,
-                      cardHeight: 290,
-                      paddingMain: Constants.kMainPaddingHorizontal,
-                      paddingBetweenElements:
-                          Constants.kMainSpacingBTWCardsVertical,
-                    ),
+                    // SizedBox(height: 100),
                   ],
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetPaymentSummary(
+                child: BottomSheetPaymentShipping(
                   onPressed: () {},
                 ),
               ),

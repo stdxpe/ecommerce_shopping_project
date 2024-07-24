@@ -6,6 +6,8 @@ import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart'
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_result.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_summary.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
@@ -52,20 +54,22 @@ class RootApp extends StatelessWidget {
       // homeScreen: ProductDetailsScreen(
       //   product: dummyProductShortList[0],
       // ),
-      // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
+      homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen: CollectionDetailsScreen(
       //   product: dummyDealsOfTheWeekProductList[1],
       // ),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
+      // homeScreen: PaymentScreenShipping(),
+      // homeScreen: PaymentScreenPayment(),
       // homeScreen: PaymentScreenSummary(),
-      homeScreen: PaymentScreenPayment(),
+      // homeScreen: PaymentScreenResult(),
+      // homeScreen: SearchScreen(),
 
       // homeScreen: ProfileScreen(),
       // homeScreen: Login(),
       // homeScreen: FiltersScreen(),
-      // homeScreen: SearchScreen(),
     );
   }
 }

@@ -178,16 +178,15 @@ abstract class AppStrings {
 
   static const String paymentScreenShippingSheetButton = 'Continue';
   static const String paymentScreenPaymentSheetButton = 'Continue';
+  static const String paymentScreenSummarySheetButton = 'Pay ';
+  static const String paymentScreenResultSheetButton = 'Continue';
+
+  static const String paymentScreenSummarySheetSectionButtonChange = 'Change';
   static const String paymentScreenSummarySheetSectionAddress =
       'Shipping Address';
   static const String paymentScreenSummarySheetSectionPayment = 'Payment';
 
   static const String paymentScreenResultMessageButton = 'Continue';
-  static const String paymentScreenButtonContinue = 'Continue';
-  static const String paymentScreenButtonBack = 'Back';
-  static const String paymentScreenButtonPay = 'Pay ';
-  static const String paymentScreenButtonContinueShopping = 'Continue Shopping';
-  static const String paymentScreenButtonChange = 'Change';
 
   static const String paymentScreenAddressSwitchText = 'Save this address';
   static const String paymentScreenCreditCardSwitchText =

@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileCardButton extends StatelessWidget {
@@ -14,8 +15,6 @@ class ProfileCardButton extends StatelessWidget {
     this.useBottomDivider = false,
     this.cardHeight = 150,
     this.paddingCardHorizontal = Constants.kMainPaddingHorizontal,
-    this.paddingBetweenHorizontal =
-        Constants.kHorizontalCardSpacingBTWItemsVertical,
   });
 
   final String buttonText;
@@ -25,7 +24,6 @@ class ProfileCardButton extends StatelessWidget {
   final bool? useBottomDivider;
   final double? cardHeight;
   final double? paddingCardHorizontal;
-  final double? paddingBetweenHorizontal;
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +40,11 @@ class ProfileCardButton extends StatelessWidget {
         ),
         Container(
           color: context.colorPalette.sheetBackground,
+          // color: Colors.red,
           height: cardHeight!.h,
           width: 1.sw,
-          padding:
-              EdgeInsets.symmetric(horizontal: paddingCardHorizontal!.w * 3),
+          margin: EdgeInsets.symmetric(
+              horizontal: Constants.kProfileButtonPaddingHorizontal.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,18 +64,17 @@ class ProfileCardButton extends StatelessWidget {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: paddingBetweenHorizontal!.w),
+                      horizontal:
+                          Constants.kProfileButtonTextsPaddingHorizontal.w),
                   // color: Colors.yellow,
                   // height: fontSizePrimary.h * 2,
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    buttonText,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.bodyMedium!.copyWith(
-                      color: context.colorPalette.cardTextPrimary,
-                    ),
+                  child: TextCustom(
+                    text: buttonText,
+                    textStyle: context.textTheme.bodyMedium!,
+                    color: context.colorPalette.cardTextPrimary,
+                    fontWeightCustom: FontWeight.w600,
+                    fontSizeCustom: 38,
                   ),
                 ),
               ),

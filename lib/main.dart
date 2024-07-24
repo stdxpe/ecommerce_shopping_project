@@ -54,7 +54,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: ProductDetailsScreen(
       //   product: dummyProductShortList[0],
       // ),
-      homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
+      // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen: CollectionDetailsScreen(
       //   product: dummyDealsOfTheWeekProductList[1],
@@ -67,7 +67,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: PaymentScreenResult(),
       // homeScreen: SearchScreen(),
 
-      // homeScreen: ProfileScreen(),
+      homeScreen: ProfileScreen(),
       // homeScreen: Login(),
       // homeScreen: FiltersScreen(),
     );

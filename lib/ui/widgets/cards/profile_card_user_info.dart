@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileCardUserInfo extends StatelessWidget {
@@ -34,12 +35,12 @@ class ProfileCardUserInfo extends StatelessWidget {
         vertical: paddingImageVertical.h,
       ),
       decoration: BoxDecoration(
-        color: context.theme.colorPalette.sheetBackground,
+        color: context.colorPalette.sheetBackground,
         // color: Colors.green,
         // color: Colors.red,
         boxShadow: [
           BoxShadows.kBoxShadowPrimary(
-            color: context.theme.colorPalette.shadowSecondary,
+            color: context.colorPalette.shadowSecondary,
           ),
         ],
       ),
@@ -65,7 +66,7 @@ class ProfileCardUserInfo extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadows.kBoxShadowPrimary(
-                  color: context.theme.colorPalette.shadowSecondary,
+                  color: context.colorPalette.shadowSecondary,
                 ),
               ],
             ),
@@ -78,42 +79,36 @@ class ProfileCardUserInfo extends StatelessWidget {
               // color: Colors.red.withOpacity(0.5),
               padding: EdgeInsets.symmetric(
                 vertical: Constants.kProfileCardSpacingBTWItemsVertical.h,
-                horizontal: Constants.kPaddingProfileCardTextsHorizontal.w,
+                horizontal: Constants.kProfileCardTextsPaddingHorizontal.w,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    username,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.textTheme.bodyLarge!.copyWith(
-                      color: context.colorPalette.cardTextPrimary,
-                    ),
+                  TextCustom(
+                    text: username,
+                    textStyle: context.textTheme.bodyLarge!,
+                    color: context.colorPalette.cardTextPrimary,
+                    fontSizeCustom: 60,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        phoneNumber,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          color: context.colorPalette.cardTextSecondary,
-                        ),
+                      TextCustom(
+                        text: phoneNumber,
+                        textStyle: context.textTheme.bodyMedium!,
+                        color: context.colorPalette.cardTextSecondary,
+                        fontWeightCustom: FontWeight.w500,
                       ),
                       SizedBox(
-                        height: Constants.kPaddingProfileCardTextsBetween.h,
+                        height: Constants.kProfileCardSpacingBTWTextsVertical.h,
                       ),
-                      Text(
-                        email,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: context.textTheme.bodyMedium!.copyWith(
-                          color: context.colorPalette.cardTextSecondary,
-                        ),
+                      TextCustom(
+                        text: email,
+                        textStyle: context.textTheme.bodyMedium!,
+                        color: context.colorPalette.cardTextSecondary,
+                        fontWeightCustom: FontWeight.w500,
                       ),
                     ],
                   ),
@@ -125,12 +120,11 @@ class ProfileCardUserInfo extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Container(
               // color: Colors.blue.withOpacity(0.5),
-
-              height: Constants.kPaddingProfileCardFontHeightPrimary.h,
-              width: Constants.kPaddingProfileCardFontHeightPrimary.h,
+              height: 70.h,
+              width: 70.h,
               child: Icon(
                 Icons.edit_note,
-                size: Constants.kPaddingProfileCardFontHeightPrimary.h,
+                size: 70.h,
               ),
             ),
           ),

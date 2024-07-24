@@ -56,11 +56,11 @@ abstract class Constants {
   static const double kProfileCardPaddingVertical = 25;
   static const double kProfileCardPaddingHorizontal = 30;
   static const double kProfileCardSpacingBTWItemsVertical = 20;
-  static const double kPaddingProfileCardTextsHorizontal = 30;
-  static const double kPaddingProfileCardTextsBetween = 10;
-  static const double kPaddingProfileCardFontHeightPrimary = 60;
-  static const double kPaddingProfileCardFontHeightSecondary = 35;
-  static const double kPaddingProfileCardFontHeightTertiary = 35;
+  static const double kProfileCardTextsPaddingHorizontal = 30;
+  static const double kProfileCardSpacingBTWTextsVertical = 10;
+
+  static const double kProfileButtonPaddingHorizontal = 45;
+  static const double kProfileButtonTextsPaddingHorizontal = 40;
 
   /// Reviews Screen Related
   static const double kReviewCardPaddingVertical = 25;

@@ -67,9 +67,9 @@ class RootApp extends StatelessWidget {
       // homeScreen: PaymentScreenResult(),
       // homeScreen: SearchScreen(),
 
-      homeScreen: ProfileScreen(),
+      // homeScreen: ProfileScreen(),
       // homeScreen: Login(),
-      // homeScreen: FiltersScreen(),
+      homeScreen: FiltersScreen(),
     );
   }
 }

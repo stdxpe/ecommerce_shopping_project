@@ -152,13 +152,15 @@ abstract class AppStrings {
   static const String filtersScreenTitle = 'Filters';
   static const String filtersScreenButtonClear = 'Clear';
   static const String filtersScreenButtonApply = 'Apply';
+  static const double filtersScreenMinPrice = 150;
+  static const double filtersScreenMaxPrice = 750;
   static const String filtersScreenPriceRange = 'Price Range';
-  static const double filtersScreenMinPrice = 50;
-  static const double filtersScreenMaxPrice = 200;
   static const String filtersScreenSize = 'Size';
+  static const String filtersScreenColor = 'Color';
   static const String filtersScreenCollections = 'Collections';
+  static const String filtersScreenBrands = 'Brands';
   static const String filtersScreenRating = 'Rating';
-  static const String filtersScreenSortBy = 'Sort by';
+  static const String filtersScreenSortBy = 'Sort By';
 
   /// PAYMENT SCREEN
   static const String paymentStep = 'Step ';

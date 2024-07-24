@@ -69,6 +69,11 @@ abstract class Constants {
   static const double kReviewProfileCardTextsHorizontal = 30;
   static const double kReviewProfileCardTextsBetween = 10;
 
+  /// Filters Screen Related
+  static const double kFilterSpacingBTWTitlesVertical = 30;
+  static const double kFilterSpacingBTWChipsHorizontal = 25;
+  static const double kFilterSpacingBTWSizeAndColorHorizontal = 60;
+
   /// Font Heights
   /// TODO: HERE?
   static const double kPaddingCardFontHeightPrimary = 46;
@@ -82,6 +87,7 @@ abstract class Constants {
   static const double kRadiusCreditCards = 35;
   static const double kRadiusCardPrimary = 25;
   static const double kRadiusCardSecondary = 15;
+  static const double kRadiusChips = 50;
 
   /// RAW FIGMA DESIGN SIZE
   static const double kRawFigmaDesignWidth = 1179;

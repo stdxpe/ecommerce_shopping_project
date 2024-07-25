@@ -5,8 +5,8 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_payment_summary_section.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetPaymentSummary extends StatelessWidget {
-  const BottomSheetPaymentSummary({
+class BottomSheetButtonsPaymentSummary extends StatelessWidget {
+  const BottomSheetButtonsPaymentSummary({
     super.key,
     required this.onPressed,
     this.paddingHorizontal,

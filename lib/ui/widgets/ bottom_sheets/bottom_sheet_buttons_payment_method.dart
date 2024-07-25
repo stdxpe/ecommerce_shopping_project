@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetPaymentResult extends StatelessWidget {
-  const BottomSheetPaymentResult({
+class BottomSheetButtonsPaymentMethod extends StatelessWidget {
+  const BottomSheetButtonsPaymentMethod({
     super.key,
     required this.onPressed,
     this.paddingHorizontal,
@@ -41,7 +41,7 @@ class BottomSheetPaymentResult extends StatelessWidget {
                   onPressed: () {
                     onPressed();
                   },
-                  text: AppStrings.paymentScreenResultSheetButton,
+                  text: AppStrings.paymentScreenPaymentSheetButton,
                   backgroundColor:
                       context.colorPalette.buttonMainBackgroundPrimary,
                   foregroundColor:

@@ -5,8 +5,8 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetShoppingCart extends StatelessWidget {
-  const BottomSheetShoppingCart({
+class BottomSheetButtonsShoppingCart extends StatelessWidget {
+  const BottomSheetButtonsShoppingCart({
     super.key,
     required this.onPressed,
     required this.totalAmount,

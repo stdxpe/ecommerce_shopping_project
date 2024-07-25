@@ -22,11 +22,15 @@ class SingleSizePickerButton extends StatelessWidget {
       height: itemSize,
       width: itemSize,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isSelected
-            ? context.colorPalette.buttonMainBackgroundPrimary
-            : context.colorPalette.sheetBackground,
-      ),
+          shape: BoxShape.circle,
+          color: isSelected
+              ? context.colorPalette.buttonMainBackgroundPrimary
+              : context.colorPalette.sheetBackground,
+          boxShadow: [
+            if (isSelected == true)
+              BoxShadows.kBoxShadowTopBanner(
+                  color: context.colorPalette.shadowPrimary),
+          ]),
       child: Center(
         child: TextCustom(
           text: item,
@@ -35,7 +39,7 @@ class SingleSizePickerButton extends StatelessWidget {
               ? context.colorPalette.scaffoldBackground
               : context.colorPalette.text,
           fontWeightCustom: isSelected ? FontWeight.w600 : FontWeight.w500,
-          fontSizeCustom: 40,
+          fontSizeCustom: 42,
         ),
       ),
     );

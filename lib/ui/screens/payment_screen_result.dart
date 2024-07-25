@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_result.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_result.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -38,7 +38,7 @@ class PaymentScreenResult extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetPaymentResult(
+                child: BottomSheetButtonsPaymentResult(
                   onPressed: () {},
                 ),
               ),

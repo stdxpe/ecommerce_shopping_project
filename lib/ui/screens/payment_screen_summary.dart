@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_summary.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_summary.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -49,7 +48,7 @@ class PaymentScreenSummary extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetPaymentSummary(
+                child: BottomSheetButtonsPaymentSummary(
                   onPressed: () {},
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,8 +22,10 @@ class DoubleButtonAddOrFav extends StatelessWidget {
         bottom: Constants.kButtonPaddingBottom.h,
         left: paddingHorizontal ??
             Constants.kDetailsScreenMainPaddingHorizontal.w,
+        // Constants.kButtonPaddingHorizontal.w,
         right: paddingHorizontal ??
             Constants.kDetailsScreenMainPaddingHorizontal.w,
+        // Constants.kButtonPaddingHorizontal.w,
       ),
       child: Row(
         children: [

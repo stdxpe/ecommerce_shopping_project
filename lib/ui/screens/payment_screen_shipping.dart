@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_payment_shipping.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -38,7 +38,7 @@ class PaymentScreenShipping extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetPaymentShipping(
+                child: BottomSheetButtonsPaymentShipping(
                   onPressed: () {},
                 ),
               ),

@@ -11,11 +11,13 @@ import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.da
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_summary.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/test_screen.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/ui/screens/filters.dart';
+import 'package:ecommerce_shopping_project/ui/screens/filters_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/login.dart';
 import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
@@ -68,8 +70,10 @@ class RootApp extends StatelessWidget {
       // homeScreen: SearchScreen(),
 
       // homeScreen: ProfileScreen(),
-      // homeScreen: Login(),
       homeScreen: FiltersScreen(),
+      // homeScreen: BottomSheetFeatureSelector(),
+      // homeScreen: Login(),
+      // homeScreen: TestScreen(),
     );
   }
 }

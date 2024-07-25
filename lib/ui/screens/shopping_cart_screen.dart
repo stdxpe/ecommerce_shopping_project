@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_shopping_cart.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
@@ -45,7 +45,7 @@ class ShoppingCartScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: BottomSheetShoppingCart(
+                child: BottomSheetButtonsShoppingCart(
                   onPressed: () {},
                   totalAmount: 210.99,
                   shippingFee: 5.99,

@@ -19,11 +19,12 @@ List dummySizeList = [
   'M',
   'L',
   'XL',
-  'XS',
-  'S',
-  'M',
-  'L',
-  'XL',
+
+  // 'XS',
+  // 'S',
+  // 'M',
+  // 'L',
+  // 'XL',
 ];
 
 List dummySortList = [

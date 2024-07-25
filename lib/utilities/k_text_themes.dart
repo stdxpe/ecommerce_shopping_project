@@ -113,7 +113,7 @@ abstract class AppTextThemes {
           letterSpacing: 0,
         ),
 
-        /// DS: Sheet Texts
+        /// DS: Sheet Texts / Dialog Popups (45/w600)
         displaySmall: const TextStyle(
           fontSize: 40,
           fontWeight: FontWeight.w600,

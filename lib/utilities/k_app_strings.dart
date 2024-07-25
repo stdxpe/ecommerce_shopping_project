@@ -52,6 +52,9 @@ abstract class AppStrings {
 
   /// HOME SCREEN
   static const String dealsOfTheWeek = 'Deals of the Week';
+  static const String dialogPopupNewDealsButtonText = 'Check Out';
+  static const String dialogPopupNewDealsTitle = 'Winter\nCollection';
+  static const String dialogPopupNewDealsSubtitle = '20% Off Selected Brands';
 
   /// WISHLIST SCREEN
   static const String wishlistScreenTitle = 'Wishlist';
@@ -127,14 +130,15 @@ abstract class AppStrings {
   static const String productDetailsScreenReviews = ' Reviews';
   static const String detailsScreenButtonAddToShoppingCart =
       'Add to Shopping Cart';
-  static const String productDetailsScreenMessageProductAddedToWishlistMessage =
-      'Go to Shopping Cart';
-  static const String productDetailsScreenPopupButtonGoToShoppingCart =
+  static const String productDetailsScreenDialogPopupAddedToWishlistMessage =
       'You\'ve added\nthis item to wishlist';
+  static const String
+      productDetailsScreenDialogPopupAddedToShoppingCartMessage =
+      'Success! You\'ve added\nthis item to your cart.';
+  static const String productDetailsScreenPopupButtonGoToShoppingCart =
+      'Go to Shopping Cart';
   static const String productDetailsScreenPopupButtonContinueShopping =
       'Continue Shopping';
-  static const String productDetailsScreenProductAddedToShoppingCartMessage =
-      'Success! You\'ve added\nthis item to your cart.';
 
   /// REVIEWS SCREEN
   static const String reviewsScreenButtonAddToShoppingCart =
@@ -155,8 +159,8 @@ abstract class AppStrings {
   static const double filtersScreenMinPrice = 150;
   static const double filtersScreenMaxPrice = 750;
   static const String filtersScreenPriceRange = 'Price Range';
-  static const String filtersScreenSize = 'Size';
-  static const String filtersScreenColor = 'Color';
+  static const String filtersScreenSize = 'Sizes';
+  static const String filtersScreenColor = 'Colors';
   static const String filtersScreenCollections = 'Collections';
   static const String filtersScreenBrands = 'Brands';
   static const String filtersScreenRating = 'Rating';
@@ -173,7 +177,7 @@ abstract class AppStrings {
       'Please wait for the result.';
   static const String paymentScreenTitleSuccessResultMessage = 'Success!';
   static const String paymentScreenSubtitleSuccessResultMessage =
-      'Thank you for purchasing. Your order will be shipped in 2-4 working days.';
+      'Thank you for purchasing. Your order\nwill be shipped in 2-4 working days.';
   static const String paymentScreenTitleFailedResultMessage = 'Failed!';
   static const String paymentScreenSubtitleFailedResultMessage =
       'An error occured during the process. Please try again.';

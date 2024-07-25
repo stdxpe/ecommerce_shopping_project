@@ -74,6 +74,12 @@ abstract class Constants {
   static const double kFilterSpacingBTWChipsHorizontal = 25;
   static const double kFilterSpacingBTWSizeAndColorHorizontal = 60;
 
+  /// Dialog Popups
+  static const double kDialogPopupPaddingButtonHorizontal = 50;
+  static const double kDialogPopupPaddingButtonBottom = 70;
+  static const double kDialogPopupSpacingBTWButtonsVertical = 30;
+  static const double kDialogPopupSpacingBTWTextVertical = 67;
+
   /// Font Heights
   /// TODO: HERE?
   static const double kPaddingCardFontHeightPrimary = 46;

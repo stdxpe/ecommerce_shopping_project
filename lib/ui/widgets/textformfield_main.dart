@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,43 +7,59 @@ class TextformfieldMain extends StatelessWidget {
   const TextformfieldMain({
     super.key,
     required this.text,
-    this.color,
-    this.paddingHorizontal,
+    this.textColor,
+    this.lineColor,
+    this.paddingHorizontal = 0,
+    this.textInputType = TextInputType.text,
+    this.obscureText = false,
   });
 
   final String text;
-  final Color? color;
+  final Color? textColor;
+  final Color? lineColor;
   final double? paddingHorizontal;
+  final TextInputType? textInputType;
+  final bool? obscureText;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red.withOpacity(0.5),
+      // color: Colors.red.withOpacity(0.5),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: paddingHorizontal ?? Constants.kMainPaddingHorizontal.w,
+          horizontal: paddingHorizontal!,
         ),
         child: TextFormField(
-          selectionHeightStyle: BoxHeightStyle.includeLineSpacingBottom,
+          cursorColor: textColor ?? context.colorPalette.permaBlackColor,
+          obscureText: obscureText!,
+          keyboardType: textInputType,
+          style: context.textTheme.labelMedium!.copyWith(
+            color: textColor ?? context.colorPalette.text,
+            fontSize: context.textTheme.labelMedium!.fontSize!.h,
+          ),
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: color ?? Colors.white, width: 2),
+              borderSide: BorderSide(
+                color: lineColor ?? context.colorPalette.permaBlackColor,
+                width: 1.25,
+              ),
             ),
             focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: color ?? Colors.white, width: 2),
+              borderSide: BorderSide(
+                color: lineColor ?? context.colorPalette.permaBlackColor,
+                width: 2,
+              ),
             ),
             border: const UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.orange),
             ),
             hintText: text,
-            hintStyle: context.theme.textTheme.bodyMedium!.copyWith(
-              // color: context.theme.colorPalette.text.withOpacity(0.50),
-              color: color ?? Colors.white,
-              fontSize: 47.sp,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.w,
-              // height: 1,
+            hintStyle: context.textTheme.labelMedium!.copyWith(
+              color: textColor?.withOpacity(0.8) ??
+                  context.colorPalette.text.withOpacity(0.50),
+              fontSize: context.textTheme.labelMedium!.fontSize!.h,
             ),
+            // labelStyle:
           ),
         ),
       ),

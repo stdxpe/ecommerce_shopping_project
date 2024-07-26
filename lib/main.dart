@@ -5,6 +5,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_pageview.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_result.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
@@ -58,11 +59,11 @@ class RootApp extends StatelessWidget {
       // ),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
-      // homeScreen: CollectionDetailsScreen(
-      //   product: dummyDealsOfTheWeekProductList[1],
-      // ),
+      // homeScreen:
+      //     CollectionDetailsScreen(product: dummyDealsOfTheWeekProductList[1]),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
+      homeScreen: PaymentScreenPageview(),
       // homeScreen: PaymentScreenShipping(),
       // homeScreen: PaymentScreenPayment(),
       // homeScreen: PaymentScreenSummary(),
@@ -70,7 +71,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: SearchScreen(),
 
       // homeScreen: ProfileScreen(),
-      homeScreen: FiltersScreen(),
+      // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: Login(),
       // homeScreen: TestScreen(),

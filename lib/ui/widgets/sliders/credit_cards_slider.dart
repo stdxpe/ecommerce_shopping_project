@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:ecommerce_shopping_project/ui/widgets/cards/credit_card_ui_widget.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CreditCardsSlider extends StatelessWidget {
   const CreditCardsSlider({super.key});
@@ -19,7 +19,7 @@ class CreditCardsSlider extends StatelessWidget {
     return Container(
       clipBehavior: Clip.none,
       // color: Colors.pink.withOpacity(0.5),
-      color: Colors.black,
+      // color: Colors.black,
       // width: 1.sw,
       height: creditCardHeight + 160.h,
       child: Swiper(
@@ -34,7 +34,7 @@ class CreditCardsSlider extends StatelessWidget {
         duration: 750,
         onIndexChanged: (index) {},
         itemBuilder: (BuildContext context, int index) {
-          return Align(
+          return const Align(
             alignment: Alignment.center,
             child: CreditCardVisualModel(),
           );

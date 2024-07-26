@@ -10,10 +10,11 @@ abstract class AppStrings {
 
   static const String signUp = 'Sign Up';
   static const String signIn = 'Sign In';
+  static const String logIn = 'Log In';
   static const String signUpWithEmail = 'Sign Up with Email';
   static const String continueWithGoogle = 'Continue with Google';
-  static const String alreadyHaveAnAccount = 'Already have an account?  ';
-  static const String dontHaveAnAccount = 'Don\'t have an account?  ';
+  static const String alreadyHaveAnAccount = 'Already have an account?   ';
+  static const String dontHaveAnAccount = 'Don\'t have an account?   ';
   static const String continueButton = 'Continue';
 
   static const String collectionTitleRightButton = 'See all';
@@ -29,13 +30,15 @@ abstract class AppStrings {
   static const String signInScreenTitle = 'Log into\nyour account';
   static const String signInScreenTextFieldEmail = 'Email';
   static const String signInScreenTextFieldPassword = 'Password';
-  static const String signInScreenTextFieldRememberMe = 'Remember Me';
+  static const String signInScreenCheckboxRememberMe = 'Remember Me';
 
   /// SIGN UP SCREEN
   static const String signUpScreenTitle = 'Create\nyour account';
   static const String signUpScreenTextFieldEmail = 'Email';
   static const String signUpScreenTextFieldPassword = 'Password';
   static const String signUpScreenTextFieldConfirmPassword = 'Confirm Password';
+  static const String signUpScreenCheckboxPolicy =
+      'By signing up, you agree to the terms of service\nand our privacy policy';
 
   /// FORGOT PASSWORD SCREEN
   static const String forgotPasswordScreenTitle = 'Forgot Password?';

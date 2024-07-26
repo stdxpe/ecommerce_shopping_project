@@ -55,7 +55,7 @@ abstract class AppTextThemes {
 
         /// LL: Button texts
         labelLarge: const TextStyle(
-          fontSize: 45,
+          fontSize: 42,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
           height: 1.1,
@@ -63,14 +63,14 @@ abstract class AppTextThemes {
 
         /// LM: Textfields
         labelMedium: const TextStyle(
-          fontSize: 47,
-          fontWeight: FontWeight.w600,
+          fontSize: 43,
+          fontWeight: FontWeight.w500,
           letterSpacing: 0,
         ),
 
         /// LS: Checkboxes
         labelSmall: const TextStyle(
-          fontSize: 35,
+          fontSize: 39,
           fontWeight: FontWeight.w600,
           letterSpacing: 0,
         ),

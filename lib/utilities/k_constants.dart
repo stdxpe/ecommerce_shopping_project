@@ -23,6 +23,10 @@ abstract class Constants {
   static const double kButtonPaddingTop = 60;
   static const double kButtonPaddingBottom = 50;
   static const double kButtonSpacingBTWButtonsHorizontal = 30;
+  static const double kButtonSpacingBTWButtonsVertical = 60;
+
+  /// SignUp-SignIn Screen Related
+  static const double kSignScreensMainPaddingHorizontal = 90;
 
   /// Vertical Product Card
   static const double kVerticalCardPaddingVertical = 40;

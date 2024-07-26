@@ -80,7 +80,7 @@ class SplashScreen extends StatelessWidget {
               foregroundColor:
                   context.colorPalette.buttonMainForegroundSecondary,
             ),
-            SizedBox(height: 60.h),
+            SizedBox(height: Constants.kButtonSpacingBTWButtonsVertical.h),
             ButtonMain(
               onPressed: () {},
               text: AppStrings.continueWithGoogle,

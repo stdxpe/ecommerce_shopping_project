@@ -34,9 +34,9 @@ class ButtonAlreadyHaveAccount extends StatelessWidget {
           TextCustom(
             text: textStatic ?? '',
             textStyle: context.textTheme.titleMedium!,
-            color:
-                textStaticColor ?? context.colorPalette.title.withOpacity(0.75),
-            fontSizeCustom: fontSize,
+            color: textStaticColor?.withOpacity(0.75) ??
+                context.colorPalette.title.withOpacity(0.75),
+            // fontSizeCustom: fontSize,
             fontWeightCustom: FontWeight.w500,
             textAlignCustom: TextAlign.center,
           ),
@@ -44,7 +44,7 @@ class ButtonAlreadyHaveAccount extends StatelessWidget {
             text: buttonText,
             textStyle: context.textTheme.titleMedium!,
             color: buttonTextColor ?? context.colorPalette.title,
-            fontSizeCustom: fontSize,
+            // fontSizeCustom: fontSize,
             fontWeightCustom: FontWeight.w700,
             textAlignCustom: TextAlign.center,
           ),

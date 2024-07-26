@@ -6,7 +6,14 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class PaymentScreenPayment extends StatelessWidget {
-  const PaymentScreenPayment({super.key});
+  const PaymentScreenPayment({
+    super.key,
+    required this.onPressed,
+    this.showTitle = true,
+  });
+
+  final Function() onPressed;
+  final bool? showTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +27,16 @@ class PaymentScreenPayment extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: 30,
-                color: Colors.red,
-              ),
               Expanded(
                 child: ListView(
                   padding: EdgeInsets.zero,
-                  physics: const ClampingScrollPhysics(),
+                  physics: ClampingScrollPhysics(),
                   children: [
-                    const TitleMain(
-                      title: AppStrings.paymentScreenTitlePayment,
-                      stepNumber: 2,
-                    ),
+                    if (showTitle!)
+                      const TitleMain(
+                        title: AppStrings.paymentScreenTitlePayment,
+                        stepNumber: 2,
+                      ),
 
                     // SizedBox(height: 100),
 
@@ -44,7 +48,9 @@ class PaymentScreenPayment extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButtonsPaymentMethod(
-                  onPressed: () {},
+                  onPressed: () {
+                    onPressed();
+                  },
                 ),
               ),
             ],

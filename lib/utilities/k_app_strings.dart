@@ -197,7 +197,16 @@ abstract class AppStrings {
 
   static const String paymentScreenResultMessageButton = 'Continue';
 
-  static const String paymentScreenAddressSwitchText = 'Save this address';
-  static const String paymentScreenCreditCardSwitchText =
-      'Save this credit card';
+  static const String paymentScreenShippingTextField1 = 'Full Name';
+  static const String paymentScreenShippingTextField2 = 'Address';
+  static const String paymentScreenShippingTextField3 = 'City';
+  static const String paymentScreenShippingTextField4 = 'Zip Code';
+  static const String paymentScreenShippingTextField5 = 'Country';
+  static const String paymentScreenShippingCheckBox = 'Save this address';
+
+  static const String paymentScreenCreditCardTextField1 = 'Card Holder';
+  static const String paymentScreenCreditCardTextField2 = 'Card Number';
+  static const String paymentScreenCreditCardTextField3 = 'Exp.Date';
+  static const String paymentScreenCreditCardTextField4 = 'CVV';
+  static const String paymentScreenCreditCardCheckBox = 'Save this credit card';
 }

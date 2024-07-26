@@ -40,13 +40,15 @@ class TextformfieldMain extends StatelessWidget {
           decoration: InputDecoration(
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: lineColor ?? context.colorPalette.permaBlackColor,
-                width: 1.25,
+                color: lineColor ??
+                    context.colorPalette.permaBlackColor.withOpacity(0.25),
+                width: 1.0,
               ),
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: lineColor ?? context.colorPalette.permaBlackColor,
+                color: lineColor ??
+                    context.colorPalette.permaBlackColor.withOpacity(0.25),
                 width: 2,
               ),
             ),

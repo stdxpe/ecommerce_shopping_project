@@ -10,11 +10,15 @@ class SwitchCheckboxMain extends StatefulWidget {
     super.key,
     required this.text,
     this.isChecked = false,
+    this.checkedColor,
+    this.uncheckedColor,
   });
 
   /// CheckBox Text Theme: context.textTheme.labelSmall
   final TextCustom text;
   bool? isChecked;
+  final Color? checkedColor;
+  final Color? uncheckedColor;
 
   @override
   State<SwitchCheckboxMain> createState() => _SwitchCheckboxMainState();
@@ -33,8 +37,8 @@ class _SwitchCheckboxMainState extends State<SwitchCheckboxMain> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: Colors.white70,
+            decoration: BoxDecoration(
+              color: widget.uncheckedColor ?? Colors.white70,
               shape: BoxShape.circle,
             ),
             child: MSHCheckbox(

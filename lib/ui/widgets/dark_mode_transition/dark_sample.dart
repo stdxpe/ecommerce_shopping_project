@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_mode_transition.dart';
 
 class DarkSample extends StatefulWidget {
@@ -15,8 +15,8 @@ class _DarkSampleState extends State<DarkSample> {
     final size = MediaQuery.of(context).size;
     final circleOffset = Offset(size.width - 20, size.height - 20);
     return DarkTransition(
-      childBuilder: (context, x) => HomeScreen(
-        onPressed: () {
+      childBuilder: (context, x) => ProfileScreen(
+        onDarkModeEnabled: () {
           setState(() {
             isDark = !isDark;
           });

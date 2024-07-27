@@ -58,7 +58,7 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
-      // homeScreen: DarkSample(),
+      homeScreen: DarkSample(),
       // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
@@ -77,7 +77,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
 
-      homeScreen: ProfileScreen(),
+      // homeScreen: ProfileScreen(),
       // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
@@ -89,10 +89,11 @@ class RootApp extends StatelessWidget {
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
       /// TODO: Search functionality
-      /// TODO: Dark Mode Switch
       /// TODO: Shopping Cart amount counter
       /// TODO: Fav Button filled
       /// TODO: Bottom Sheets
+      /// TODO: Dark Mode transition wont save states?
+      /// TODO: TEXTFIELDS
     );
   }
 }

@@ -25,6 +25,7 @@ class _SwitchCupertinoCustomState extends State<SwitchCupertinoCustom> {
         setState(() {
           widget.switchState = value;
         });
+
         widget.onChanged();
       },
       thumbColor: context.colorPalette.scaffoldBackground,

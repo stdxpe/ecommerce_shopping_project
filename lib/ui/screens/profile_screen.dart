@@ -9,7 +9,9 @@ import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.onDarkModeEnabled});
+
+  final Function()? onDarkModeEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,39 +29,50 @@ class ProfileScreen extends StatelessWidget {
             cardHeight: 225,
           ),
           SizedBox(height: 30.h),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemOrders,
             icon: Icons.shopping_bag_outlined,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemAddresses,
             icon: Icons.location_on,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemCreditCards,
             icon: Icons.credit_card,
           ),
           ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
-            widgetContent:
-                SwitchCupertinoCustom(switchState: false, onChanged: () {}),
             icon: CupertinoIcons.moon_fill,
+            widgetContent: SwitchCupertinoCustom(
+                switchState: false,
+                onChanged: () {
+                  onDarkModeEnabled!();
+                }),
           ),
           ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemNotifications,
             icon: Icons.notifications,
             widgetContent:
                 SwitchCupertinoCustom(switchState: true, onChanged: () {}),
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemChangePassword,
             icon: Icons.password_outlined,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemAboutUs,
             icon: Icons.question_mark,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
+            onPressed: () {},
             buttonText: AppStrings.profileScreenButtonsListItemSignOut,
             icon: Icons.logout,
             useBottomDivider: true,

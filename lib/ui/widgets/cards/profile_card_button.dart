@@ -10,7 +10,7 @@ class ProfileCardButton extends StatelessWidget {
     super.key,
     required this.buttonText,
     this.icon,
-    this.widget,
+    this.widgetContent,
     this.useForwardIcon = true,
     this.useBottomDivider = false,
     this.cardHeight = 150,
@@ -19,7 +19,7 @@ class ProfileCardButton extends StatelessWidget {
 
   final String buttonText;
   final IconData? icon;
-  final Widget? widget;
+  final Widget? widgetContent;
   final bool? useForwardIcon;
   final bool? useBottomDivider;
   final double? cardHeight;
@@ -78,19 +78,21 @@ class ProfileCardButton extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                height: cardHeight!.h * 0.33,
-                width: cardHeight!.h * 0.33,
-                child: FittedBox(
-                  alignment: Alignment.center,
-                  child: Icon(
-                    CupertinoIcons.forward,
-                    size: cardHeight!.h * 0.33,
-                    color: context.colorPalette.text.withOpacity(0.5),
-                  ),
-                ),
-              ),
+              (widgetContent == null)
+                  ? Container(
+                      alignment: Alignment.center,
+                      height: cardHeight!.h * 0.33,
+                      width: cardHeight!.h * 0.33,
+                      child: FittedBox(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          CupertinoIcons.forward,
+                          size: cardHeight!.h * 0.33,
+                          color: context.colorPalette.text.withOpacity(0.5),
+                        ),
+                      ),
+                    )
+                  : widgetContent!,
             ],
           ),
         ),

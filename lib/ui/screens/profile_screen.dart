@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  /// TODO: Profile Screen Switches
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +39,17 @@ class ProfileScreen extends StatelessWidget {
             buttonText: AppStrings.profileScreenButtonsListItemCreditCards,
             icon: Icons.credit_card,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
             buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
-            icon: Icons.dark_mode,
+            widgetContent:
+                SwitchCupertinoCustom(switchState: false, onChanged: () {}),
+            icon: CupertinoIcons.moon_fill,
           ),
-          const ProfileCardButton(
+          ProfileCardButton(
             buttonText: AppStrings.profileScreenButtonsListItemNotifications,
             icon: Icons.notifications,
+            widgetContent:
+                SwitchCupertinoCustom(switchState: true, onChanged: () {}),
           ),
           const ProfileCardButton(
             buttonText: AppStrings.profileScreenButtonsListItemChangePassword,
@@ -59,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
             icon: Icons.logout,
             useBottomDivider: true,
           ),
+          // SwitchCupertinoCustom(onChanged: () {}),
         ],
       ),
     );

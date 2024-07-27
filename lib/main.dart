@@ -77,16 +77,22 @@ class RootApp extends StatelessWidget {
       // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
 
-      // homeScreen: ProfileScreen(),
+      homeScreen: ProfileScreen(),
       // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
 
       // homeScreen: OrdersScreen(),
-      homeScreen: TrackingOrderScreen(),
+      // homeScreen: TrackingOrderScreen(),
       // homeScreen: ShippingAddressesScreen(),
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
+
+      /// TODO: Search functionality
+      /// TODO: Dark Mode Switch
+      /// TODO: Shopping Cart amount counter
+      /// TODO: Fav Button filled
+      /// TODO: Bottom Sheets
     );
   }
 }

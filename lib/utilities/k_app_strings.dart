@@ -106,9 +106,11 @@ abstract class AppStrings {
   static const String trackingOrderScreenStepDelivered = 'Delivered';
 
   static const String addressesScreenTitle = 'Addresses';
+  static const String addressesScreenSectionEditButton = 'Edit';
   static const String addressesScreenEmptyMessage =
       'You haven\t added any addresses yet';
-  static const String addressesScreenButton = 'Save Address';
+  static const String addressesScreenSaveButton = 'Save Address';
+  static const String addressesScreenDeleteButton = 'Delete Address';
   static const String addressesAddressTextfieldText = 'Address';
   static const String addressesCityTextfieldText = 'City';
   static const String addressesZipCodeTextfieldText = 'Zip Code';
@@ -119,6 +121,8 @@ abstract class AppStrings {
   static const String addressesCountyTextfieldHintText = 'Country';
 
   static const String creditCardsScreenTitle = 'Credit Cards';
+  static const String creditCardsScreenSectionEditButton = 'Edit';
+
   static const String creditCardScreenEmptyMessage =
       'You haven\t added any credit card yet';
   static const String creditCardsScreenButton = 'Save Credit Card';

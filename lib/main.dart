@@ -2,6 +2,8 @@
 // ignore_for_file: unused_import
 
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/shipping_addresses_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,8 +57,7 @@ class RootApp extends StatelessWidget {
     return ScreenUtilSetup(
       // homeScreen: DarkSample(),
       // homeScreen: SplashScreen(),
-      homeScreen: OnboardingScreen(),
-
+      // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
       // homeScreen: ForgotPasswordScreen(),
@@ -77,6 +78,9 @@ class RootApp extends StatelessWidget {
       // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
+
+      // homeScreen: ShippingAddressesScreen(),
+      homeScreen: CreditCardsScreen(),
     );
   }
 }

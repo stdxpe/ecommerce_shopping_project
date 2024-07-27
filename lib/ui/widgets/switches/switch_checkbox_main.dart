@@ -33,34 +33,37 @@ class _SwitchCheckboxMainState extends State<SwitchCheckboxMain> {
           widget.isChecked = !widget.isChecked!;
         });
       },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: widget.uncheckedColor ?? Colors.white70,
-              shape: BoxShape.circle,
-            ),
-            child: MSHCheckbox(
-              size: 60.h,
-              value: widget.isChecked!,
-              colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-                checkedColor: context.colorPalette.permaBlackColor,
-                uncheckedColor: context.colorPalette.permaWhiteColor,
-                disabledColor: context.colorPalette.permaWhiteColor,
+      child: Container(
+        color: Colors.transparent,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: widget.uncheckedColor ?? Colors.white70,
+                shape: BoxShape.circle,
               ),
-              style: MSHCheckboxStyle.stroke,
-              duration: const Duration(milliseconds: 300),
-              onChanged: (selected) {
-                setState(() {
-                  widget.isChecked = selected;
-                });
-              },
+              child: MSHCheckbox(
+                size: 60.h,
+                value: widget.isChecked!,
+                colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
+                  checkedColor: context.colorPalette.permaBlackColor,
+                  uncheckedColor: context.colorPalette.permaWhiteColor,
+                  disabledColor: context.colorPalette.permaWhiteColor,
+                ),
+                style: MSHCheckboxStyle.stroke,
+                duration: const Duration(milliseconds: 300),
+                onChanged: (selected) {
+                  setState(() {
+                    widget.isChecked = selected;
+                  });
+                },
+              ),
             ),
-          ),
-          SizedBox(width: 35.w),
-          Flexible(child: widget.text),
-        ],
+            SizedBox(width: 35.w),
+            Flexible(child: widget.text),
+          ],
+        ),
       ),
     );
   }

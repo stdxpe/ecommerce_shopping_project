@@ -91,6 +91,7 @@ class PaymentScreenPayment extends StatelessWidget {
                               color: context.colorPalette.text,
                             ),
                           ),
+                          SizedBox(height: 100.h),
                         ],
                       ),
                     ),

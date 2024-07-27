@@ -22,7 +22,8 @@ class SignUpScreen extends StatelessWidget {
           const BackgroundBlurFilter(),
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: Constants.kSignScreensMainPaddingHorizontal.w),
+                horizontal:
+                    Constants.kSignRelatedScreensMainPaddingHorizontal.w),
             child: ListView(
               clipBehavior: Clip.none,
               physics: const NeverScrollableScrollPhysics(),

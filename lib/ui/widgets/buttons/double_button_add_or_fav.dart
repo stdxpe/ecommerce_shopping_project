@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_main.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DoubleButtonAddOrFav extends StatelessWidget {
@@ -45,9 +45,8 @@ class DoubleButtonAddOrFav extends StatelessWidget {
             ),
           ),
           SizedBox(width: 50.w),
-          IconButtonMain(
+          IconButtonLike(
             onPressed: () {},
-            foregroundColor: ColorPalette.favoriteRed,
           ),
         ],
       ),

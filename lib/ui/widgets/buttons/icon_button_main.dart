@@ -8,7 +8,7 @@ class IconButtonMain extends StatelessWidget {
     required this.onPressed,
     this.icon,
     this.height,
-    this.iconHeight,
+    this.iconHeight = 75,
     this.backgroundColor,
     this.foregroundColor,
     this.borderColor,
@@ -71,8 +71,8 @@ class IconButtonMain extends StatelessWidget {
           aspectRatio: 1,
           child: icon ??
               Icon(
-                Icons.favorite,
-                size: iconHeight ?? 75.h,
+                Icons.favorite_border,
+                size: iconHeight!.h,
               ),
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/orders_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_edit_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shipping_addresses_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,7 +82,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
 
-      homeScreen: OrdersScreen(),
+      // homeScreen: OrdersScreen(),
+      homeScreen: TrackingOrderScreen(),
       // homeScreen: ShippingAddressesScreen(),
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),

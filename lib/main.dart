@@ -2,8 +2,6 @@
 // ignore_for_file: unused_import
 
 import 'package:device_preview/device_preview.dart';
-import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +10,7 @@ import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart'
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/filters_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_pageview.dart';
@@ -28,6 +27,7 @@ import 'package:ecommerce_shopping_project/ui/screens/sign_in_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/sign_up_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/test_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
@@ -55,11 +55,12 @@ class RootApp extends StatelessWidget {
     return ScreenUtilSetup(
       // homeScreen: DarkSample(),
       // homeScreen: SplashScreen(),
-      // homeScreen: OnboardingScreen(),
+      homeScreen: OnboardingScreen(),
+
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
       // homeScreen: ForgotPasswordScreen(),
-      homeScreen: VerificationScreen(),
+      // homeScreen: VerificationScreen(),
 
       // homeScreen: HomeScreen(),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),

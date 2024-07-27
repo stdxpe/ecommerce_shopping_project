@@ -32,6 +32,7 @@ class BackgroundFrostedGlassBlurFilter extends StatelessWidget {
           height: height ?? context.mediaQuery.size.height,
           decoration: BoxDecoration(
             color: Colors.grey.shade200.withOpacity(blurColorTransparency!),
+
             // color: blurColor!.withOpacity(blurColorTransparency!),
           ),
         ),

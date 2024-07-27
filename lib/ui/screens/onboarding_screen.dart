@@ -41,6 +41,8 @@ class OnboardingScreen extends StatelessWidget {
               textAlignCustom: TextAlign.center,
             ),
           ),
+
+          /// TODO: Dynamic sliding texts
           const OnboardingSlider(),
           SizedBox(height: 142.h),
           ButtonMain(
@@ -55,7 +57,7 @@ class OnboardingScreen extends StatelessWidget {
               if (onPressed != null) onPressed!();
             },
             textStatic: AppStrings.alreadyHaveAnAccount,
-            buttonText: AppStrings.signIn,
+            buttonText: AppStrings.logIn,
           ),
           SizedBox(height: 232.h),
         ],

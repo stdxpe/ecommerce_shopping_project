@@ -118,7 +118,7 @@ class ProfileCardUserInfo extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomRight,
-            child: Container(
+            child: SizedBox(
               // color: Colors.blue.withOpacity(0.5),
               height: 70.h,
               width: 70.h,

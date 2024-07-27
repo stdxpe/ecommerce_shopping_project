@@ -40,7 +40,7 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
 
     double cardTotalHeight = cardWidth.w + textSectionHeight;
 
-    return Container(
+    return SizedBox(
       // color: Colors.red.withOpacity(0.5),
       height: cardTotalHeight,
       child: ListView.builder(

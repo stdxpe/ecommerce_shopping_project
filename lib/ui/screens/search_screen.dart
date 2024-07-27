@@ -18,13 +18,10 @@ class SearchScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),
           children: [
-            Container(
-              // color: Colors.green.withOpacity(0.5),
-              child: const TitleMain(
-                title: AppStrings.searchScreenTitle,
-                itemCount: 13,
-                icon: Icons.tune,
-              ),
+            const TitleMain(
+              title: AppStrings.searchScreenTitle,
+              itemCount: 13,
+              icon: Icons.tune,
             ),
             VerticalListviewProductCardHorizontalMini(
               isCardElevated: true,

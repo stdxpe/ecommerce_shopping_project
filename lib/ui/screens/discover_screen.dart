@@ -16,7 +16,7 @@ class DiscoverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarMain(),
+      appBar: const AppBarMain(),
       body: ListView(
         children: [
           const TitleMain(

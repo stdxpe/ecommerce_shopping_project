@@ -11,7 +11,7 @@ class CreditCardsSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = context.mediaQuery.size;
-    var aspectRatioHorizontalToVertical = 1.5846394984;
+    // var aspectRatioHorizontalToVertical = 1.5846394984;
     var aspectRatioVerticalToHorizontal = 0.6310583581;
     double creditCardWidth =
         (size.width - Constants.kButtonPaddingHorizontal * 2.w);

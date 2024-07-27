@@ -2,6 +2,8 @@
 // ignore_for_file: unused_import
 
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,18 +58,18 @@ class RootApp extends StatelessWidget {
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
+      // homeScreen: ForgotPasswordScreen(),
+      homeScreen: VerificationScreen(),
 
       // homeScreen: HomeScreen(),
-      // homeScreen: ProductDetailsScreen(
-      //   product: dummyProductShortList[0],
-      // ),
+      // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen:
       //     CollectionDetailsScreen(product: dummyDealsOfTheWeekProductList[1]),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
-      homeScreen: PaymentScreenPageview(),
+      // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
 
       // homeScreen: ProfileScreen(),

@@ -14,13 +14,13 @@ class PaymentScreenPayment extends StatelessWidget {
   const PaymentScreenPayment({
     super.key,
     required this.onPressed,
-    this.isCreateNewAddressMode = false,
+    this.isCreateNewCardMode = false,
     this.onPressedSave,
     this.onPressedDelete,
   });
 
   final Function() onPressed;
-  final bool? isCreateNewAddressMode;
+  final bool? isCreateNewCardMode;
   final Function()? onPressedSave;
   final Function()? onPressedDelete;
 
@@ -41,7 +41,7 @@ class PaymentScreenPayment extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    if (isCreateNewAddressMode == false)
+                    if (isCreateNewCardMode == false)
                       const TitleMain(
                         title: AppStrings.paymentScreenTitlePayment,
                         stepNumber: 2,
@@ -57,7 +57,7 @@ class PaymentScreenPayment extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 50.h),
+                          // SizedBox(height: 50.h),
                           const TextformfieldMain(
                             text: AppStrings.paymentScreenCreditCardTextField1,
                           ),
@@ -87,7 +87,7 @@ class PaymentScreenPayment extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 100.h),
-                          if (isCreateNewAddressMode == false)
+                          if (isCreateNewCardMode == false)
                             SwitchCheckboxMain(
                               isChecked: true,
                               uncheckedColor: Colors.black12,
@@ -105,7 +105,7 @@ class PaymentScreenPayment extends StatelessWidget {
                   ],
                 ),
               ),
-              if (isCreateNewAddressMode == true)
+              if (isCreateNewCardMode == true)
                 BottomSheetButtonsProfileSaveOrDelete(
                   onPressedDelete: () {
                     onPressedDelete!();
@@ -114,7 +114,7 @@ class PaymentScreenPayment extends StatelessWidget {
                     onPressedSave!();
                   },
                 ),
-              if (isCreateNewAddressMode == false)
+              if (isCreateNewCardMode == false)
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: BottomSheetButtonsPaymentMethod(

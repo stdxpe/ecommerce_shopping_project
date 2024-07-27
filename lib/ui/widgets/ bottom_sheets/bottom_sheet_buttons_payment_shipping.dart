@@ -8,10 +8,12 @@ class BottomSheetButtonsPaymentShipping extends StatelessWidget {
   const BottomSheetButtonsPaymentShipping({
     super.key,
     required this.onPressed,
+    this.buttonText,
     this.paddingHorizontal,
   });
 
   final Function() onPressed;
+  final String? buttonText;
   final double? paddingHorizontal;
 
   @override
@@ -41,7 +43,8 @@ class BottomSheetButtonsPaymentShipping extends StatelessWidget {
                   onPressed: () {
                     onPressed();
                   },
-                  text: AppStrings.paymentScreenShippingSheetButton,
+                  text:
+                      buttonText ?? AppStrings.paymentScreenShippingSheetButton,
                   backgroundColor:
                       context.colorPalette.buttonMainBackgroundPrimary,
                   foregroundColor:

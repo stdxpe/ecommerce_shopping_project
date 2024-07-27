@@ -74,14 +74,10 @@ abstract class AppStrings {
   static const String profileScreenButtonSaveProfile = 'Save Profile';
   static const String profileScreenButtonDelete = 'Delete';
 
-  static const String profileEditNameTextfieldText = 'Name';
-  static const String profileEditEmailTextfieldText = 'Email';
-  static const String profileEditPhoneTextfieldText = 'Phone Number';
-  static const String profileEditBirthdayTextfieldText = 'Birthday';
-  static const String profileEditNameTextfieldHintText = 'JANE DOE';
-  static const String profileEditEmailTextfieldHintText = 'janedoe@email.com';
-  static const String profileEditPhoneTextfieldHintText = '5558884422';
-  static const String profileEditBirthdayTextfieldHintText = '19/05/1998';
+  static const String profileEditScreenTextfieldName = 'Name';
+  static const String profileEditScreenTextfieldEmail = 'Email';
+  static const String profileEditScreenTextfieldPhone = 'Phone Number';
+  static const String profileEditScreenTextfieldBirthday = 'Birthday';
 
   static const String profileScreenButtonsListItemOrders = 'Orders';
   static const String profileScreenButtonsListItemAddresses =

@@ -3,6 +3,7 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/profile_edit_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shipping_addresses_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +72,7 @@ class RootApp extends StatelessWidget {
       //     CollectionDetailsScreen(product: dummyDealsOfTheWeekProductList[1]),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
-      homeScreen: PaymentScreenPageview(),
+      // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
 
       // homeScreen: ProfileScreen(),
@@ -81,6 +82,7 @@ class RootApp extends StatelessWidget {
 
       // homeScreen: ShippingAddressesScreen(),
       // homeScreen: CreditCardsScreen(),
+      homeScreen: ProfileEditScreen(onPressed: () {}),
     );
   }
 }

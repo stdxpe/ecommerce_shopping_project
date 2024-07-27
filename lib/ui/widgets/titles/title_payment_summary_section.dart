@@ -11,12 +11,14 @@ class TitlePaymentSummarySection extends StatelessWidget {
     required this.title,
     required this.subtext,
     this.textButtonText,
+    this.useTopDivider = false,
   });
 
   final Function onPressed;
   final String title;
   final String subtext;
   final String? textButtonText;
+  final bool? useTopDivider;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,13 @@ class TitlePaymentSummarySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (useTopDivider!)
+            const Divider(
+              thickness: 0.75,
+              height: 0,
+              color: Colors.black26,
+            ),
+          if (useTopDivider!) SizedBox(height: 50.h),
           TextCustom(
             text: title,
             textStyle: context.textTheme.bodyLarge!,

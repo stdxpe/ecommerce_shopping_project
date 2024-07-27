@@ -42,14 +42,17 @@ abstract class AppStrings {
 
   /// FORGOT PASSWORD SCREEN
   static const String forgotPasswordScreenTitle = 'Forgot Password?';
-  static const String forgotPasswordScreenSubTitle =
+  static const String forgotPasswordScreenSubtitle =
       'If you need help resetting your password,\nwe can help by sending you a link to reset it.';
   static const String forgotPasswordScreenButton = 'Send';
+  static const String forgotPasswordScreenTextField = 'Phone';
 
   /// VERIFICATION SCREEN
   static const String verificationScreenTitle =
       'Enter the Code\nto Verify Your Phone';
   static const String verificationScreenSubtitle =
+
+      ///TODO: Number gotta be dynamic.
       'We have sent you an SMS with a code \nto the number +123 456 789';
   static const String verificationScreenButton = 'Send a new code';
 

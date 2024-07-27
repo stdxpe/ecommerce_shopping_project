@@ -12,6 +12,7 @@ class TextformfieldMain extends StatelessWidget {
     this.paddingHorizontal = 0,
     this.textInputType = TextInputType.text,
     this.obscureText = false,
+    this.autoFocus = false,
   });
 
   final String text;
@@ -20,6 +21,7 @@ class TextformfieldMain extends StatelessWidget {
   final double? paddingHorizontal;
   final TextInputType? textInputType;
   final bool? obscureText;
+  final bool? autoFocus;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class TextformfieldMain extends StatelessWidget {
           horizontal: paddingHorizontal!,
         ),
         child: TextFormField(
+          autofocus: autoFocus!,
           cursorColor: textColor ?? context.colorPalette.permaBlackColor,
           obscureText: obscureText!,
           keyboardType: textInputType,

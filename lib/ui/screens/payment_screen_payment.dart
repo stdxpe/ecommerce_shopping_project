@@ -1,23 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_method.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
-import 'package:flutter/material.dart';
-
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_method.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentScreenPayment extends StatelessWidget {
   const PaymentScreenPayment({
     super.key,
     required this.onPressed,
-    this.showTitle = true,
+    this.isCreateNewAddressMode = false,
+    this.onPressedSave,
+    this.onPressedDelete,
   });
 
   final Function() onPressed;
-  final bool? showTitle;
+  final bool? isCreateNewAddressMode;
+  final Function()? onPressedSave;
+  final Function()? onPressedDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class PaymentScreenPayment extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    if (showTitle!)
+                    if (isCreateNewAddressMode == false)
                       const TitleMain(
                         title: AppStrings.paymentScreenTitlePayment,
                         stepNumber: 2,
@@ -82,15 +87,17 @@ class PaymentScreenPayment extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 100.h),
-                          SwitchCheckboxMain(
-                            isChecked: true,
-                            uncheckedColor: Colors.black12,
-                            text: TextCustom(
-                              text: AppStrings.paymentScreenCreditCardCheckBox,
-                              textStyle: context.textTheme.labelSmall!,
-                              color: context.colorPalette.text,
+                          if (isCreateNewAddressMode == false)
+                            SwitchCheckboxMain(
+                              isChecked: true,
+                              uncheckedColor: Colors.black12,
+                              text: TextCustom(
+                                text:
+                                    AppStrings.paymentScreenCreditCardCheckBox,
+                                textStyle: context.textTheme.labelSmall!,
+                                color: context.colorPalette.text,
+                              ),
                             ),
-                          ),
                           SizedBox(height: 100.h),
                         ],
                       ),
@@ -98,14 +105,24 @@ class PaymentScreenPayment extends StatelessWidget {
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: BottomSheetButtonsPaymentMethod(
-                  onPressed: () {
-                    onPressed();
+              if (isCreateNewAddressMode == true)
+                BottomSheetButtonsProfileSaveOrDelete(
+                  onPressedDelete: () {
+                    onPressedDelete!();
+                  },
+                  onPressedSave: () {
+                    onPressedSave!();
                   },
                 ),
-              ),
+              if (isCreateNewAddressMode == false)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: BottomSheetButtonsPaymentMethod(
+                    onPressed: () {
+                      onPressed();
+                    },
+                  ),
+                ),
             ],
           ),
         ),

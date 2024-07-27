@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
@@ -12,11 +13,15 @@ class PaymentScreenShipping extends StatelessWidget {
   const PaymentScreenShipping({
     super.key,
     required this.onPressed,
-    this.showTitle = true,
+    this.isCreateNewAddressMode = false,
+    this.onPressedSave,
+    this.onPressedDelete,
   });
 
   final Function() onPressed;
-  final bool? showTitle;
+  final bool? isCreateNewAddressMode;
+  final Function()? onPressedSave;
+  final Function()? onPressedDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class PaymentScreenShipping extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (showTitle!)
+              if (isCreateNewAddressMode == false)
                 const TitleMain(
                   title: AppStrings.paymentScreenTitleShipping,
                   stepNumber: 1,
@@ -75,27 +80,38 @@ class PaymentScreenShipping extends StatelessWidget {
                       text: AppStrings.paymentScreenShippingTextField5,
                     ),
                     SizedBox(height: 100.h),
-                    SwitchCheckboxMain(
-                      isChecked: true,
-                      uncheckedColor: Colors.black12,
-                      text: TextCustom(
-                        text: AppStrings.paymentScreenShippingCheckBox,
-                        textStyle: context.textTheme.labelSmall!,
-                        color: context.colorPalette.text,
+                    if (isCreateNewAddressMode == false)
+                      SwitchCheckboxMain(
+                        isChecked: true,
+                        uncheckedColor: Colors.black12,
+                        text: TextCustom(
+                          text: AppStrings.paymentScreenShippingCheckBox,
+                          textStyle: context.textTheme.labelSmall!,
+                          color: context.colorPalette.text,
+                        ),
                       ),
-                    ),
                     SizedBox(height: 100.h),
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: BottomSheetButtonsPaymentShipping(
-                  onPressed: () {
-                    onPressed();
+              if (isCreateNewAddressMode == true)
+                BottomSheetButtonsProfileSaveOrDelete(
+                  onPressedDelete: () {
+                    onPressedDelete!();
+                  },
+                  onPressedSave: () {
+                    onPressedSave!();
                   },
                 ),
-              ),
+              if (isCreateNewAddressMode == false)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: BottomSheetButtonsPaymentShipping(
+                    onPressed: () {
+                      onPressed();
+                    },
+                  ),
+                ),
             ],
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal_detailed.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_item_counter.dart';
 
 class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
   const VerticalListviewProductCardHorizontalDetailed({
@@ -34,12 +35,25 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(bottom: paddingBetweenElements.h),
-            child: ProductCardHorizontalDetailed(
-              /// TODO: Bottom Info and Product Model Class relation
-              bottomInfo: 'Size:  M  |  Color: Red',
-              product: productsList[index],
-              isCardElevated: isCardElevated,
-              cardHeight: cardHeight,
+            child: Stack(
+              children: [
+                ProductCardHorizontalDetailed(
+                  /// TODO: Bottom Info and Product Model Class relation
+                  bottomInfo: 'Size:  M  |  Color: Red',
+                  product: productsList[index],
+                  isCardElevated: isCardElevated,
+                  cardHeight: cardHeight,
+                ),
+                Positioned.fill(
+                  // bottom: paddingBetweenElements.h,
+                  right: 25.w,
+                  bottom: 10.h,
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: SwitchItemCounter(),
+                  ),
+                ),
+              ],
             ),
           );
         },

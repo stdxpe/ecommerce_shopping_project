@@ -98,6 +98,7 @@ abstract class Constants {
   static const double kRadiusCardPrimary = 25;
   static const double kRadiusCardSecondary = 15;
   static const double kRadiusChips = 50;
+  static const double kRadiusItemCounter = 50;
 
   /// RAW FIGMA DESIGN SIZE
   static const double kRawFigmaDesignWidth = 1179;

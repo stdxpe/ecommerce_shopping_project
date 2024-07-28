@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -29,9 +28,7 @@ class _IconButtonLikeState extends State<IconButtonLike> {
           isLiked = !isLiked;
         });
       },
-      icon: (isLiked)
-          ? Icon(Icons.favorite, size: 75.h)
-          : Icon(Icons.favorite_border, size: 75.h),
+      icon: (isLiked) ? Icons.favorite : Icons.favorite_border,
       foregroundColor: ColorPalette.favoriteRed,
     );
   }

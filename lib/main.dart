@@ -67,29 +67,30 @@ class RootApp extends StatelessWidget {
       // homeScreen: VerificationScreen(),
 
       // homeScreen: HomeScreen(),
-      homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
+      // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen:
       //     CollectionDetailsScreen(product: dummyDealsOfTheWeekProductList[1]),
       // homeScreen: WishlistScreen(),
-      // homeScreen: ShoppingCartScreen(),
+      homeScreen: ShoppingCartScreen(),
       // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
 
-      // homeScreen: ProfileScreen(),
       // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
 
+      // homeScreen: ProfileScreen(),
       // homeScreen: OrdersScreen(),
       // homeScreen: TrackingOrderScreen(),
       // homeScreen: ShippingAddressesScreen(),
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// TODO: Bottom Nav Bar
+      /// TODO: App Bars
       /// TODO: Search functionality
-      /// TODO: Shopping Cart amount counter
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations

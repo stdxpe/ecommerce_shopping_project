@@ -17,29 +17,32 @@ class DiscoverScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarMain(),
-      body: ListView(
-        children: [
-          const TitleMain(
-            title: AppStrings.discoverScreenTitle,
-          ),
-          CollectionCardStack(
-            onPressed: () {},
-            textColor: Colors.white,
-            collection: dummyCollectionList[0],
-          ),
-          SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
-          StaggeredGridCardComponentLeft(
-            onPressed: () {},
-            productList: dummyProductList,
-          ),
-          SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
-          CollectionCardAlternate(
-            onPressed: () {},
-            cardHeight: context.mediaQuery.size.height * 0.6,
-            textColor: Colors.black,
-            collection: dummyCollectionList[3],
-          ),
-        ],
+      body: SafeArea(
+        bottom: false,
+        child: ListView(
+          children: [
+            const TitleMain(
+              title: AppStrings.discoverScreenTitle,
+            ),
+            CollectionCardStack(
+              onPressed: () {},
+              textColor: Colors.white,
+              collection: dummyCollectionList[0],
+            ),
+            SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
+            StaggeredGridCardComponentLeft(
+              onPressed: () {},
+              productList: dummyProductList,
+            ),
+            SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
+            CollectionCardAlternate(
+              onPressed: () {},
+              cardHeight: context.mediaQuery.size.height * 0.6,
+              textColor: Colors.black,
+              collection: dummyCollectionList[3],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -23,8 +23,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarMain(),
+      // appBar: const AppBarMain(),
       body: SafeArea(
+        // top: false,
+        bottom: false,
         child: ListView(
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
@@ -57,6 +58,7 @@ class _PaymentScreenPageviewState extends State<PaymentScreenPageview> {
     ];
 
     return Scaffold(
+      appBar: const AppBarMain(),
       body: SafeArea(
         bottom: false,
         child: SizedBox(

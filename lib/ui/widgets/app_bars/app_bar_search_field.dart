@@ -24,18 +24,18 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
         color: context.colorPalette.appBarForeground,
         size: 60.h,
       ),
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       title: Row(
         children: [
-          IconButton(
-            alignment: Alignment.centerLeft,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(
-              CupertinoIcons.back,
-            ),
-          ),
+          // IconButton(
+          //   alignment: Alignment.centerLeft,
+          //   onPressed: () {
+          //     Navigator.of(context).pop();
+          //   },
+          //   icon: const Icon(
+          //     CupertinoIcons.back,
+          //   ),
+          // ),
           const Expanded(
             child: TextformfieldSearchBox(
               text: AppStrings.searchScreenSearchBoxTextfieldHintText,
@@ -57,5 +57,6 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => Size.fromHeight(120.h);
+  // Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

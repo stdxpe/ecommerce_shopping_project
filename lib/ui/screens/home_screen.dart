@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
 import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_horizontal.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const AppBarMain(),
+      appBar: const AppBarMain(),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,

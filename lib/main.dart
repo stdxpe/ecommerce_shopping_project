@@ -2,6 +2,7 @@
 // ignore_for_file: unused_import
 
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -66,7 +67,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      homeScreen: HomeScreen(onPressed: () {}),
+      homeScreen: MainScreen(),
+      // homeScreen: HomeScreen(onPressed: () {}),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
@@ -88,6 +90,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// TODO: ROUTING
+      /// TODO: Payment Summary Sheet over Keyboard Problem
       /// TODO: Bottom Nav Bar
       /// TODO: App Bars
       /// TODO: Search functionality

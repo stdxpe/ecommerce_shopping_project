@@ -46,6 +46,7 @@ dependencies:
   flutter_credit_card: ^4.0.1
   easy_stepper: ^0.8.5
   msh_checkbox: ^2.0.1
+  persistent_bottom_nav_bar: ^6.2.1
 
 
 

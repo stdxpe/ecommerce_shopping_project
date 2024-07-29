@@ -214,4 +214,11 @@ abstract class AppStrings {
   static const String paymentScreenCreditCardTextField3 = 'Exp.Date';
   static const String paymentScreenCreditCardTextField4 = 'CVV';
   static const String paymentScreenCreditCardCheckBox = 'Save this credit card';
+
+  /// Bottom Navigation Bar Related
+  static const String bottomNavBarHome = 'Home';
+  static const String bottomNavBarDiscover = 'Discover';
+  static const String bottomNavBarCart = 'Cart';
+  static const String bottomNavBarWishlist = 'Wishlist';
+  static const String bottomNavBarProfile = 'Profile';
 }

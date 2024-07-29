@@ -27,9 +27,9 @@ abstract class ColorPalette {
   static const Color sheetBackground = Color(0xFFF9F9F9);
   static const Color paymentStatusActive = Color(0xFF1D1D1D);
   static const Color paymentStatusPassive = Color(0xFFE3E3E3);
-  static const Color navigationBarBackground = Color(0xFF232429);
-  static const Color navigationBarActive = Color(0xFF0D0D0D);
-  static const Color navigationBarPassive = Color(0xFF898989);
+  static const Color navigationBarBackground = Color(0xFFFFFFFF);
+  static const Color navigationBarActive = Color(0xFF000000);
+  static const Color navigationBarPassive = Color(0xFF959699);
   static const Color permaBlackColor = Color(0xFF000000);
   static const Color permaWhiteColor = Color(0xFFFFFFFF);
   static const Color favoriteRed = Colors.red;

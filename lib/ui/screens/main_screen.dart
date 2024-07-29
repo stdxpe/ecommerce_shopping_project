@@ -48,6 +48,15 @@ class MainScreen extends StatelessWidget {
           icon: const Icon(CupertinoIcons.cart),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
+          withNavBar: false,
+          onPressed: () {
+            PersistentNavBarNavigator.pushNewScreen(
+              context,
+              screen: const ShoppingCartScreen(),
+              withNavBar: false,
+              pageTransitionAnimation: PageTransitionAnimation.fade,
+            );
+          },
         ),
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarWishlist,
@@ -66,6 +75,13 @@ class MainScreen extends StatelessWidget {
 
     return PersistentTabView(
       backgroundColor: context.colorPalette.navigationBarBackground,
+      decoration: NavBarDecoration(
+        boxShadow: [
+          BoxShadows.kBoxShadowBottomSheet(
+              color: context.colorPalette.shadowSecondary)
+        ],
+      ),
+
       context,
       controller: controller,
       screens: buildScreens(),
@@ -75,25 +91,23 @@ class MainScreen extends StatelessWidget {
           true, // This needs to be true if you want to move up the screen on a non-scrollable screen when keyboard appears. Default is true.
       stateManagement: true, // Default is true.
       hideNavigationBarWhenKeyboardAppears: true,
-      // popBehaviorOnSelectedNavBarItemPress: PopActionScreensType.all,
+      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
       padding: const EdgeInsets.only(top: 0),
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(
           // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds: 150),
           curve: Curves.ease,
         ),
         screenTransitionAnimation: ScreenTransitionAnimationSettings(
           // Screen transition animation on change of selected tab.
           animateTabTransition: true,
           duration: Duration(milliseconds: 300),
-          screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
+          screenTransitionAnimationType: ScreenTransitionAnimationType.slide,
         ),
       ),
-
       // confineToSafeArea: false,
-      // navBarHeight: 150.h,
       navBarHeight: kBottomNavigationBarHeight,
       navBarStyle:
           // NavBarStyle.style3, // Choose the nav bar style with this property

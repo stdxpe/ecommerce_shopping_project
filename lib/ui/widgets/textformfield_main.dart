@@ -25,55 +25,52 @@ class TextformfieldMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.red.withOpacity(0.5),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: paddingHorizontal!,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: paddingHorizontal!,
+      ),
+      child: TextFormField(
+        autofocus: autoFocus!,
+        cursorColor: textColor ?? context.colorPalette.permaBlackColor,
+        obscureText: obscureText!,
+        keyboardType: textInputType,
+        style: context.textTheme.labelMedium!.copyWith(
+          color: textColor ?? context.colorPalette.text,
+          fontSize: context.textTheme.labelMedium!.fontSize!.h,
         ),
-        child: TextFormField(
-          autofocus: autoFocus!,
-          cursorColor: textColor ?? context.colorPalette.permaBlackColor,
-          obscureText: obscureText!,
-          keyboardType: textInputType,
-          style: context.textTheme.labelMedium!.copyWith(
-            color: textColor ?? context.colorPalette.text,
+        decoration: InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lineColor ??
+                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+              width: 1.0,
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lineColor ??
+                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+              width: 2,
+            ),
+          ),
+          errorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: ColorPalette.favoriteRed,
+            ),
+          ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lineColor ??
+                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+            ),
+          ),
+          hintText: text,
+          hintStyle: context.textTheme.labelMedium!.copyWith(
+            color: textColor?.withOpacity(0.8) ??
+                context.colorPalette.text.withOpacity(0.50),
             fontSize: context.textTheme.labelMedium!.fontSize!.h,
           ),
-          decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-                width: 1.0,
-              ),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-                width: 2,
-              ),
-            ),
-            errorBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorPalette.favoriteRed,
-              ),
-            ),
-            border: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-              ),
-            ),
-            hintText: text,
-            hintStyle: context.textTheme.labelMedium!.copyWith(
-              color: textColor?.withOpacity(0.8) ??
-                  context.colorPalette.text.withOpacity(0.50),
-              fontSize: context.textTheme.labelMedium!.fontSize!.h,
-            ),
-            // labelStyle:
-          ),
+          // labelStyle:
         ),
       ),
     );

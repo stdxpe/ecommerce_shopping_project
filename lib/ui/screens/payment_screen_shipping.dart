@@ -26,76 +26,79 @@ class PaymentScreenShipping extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       // backgroundColor: Colors.red,
       // appBar: const AppBarMain(),
-      body: SafeArea(
-        bottom: false,
-        child: SizedBox(
-          height: context.mediaQuery.size.height,
-          width: context.mediaQuery.size.width,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (isCreateNewAddressMode == false)
-                const TitleMain(
-                  title: AppStrings.paymentScreenTitleShipping,
-                  stepNumber: 1,
+      body: SizedBox(
+        height: context.mediaQuery.size.height,
+        width: context.mediaQuery.size.width,
+        child: Column(
+          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (isCreateNewAddressMode == false)
+              const TitleMain(
+                title: AppStrings.paymentScreenTitleShipping,
+                stepNumber: 1,
+              ),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Constants.kMainPaddingHorizontal.w * 2,
                 ),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Constants.kMainPaddingHorizontal.w * 2,
+                physics: const ClampingScrollPhysics(),
+                children: [
+                  const TextformfieldMain(
+                    text: AppStrings.paymentScreenShippingTextField1,
                   ),
-                  physics: const ClampingScrollPhysics(),
-                  children: [
-                    const TextformfieldMain(
-                      text: AppStrings.paymentScreenShippingTextField1,
-                    ),
-                    SizedBox(height: 50.h),
-                    const TextformfieldMain(
-                      text: AppStrings.paymentScreenShippingTextField2,
+                  SizedBox(height: 50.h),
+                  const TextformfieldMain(
+                    text: AppStrings.paymentScreenShippingTextField2,
 
-                      /// TODO: Multiline address entry.
-                      textInputType: TextInputType.multiline,
-                    ),
-                    SizedBox(height: 50.h),
-                    Row(
-                      children: [
-                        const Flexible(
-                          child: TextformfieldMain(
-                            text: AppStrings.paymentScreenShippingTextField3,
-                          ),
-                        ),
-                        SizedBox(width: 30.w),
-                        const Flexible(
-                          child: TextformfieldMain(
-                            text: AppStrings.paymentScreenShippingTextField4,
-                            textInputType: TextInputType.number,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 50.h),
-                    const TextformfieldMain(
-                      text: AppStrings.paymentScreenShippingTextField5,
-                    ),
-                    SizedBox(height: 100.h),
-                    if (isCreateNewAddressMode == false)
-                      SwitchCheckboxMain(
-                        isChecked: true,
-                        uncheckedColor: Colors.black12,
-                        text: TextCustom(
-                          text: AppStrings.paymentScreenShippingCheckBox,
-                          textStyle: context.textTheme.labelSmall!,
-                          color: context.colorPalette.text,
+                    /// TODO: Multiline address entry.
+                    textInputType: TextInputType.multiline,
+                  ),
+                  SizedBox(height: 50.h),
+                  Row(
+                    children: [
+                      const Flexible(
+                        child: TextformfieldMain(
+                          text: AppStrings.paymentScreenShippingTextField3,
                         ),
                       ),
-                    SizedBox(height: 100.h),
-                  ],
-                ),
+                      SizedBox(width: 30.w),
+                      const Flexible(
+                        child: TextformfieldMain(
+                          text: AppStrings.paymentScreenShippingTextField4,
+                          textInputType: TextInputType.number,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 50.h),
+                  const TextformfieldMain(
+                    text: AppStrings.paymentScreenShippingTextField5,
+                  ),
+                  SizedBox(height: 100.h),
+                  if (isCreateNewAddressMode == false)
+                    SwitchCheckboxMain(
+                      isChecked: true,
+                      uncheckedColor: Colors.black12,
+                      text: TextCustom(
+                        text: AppStrings.paymentScreenShippingCheckBox,
+                        textStyle: context.textTheme.labelSmall!,
+                        color: context.colorPalette.text,
+                      ),
+                    ),
+                  SizedBox(height: 100.h),
+                ],
               ),
-              if (isCreateNewAddressMode == true)
-                BottomSheetButtonsProfileSaveOrDelete(
+            ),
+            if (isCreateNewAddressMode == true)
+              Visibility(
+                /// isKeyboardOpen
+                visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                child: BottomSheetButtonsProfileSaveOrDelete(
                   onPressedDelete: () {
                     onPressedDelete!();
                   },
@@ -103,17 +106,18 @@ class PaymentScreenShipping extends StatelessWidget {
                     onPressedSave!();
                   },
                 ),
-              if (isCreateNewAddressMode == false)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: BottomSheetButtonsPaymentShipping(
-                    onPressed: () {
-                      onPressed();
-                    },
-                  ),
+              ),
+            if (isCreateNewAddressMode == false)
+              Visibility(
+                /// isKeyboardOpen
+                visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                child: BottomSheetButtonsPaymentShipping(
+                  onPressed: () {
+                    onPressed();
+                  },
                 ),
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );

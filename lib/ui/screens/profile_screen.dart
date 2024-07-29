@@ -16,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: const AppBarMain(),
       body: SafeArea(
         bottom: false,
         child: ListView(

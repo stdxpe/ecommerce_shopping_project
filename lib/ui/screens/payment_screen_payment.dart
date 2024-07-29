@@ -106,17 +106,22 @@ class PaymentScreenPayment extends StatelessWidget {
                 ),
               ),
               if (isCreateNewCardMode == true)
-                BottomSheetButtonsProfileSaveOrDelete(
-                  onPressedDelete: () {
-                    onPressedDelete!();
-                  },
-                  onPressedSave: () {
-                    onPressedSave!();
-                  },
+                Visibility(
+                  /// isKeyboardOpen
+                  visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                  child: BottomSheetButtonsProfileSaveOrDelete(
+                    onPressedDelete: () {
+                      onPressedDelete!();
+                    },
+                    onPressedSave: () {
+                      onPressedSave!();
+                    },
+                  ),
                 ),
               if (isCreateNewCardMode == false)
-                Align(
-                  alignment: Alignment.bottomCenter,
+                Visibility(
+                  /// isKeyboardOpen
+                  visible: MediaQuery.of(context).viewInsets.bottom == 0,
                   child: BottomSheetButtonsPaymentMethod(
                     onPressed: () {
                       onPressed();

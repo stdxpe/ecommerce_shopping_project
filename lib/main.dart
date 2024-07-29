@@ -3,6 +3,7 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/testing_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -82,6 +83,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: FiltersScreen(),
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
+      // homeScreen: TestingScreen(),
 
       // homeScreen: ProfileScreen(),
       // homeScreen: OrdersScreen(),
@@ -90,10 +92,12 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// TODO: Need an ICON SET
+      /// TODO: Dissmisible
       /// TODO: ROUTING
-      /// TODO: Payment Summary Sheet over Keyboard Problem
       /// TODO: Bottom Nav Bar
       /// TODO: App Bars
+      /// TODO: Same Search Screen on every app bar search icon click
       /// TODO: Search functionality
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality

@@ -13,11 +13,13 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
     this.isCardElevated = true,
     required this.paddingMain,
     required this.paddingBetweenElements,
+    this.useItemCounter = true,
   });
 
   final List<Product> productsList;
   final double cardHeight;
   final bool? isCardElevated;
+  final bool? useItemCounter;
   final double paddingMain;
   final double paddingBetweenElements;
 
@@ -44,15 +46,16 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
                   isCardElevated: isCardElevated,
                   cardHeight: cardHeight,
                 ),
-                Positioned.fill(
-                  // bottom: paddingBetweenElements.h,
-                  right: 25.w,
-                  bottom: 10.h,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: SwitchItemCounter(),
+                if (useItemCounter == true)
+                  Positioned.fill(
+                    // bottom: paddingBetweenElements.h,
+                    right: 25.w,
+                    bottom: 10.h,
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: SwitchItemCounter(),
+                    ),
                   ),
-                ),
               ],
             ),
           );

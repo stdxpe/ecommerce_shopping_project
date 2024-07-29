@@ -34,6 +34,7 @@ class PaymentScreenSummary extends StatelessWidget {
                     ),
                     VerticalListviewProductCardHorizontalDetailed(
                       isCardElevated: false,
+                      useItemCounter: false,
                       // productsList: dummyProductList,
                       productsList: dummyProductShortList,
                       cardHeight: 290,

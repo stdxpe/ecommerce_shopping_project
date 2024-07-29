@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class TextformfieldMain extends StatelessWidget {
-  const TextformfieldMain({
+class TextformfieldSearchBox extends StatelessWidget {
+  const TextformfieldSearchBox({
     super.key,
     required this.text,
     this.textColor,
@@ -26,12 +26,17 @@ class TextformfieldMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100.h,
+
+      alignment: Alignment.center,
       // color: Colors.red.withOpacity(0.5),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: paddingHorizontal!,
+          vertical: 0,
         ),
         child: TextFormField(
+          textAlignVertical: TextAlignVertical.center,
           autofocus: autoFocus!,
           cursorColor: textColor ?? context.colorPalette.permaBlackColor,
           obscureText: obscureText!,
@@ -41,31 +46,36 @@ class TextformfieldMain extends StatelessWidget {
             fontSize: context.textTheme.labelMedium!.fontSize!.h,
           ),
           decoration: InputDecoration(
-            enabledBorder: UnderlineInputBorder(
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 35.w,
+              vertical: 20.h,
+            ),
+            suffixIconConstraints: const BoxConstraints(
+              minWidth: 2,
+              minHeight: 2,
+            ),
+            suffixIcon: InkWell(
+                borderRadius: BorderRadius.circular(100.r),
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.w, left: 15.w),
+                  child: Icon(
+                    Icons.clear,
+                    size: 60.h,
+                    color: context.colorPalette.appBarForeground,
+                  ),
+                ),
+                onTap: () {}),
+
+            fillColor: Colors.black12,
+            filled: true,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
               borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-                width: 1.0,
+                width: 0,
+                style: BorderStyle.none,
               ),
             ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-                width: 2,
-              ),
-            ),
-            errorBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorPalette.favoriteRed,
-              ),
-            ),
-            border: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: lineColor ??
-                    context.colorPalette.permaBlackColor.withOpacity(0.25),
-              ),
-            ),
+
             hintText: text,
             hintStyle: context.textTheme.labelMedium!.copyWith(
               color: textColor?.withOpacity(0.8) ??

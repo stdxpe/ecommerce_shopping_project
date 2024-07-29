@@ -10,6 +10,7 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
     required this.productsList,
     required this.cardHeight,
     this.isCardElevated = true,
+    this.useSoftShadow = false,
     required this.paddingMain,
     required this.paddingBetweenElements,
   });
@@ -17,6 +18,7 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
   final List<Product> productsList;
   final double cardHeight;
   final bool? isCardElevated;
+  final bool? useSoftShadow;
   final double paddingMain;
   final double paddingBetweenElements;
 
@@ -36,6 +38,7 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
           child: ProductCardHorizontalMini(
             product: productsList[index],
             isCardElevated: isCardElevated,
+            useSoftShadow: useSoftShadow,
             cardWidth: 1.sw,
             cardHeight: cardHeight,
           ),

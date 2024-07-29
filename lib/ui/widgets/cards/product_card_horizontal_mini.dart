@@ -12,12 +12,14 @@ class ProductCardHorizontalMini extends StatelessWidget {
     required this.cardWidth,
     required this.cardHeight,
     this.isCardElevated = true,
+    this.useSoftShadow = false,
   });
 
   final Product product;
   final double cardWidth;
   final double cardHeight;
   final bool? isCardElevated;
+  final bool? useSoftShadow;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ class ProductCardHorizontalMini extends StatelessWidget {
           boxShadow: [
             if (isCardElevated == true)
               BoxShadows.kBoxShadowProductCard(
-                color: context.colorPalette.shadowPrimary,
+                color: useSoftShadow!
+                    ? context.colorPalette.shadowPrimary.withOpacity(0.2)
+                    : context.colorPalette.shadowPrimary,
               ),
           ],
         ),

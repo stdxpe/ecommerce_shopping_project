@@ -10,7 +10,7 @@ class SwitchCupertinoCustom extends StatefulWidget {
   });
 
   bool? switchState;
-  final Function() onChanged;
+  final Function(bool) onChanged;
 
   @override
   State<SwitchCupertinoCustom> createState() => _SwitchCupertinoCustomState();
@@ -24,9 +24,8 @@ class _SwitchCupertinoCustomState extends State<SwitchCupertinoCustom> {
       onChanged: (value) {
         setState(() {
           widget.switchState = value;
+          widget.onChanged(widget.switchState!);
         });
-
-        widget.onChanged();
       },
       thumbColor: context.colorPalette.scaffoldBackground,
       activeColor: context.colorPalette.text,

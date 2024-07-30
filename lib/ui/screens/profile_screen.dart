@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key, this.onDarkModeEnabled});
+  const ProfileScreen({
+    super.key,
+    this.isDarkModeEnabled = false,
+    this.onDarkModeEnabled,
+  });
 
   final Function()? onDarkModeEnabled;
+  final bool? isDarkModeEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +55,9 @@ class ProfileScreen extends StatelessWidget {
               buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
               icon: CupertinoIcons.moon_fill,
               widgetContent: SwitchCupertinoCustom(
-                  switchState: false,
-                  onChanged: () {
+                  switchState: isDarkModeEnabled,
+                  onChanged: (boolValue) {
+                    /// TODO: Theme Mode selection change globally.
                     onDarkModeEnabled!();
                   }),
             ),
@@ -60,8 +65,8 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemNotifications,
               icon: Icons.notifications,
-              widgetContent:
-                  SwitchCupertinoCustom(switchState: true, onChanged: () {}),
+              widgetContent: SwitchCupertinoCustom(
+                  switchState: true, onChanged: (boolValue) {}),
             ),
             ProfileCardButton(
               onPressed: () {},

@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
+import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shopping_cart_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_navigation_bar/bottom_navigation_bar_item.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class MainScreen extends StatelessWidget {
@@ -25,7 +26,9 @@ class MainScreen extends StatelessWidget {
         const DiscoverScreen(),
         const ShoppingCartScreen(),
         const WishlistScreen(),
-        const ProfileScreen(),
+        // const ProfileScreen(),
+        /// TODO: Dark Mode mess here?
+        DarkSample(),
       ];
     }
 

@@ -20,6 +20,8 @@ class DiscoverScreen extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: ListView(
+          padding: EdgeInsets.zero,
+          physics: const ClampingScrollPhysics(),
           children: [
             const TitleMain(
               title: AppStrings.discoverScreenTitle,

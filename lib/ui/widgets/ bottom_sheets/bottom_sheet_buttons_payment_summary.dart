@@ -19,7 +19,6 @@ class BottomSheetButtonsPaymentSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        // color: Colors.grey.withOpacity(0.3),
         color: context.colorPalette.sheetBackground,
         boxShadow: [
           BoxShadows.kBoxShadowBottomSheet(

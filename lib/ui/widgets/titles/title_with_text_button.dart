@@ -54,6 +54,8 @@ class TitleWithTextButton extends StatelessWidget {
                 textStyle: context.textTheme.titleMedium!,
                 color: context.colorPalette.textButtonFaded,
                 textAlignCustom: TextAlign.end,
+                fontSizeCustom: 34,
+                fontWeightCustom: FontWeight.w500,
               ),
             ),
           ),

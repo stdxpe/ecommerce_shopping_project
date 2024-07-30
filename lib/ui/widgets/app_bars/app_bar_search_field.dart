@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_search_box.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -44,12 +44,13 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
               paddingHorizontal: 0,
             ),
           ),
+
           IconButton(
+            icon: const Icon(UniconsLine.search),
             alignment: Alignment.center,
             onPressed: () {
               searchOnPressed();
             },
-            icon: const Icon(CupertinoIcons.search),
           ),
         ],
       ),

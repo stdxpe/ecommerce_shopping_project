@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:unicons/unicons.dart';
 
-import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shopping_cart_screen.dart';
@@ -36,19 +35,19 @@ class MainScreen extends StatelessWidget {
       return [
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarHome,
-          icon: const Icon(CupertinoIcons.home),
+          icon: const Icon(UniconsLine.home_alt),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
         ),
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarDiscover,
-          icon: const Icon(CupertinoIcons.search),
+          icon: const Icon(UniconsLine.search),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
         ),
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarCart,
-          icon: const Icon(CupertinoIcons.cart),
+          icon: const Icon(Icons.shopping_cart_outlined),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
           withNavBar: false,
@@ -63,13 +62,13 @@ class MainScreen extends StatelessWidget {
         ),
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarWishlist,
-          icon: const Icon(CupertinoIcons.heart),
+          icon: const Icon(UniconsLine.heart),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
         ),
         CustomBottomNavigationBarItem().buildItems(
           title: AppStrings.bottomNavBarProfile,
-          icon: const Icon(CupertinoIcons.person),
+          icon: const Icon(UniconsLine.user),
           activeColor: context.colorPalette.navigationBarActive,
           inactiveColor: context.colorPalette.navigationBarPassive,
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+
 class SwitchPaymentStatusBarStepper extends StatefulWidget {
   SwitchPaymentStatusBarStepper({
     super.key,
@@ -19,11 +21,15 @@ class SwitchPaymentStatusBarStepper extends StatefulWidget {
 class _SwitchPaymentStatusBarStepperState
     extends State<SwitchPaymentStatusBarStepper> {
   double iconSize = 20;
-  Color activeColor = Colors.black;
-  Color passiveColor = Colors.black26;
-  Color bgColor = Colors.black12;
   @override
   Widget build(BuildContext context) {
+    Color activeColor = context.colorPalette.text;
+    Color passiveColor = context.colorPalette.text.withOpacity(0.25);
+    Color bgColor = context.colorPalette.text.withOpacity(0.12);
+
+    // Color activeColor = Colors.black;
+    // Color passiveColor = Colors.black26;
+    // Color bgColor = Colors.black12;
     // int activeStep = widget.currentStepParam;
     return Padding(
       padding: const EdgeInsets.only(

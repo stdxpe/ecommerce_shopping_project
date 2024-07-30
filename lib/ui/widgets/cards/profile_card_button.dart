@@ -46,10 +46,9 @@ class ProfileCardButton extends StatelessWidget {
           ),
           Container(
             color: context.colorPalette.sheetBackground,
-            // color: Colors.red,
             height: cardHeight!.h,
             width: 1.sw,
-            margin: EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
                 horizontal: Constants.kProfileButtonPaddingHorizontal.w),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -91,6 +91,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             VerticalListviewProductCardHorizontalDetailed(
+              useItemCounter: false,
               isCardElevated: false,
               productsList: dummyProductShortList,
               cardHeight: 300,

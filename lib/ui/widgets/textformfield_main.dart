@@ -31,7 +31,7 @@ class TextformfieldMain extends StatelessWidget {
       ),
       child: TextFormField(
         autofocus: autoFocus!,
-        cursorColor: textColor ?? context.colorPalette.permaBlackColor,
+        cursorColor: textColor ?? context.colorPalette.text,
         obscureText: obscureText!,
         keyboardType: textInputType,
         style: context.textTheme.labelMedium!.copyWith(
@@ -41,15 +41,13 @@ class TextformfieldMain extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: lineColor ??
-                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+              color: lineColor ?? context.colorPalette.text.withOpacity(0.25),
               width: 1.0,
             ),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: lineColor ??
-                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+              color: lineColor ?? context.colorPalette.text.withOpacity(0.25),
               width: 2,
             ),
           ),
@@ -60,8 +58,7 @@ class TextformfieldMain extends StatelessWidget {
           ),
           border: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: lineColor ??
-                  context.colorPalette.permaBlackColor.withOpacity(0.25),
+              color: lineColor ?? context.colorPalette.text.withOpacity(0.25),
             ),
           ),
           hintText: text,

@@ -83,7 +83,6 @@ class PaymentScreenShipping extends StatelessWidget {
                   if (isCreateNewAddressMode == false)
                     SwitchCheckboxMain(
                       isChecked: true,
-                      uncheckedColor: Colors.black12,
                       text: TextCustom(
                         text: AppStrings.paymentScreenShippingCheckBox,
                         textStyle: context.textTheme.labelSmall!,

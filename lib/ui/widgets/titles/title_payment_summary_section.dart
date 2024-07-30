@@ -30,10 +30,11 @@ class TitlePaymentSummarySection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (useTopDivider!)
-            const Divider(
+            Divider(
               thickness: 0.75,
               height: 0,
-              color: Colors.black26,
+              // color: Colors.black26,
+              color: context.colorPalette.text.withOpacity(0.25),
             ),
           if (useTopDivider!) SizedBox(height: 50.h),
           TextCustom(
@@ -63,10 +64,10 @@ class TitlePaymentSummarySection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 50.h),
-          const Divider(
+          Divider(
             thickness: 0.75,
             height: 0,
-            color: Colors.black26,
+            color: context.colorPalette.text.withOpacity(0.25),
           ),
         ],
       ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:unicons/unicons.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -20,7 +21,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const AppBarMain(),
       body: SafeArea(
         bottom: false,
         child: ListView(
@@ -38,22 +38,26 @@ class ProfileScreen extends StatelessWidget {
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemOrders,
-              icon: Icons.shopping_bag_outlined,
+              // icon: Icons.shopping_bag_outlined,
+              icon: UniconsLine.shopping_bag,
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemAddresses,
-              icon: Icons.location_on,
+              // icon: Icons.location_on,
+              icon: UniconsLine.location_pin_alt,
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemCreditCards,
-              icon: Icons.credit_card,
+              // icon: Icons.credit_card,
+              icon: UniconsLine.credit_card,
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
-              icon: CupertinoIcons.moon_fill,
+              // icon: CupertinoIcons.moon_fill,
+              icon: UniconsLine.moon,
               widgetContent: SwitchCupertinoCustom(
                   switchState: isDarkModeEnabled,
                   onChanged: (boolValue) {
@@ -64,24 +68,25 @@ class ProfileScreen extends StatelessWidget {
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemNotifications,
-              icon: Icons.notifications,
+              icon: TablerIcons.notification,
               widgetContent: SwitchCupertinoCustom(
                   switchState: true, onChanged: (boolValue) {}),
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemChangePassword,
-              icon: Icons.password_outlined,
+              // icon: Icons.password_outlined,
+              icon: TablerIcons.password_fingerprint,
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemAboutUs,
-              icon: Icons.question_mark,
+              icon: TablerIcons.code,
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemSignOut,
-              icon: Icons.logout,
+              icon: TablerIcons.logout,
               useBottomDivider: true,
             ),
             // SwitchCupertinoCustom(onChanged: () {}),

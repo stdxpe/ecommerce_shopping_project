@@ -23,12 +23,12 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
+        color: context.colorPalette.cardBackground,
         boxShadow: [
           BoxShadows.kBoxShadowProductCard(
             color: context.colorPalette.shadowSecondary.withOpacity(0.2),
           ),
         ],
-        color: context.colorPalette.scaffoldBackground,
         borderRadius: BorderRadius.circular(Constants.kRadiusItemCounter.r),
       ),
       child: Row(
@@ -43,7 +43,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
               });
             },
             iconColor: context.colorPalette.text,
-            buttonColor: context.colorPalette.scaffoldBackground,
+            buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.minus,
             buttonSize: 75,
             iconSize: 45,
@@ -67,7 +67,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
               });
             },
             iconColor: context.colorPalette.text,
-            buttonColor: context.colorPalette.scaffoldBackground,
+            buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.add,
             buttonSize: 75,
             iconSize: 45,

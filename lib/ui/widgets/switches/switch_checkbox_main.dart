@@ -40,16 +40,17 @@ class _SwitchCheckboxMainState extends State<SwitchCheckboxMain> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: widget.uncheckedColor ?? Colors.white70,
+                color: widget.uncheckedColor ??
+                    context.colorPalette.text.withOpacity(0.12),
                 shape: BoxShape.circle,
               ),
               child: MSHCheckbox(
                 size: 60.h,
                 value: widget.isChecked!,
                 colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-                  checkedColor: context.colorPalette.permaBlackColor,
-                  uncheckedColor: context.colorPalette.permaWhiteColor,
-                  disabledColor: context.colorPalette.permaWhiteColor,
+                  checkedColor: context.colorPalette.text,
+                  uncheckedColor: context.colorPalette.scaffoldBackground,
+                  disabledColor: context.colorPalette.text,
                 ),
                 style: MSHCheckboxStyle.stroke,
                 duration: const Duration(milliseconds: 300),

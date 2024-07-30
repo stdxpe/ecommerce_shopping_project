@@ -1,10 +1,11 @@
-import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/ui/screens/search_screen.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
@@ -45,11 +46,11 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
           : null,
       actions: [
         IconButton(
-          icon: const Icon(CupertinoIcons.search),
+          icon: const Icon(UniconsLine.search),
           alignment: Alignment.center,
           onPressed: () {
             PersistentNavBarNavigator.pushNewScreenWithRouteSettings(
-              settings: RouteSettings(name: '/search'),
+              settings: const RouteSettings(name: '/search'),
               pageTransitionAnimation: PageTransitionAnimation.fade,
               context,
               screen: const SearchScreen(),

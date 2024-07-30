@@ -60,7 +60,6 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
-      // homeScreen: DarkSample(),
       // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
@@ -85,6 +84,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: TestScreen(),
       // homeScreen: TestingScreen(),
 
+      // homeScreen: DarkSample(),
       // homeScreen: ProfileScreen(),
       // homeScreen: OrdersScreen(),
       // homeScreen: TrackingOrderScreen(),
@@ -92,11 +92,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
-      /// TODO: Need an ICON SET
       /// TODO: ROUTING
-      /// TODO: Bottom Nav Bar
-      /// TODO: App Bars
-      /// TODO: Same Search Screen on every app bar search icon click
+      /// TODO: Same Search Screen on every app bar search icon click //Locator Get_it
       /// TODO: Search functionality
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality

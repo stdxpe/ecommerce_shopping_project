@@ -90,7 +90,6 @@ class PaymentScreenPayment extends StatelessWidget {
                           if (isCreateNewCardMode == false)
                             SwitchCheckboxMain(
                               isChecked: true,
-                              uncheckedColor: Colors.black12,
                               text: TextCustom(
                                 text:
                                     AppStrings.paymentScreenCreditCardCheckBox,

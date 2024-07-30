@@ -47,6 +47,7 @@ dependencies:
   easy_stepper: ^0.8.5
   msh_checkbox: ^2.0.1
   persistent_bottom_nav_bar: ^6.2.1
+  flutter_slidable: ^3.1.1
 
 
 

@@ -22,6 +22,7 @@ class _IconButtonLikeState extends State<IconButtonLike> {
   @override
   Widget build(BuildContext context) {
     return IconButtonMain(
+      height: 150,
       onPressed: () {
         widget.onPressed();
         setState(() {

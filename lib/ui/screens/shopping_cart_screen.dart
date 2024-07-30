@@ -37,6 +37,7 @@ class ShoppingCartScreen extends StatelessWidget {
                       itemCount: 13,
                     ),
                     VerticalListviewProductCardHorizontalDetailed(
+                      dismissibleEnabled: true,
                       isCardElevated: false,
                       // productsList: dummyProductList,
                       productsList: dummyProductShortList,

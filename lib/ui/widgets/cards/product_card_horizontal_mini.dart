@@ -25,7 +25,7 @@ class ProductCardHorizontalMini extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: isCardElevated!
               ? context.colorPalette.cardBackground

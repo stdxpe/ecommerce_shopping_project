@@ -23,7 +23,9 @@ class WishlistScreen extends StatelessWidget {
               itemCount: 13,
             ),
             VerticalListviewProductCardHorizontalMini(
-              isCardElevated: true,
+              dismissibleEnabled: true,
+              // isCardElevated: false,
+              useSoftShadow: true,
               productsList: dummyProductShortList,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,

@@ -36,6 +36,8 @@ abstract class ColorPalette {
   static const Color textButtonGreen = Colors.green;
   static const Color ratedStarColor = Colors.amber;
   static const Color unratedStarColor = Colors.black12;
+  static const Color dismissibleBg = Colors.red;
+  static const Color dismissibleFg = Colors.white;
 
   // color: context.theme.appColors.error
 
@@ -71,4 +73,6 @@ abstract class ColorPalette {
   static const Color darkModeTextButtonGreen = Colors.green;
   static const Color darkModeRatedStarColor = Colors.amber;
   static const Color darkModeUnratedStarColor = Colors.black12;
+  static const Color darkModeDismissibleBg = Colors.red;
+  static const Color darkModeDismissibleFg = Colors.white;
 }

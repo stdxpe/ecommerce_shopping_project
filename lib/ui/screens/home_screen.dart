@@ -41,12 +41,13 @@ class HomeScreen extends StatelessWidget {
                 child: const BannerSlider()),
             TitleWithTextButton(
               onPressed: () {},
-              title: 'Listview Stack',
+              title: 'Listview Vertical',
               buttonText: AppStrings.collectionTitleRightButton,
             ),
-            HorizontalListviewProductCardStack(
+            HorizontalListviewProductCardVerticalAlternate(
+              isCardElevated: false,
               productsList: dummyProductList,
-              cardWidth: 500,
+              cardWidth: 400,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
@@ -108,11 +109,14 @@ class HomeScreen extends StatelessWidget {
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
-            const SizedBox(height: 15),
-            HorizontalListviewProductCardVerticalAlternate(
-              isCardElevated: false,
+            TitleWithTextButton(
+              onPressed: () {},
+              title: 'Listview Stack',
+              buttonText: AppStrings.collectionTitleRightButton,
+            ),
+            HorizontalListviewProductCardStack(
               productsList: dummyProductList,
-              cardWidth: 400,
+              cardWidth: 500,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),

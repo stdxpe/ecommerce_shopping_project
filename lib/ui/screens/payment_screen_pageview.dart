@@ -67,6 +67,7 @@ class _PaymentScreenPageviewState extends State<PaymentScreenPageview> {
       resizeToAvoidBottomInset: false,
       appBar: AppBarMain(
         automaticallyImplyLeading: true,
+        useSearchButton: false,
 
         /// TODO: Gotta handle Android back button or swipe to back func
         onPressedBackButtonAlternate: _screenIndex != 0

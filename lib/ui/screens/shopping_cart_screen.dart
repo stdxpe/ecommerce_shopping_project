@@ -18,6 +18,7 @@ class ShoppingCartScreen extends StatelessWidget {
     return Scaffold(
       appBar: const AppBarMain(
         automaticallyImplyLeading: true,
+        useSearchButton: false,
       ),
       body: SafeArea(
         bottom: false,

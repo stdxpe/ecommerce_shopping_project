@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,6 +22,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarMain(
+        automaticallyImplyLeading: false,
+        useSearchButton: false,
+      ),
       body: SafeArea(
         bottom: false,
         child: ListView(

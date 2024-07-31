@@ -22,7 +22,9 @@ class CreditCardsSlider extends StatelessWidget {
       // color: Colors.black,
       // width: 1.sw,
       height: creditCardHeight + 160.h,
+
       child: Swiper(
+        allowImplicitScrolling: false,
         outer: true,
         index: 0,
         itemCount: 5,

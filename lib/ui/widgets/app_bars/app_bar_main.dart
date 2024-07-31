@@ -15,11 +15,13 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
     this.onPressedBackButtonAlternate,
     this.useShadow = false,
     this.useTitle = false,
+    this.useSearchButton = true,
   });
 
   final bool? automaticallyImplyLeading;
   final bool? useShadow;
   final bool? useTitle;
+  final bool? useSearchButton;
   final Function()? onPressedBackButtonAlternate;
 
   @override
@@ -45,19 +47,20 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       actions: [
-        IconButton(
-          icon: const Icon(UniconsLine.search),
-          alignment: Alignment.center,
-          onPressed: () {
-            PersistentNavBarNavigator.pushNewScreenWithRouteSettings(
-              settings: const RouteSettings(name: '/search'),
-              pageTransitionAnimation: PageTransitionAnimation.fade,
-              context,
-              screen: const SearchScreen(),
-              withNavBar: true,
-            );
-          },
-        ),
+        if (useSearchButton == true)
+          IconButton(
+            icon: const Icon(UniconsLine.search),
+            alignment: Alignment.center,
+            onPressed: () {
+              PersistentNavBarNavigator.pushNewScreenWithRouteSettings(
+                settings: const RouteSettings(name: '/search'),
+                pageTransitionAnimation: PageTransitionAnimation.fade,
+                context,
+                screen: const SearchScreen(),
+                withNavBar: true,
+              );
+            },
+          ),
       ],
       elevation: (useShadow == true) ? 10 : 0,
       shadowColor: (useShadow == true)

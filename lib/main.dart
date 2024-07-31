@@ -1,13 +1,14 @@
 /// TODO: Delete
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
-import 'package:device_preview/device_preview.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_product_short_list.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
@@ -47,6 +48,7 @@ import 'package:ecommerce_shopping_project/utilities/screen_util_setup.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 void main() {
+  locatorGetItSetup();
   runApp(
     DevicePreview(
       // enabled: true, //!kReleaseMode,
@@ -100,6 +102,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// TODO: Address and Credit Card model classes
       /// TODO: ROUTING
       /// TODO: Same Search Screen on every app bar search icon click //Locator Get_it
       /// TODO: Search functionality

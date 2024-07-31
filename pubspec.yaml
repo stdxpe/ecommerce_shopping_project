@@ -55,6 +55,9 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter_custom_carousel: ^0.1.0+1
 
+  # Services
+  get_it: ^7.7.0
+
 
 
 dev_dependencies:

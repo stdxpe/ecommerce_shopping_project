@@ -6,7 +6,7 @@ import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shopping_cart_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/bottom_navigation_bar/bottom_navigation_bar_item.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/navigation_bar/bottom_navigation_bar_item.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

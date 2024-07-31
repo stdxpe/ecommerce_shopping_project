@@ -5,7 +5,7 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 final List<Category> dummyCategories = [
   Category(
     id: '0000',
-    title: 'Women\s Top',
+    title: 'Women\'s Top',
     subtitle: 'Most fashionate top wear',
     photo: AppImages.productImage5,
     products: [

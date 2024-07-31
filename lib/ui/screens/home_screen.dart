@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_product_short_list.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';

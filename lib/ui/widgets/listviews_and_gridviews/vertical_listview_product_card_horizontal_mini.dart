@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal_mini.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/dismissible_delete_widget.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/dismissible_delete_widget.dart';
 
 class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
   const VerticalListviewProductCardHorizontalMini({

@@ -29,6 +29,7 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      padding: EdgeInsets.zero,
       physics: const ClampingScrollPhysics(),
       clipBehavior: Clip.none,
       itemCount: productsList.length,

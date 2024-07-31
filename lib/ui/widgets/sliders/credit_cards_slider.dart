@@ -25,7 +25,7 @@ class CreditCardsSlider extends StatelessWidget {
       child: Swiper(
         outer: true,
         index: 0,
-        itemCount: 3,
+        itemCount: 5,
         // autoplay: true,
         autoplayDelay: 3000,
         // viewportFraction: 0.83,
@@ -34,9 +34,11 @@ class CreditCardsSlider extends StatelessWidget {
         duration: 750,
         onIndexChanged: (index) {},
         itemBuilder: (BuildContext context, int index) {
-          return const Align(
+          return Align(
             alignment: Alignment.center,
-            child: CreditCardVisualModel(),
+            child: CreditCardVisualModel(
+              index: index,
+            ),
           );
         },
       ),

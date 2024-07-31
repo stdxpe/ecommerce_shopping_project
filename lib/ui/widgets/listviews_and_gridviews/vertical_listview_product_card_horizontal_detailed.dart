@@ -30,6 +30,7 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: ListView.builder(
+        padding: EdgeInsets.zero,
         shrinkWrap: true,
         // padding: EdgeInsets.symmetric(horizontal: paddingMain.w),
         physics: const ClampingScrollPhysics(),

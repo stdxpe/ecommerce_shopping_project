@@ -5,6 +5,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -19,7 +20,8 @@ class SplashScreen extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              AppImages.productImage12,
+              // AppImages.productImage12,
+              AppImages.productImage13,
             ),
           ),
         ),
@@ -30,26 +32,33 @@ class SplashScreen extends StatelessWidget {
             SizedBox(height: 1035.h),
             Align(
               alignment: Alignment.center,
-              child: TextCustom(
-                text: AppStrings.appTitle,
-                textStyle: context.textTheme.headlineLarge!,
-                color: context.colorPalette.title,
-                boxShadowsCustom: [
-                  BoxShadows.kBoxShadowTitle(
-                    color: context.theme.colorPalette.permaBlackColor
-                        .withOpacity(0.54),
-                  ),
-                ],
-                foregroundPaintCustom: Paint()
-                  ..shader = LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      context.theme.colorPalette.permaWhiteColor,
-                      context.theme.colorPalette.permaWhiteColor
-                          .withOpacity(0.8),
-                    ],
-                  ).createShader(Rect.fromLTWH(0.0, 0.0, 0.0, 150.0.h)),
+              child: Shimmer.fromColors(
+                // loop: 2,
+                baseColor: Colors.white,
+                highlightColor: Colors.white70,
+                // direction: ShimmerDirection.ttb,
+                period: Duration(milliseconds: 1000),
+                child: TextCustom(
+                  text: AppStrings.appTitle,
+                  textStyle: context.textTheme.headlineLarge!,
+                  color: context.colorPalette.title,
+                  boxShadowsCustom: [
+                    BoxShadows.kBoxShadowTitle(
+                      color: context.theme.colorPalette.permaBlackColor
+                          .withOpacity(0.54),
+                    ),
+                  ],
+                  foregroundPaintCustom: Paint()
+                    ..shader = LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[
+                        context.theme.colorPalette.permaWhiteColor,
+                        context.theme.colorPalette.permaWhiteColor
+                            .withOpacity(0.8),
+                      ],
+                    ).createShader(Rect.fromLTWH(0.0, 0.0, 0.0, 150.0.h)),
+                ),
               ),
             ),
             SizedBox(height: 60.h),

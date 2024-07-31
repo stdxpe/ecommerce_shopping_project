@@ -41,14 +41,6 @@ class HomeScreen extends StatelessWidget {
                 child: const BannerSlider()),
             TitleWithTextButton(
               onPressed: () {},
-              title: AppStrings.dealsOfTheWeek,
-              buttonText: '',
-            ),
-            ProductCardDealsSlider(
-              productsList: dummyDealsOfTheWeekProductList,
-            ),
-            TitleWithTextButton(
-              onPressed: () {},
               title: 'Listview Stack',
               buttonText: AppStrings.collectionTitleRightButton,
             ),
@@ -71,7 +63,6 @@ class HomeScreen extends StatelessWidget {
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
-            // const SizedBox(height: 15),
             TitleWithTextButton(
               onPressed: () {},
               title: 'Listview Horizontal Mini',
@@ -84,7 +75,14 @@ class HomeScreen extends StatelessWidget {
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
-            const SizedBox(height: 15),
+            TitleWithTextButton(
+              onPressed: () {},
+              title: AppStrings.dealsOfTheWeek,
+              buttonText: '',
+            ),
+            ProductCardDealsSlider(
+              productsList: dummyDealsOfTheWeekProductList,
+            ),
             TitleWithTextButton(
               onPressed: () {},
               title: 'Listview Horizontal Detailed',

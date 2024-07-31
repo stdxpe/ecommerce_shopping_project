@@ -1,6 +1,9 @@
 /// TODO: Delete
 // ignore_for_file: unused_import
 
+import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
+import 'package:ecommerce_shopping_project/ui/screens/shimmer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -60,14 +63,17 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
-      // homeScreen: SplashScreen(),
+      homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      homeScreen: MainScreen(),
+      // homeScreen: MainScreen(),
+      // homeScreen: ShimmerScreen(),
+      // homeScreen: AnimationScreen(),
+      // homeScreen: AnimationScreen2(),
       // homeScreen: HomeScreen(onPressed: () {}),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
@@ -98,6 +104,7 @@ class RootApp extends StatelessWidget {
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations
+      /// TODO: Video BG Splash Screen
     );
   }
 }

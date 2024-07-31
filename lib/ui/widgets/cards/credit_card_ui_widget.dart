@@ -10,10 +10,10 @@ class CreditCardVisualModel extends StatelessWidget {
     this.paddingMain = Constants.kButtonPaddingHorizontal,
     this.aspectRatioHorizontalToVertical = 1.5846394984,
     this.aspectRatioVerticalToHorizontal = 0.6310583581,
-    // required this.index,
+    required this.index,
   });
 
-  // final int index;
+  final int index;
   final double? paddingMain;
   final double? aspectRatioVerticalToHorizontal;
   final double? aspectRatioHorizontalToVertical;
@@ -27,7 +27,8 @@ class CreditCardVisualModel extends StatelessWidget {
       clipBehavior: Clip.none,
       // color: Colors.green.withOpacity(0.5),
       child: CreditCardWidget(
-        backgroundImage: AppImages.creditCardBackground2,
+        // backgroundImage: AppImages.creditCardBackground2,
+        backgroundImage: 'assets/images/digital_wallet/wallet-$index.jpg',
         // backgroundImage: 'assets/images/credit_card_bg.jpg',
         // backgroundImage: 'assets/images/credit_card_bg.png',
 

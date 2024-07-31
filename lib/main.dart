@@ -63,14 +63,14 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
-      homeScreen: SplashScreen(),
+      // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      // homeScreen: MainScreen(),
+      homeScreen: MainScreen(),
       // homeScreen: ShimmerScreen(),
       // homeScreen: AnimationScreen(),
       // homeScreen: AnimationScreen2(),

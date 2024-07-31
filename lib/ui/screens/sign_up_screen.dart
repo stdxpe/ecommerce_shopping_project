@@ -62,6 +62,9 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 75.h),
                 SwitchCheckboxMain(
+                  checkedColor: ColorPalette.permaBlackColor,
+                  uncheckedColor: ColorPalette.sheetBackground,
+                  isChecked: true,
                   text: TextCustom(
                     text: AppStrings.signUpScreenCheckboxPolicy,
                     textStyle: context.textTheme.labelSmall!,

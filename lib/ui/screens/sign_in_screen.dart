@@ -54,6 +54,9 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 74.h),
                 SwitchCheckboxMain(
+                  checkedColor: ColorPalette.permaBlackColor,
+                  uncheckedColor: ColorPalette.sheetBackground,
+                  isChecked: true,
                   text: TextCustom(
                     text: AppStrings.signInScreenCheckboxRememberMe,
                     textStyle: context.textTheme.labelSmall!,

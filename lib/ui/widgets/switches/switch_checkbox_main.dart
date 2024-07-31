@@ -48,8 +48,10 @@ class _SwitchCheckboxMainState extends State<SwitchCheckboxMain> {
                 size: 60.h,
                 value: widget.isChecked!,
                 colorConfig: MSHColorConfig.fromCheckedUncheckedDisabled(
-                  checkedColor: context.colorPalette.text,
-                  uncheckedColor: context.colorPalette.scaffoldBackground,
+                  checkedColor:
+                      widget.checkedColor ?? context.colorPalette.text,
+                  uncheckedColor: widget.uncheckedColor ??
+                      context.colorPalette.scaffoldBackground,
                   disabledColor: context.colorPalette.text,
                 ),
                 style: MSHCheckboxStyle.stroke,

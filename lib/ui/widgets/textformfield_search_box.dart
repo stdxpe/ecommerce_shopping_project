@@ -70,7 +70,7 @@ class TextformfieldSearchBox extends StatelessWidget {
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 width: 0,
                 style: BorderStyle.none,
               ),

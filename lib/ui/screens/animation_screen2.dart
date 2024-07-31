@@ -13,15 +13,15 @@ class _AnimationScreen2State extends State<AnimationScreen2> {
   bool _showFrontSide = true;
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 1;
-    bool isPlayOn = true;
+    // int currentIndex = 1;
+    // bool isPlayOn = true;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
             _showFrontSide = !_showFrontSide;
           });
-          print(_showFrontSide);
+          // print(_showFrontSide);
         },
       ),
       backgroundColor: Colors.red,
@@ -42,7 +42,7 @@ class _AnimationScreen2State extends State<AnimationScreen2> {
           child: AnimatedSwitcher(
         duration: 500.ms,
         child: _showFrontSide
-            ? _Card(1).animate(
+            ? const _Card(1).animate(
                 // target: 0,
                 onComplete: (controller) {
                   setState(() {
@@ -54,7 +54,7 @@ class _AnimationScreen2State extends State<AnimationScreen2> {
                 begin: 0,
                 end: 0.5,
               )
-            : _Card(2)
+            : const _Card(2)
                 // _Card(_showFrontSide ? 1 : 2)
                 .animate(
                   // target: 0,
@@ -142,7 +142,7 @@ Widget _buildCarousel() {
 }
 
 class _Card extends StatelessWidget {
-  const _Card(this.index, {super.key});
+  const _Card(this.index);
   final int index;
 
   @override
@@ -163,7 +163,7 @@ class _Card extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Center(child: Text('Credit Card')),
+          child: const Center(child: Text('Credit Card')),
         ),
       ),
     );

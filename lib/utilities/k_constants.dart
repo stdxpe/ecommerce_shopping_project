@@ -56,7 +56,6 @@ abstract class Constants {
   static const double kCollectionDetailsScreenSpacingBTWItemsVertical = 50;
 
   /// Profile Screen Related
-  /// TODO: HERE
   static const double kProfileCardPaddingVertical = 25;
   static const double kProfileCardPaddingHorizontal = 30;
   static const double kProfileCardSpacingBTWItemsVertical = 20;
@@ -83,12 +82,6 @@ abstract class Constants {
   static const double kDialogPopupPaddingButtonBottom = 70;
   static const double kDialogPopupSpacingBTWButtonsVertical = 30;
   static const double kDialogPopupSpacingBTWTextVertical = 67;
-
-  /// Font Heights
-  /// TODO: HERE?
-  static const double kPaddingCardFontHeightPrimary = 46;
-  static const double kPaddingCardFontHeightSecondary = 37;
-  static const double kPaddingCardFontHeightTertiary = 35;
 
   /// GLOBAL BORDER RADIUSSES
   static const double kRadiusButtonMain = 100;

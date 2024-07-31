@@ -73,10 +73,11 @@ class _DarkTransitionState extends State<DarkTransition>
   Offset position = Offset.zero;
 
   ThemeData getTheme(bool dark) {
-    if (dark)
+    if (dark) {
       return AppTheme.dark;
-    else
+    } else {
       return AppTheme.light;
+    }
   }
 
   @override
@@ -111,10 +112,11 @@ class _DarkTransitionState extends State<DarkTransition>
 
   void _updateRadius() {
     final size = MediaQuery.of(context).size;
-    if (widget.radius == null)
+    if (widget.radius == null) {
       radius = _radius(size);
-    else
+    } else {
       radius = widget.radius!;
+    }
   }
 
   @override

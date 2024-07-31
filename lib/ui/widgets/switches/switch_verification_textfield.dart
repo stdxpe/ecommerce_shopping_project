@@ -8,11 +8,11 @@ class SwitchVerificationTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return const Stack(
       children: [
-        Container(
+        SizedBox(
           // color: Colors.red.withOpacity(0.5),
-          child: const TextformfieldMain(
+          child: TextformfieldMain(
             autoFocus: true,
             text: '',
             textInputType: TextInputType.number,
@@ -20,7 +20,7 @@ class SwitchVerificationTextField extends StatelessWidget {
             textColor: Colors.transparent,
           ),
         ),
-        const SwitchVerificationCodeDots(
+        SwitchVerificationCodeDots(
           currentIndex: 1,
           itemCount: 4,
         ),

@@ -24,7 +24,7 @@ class AnimationScreen extends StatelessWidget {
                 )
                 .fade(duration: 1.seconds)
                 .fadeIn(duration: 1.seconds),
-            Text("Hello")
+            const Text("Hello")
                 .animate(
                   delay:
                       1000.ms, // this delay only happens once at the very start
@@ -39,15 +39,21 @@ class AnimationScreen extends StatelessWidget {
               children: AnimateList(
                 interval: 400.ms,
                 effects: [FadeEffect(duration: 300.ms)],
-                children: [Text("Hello"), Text("World"), Text("Goodbye")],
+                children: [
+                  const Text("Hello"),
+                  const Text("World"),
+                  const Text("Goodbye")
+                ],
               ),
             ),
 
 // or shorthand:
             Column(
-              children: [Text("Hello"), Text("World"), Text("Goodbye")]
-                  .animate(interval: 400.ms)
-                  .fade(duration: 300.ms),
+              children: [
+                const Text("Hello"),
+                const Text("World"),
+                const Text("Goodbye")
+              ].animate(interval: 400.ms).fade(duration: 300.ms),
             ),
             Text(
               "Shopping Cart",

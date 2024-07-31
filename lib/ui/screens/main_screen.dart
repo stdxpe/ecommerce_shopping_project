@@ -27,7 +27,7 @@ class MainScreen extends StatelessWidget {
         const WishlistScreen(),
         // const ProfileScreen(),
         /// TODO: Dark Mode mess here?
-        DarkSample(),
+        const DarkSample(),
       ];
     }
 

@@ -1,5 +1,5 @@
 import 'package:ecommerce_shopping_project/models/collection.dart';
-import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 Collection dummyCollection1 = Collection(
@@ -30,5 +30,14 @@ List<Collection> dummyCollections = [
     products: [
       dummyProducts[0],
     ],
-  )
+  ),
+  Collection(
+    id: '0000',
+    title: 'Spring Collection',
+    subtitle: 'Up to 20% Off',
+    photo: AppImages.productImage11,
+    products: [
+      dummyProducts[0],
+    ],
+  ),
 ];

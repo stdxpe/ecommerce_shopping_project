@@ -1,17 +1,15 @@
 /// TODO: Delete
 // ignore_for_file: unused_import, prefer_const_constructors
 
-import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
-import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
-import 'package:ecommerce_shopping_project/ui/screens/shimmer_screen.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
@@ -31,6 +29,7 @@ import 'package:ecommerce_shopping_project/ui/screens/profile_edit_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/search_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/shimmer_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shipping_addresses_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shopping_cart_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/sign_in_screen.dart';
@@ -43,6 +42,7 @@ import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/utilities/screen_util_setup.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

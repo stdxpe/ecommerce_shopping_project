@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/latest/dummy_orders.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_orders.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_tracking_order_stepper.dart';

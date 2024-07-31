@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_summary.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';

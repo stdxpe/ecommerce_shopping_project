@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/latest/dummy_collections.dart';
-import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_collections.dart';
+import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stack.dart';

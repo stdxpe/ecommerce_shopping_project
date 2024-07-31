@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_orders_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_orders.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_order_card_horizontal.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
@@ -23,7 +23,7 @@ class OrdersScreen extends StatelessWidget {
               itemCount: 2,
             ),
             VerticalListviewOrderCardHorizontal(
-              ordersList: dummyOrdersList,
+              ordersList: dummyOrders,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsVertical,

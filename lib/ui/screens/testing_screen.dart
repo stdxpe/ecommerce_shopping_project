@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dismissible_delete_widget.dart';
@@ -36,7 +36,7 @@ class TestingScreen extends StatelessWidget {
                   clipBehavior: Clip.none,
                   // itemExtent: 200.h + paddingBetweenElements.w,
 
-                  itemCount: dummyProductList.length,
+                  itemCount: dummyProducts.length,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
                     return DismissibleDeleteWidget(
@@ -49,7 +49,7 @@ class TestingScreen extends StatelessWidget {
                           right: paddingMain.w,
                         ),
                         child: ProductCardHorizontalMini(
-                          product: dummyProductList[index],
+                          product: dummyProducts[index],
                           // isCardElevated: false,
                           useSoftShadow: true,
                           cardWidth: 1.sw,

@@ -1,5 +1,5 @@
 /// TODO: Delete
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';

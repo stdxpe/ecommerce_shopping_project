@@ -38,6 +38,7 @@ class VerticalListviewReviewCard extends StatelessWidget {
                 productRating: currentItem.productRating,
                 createdAt: currentItem.createdAt,
                 text: currentItem.text,
+                product: currentItem.product,
               ),
             ),
           );

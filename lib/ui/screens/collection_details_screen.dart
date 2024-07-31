@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -64,7 +64,7 @@ class CollectionDetailsScreen extends StatelessWidget {
             SizedBox(height: Constants.kDetailsScreenSpacingBTWItemsVertical.h),
             GridviewProductCardVertical(
               // isCardElevated: false,
-              productsList: dummyProductList,
+              productsList: dummyProducts,
               itemCountOnRow: 3,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
@@ -26,7 +26,7 @@ class WishlistScreen extends StatelessWidget {
               dismissibleEnabled: true,
               // isCardElevated: false,
               useSoftShadow: true,
-              productsList: dummyProductShortList,
+              productsList: dummyProducts,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,

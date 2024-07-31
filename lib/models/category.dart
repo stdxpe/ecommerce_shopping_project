@@ -1,6 +1,6 @@
 import 'package:ecommerce_shopping_project/models/product.dart';
 
-class Collection {
+class Category {
   final String id;
   final String title;
   final String subtitle;
@@ -10,7 +10,7 @@ class Collection {
   /// TODO: List<Product> or List<String> ??
   final List<Product> products;
 
-  Collection({
+  Category({
     required this.id,
     required this.title,
     required this.subtitle,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_collection_list.dart';
-import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_collections.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stack.dart';
@@ -29,19 +29,19 @@ class DiscoverScreen extends StatelessWidget {
             CollectionCardStack(
               onPressed: () {},
               textColor: Colors.white,
-              collection: dummyCollectionList[0],
+              collection: dummyCollections[0],
             ),
             SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
             StaggeredGridCardComponentLeft(
               onPressed: () {},
-              productList: dummyProductList,
+              productList: dummyProducts,
             ),
             SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
             CollectionCardAlternate(
               onPressed: () {},
               cardHeight: context.mediaQuery.size.height * 0.6,
               textColor: Colors.black,
-              collection: dummyCollectionList[3],
+              collection: dummyCollections[1],
             ),
           ],
         ),

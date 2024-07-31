@@ -1,7 +1,7 @@
+import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_product_list.dart';
-import 'package:ecommerce_shopping_project/models/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
@@ -46,7 +46,8 @@ class HomeScreen extends StatelessWidget {
             ),
             HorizontalListviewProductCardVerticalAlternate(
               isCardElevated: false,
-              productsList: dummyProductList,
+              // productsList: dummyProductShortList,
+              productsList: dummyProducts,
               cardWidth: 400,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -58,7 +59,7 @@ class HomeScreen extends StatelessWidget {
             ),
             HorizontalListviewProductCardHorizontal(
               // isCardElevated: false,
-              productsList: dummyProductList,
+              productsList: dummyProducts,
               cardWidth: 700,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
@@ -71,7 +72,7 @@ class HomeScreen extends StatelessWidget {
             ),
             VerticalListviewProductCardHorizontalMini(
               // isCardElevated: false,
-              productsList: dummyProductShortList,
+              productsList: dummyProducts,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -82,7 +83,9 @@ class HomeScreen extends StatelessWidget {
               buttonText: '',
             ),
             ProductCardDealsSlider(
-              productsList: dummyDealsOfTheWeekProductList,
+              /// HERE
+              // productsList: dummyDealsOfTheWeekProductList,
+              productsList: dummyProducts,
             ),
             TitleWithTextButton(
               onPressed: () {},
@@ -92,7 +95,7 @@ class HomeScreen extends StatelessWidget {
             VerticalListviewProductCardHorizontalDetailed(
               useItemCounter: false,
               isCardElevated: false,
-              productsList: dummyProductShortList,
+              productsList: dummyProducts,
               cardHeight: 300,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -104,7 +107,7 @@ class HomeScreen extends StatelessWidget {
             ),
             HorizontalListviewProductCardVertical(
               // isCardElevated: false,
-              productsList: dummyProductList,
+              productsList: dummyProducts,
               itemCountOnRow: 2,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -115,7 +118,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardStack(
-              productsList: dummyProductList,
+              productsList: dummyProducts,
               cardWidth: 500,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -127,7 +130,7 @@ class HomeScreen extends StatelessWidget {
             ),
             GridviewProductCardVertical(
               isCardElevated: false,
-              productsList: dummyProductList,
+              productsList: dummyProducts,
               itemCountOnRow: 3,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,

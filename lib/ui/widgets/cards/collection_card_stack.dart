@@ -34,7 +34,7 @@ class CollectionCardStack extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                collection.imageUrl,
+                collection.photo,
               ),
             ),
             borderRadius: BorderRadius.circular(

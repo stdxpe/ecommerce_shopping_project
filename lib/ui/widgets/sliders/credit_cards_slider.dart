@@ -6,7 +6,9 @@ import 'package:ecommerce_shopping_project/ui/widgets/cards/credit_card_ui_widge
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class CreditCardsSlider extends StatelessWidget {
-  const CreditCardsSlider({super.key});
+  const CreditCardsSlider({super.key, this.onIndexChanged});
+
+  final Function(int cardIndex)? onIndexChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class CreditCardsSlider extends StatelessWidget {
       height: creditCardHeight + 160.h,
 
       child: Swiper(
+        onTap: (index) {},
         allowImplicitScrolling: false,
         outer: true,
         index: 0,
@@ -34,7 +37,9 @@ class CreditCardsSlider extends StatelessWidget {
         viewportFraction: (creditCardWidth / size.width),
         scale: 0.85,
         duration: 750,
-        onIndexChanged: (index) {},
+        onIndexChanged: (index) {
+          onIndexChanged!(index);
+        },
         itemBuilder: (BuildContext context, int index) {
           return Align(
             alignment: Alignment.center,

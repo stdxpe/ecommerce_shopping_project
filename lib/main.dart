@@ -4,6 +4,7 @@
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shimmer_screen.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -70,7 +71,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      homeScreen: MainScreen(),
+      // homeScreen: MainScreen(),
+      homeScreen: BackgroundChangerCreditCardsSlider(),
       // homeScreen: ShimmerScreen(),
       // homeScreen: AnimationScreen(),
       // homeScreen: AnimationScreen2(),

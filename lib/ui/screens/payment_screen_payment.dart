@@ -48,7 +48,7 @@ class PaymentScreenPayment extends StatelessWidget {
                       ),
 
                     /// CREDIT CARDS SLIDER
-                    const CreditCardsSlider(),
+                    CreditCardsSlider(),
 
                     Padding(
                       padding: EdgeInsets.symmetric(

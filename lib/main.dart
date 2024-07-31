@@ -1,6 +1,7 @@
 /// TODO: Delete
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:ecommerce_shopping_project/models/latest/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/animation_screen2.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shimmer_screen.dart';
@@ -71,8 +72,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      // homeScreen: MainScreen(),
-      homeScreen: BackgroundChangerCreditCardsSlider(),
+      homeScreen: MainScreen(),
       // homeScreen: ShimmerScreen(),
       // homeScreen: AnimationScreen(),
       // homeScreen: AnimationScreen2(),
@@ -80,8 +80,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
-      // homeScreen:
-      //     CollectionDetailsScreen(product: dummyDealsOfTheWeekProductList[1]),
+      // homeScreen: CollectionDetailsScreen(product: dummyProducts[1]),
       // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
       // homeScreen: PaymentScreenPageview(),
@@ -91,6 +90,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: BottomSheetFeatureSelector(),
       // homeScreen: TestScreen(),
       // homeScreen: TestingScreen(),
+      // homeScreen: BackgroundChangerCreditCardsSlider(),
 
       // homeScreen: DarkSample(),
       // homeScreen: ProfileScreen(),

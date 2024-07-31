@@ -8,7 +8,6 @@ class BackgroundChangerCreditCardsSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int outCurrentIndex = 0;
     // HSLColor color = HSLColor.fromColor(_accounts[_selectedIndex].color);
 
     List rawColorsList = [
@@ -18,7 +17,8 @@ class BackgroundChangerCreditCardsSlider extends StatelessWidget {
       const Color(0xFF073C96),
       const Color(0xFFBC5A22),
     ];
-    Color rawColor = Color(0xFF6B1B9C);
+    // Color rawColor = Color(0xFF6B1B9C);
+    Color rawColor = rawColorsList[1];
     HSLColor color = HSLColor.fromColor(rawColor);
     // color: Color(0xFF3A8F07),
     // color: Color(0xFF6B1B9C),

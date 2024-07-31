@@ -38,7 +38,7 @@ class CreditCardsSlider extends StatelessWidget {
         scale: 0.85,
         duration: 750,
         onIndexChanged: (index) {
-          onIndexChanged!(index);
+          // onIndexChanged!(index);
         },
         itemBuilder: (BuildContext context, int index) {
           return Align(

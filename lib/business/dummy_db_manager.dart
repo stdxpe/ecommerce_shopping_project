@@ -8,7 +8,7 @@ class DummyDbManager extends IDBRepository {
 
   @override
   Future<List<Product>> getAllProducts() {
-    print('DummyDbManager getAllProducts() Executed: "Waiting 2 seconds..."');
+    print('DummyDbManager getAllProducts() Executed');
     var allProducts = _dbService.getAllProducts();
     return allProducts;
   }

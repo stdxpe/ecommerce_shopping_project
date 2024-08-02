@@ -25,7 +25,7 @@ class ButtonMain extends StatelessWidget {
     super.key,
   });
 
-  final Function onPressed;
+  final Function() onPressed;
   final String text;
   final Color? backgroundColor;
   final Color? foregroundColor;

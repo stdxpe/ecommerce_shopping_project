@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
     this.useShadow = false,
     this.useTitle = false,
     this.useSearchButton = true,
+    this.tabController,
   });
 
   final bool? automaticallyImplyLeading;
@@ -23,6 +25,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   final bool? useTitle;
   final bool? useSearchButton;
   final Function()? onPressedBackButtonAlternate;
+  final PersistentTabController? tabController;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,10 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
                 screen: const SearchScreen(),
                 withNavBar: true,
               );
+              // tabController!.jumpToTab(1);
+
+              // PersistentNavBarNavigator.popUntilFirstScreenOnSelectedTabScreen(
+              //     context);
             },
           ),
       ],

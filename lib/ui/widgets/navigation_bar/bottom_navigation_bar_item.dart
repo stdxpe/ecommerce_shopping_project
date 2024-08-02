@@ -10,18 +10,19 @@ class CustomBottomNavigationBarItem {
     required Widget icon,
     required Color activeColor,
     required Color inactiveColor,
-    bool? withNavBar = true,
     Function? onPressed,
   }) {
     return PersistentBottomNavBarItem(
+      scrollToTopOnNavBarItemPress: true,
+      // onSelectedTabPressWhenNoScreensPushed: () {},
       icon: icon,
       title: title,
       activeColorPrimary: activeColor,
       inactiveColorPrimary: inactiveColor,
-      routeAndNavigatorSettings: routeAndNavigatorSettings,
-      onPressed: (withNavBar == false)
+      // routeAndNavigatorSettings: routeAndNavigatorSettings,
+      onPressed: (onPressed != null)
           ? (ctx) {
-              onPressed!();
+              onPressed();
             }
           : null,
     );

@@ -10,11 +10,12 @@ import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
 RouteAndNavigatorSettings routeAndNavigatorSettings = RouteAndNavigatorSettings(
   initialRoute: "/home",
   routes: {
-    "/home": (final context) => HomeScreen(onPressed: () {}),
-    "/discover": (final context) => const DiscoverScreen(),
-    "/shoppingcart": (final context) => const ShoppingCartScreen(),
-    "/wishlist": (final context) => const WishlistScreen(),
-    "/profile": (final context) => const ProfileScreen(),
-    "/search": (final context) => const SearchScreen(),
+    "/home": (context) => HomeScreen(onPressed: () {}),
+    "/discover": (context) => const DiscoverScreen(),
+    "/shoppingcart": (context) =>
+        ShoppingCartScreen(menuScreenContext: context),
+    "/wishlist": (context) => const WishlistScreen(),
+    "/profile": (context) => const ProfileScreen(),
+    "/search": (context) => const SearchScreen(),
   },
 );

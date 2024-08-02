@@ -10,11 +10,13 @@ class DismissibleDeleteWidget extends StatefulWidget {
     this.uniqueKey,
     super.key,
     this.dismissibleEnabled = false,
+    this.onDismissed,
   });
 
   final bool? dismissibleEnabled;
   final Widget child;
   final String? uniqueKey;
+  final Function()? onDismissed;
 
   @override
   State<DismissibleDeleteWidget> createState() =>
@@ -76,6 +78,7 @@ class _DismissibleDeleteWidgetState extends State<DismissibleDeleteWidget> {
                   ResizeRequest(const Duration(milliseconds: 100), () {
                     /// TODO: Remove from the DB List
                     /// Write the code to really remove the widget from the tree.
+                    if (widget.onDismissed != null) widget.onDismissed!();
                   }),
                   duration: const Duration(milliseconds: 100),
                   curve: Curves.bounceIn,

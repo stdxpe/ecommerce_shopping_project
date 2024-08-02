@@ -8,11 +8,13 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class DialogPopupPaymentResult extends StatelessWidget {
   final double cardHeight;
   final double cardWidth;
+  final Function() onPressed;
 
   const DialogPopupPaymentResult({
     required this.cardHeight,
     required this.cardWidth,
     super.key,
+    required this.onPressed,
   });
 
   @override
@@ -62,7 +64,9 @@ class DialogPopupPaymentResult extends StatelessWidget {
           ),
           SizedBox(height: Constants.kDialogPopupSpacingBTWTextVertical.h),
           ButtonMain(
-            onPressed: () {},
+            onPressed: () {
+              onPressed();
+            },
             text: AppStrings.paymentScreenResultMessageButton,
             paddingHorizontal: Constants.kDialogPopupPaddingButtonHorizontal.w,
             paddingVertical: 0,

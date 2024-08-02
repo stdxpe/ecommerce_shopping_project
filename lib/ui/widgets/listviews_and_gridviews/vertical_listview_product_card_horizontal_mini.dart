@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping_project/ui/widgets/card_placeholder.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,15 +17,19 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
     required this.paddingMain,
     required this.paddingBetweenElements,
     this.dismissibleEnabled = false,
+    this.useShimmer = false,
+    this.onDismissed,
   });
 
   final List<Product> productsList;
   final double cardHeight;
   final bool? isCardElevated;
   final bool? useSoftShadow;
+  final bool? useShimmer;
   final double paddingMain;
   final double paddingBetweenElements;
   final bool? dismissibleEnabled;
+  final Function(int index)? onDismissed;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +43,10 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
       // itemExtent: cardHeight.h + paddingBetweenElements.w,
       itemBuilder: (context, index) {
         return DismissibleDeleteWidget(
+          onDismissed: () {
+            if (onDismissed != null) onDismissed!(index);
+          },
+
           /// TODO: UNIQUE KEY TO BE CHANGED with Product ID's.
           uniqueKey: '$index',
           dismissibleEnabled: dismissibleEnabled,
@@ -47,13 +57,18 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
               left: paddingMain.w,
               right: paddingMain.w,
             ),
-            child: ProductCardHorizontalMini(
-              product: productsList[index],
-              isCardElevated: isCardElevated,
-              useSoftShadow: useSoftShadow,
-              cardWidth: 1.sw,
-              cardHeight: cardHeight,
-            ),
+            child: useShimmer!
+                ? CardPlaceholder(
+                    cardHeight: 200,
+                    cardWidth: context.mediaQuery.size.width,
+                  )
+                : ProductCardHorizontalMini(
+                    product: productsList[index],
+                    isCardElevated: isCardElevated,
+                    useSoftShadow: useSoftShadow,
+                    cardWidth: 1.sw,
+                    cardHeight: cardHeight,
+                  ),
           ),
         );
       },

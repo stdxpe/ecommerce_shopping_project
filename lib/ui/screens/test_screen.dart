@@ -7,8 +7,12 @@ import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class TestScreen extends StatelessWidget {
-  const TestScreen({super.key});
+  const TestScreen({
+    super.key,
+    required this.onPressed,
+  });
 
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
@@ -26,6 +30,9 @@ class TestScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(Constants.kRadiusDialogPopups.r),
         ),
         title: DialogPopupPaymentResult(
+          onPressed: () {
+            onPressed();
+          },
           cardHeight: context.mediaQuery.size.height * 0.5,
           cardWidth: context.mediaQuery.size.width * 0.75,
         ),

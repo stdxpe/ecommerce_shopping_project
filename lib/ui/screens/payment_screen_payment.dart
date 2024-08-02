@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_screen_bg_color_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_method.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/test_bg.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class PaymentScreenPayment extends StatelessWidget {
-  const PaymentScreenPayment({
+  PaymentScreenPayment({
     super.key,
     required this.onPressed,
     this.isCreateNewCardMode = false,
@@ -24,6 +27,7 @@ class PaymentScreenPayment extends StatelessWidget {
   final Function()? onPressedSave;
   final Function()? onPressedDelete;
 
+  int creditCardIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +52,21 @@ class PaymentScreenPayment extends StatelessWidget {
                       ),
 
                     /// CREDIT CARDS SLIDER
-                    CreditCardsSlider(),
+                    Consumer(
+                      builder: (context, ref, child) => CreditCardsSlider(
+                        onIndexChanged: (cardIndex) {
+                          print('CardIndex: $cardIndex');
+                          creditCardIndex = cardIndex;
+                          print('creditCardIndex: $creditCardIndex');
+                          ref
+                              .read(colorIndexProvider.notifier)
+                              .isAnimationStarted(result: true);
+                          ref
+                              .read(colorIndexProvider.notifier)
+                              .changeColor(cardIndex);
+                        },
+                      ),
+                    ),
 
                     Padding(
                       padding: EdgeInsets.symmetric(

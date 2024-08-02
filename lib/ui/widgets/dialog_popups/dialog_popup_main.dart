@@ -51,6 +51,7 @@ class DialogPopupMain extends StatelessWidget {
           borderRadius: BorderRadius.circular(Constants.kRadiusDialogPopups.r),
         ),
         title: DialogPopupPaymentResult(
+          onPressed: () {},
           cardHeight: context.mediaQuery.size.height * 0.5,
           cardWidth: context.mediaQuery.size.width * 0.75,
         ),

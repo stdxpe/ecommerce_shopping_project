@@ -1,16 +1,12 @@
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_product_short_list.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/product_list_async_value_provider.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/tab_controller_provider.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/card_placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/product_list_async_value_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class WishlistScreen extends ConsumerWidget {
   const WishlistScreen({
@@ -31,9 +27,7 @@ class WishlistScreen extends ConsumerWidget {
           // .getWishlistProducts();
         },
       ),
-      appBar: AppBarMain(
-        tabController: ref.watch(tabControllerProvider),
-      ),
+      appBar: const AppBarMain(),
       body: ListView(
         padding: EdgeInsets.zero,
         physics: const ClampingScrollPhysics(),

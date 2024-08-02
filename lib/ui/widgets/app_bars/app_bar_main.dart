@@ -17,7 +17,6 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
     this.useShadow = false,
     this.useTitle = false,
     this.useSearchButton = true,
-    this.tabController,
   });
 
   final bool? automaticallyImplyLeading;
@@ -25,7 +24,6 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   final bool? useTitle;
   final bool? useSearchButton;
   final Function()? onPressedBackButtonAlternate;
-  final PersistentTabController? tabController;
 
   @override
   Widget build(BuildContext context) {

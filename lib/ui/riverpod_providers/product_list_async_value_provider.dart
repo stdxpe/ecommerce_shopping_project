@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/tab_controller_provider.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +9,7 @@ import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/ui/screens/test_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/test_screen.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final myAsyncNotifierProvider1 =
@@ -141,7 +140,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
             Navigator.of(context, rootNavigator: false).pop();
 
             /// TODO: Create riverpod ref for tab controller
-            // ref.watch(tabControllerProvider).jumpToTab(2);
+
             PersistentNavBarNavigator.pushNewScreen(
               pageTransitionAnimation: PageTransitionAnimation.fade,
               menuScreenContext,

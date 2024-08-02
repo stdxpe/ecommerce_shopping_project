@@ -1,5 +1,3 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/tab_controller_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -9,8 +7,8 @@ import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/shopping_cart_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/navigation_bar/bottom_navigation_bar_item.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/navigation_bar/bottom_navigation_bar_item.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class MainScreen extends ConsumerStatefulWidget {
@@ -22,31 +20,17 @@ class MainScreen extends ConsumerStatefulWidget {
 
 class _MainScreenState extends ConsumerState<MainScreen> {
   //  https://pub.dev/packages/persistent_bottom_nav_bar#custom-navigation-bar-styling
-
-  // late BuildContext menuScreenContext;
+  PersistentTabController tabController =
+      PersistentTabController(initialIndex: 0);
   int currentIndex = 0;
-  int handleVisibleNavBar() {
-    setState(() {
-      currentIndex = ref.watch(tabControllerProvider).index;
-    });
-
-    return currentIndex;
-  }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buildScreens(PersistentTabController controller) {
+    List<Widget> buildScreens() {
       return [
         HomeScreen(onPressed: () {}),
         const DiscoverScreen(),
-        ShoppingCartScreen(
-          menuScreenContext: context,
-          onPressed: () {
-            setState(() {
-              controller.jumpToTab(0);
-            });
-          },
-        ),
+        ShoppingCartScreen(menuScreenContext: context),
         WishlistScreen(
           menuScreenContext: context,
         ),
@@ -126,8 +110,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         },
 
         context,
-        controller: ref.watch(tabControllerProvider),
-        screens: buildScreens(ref.watch(tabControllerProvider)),
+        controller: tabController,
+        screens: buildScreens(),
         items: navBarsItems(),
         handleAndroidBackButtonPress: true, // Default is true.
         resizeToAvoidBottomInset:
@@ -136,7 +120,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         hideNavigationBarWhenKeyboardAppears: true,
         popBehaviorOnSelectedNavBarItemPress: PopBehavior.none,
         padding: const EdgeInsets.only(top: 0),
-        isVisible: handleVisibleNavBar() == 2 ? false : true,
+        isVisible: true,
         animationSettings: const NavBarAnimationSettings(
           navBarItemAnimation: ItemAnimationSettings(
             // Navigation Bar's items animation properties.

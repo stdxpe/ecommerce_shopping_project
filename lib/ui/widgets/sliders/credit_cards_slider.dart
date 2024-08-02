@@ -1,9 +1,14 @@
+import 'package:ecommerce_shopping_project/ui/widgets/test_bg.dart';
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/cards/credit_card_ui_widget.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+
+import '../../riverpod_providers/credit_card_screen_bg_color_provider.dart';
 
 class CreditCardsSlider extends StatelessWidget {
   const CreditCardsSlider({super.key, this.onIndexChanged});
@@ -25,29 +30,39 @@ class CreditCardsSlider extends StatelessWidget {
       // width: 1.sw,
       height: creditCardHeight + 160.h,
 
-      child: Swiper(
-        onTap: (index) {},
-        allowImplicitScrolling: false,
-        outer: true,
-        index: 0,
-        itemCount: 5,
-        // autoplay: true,
-        autoplayDelay: 3000,
-        // viewportFraction: 0.83,
-        viewportFraction: (creditCardWidth / size.width),
-        scale: 0.85,
-        duration: 750,
-        onIndexChanged: (index) {
-          // onIndexChanged!(index);
-        },
-        itemBuilder: (BuildContext context, int index) {
-          return Align(
-            alignment: Alignment.center,
-            child: CreditCardVisualModel(
-              index: index,
-            ),
-          );
-        },
+      child: Stack(
+        children: [
+          TestBg(),
+          // Consumer(
+          //   builder: (context, ref, child) {
+          //     return ref.read(colorIndexProvider.notifier).returnWidget();
+          //   },
+          // ),
+          Swiper(
+            onTap: (index) {},
+            allowImplicitScrolling: false,
+            outer: true,
+            index: 0,
+            itemCount: 5,
+            // autoplay: true,
+            autoplayDelay: 3000,
+            // viewportFraction: 0.83,
+            viewportFraction: (creditCardWidth / size.width),
+            scale: 0.85,
+            duration: 750,
+            onIndexChanged: (index) {
+              onIndexChanged!(index);
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return Align(
+                alignment: Alignment.center,
+                child: CreditCardVisualModel(
+                  index: index,
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

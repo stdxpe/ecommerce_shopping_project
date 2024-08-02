@@ -57,6 +57,7 @@ dependencies:
 
   # Services
   get_it: ^7.7.0
+  flutter_riverpod: ^2.5.1
 
 
 

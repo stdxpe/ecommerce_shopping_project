@@ -2,6 +2,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_shopping_project/ui/screens/test_animations_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,14 +47,17 @@ import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/utilities/screen_util_setup.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  locatorGetItSetup();
+  dependencyInjectionGetItSetup();
   runApp(
     DevicePreview(
       // enabled: true, //!kReleaseMode,
       enabled: false, //!kReleaseMode,
-      builder: (context) => const RootApp(), // Wrap your app
+      builder: (context) => ProviderScope(
+        child: const RootApp(),
+      ), // Wrap your app
     ),
   );
   // runApp(const RootApp());
@@ -64,6 +68,7 @@ class RootApp extends StatelessWidget {
 
 // Loading bars
 // https://pub.dev/packages/loading_animation_widget
+// https://pub.dev/packages/pinput
   @override
   Widget build(BuildContext context) {
     return ScreenUtilSetup(
@@ -74,13 +79,14 @@ class RootApp extends StatelessWidget {
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      // homeScreen: MainScreen(),
+      // homeScreen: TestAnimationsScreen(),
+      homeScreen: MainScreen(),
       // homeScreen: HomeScreen(onPressed: () {}),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen: CollectionDetailsScreen(product: dummyProducts[1]),
-      homeScreen: WishlistScreen(),
+      // // // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
       // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),
@@ -102,14 +108,17 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// TODO: Theme riverpod
+      /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
-      /// TODO: ROUTING
+      /// TODO: ROUTING with Riverpod?
       /// TODO: Same Search Screen on every app bar search icon click //Locator Get_it
       /// TODO: Search functionality
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations
       /// TODO: Video BG Splash Screen
+      /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers
     );
   }
 }

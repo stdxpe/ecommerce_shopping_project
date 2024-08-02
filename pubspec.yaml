@@ -1,6 +1,4 @@
-
 #############################################################################################################
-
 
 name: ecommerce_shopping_project
 description: "Complete ECommerce Shopping App Project with Flutter, Firebase Auth, Cloud Firestore, Firebase Storage and Hive"
@@ -15,9 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-
 #############################################################################################################
-
 
   flutter_screenutil: ^5.9.3              # Responsive & Adaptive Design
   get_it: ^7.7.0                          # Dependency Injection Service
@@ -54,9 +50,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-
 #############################################################################################################
-
 
   assets:
     - assets/images/
@@ -85,6 +79,5 @@ flutter:
           weight: 200
         - asset: assets/fonts/Inter-Thin.ttf
           weight: 100
- 
  
 ######################################################################################

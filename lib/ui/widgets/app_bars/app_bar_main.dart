@@ -16,18 +16,24 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
     this.useShadow = false,
     this.useTitle = false,
     this.useSearchButton = true,
+    this.useTransparentBackground = false,
+    this.appBarHeight = 120,
   });
 
   final bool? automaticallyImplyLeading;
   final bool? useShadow;
   final bool? useTitle;
   final bool? useSearchButton;
+  final bool? useTransparentBackground;
   final Function()? onPressedBackButtonAlternate;
+  final double? appBarHeight;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: context.colorPalette.appBarBackground,
+      backgroundColor: useTransparentBackground!
+          ? Colors.transparent
+          : context.colorPalette.appBarBackground,
       foregroundColor: context.colorPalette.appBarForeground,
       surfaceTintColor: context.colorPalette.appBarBackground,
       iconTheme: IconThemeData(
@@ -76,6 +82,6 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(120.h);
+  Size get preferredSize => Size.fromHeight(appBarHeight!.h);
   // Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

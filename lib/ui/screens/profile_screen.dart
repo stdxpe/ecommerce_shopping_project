@@ -29,6 +29,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: const AppBarMain(
         automaticallyImplyLeading: false,
         useSearchButton: false,
+        appBarHeight: 30,
       ),
       body: SafeArea(
         bottom: false,

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/double_button_add_or_fav.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/details_screen_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_stars.dart';
@@ -22,6 +23,12 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarMain(
+        automaticallyImplyLeading: true,
+        useSearchButton: false,
+        useShadow: true,
+      ),
+      extendBodyBehindAppBar: true,
       body: SafeArea(
         bottom: false,
         child: SizedBox(
@@ -36,7 +43,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   children: [
                     DetailsScreenSlider(
                       // imageHeight: 1426.h,
-                      imageHeight: context.mediaQuery.size.height * 0.58,
+                      imageHeight: context.mediaQuery.size.height * 0.54,
                       imagesList: [product.mainPhoto, ...product.photos],
                     ),
                     Padding(

@@ -14,7 +14,10 @@ class TrackingOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarMain(),
+      appBar: const AppBarMain(
+        automaticallyImplyLeading: true,
+        useSearchButton: false,
+      ),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.zero,

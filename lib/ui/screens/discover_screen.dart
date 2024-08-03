@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,6 +10,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stac
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_staggered.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:go_router/go_router.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -27,7 +29,14 @@ class DiscoverScreen extends StatelessWidget {
               title: AppStrings.discoverScreenTitle,
             ),
             CollectionCardStack(
-              onPressed: () {},
+              onPressed: () {
+                print('CollectionCardStack onPressed()');
+                print('RoutePath.profile.path: ${Routes.shoppingCart}');
+
+                // context.go(RoutePath.home.path);
+                context.push(Routes.shoppingCart);
+                // context.push(Routes.shoppingCart);
+              },
               textColor: Colors.white,
               collection: dummyCollections[0],
             ),

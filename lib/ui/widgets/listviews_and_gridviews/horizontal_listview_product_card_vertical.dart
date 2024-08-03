@@ -1,9 +1,11 @@
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:go_router/go_router.dart';
 
 class HorizontalListviewProductCardVertical extends StatelessWidget {
   const HorizontalListviewProductCardVertical({
@@ -58,6 +60,9 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.only(right: paddingBetweenElements.w),
             child: ProductCardVertical(
+              onPressed: () {
+                context.push(Routes.productDetails);
+              },
               product: productsList[index],
               cardWidth: cardTotalWidth,
               isCardElevated: isCardElevated,

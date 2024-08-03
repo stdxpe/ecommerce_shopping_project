@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,6 +9,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_sta
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_product_detail.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({
@@ -20,7 +22,6 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const AppBarMain(),
       body: SafeArea(
         bottom: false,
         child: SizedBox(
@@ -36,11 +37,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     DetailsScreenSlider(
                       // imageHeight: 1426.h,
                       imageHeight: context.mediaQuery.size.height * 0.58,
-                      imagesList: const [
-                        /// TODO: Images gotta come from Product model class.
-                        AppImages.productImage10,
-                        AppImages.productImage12,
-                      ],
+                      imagesList: [product.mainPhoto, ...product.photos],
                     ),
                     Padding(
                       padding: EdgeInsets.only(
@@ -57,7 +54,9 @@ class ProductDetailsScreen extends StatelessWidget {
                             droppedPrice: 108.99,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              context.push(Routes.reviews, extra: product);
+                            },
                             child: Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: Constants

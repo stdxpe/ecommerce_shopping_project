@@ -21,9 +21,7 @@ class WishlistScreen extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(myAsyncNotifierProvider1.notifier).updateProduct(
-                menuScreenContext: menuScreenContext!,
-              );
+          ref.read(myAsyncNotifierProvider1.notifier).updateProduct(context);
           // .getWishlistProducts();
         },
       ),

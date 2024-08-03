@@ -1,5 +1,7 @@
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
@@ -14,11 +16,9 @@ class ShoppingCartScreen extends StatelessWidget {
   const ShoppingCartScreen({
     super.key,
     this.onPressed,
-    required this.menuScreenContext,
   });
 
   final Function()? onPressed;
-  final BuildContext menuScreenContext;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,9 @@ class ShoppingCartScreen extends StatelessWidget {
         automaticallyImplyLeading: true,
         useSearchButton: false,
         onPressedBackButtonAlternate: () {
-          onPressed!();
+          // navigationShell.
+          context.pop();
+          // context.go(Routes.home);
         },
       ),
       body: SafeArea(

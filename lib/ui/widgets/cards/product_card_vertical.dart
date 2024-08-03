@@ -12,9 +12,11 @@ class ProductCardVertical extends StatelessWidget {
     required this.cardWidth,
     this.isCardElevated = false,
     this.maxLineCount = 1,
+    required this.onPressed,
   });
 
   final Product product;
+  final Function() onPressed;
   final double cardWidth;
   final bool? isCardElevated;
   final int? maxLineCount;
@@ -42,82 +44,87 @@ class ProductCardVertical extends StatelessWidget {
 
     return Align(
       alignment: Alignment.topCenter,
-      child: Container(
-        height: cardTotalHeight,
-        width: cardTotalWidth,
-        clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
-        decoration: BoxDecoration(
-          color: isCardElevated!
-              ? context.colorPalette.cardBackground
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(
-            isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
+      child: GestureDetector(
+        onTap: () {
+          onPressed();
+        },
+        child: Container(
+          height: cardTotalHeight,
+          width: cardTotalWidth,
+          clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
+          decoration: BoxDecoration(
+            color: isCardElevated!
+                ? context.colorPalette.cardBackground
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(
+              isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
+            ),
+            boxShadow: [
+              if (isCardElevated!)
+                BoxShadows.kBoxShadowProductCard(
+                  color: context.colorPalette.shadowPrimary,
+                ),
+            ],
           ),
-          boxShadow: [
-            if (isCardElevated!)
-              BoxShadows.kBoxShadowProductCard(
-                color: context.colorPalette.shadowPrimary,
-              ),
-          ],
-        ),
-        child: Column(
-          children: [
-            /// CARD IMAGE
-            Container(
-              clipBehavior: Clip.hardEdge,
-              height: cardTotalWidth,
-              width: cardTotalWidth,
-              decoration: BoxDecoration(
-                // color: Colors.green.withOpacity(0.5),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    product.mainPhoto,
-                  ),
-                ),
-                borderRadius: BorderRadius.circular(
-                  isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
-                ),
-                boxShadow: [
-                  if (isCardElevated == false)
-                    BoxShadows.kBoxShadowImage(
-                      color: context.colorPalette.shadowPrimary,
+          child: Column(
+            children: [
+              /// CARD IMAGE
+              Container(
+                clipBehavior: Clip.hardEdge,
+                height: cardTotalWidth,
+                width: cardTotalWidth,
+                decoration: BoxDecoration(
+                  // color: Colors.green.withOpacity(0.5),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      product.mainPhoto,
                     ),
-                ],
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
+                  ),
+                  boxShadow: [
+                    if (isCardElevated == false)
+                      BoxShadows.kBoxShadowImage(
+                        color: context.colorPalette.shadowPrimary,
+                      ),
+                  ],
+                ),
               ),
-            ),
 
-            /// CARD TEXT SECTION
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: paddingTextVertical,
-                horizontal: isCardElevated!
-                    ? Constants.kVerticalCardPaddingHorizontalIfElevated.w
-                    : Constants.kVerticalCardPaddingHorizontal.w,
+              /// CARD TEXT SECTION
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: paddingTextVertical,
+                  horizontal: isCardElevated!
+                      ? Constants.kVerticalCardPaddingHorizontalIfElevated.w
+                      : Constants.kVerticalCardPaddingHorizontal.w,
+                ),
+                height: textSectionHeight,
+                width: cardTotalWidth,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextCustom(
+                      text: product.title,
+                      textStyle: context.textTheme.bodyLarge!,
+                      color: context.colorPalette.cardTextPrimary,
+                      maxLines: maxLineCount,
+                      isHeightConstraintRelated: false,
+                    ),
+                    SizedBox(height: paddingTextBetween),
+                    TextCustom(
+                      text: '\$${product.price.toStringAsFixed(2)}',
+                      textStyle: context.textTheme.bodyMedium!,
+                      color: context.colorPalette.cardTextSecondary,
+                    ),
+                  ],
+                ),
               ),
-              height: textSectionHeight,
-              width: cardTotalWidth,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextCustom(
-                    text: product.title,
-                    textStyle: context.textTheme.bodyLarge!,
-                    color: context.colorPalette.cardTextPrimary,
-                    maxLines: maxLineCount,
-                    isHeightConstraintRelated: false,
-                  ),
-                  SizedBox(height: paddingTextBetween),
-                  TextCustom(
-                    text: '\$${product.price.toStringAsFixed(2)}',
-                    textStyle: context.textTheme.bodyMedium!,
-                    color: context.colorPalette.cardTextSecondary,
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

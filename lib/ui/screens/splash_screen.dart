@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -90,7 +92,9 @@ class SplashScreen extends StatelessWidget {
             ),
             SizedBox(height: 734.h),
             ButtonMain(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.signUp);
+              },
               text: AppStrings.signUpWithEmail,
               icon: Icon(Icons.mail, size: 48.h),
               backgroundColor:

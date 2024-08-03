@@ -152,6 +152,8 @@ class _TestAnimationsScreenState extends State<TestAnimationsScreen> {
   bool switchState = true;
   int selectedIndex = 0;
 
+  bool navBarVisible = true;
+
   Map<String, bool> boolSwitchList = {
     'boolSwitch0': false,
     'boolSwitch1': false,
@@ -259,12 +261,19 @@ class _TestAnimationsScreenState extends State<TestAnimationsScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          TestNavBar().animate(
+            onPlay: (controller) {
+              navBarVisible ? controller.stop() : controller.animateTo(1);
+              // navBarVisible ? controller.stop() : controller.forward(from: 0);
+            },
+          ).moveY(duration: 1000.ms, begin: 0, end: 50),
           SwitchCupertinoCustom(
-            switchState: switchState,
+            switchState: navBarVisible,
             onChanged: (state) {
               setState(() {
-                switchState = state;
+                navBarVisible = state;
               });
+              print('navBarHidden : $navBarVisible');
             },
           ),
           Text("Horrible Pulsing Text").animate(onPlay: (controller) {
@@ -317,6 +326,19 @@ class _TestAnimationsScreenState extends State<TestAnimationsScreen> {
           //     .swap(builder: (_, __) => Text("After").animate().fadeIn()),
         ],
       ),
+    );
+  }
+}
+
+class TestNavBar extends StatelessWidget {
+  const TestNavBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: context.mediaQuery.size.width,
+      color: Colors.white,
     );
   }
 }

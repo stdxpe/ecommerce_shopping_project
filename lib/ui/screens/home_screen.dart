@@ -15,9 +15,12 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_with_text_but
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, required this.onPressed});
+  const HomeScreen({
+    super.key,
+    // required this.onPressed,
+  });
 
-  final Function onPressed;
+  // final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  onPressed();
+                  // onPressed();
                 },
                 child: const BannerSlider()),
             TitleWithTextButton(

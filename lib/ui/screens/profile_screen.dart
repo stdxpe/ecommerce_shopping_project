@@ -102,7 +102,9 @@ class ProfileScreen extends StatelessWidget {
               icon: TablerIcons.code,
             ),
             ProfileCardButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.splash);
+              },
               buttonText: AppStrings.profileScreenButtonsListItemSignOut,
               icon: TablerIcons.logout,
               useBottomDivider: true,

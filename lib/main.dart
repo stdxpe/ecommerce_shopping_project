@@ -105,7 +105,6 @@ class RootApp extends StatelessWidget {
       /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality
-      /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations
       /// TODO: Video BG Splash Screen

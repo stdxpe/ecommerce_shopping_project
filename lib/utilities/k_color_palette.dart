@@ -35,7 +35,7 @@ abstract class ColorPalette {
   static const Color favoriteRed = Colors.red;
   static const Color textButtonGreen = Colors.green;
   static const Color ratedStarColor = Colors.amber;
-  static const Color unratedStarColor = Colors.black12;
+  static const Color unratedStarColor = Color(0xFFD9D9D9);
   static const Color dismissibleBg = Colors.red;
   static const Color dismissibleFg = Colors.white;
 

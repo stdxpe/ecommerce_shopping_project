@@ -1,7 +1,8 @@
-import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_collections.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
@@ -10,7 +11,6 @@ import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stac
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_staggered.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:go_router/go_router.dart';
 
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
@@ -29,28 +29,30 @@ class DiscoverScreen extends StatelessWidget {
               title: AppStrings.discoverScreenTitle,
             ),
             CollectionCardStack(
-              onPressed: () {
-                print('CollectionCardStack onPressed()');
-                print('RoutePath.profile.path: ${Routes.shoppingCart}');
-
-                // context.go(RoutePath.home.path);
-                context.push(Routes.shoppingCart);
-                // context.push(Routes.shoppingCart);
-              },
               textColor: Colors.white,
               collection: dummyCollections[0],
+              onPressed: () {
+                context.push(Routes.collectionDetails,
+                    extra: dummyCollections[0]);
+              },
             ),
             SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
             StaggeredGridCardComponentLeft(
-              onPressed: () {},
-              productList: dummyProducts,
+              collection: dummyCollections[1],
+              onPressed: () {
+                context.push(Routes.collectionDetails,
+                    extra: dummyCollections[1]);
+              },
             ),
             SizedBox(height: Constants.kMainSpacingBTWCardsHorizontal.h),
             CollectionCardAlternate(
-              onPressed: () {},
+              collection: dummyCollections[2],
+              onPressed: () {
+                context.push(Routes.collectionDetails,
+                    extra: dummyCollections[2]);
+              },
               cardHeight: context.mediaQuery.size.height * 0.6,
-              textColor: Colors.black,
-              collection: dummyCollections[1],
+              textColor: Colors.white,
             ),
           ],
         ),

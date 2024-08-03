@@ -8,7 +8,7 @@ Collection dummyCollection1 = Collection(
   subtitle: 'Catch the most fashionate trends of this autumn!',
   photo: AppImages.productImage10,
   products: [
-    // ...dummyProducts,
+    ...dummyProducts,
   ],
 );
 
@@ -19,25 +19,26 @@ List<Collection> dummyCollections = [
     subtitle: 'Catch the most fashionate trends of this autumn!',
     photo: AppImages.productImage10,
     products: [
-      dummyProducts[0],
+      // dummyProducts[0],
+      ...dummyProducts,
     ],
   ),
   Collection(
     id: '0000',
     title: 'Designer\'s Collection',
     subtitle: 'Awarded Designers of Paris Fashion Week \'24',
-    photo: AppImages.productImage13,
+    photo: AppImages.productImage11,
     products: [
-      dummyProducts[0],
+      ...dummyProducts,
     ],
   ),
   Collection(
     id: '0000',
     title: 'Spring Collection',
     subtitle: 'Up to 20% Off',
-    photo: AppImages.productImage11,
+    photo: AppImages.productImage13,
     products: [
-      dummyProducts[0],
+      ...dummyProducts,
     ],
   ),
 ];

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -12,11 +14,9 @@ class ProductCardVertical extends StatelessWidget {
     required this.cardWidth,
     this.isCardElevated = false,
     this.maxLineCount = 1,
-    required this.onPressed,
   });
 
   final Product product;
-  final Function() onPressed;
   final double cardWidth;
   final bool? isCardElevated;
   final int? maxLineCount;
@@ -46,7 +46,7 @@ class ProductCardVertical extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: GestureDetector(
         onTap: () {
-          onPressed();
+          context.push(Routes.productDetails, extra: product);
         },
         child: Container(
           height: cardTotalHeight,

@@ -13,12 +13,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ShoppingCartScreen extends StatelessWidget {
-  const ShoppingCartScreen({
-    super.key,
-    this.onPressed,
-  });
-
-  final Function()? onPressed;
+  const ShoppingCartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +22,7 @@ class ShoppingCartScreen extends StatelessWidget {
         automaticallyImplyLeading: true,
         useSearchButton: false,
         onPressedBackButtonAlternate: () {
-          // navigationShell.
           context.pop();
-          // context.go(Routes.home);
         },
       ),
       body: SafeArea(
@@ -66,12 +59,7 @@ class ShoppingCartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButtonsShoppingCart(
                   onPressed: () {
-                    PersistentNavBarNavigator.pushNewScreen(
-                      pageTransitionAnimation: PageTransitionAnimation.fade,
-                      context,
-                      screen: const PaymentScreenPageview(),
-                      withNavBar: false,
-                    );
+                    context.push(Routes.payment);
                   },
                   totalAmount: 210.99,
                   shippingFee: 5.99,

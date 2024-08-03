@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
@@ -11,10 +11,10 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class CollectionDetailsScreen extends StatelessWidget {
   const CollectionDetailsScreen({
     super.key,
-    required this.product,
+    required this.collection,
   });
 
-  final Product product;
+  final Collection collection;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,17 @@ class CollectionDetailsScreen extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage(
-                    product.mainPhoto,
+                    collection.photo,
                   ),
                 ),
               ),
             ),
             TitleMain(
-              title: 'Women\'s Collection',
-              itemCount: 13,
+              title: collection.title,
+              itemCount: collection.products.length,
               icon: Icons.tune,
+              // paddingHorizontal:
+              //     Constants.kDetailsScreenMainPaddingHorizontal.w,
               paddingTop: 77.h,
               paddingBottom: 77.h,
             ),
@@ -53,8 +55,7 @@ class CollectionDetailsScreen extends StatelessWidget {
                 horizontal: Constants.kDetailsScreenMainPaddingHorizontal.w,
               ),
               child: TextCustom(
-                text:
-                    'Maxwel welted sole  construction delivers exceptional and and durability, and is Maxwel welted sole ended construction and delivers exceptional durability, and',
+                text: collection.subtitle,
                 textStyle: context.textTheme.displayMedium!,
                 color: context.colorPalette.text,
                 maxLines: 3,

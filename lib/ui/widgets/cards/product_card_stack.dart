@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -10,19 +12,17 @@ class ProductCardStack extends StatelessWidget {
     super.key,
     required this.product,
     this.bottomText,
-    required this.onPressed,
     required this.cardWidth,
   });
   final Product product;
   final String? bottomText;
-  final Function onPressed;
   final double cardWidth;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onPressed();
+        context.push(Routes.productDetails, extra: product);
       },
       child: Align(
         child: Container(

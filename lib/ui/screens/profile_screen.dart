@@ -1,13 +1,15 @@
-import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:go_router/go_router.dart';
+import 'package:unicons/unicons.dart';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
-import 'package:unicons/unicons.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
@@ -41,19 +43,25 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 30.h),
             ProfileCardButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.orders);
+              },
               buttonText: AppStrings.profileScreenButtonsListItemOrders,
               // icon: Icons.shopping_bag_outlined,
               icon: UniconsLine.shopping_bag,
             ),
             ProfileCardButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.shippingAddresses);
+              },
               buttonText: AppStrings.profileScreenButtonsListItemAddresses,
               // icon: Icons.location_on,
               icon: UniconsLine.location_pin_alt,
             ),
             ProfileCardButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.creditCards);
+              },
               buttonText: AppStrings.profileScreenButtonsListItemCreditCards,
               // icon: Icons.credit_card,
               icon: UniconsLine.credit_card,

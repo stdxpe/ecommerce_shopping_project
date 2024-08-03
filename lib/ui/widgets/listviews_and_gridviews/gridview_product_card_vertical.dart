@@ -1,11 +1,9 @@
-import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:go_router/go_router.dart';
 
 class GridviewProductCardVertical extends StatelessWidget {
   const GridviewProductCardVertical({
@@ -26,7 +24,8 @@ class GridviewProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double cardWidth = Constants.kRawFigmaDesignWidth;
-    int itemCount = productsList.length - ((productsList.length) % 3);
+    int itemCount =
+        productsList.length - ((productsList.length) % itemCountOnRow!);
 
     double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
         context.textTheme.bodyLarge!.height!);
@@ -65,9 +64,6 @@ class GridviewProductCardVertical extends StatelessWidget {
           itemCount: itemCount,
           itemBuilder: (context, index) {
             return ProductCardVertical(
-              onPressed: () {
-                context.push(Routes.productDetails);
-              },
               product: productsList[index],
               cardWidth: cardTotalWidth,
               isCardElevated: isCardElevated,

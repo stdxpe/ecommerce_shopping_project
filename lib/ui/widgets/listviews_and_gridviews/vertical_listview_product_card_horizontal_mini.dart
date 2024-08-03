@@ -1,11 +1,11 @@
-import 'package:ecommerce_shopping_project/ui/widgets/card_placeholder.dart';
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/card_placeholder.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal_mini.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/dismissible_delete_widget.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
   const VerticalListviewProductCardHorizontalMini({

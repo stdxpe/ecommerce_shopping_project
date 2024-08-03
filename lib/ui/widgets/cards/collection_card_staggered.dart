@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class StaggeredGridCardComponentLeft extends StatelessWidget {
   /// REQUIRES AT LEAST 6 ITEMS
-  final List<Product> productList;
+  final Collection collection;
   final Function() onPressed;
   final double? cardHeight;
   final double? paddingHorizontal;
   final double? betweenElementsPadding;
 
   const StaggeredGridCardComponentLeft({
-    required this.productList,
+    required this.collection,
     required this.onPressed,
     this.cardHeight,
     this.paddingHorizontal = Constants.kMainPaddingHorizontal,
@@ -68,7 +68,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                     width: totalWidth / 4,
                     color: Colors.green.withOpacity(0.5),
                     child: Image.asset(
-                      productList[0].mainPhoto,
+                      collection.products[0].mainPhoto,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -78,7 +78,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                     width: totalWidth / 4,
                     color: Colors.yellow.withOpacity(0.5),
                     child: Image.asset(
-                      productList[1].mainPhoto,
+                      collection.products[1].mainPhoto,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -90,7 +90,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                         width: totalWidth / 4,
                         color: Colors.purple.withOpacity(0.5),
                         child: Image.asset(
-                          productList[2].mainPhoto,
+                          collection.products[2].mainPhoto,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -100,7 +100,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                         width: totalWidth / 4,
                         color: Colors.tealAccent.withOpacity(0.5),
                         child: Image.asset(
-                          productList[3].mainPhoto,
+                          collection.products[3].mainPhoto,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -114,7 +114,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                         width: totalWidth / 4,
                         color: Colors.amberAccent.withOpacity(0.5),
                         child: Image.asset(
-                          productList[4].mainPhoto,
+                          collection.products[4].mainPhoto,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -124,7 +124,7 @@ class StaggeredGridCardComponentLeft extends StatelessWidget {
                         width: totalWidth / 4,
                         color: Colors.pink.withOpacity(0.5),
                         child: Image.asset(
-                          productList[5].mainPhoto,
+                          collection.products[5].mainPhoto,
                           fit: BoxFit.cover,
                         ),
                       ),

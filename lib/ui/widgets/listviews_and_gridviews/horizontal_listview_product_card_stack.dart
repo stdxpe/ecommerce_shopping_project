@@ -33,7 +33,6 @@ class HorizontalListviewProductCardStack extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.only(right: paddingBetweenElements.w),
               child: ProductCardStack(
-                onPressed: () {},
                 product: productsList[index],
                 cardWidth: cardWidth,
 

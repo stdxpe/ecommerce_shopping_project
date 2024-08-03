@@ -1,15 +1,15 @@
-import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/double_button_add_or_fav.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/details_screen_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_stars.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_product_detail.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:go_router/go_router.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({

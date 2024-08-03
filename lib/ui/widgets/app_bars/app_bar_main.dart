@@ -1,13 +1,10 @@
-import 'package:ecommerce_shopping_project/app_router.dart';
-import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:unicons/unicons.dart';
 
-import 'package:ecommerce_shopping_project/ui/screens/search_screen.dart';
+import 'package:ecommerce_shopping_project/services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

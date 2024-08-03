@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/nav_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
@@ -24,11 +24,13 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/test_animations_screen.dart';
 
 class Routes {
   Routes._();
 
   static const String root = '/';
+  static const String test = '/test';
   // static const String main = '/main';
 
   static const String splash = '/splash';
@@ -87,8 +89,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     navigatorKey: rootNavigatorKey,
-    // errorBuilder: (context, state) => 404Screen(),
     initialLocation: Routes.home,
+    // errorBuilder: (context, state) => 404Screen(),
+    // initialLocation: Routes.test,
+
     // redirect: (context, state) {
     //   bool userAuthenticated = true;
 
@@ -97,7 +101,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     //   return (userAuthenticated) ? Routes.home : null;
     // },
 
+    /// TODO: OnWillPop behaviors test
     routes: [
+      /// TESTING WIDGET ROUTE TEMP
+      GoRoute(
+          path: Routes.test,
+          builder: (context, state) => TestAnimationsScreen()),
       GoRoute(
           path: Routes.splash,
           builder: (context, state) => const SplashScreen()),
@@ -116,10 +125,19 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: Routes.shoppingCart,
           builder: (context, state) => const ShoppingCartScreen()),
-      StatefulShellRoute.indexedStack(
+      // StatefulShellRoute.indexedStack(
+      ///TEST
+      StatefulShellRoute(
         parentNavigatorKey: rootNavigatorKey,
-        builder: (context, state, navigationShell) =>
-            ScaffoldWithNavBar(navigationShell: navigationShell),
+        builder: (BuildContext context, GoRouterState state,
+            StatefulNavigationShell navigationShell) {
+          return navigationShell;
+        },
+        navigatorContainerBuilder: (BuildContext context,
+            StatefulNavigationShell navigationShell, List<Widget> children) {
+          return MainScreen(
+              navigationShell: navigationShell, children: children);
+        },
         branches: [
           StatefulShellBranch(
             navigatorKey: homeNavigatorKey,
@@ -139,9 +157,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   builder: (context, state) => const DiscoverScreen(),
                   routes: [
                     GoRoute(
-                        parentNavigatorKey: discoverNavigatorKey,
-                        path: 'search',
-                        builder: (context, state) => const SearchScreen()),
+                      parentNavigatorKey: discoverNavigatorKey,
+                      path: 'search',
+                      builder: (context, state) => const SearchScreen(),
+                    ),
                   ]),
             ],
           ),
@@ -223,3 +242,24 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     ],
   );
 });
+
+
+/// Custom Transition Builder for go_router package if necessary
+//  GoRoute(
+//         path: Routes.payment,
+//         pageBuilder: (context, state) {
+//           return CustomTransitionPage<void>(
+//             key: state.pageKey,
+//             child: const PaymentScreenPageview(),
+//             transitionsBuilder:
+//                 (context, animation, secondaryAnimation, child) =>
+//                     SlideTransition(
+//                         position: animation.drive(
+//                           Tween<Offset>(
+//                             begin: const Offset(0, 1),
+//                             end: Offset.zero,
+//                           ).chain(CurveTween(curve: Curves.easeIn)),
+//                         ),
+//                         child: child),
+//           );
+//         },

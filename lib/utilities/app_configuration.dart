@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/app_router.dart';
+import 'package:ecommerce_shopping_project/services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class AppConfiguration extends ConsumerWidget {
@@ -16,7 +16,7 @@ class AppConfiguration extends ConsumerWidget {
       designSize: const Size(1179, 2556),
 
       /// TODO: Here ??
-      enableScaleText: () => true,
+      enableScaleText: () => false,
       minTextAdapt: true,
       ensureScreenSize: true,
       builder: (_, screenUtilChild) {

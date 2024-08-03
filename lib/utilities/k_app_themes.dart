@@ -13,6 +13,15 @@ abstract class AppTheme {
       backgroundColor: _lightModeColorPalette.appBarBackground,
       foregroundColor: _lightModeColorPalette.appBarForeground,
     ),
+
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: <TargetPlatform, PageTransitionsBuilder>{
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.fuchsia: CupertinoPageTransitionsBuilder(),
+      },
+    ),
+
     // inputDecorationTheme:
     // bottomSheetTheme:
     // snackBarTheme:

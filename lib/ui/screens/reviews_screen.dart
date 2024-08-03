@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,10 +17,14 @@ class ReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBarMain(),
+      appBar: const AppBarMain(
+        automaticallyImplyLeading: true,
+        useSearchButton: false,
+      ),
       body: SafeArea(
         bottom: false,
         child: ListView(
+          physics: const ClampingScrollPhysics(),
           padding: EdgeInsets.symmetric(
             horizontal: Constants.kMainPaddingHorizontal.w,
           ),

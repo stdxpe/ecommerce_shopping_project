@@ -14,7 +14,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  double opacity = 0;
+  bool visible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,12 @@ class _SearchScreenState extends State<SearchScreen> {
 
           /// TODO: Riverpod Search Functionality methods here.
           setState(() {
-            opacity = 1;
+            visible = true;
           });
         },
       ),
-      body: AnimatedOpacity(
-        opacity: opacity,
-        duration: const Duration(milliseconds: 200),
+      body: Visibility(
+        visible: visible,
         child: ListView(
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),

@@ -12,14 +12,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  collection: ^1.18.0
 
 #############################################################################################################
 
-  flutter_screenutil: ^5.9.3              # Responsive & Adaptive Design
-  get_it: ^7.7.0                          # Dependency Injection Service
   flutter_riverpod: ^2.5.1                # State Management Solution
+  get_it: ^7.7.0                          # Dependency Injection Service
+  flutter_screenutil: ^5.9.3              # Responsive & Adaptive Design
+  go_router: ^14.2.2                      # Advanced Navigation & Routing System
 
-  persistent_bottom_nav_bar: ^6.2.1       # Advanced Bottom Navigation Bar
   card_swiper: ^3.0.1                     # Carousel Image Slider
   smooth_page_indicator: ^1.2.0           # Image Slider Pagination
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
@@ -37,17 +38,13 @@ dependencies:
   flutter_tabler_icons: ^1.35.0           # UI Icons
   unicons: ^2.1.2                         # UI Icons
 
-  go_router: ^14.2.2
-
 
 #############################################################################################################
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^4.0.0
-
 
 flutter:
   uses-material-design: true

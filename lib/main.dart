@@ -1,8 +1,8 @@
 /// TODO: Delete
 // ignore_for_file: unused_import, prefer_const_constructors
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -45,7 +45,7 @@ import 'package:ecommerce_shopping_project/ui/test_screens/testing_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
-import 'package:ecommerce_shopping_project/app_configuration.dart';
+import 'package:ecommerce_shopping_project/utilities/app_configuration.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 void main() {
@@ -66,14 +66,14 @@ class RootApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppConfiguration(
-      // homeScreen: SplashScreen(),
+      homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
       // homeScreen: SignUpScreen(),
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      homeScreen: TestAnimationsScreen(),
+      // homeScreen: TestAnimationsScreen(),
       // homeScreen: MainScreen(),
       // homeScreen: HomeScreen(onPressed: () {}),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
@@ -105,8 +105,6 @@ class RootApp extends StatelessWidget {
       /// TODO: Theme riverpod
       /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
-      /// TODO: ROUTING with Riverpod?
-      /// TODO: Same Search Screen on every app bar search icon click //Locator Get_it
       /// TODO: Search functionality
       /// TODO: Dark Mode transition wont save states?
       /// TODO: Bottom Sheet functionality

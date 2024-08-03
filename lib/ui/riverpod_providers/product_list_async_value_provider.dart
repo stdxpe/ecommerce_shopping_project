@@ -1,16 +1,13 @@
-import 'dart:async';
-
-import 'package:ecommerce_shopping_project/app_router.dart';
-import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/test_screen.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

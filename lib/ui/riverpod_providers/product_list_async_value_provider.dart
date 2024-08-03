@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
@@ -79,7 +81,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
     state = AsyncData([...previousState]);
   }
 
-  Future<void> updateProduct({required BuildContext menuScreenContext}) async {
+  Future<void> updateProduct(BuildContext context) async {
     print('MyAsyncNotifier : AsyncNotifier updateProduct() Executed');
 
     // state = const AsyncLoading();
@@ -131,22 +133,23 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
     );
     var newList = [previousState.insert(foundProductIndex, updatedProduct)];
     showDialog(
-      useRootNavigator: false,
+      useRootNavigator: true,
       barrierColor: Colors.black.withOpacity(0.75),
-      context: menuScreenContext,
+      context: context,
       builder: (context) {
         return TestScreen(
           onPressed: () {
-            Navigator.of(context, rootNavigator: false).pop();
+            // Navigator.of(context, rootNavigator: false).pop();
 
             /// TODO: Create riverpod ref for tab controller
-
-            PersistentNavBarNavigator.pushNewScreen(
-              pageTransitionAnimation: PageTransitionAnimation.fade,
-              menuScreenContext,
-              screen: const ProfileScreen(),
-              withNavBar: true,
-            );
+            context.pop();
+            context.push(Routes.shoppingCart);
+            // PersistentNavBarNavigator.pushNewScreen(
+            //   pageTransitionAnimation: PageTransitionAnimation.fade,
+            //   context,
+            //   screen: const ProfileScreen(),
+            //   withNavBar: true,
+            // );
           },
         );
       },

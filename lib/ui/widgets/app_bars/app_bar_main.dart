@@ -1,7 +1,9 @@
+import 'package:ecommerce_shopping_project/app_router.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:unicons/unicons.dart';
 
@@ -42,7 +44,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               onPressed: () {
                 (onPressedBackButtonAlternate == null)
-                    ? PersistentNavBarNavigator.pop(context)
+                    ? context.pop()
                     : onPressedBackButtonAlternate!();
               },
             )
@@ -53,17 +55,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
             icon: const Icon(UniconsLine.search),
             alignment: Alignment.center,
             onPressed: () {
-              PersistentNavBarNavigator.pushNewScreenWithRouteSettings(
-                settings: const RouteSettings(name: '/search'),
-                pageTransitionAnimation: PageTransitionAnimation.fade,
-                context,
-                screen: const SearchScreen(),
-                withNavBar: true,
-              );
-              // tabController!.jumpToTab(1);
-
-              // PersistentNavBarNavigator.popUntilFirstScreenOnSelectedTabScreen(
-              //     context);
+              context.go(Routes.search);
             },
           ),
       ],

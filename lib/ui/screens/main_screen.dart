@@ -28,9 +28,10 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   Widget build(BuildContext context) {
     List<Widget> buildScreens() {
       return [
-        HomeScreen(onPressed: () {}),
+        // HomeScreen(onPressed: () {}),
+        const HomeScreen(),
         const DiscoverScreen(),
-        ShoppingCartScreen(menuScreenContext: context),
+        const ShoppingCartScreen(),
         WishlistScreen(
           menuScreenContext: context,
         ),

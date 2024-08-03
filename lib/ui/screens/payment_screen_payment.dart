@@ -52,20 +52,22 @@ class PaymentScreenPayment extends StatelessWidget {
                       ),
 
                     /// CREDIT CARDS SLIDER
-                    Consumer(
-                      builder: (context, ref, child) => CreditCardsSlider(
-                        onIndexChanged: (cardIndex) {
-                          print('CardIndex: $cardIndex');
-                          creditCardIndex = cardIndex;
-                          print('creditCardIndex: $creditCardIndex');
-                          ref
-                              .read(colorIndexProvider.notifier)
-                              .isAnimationStarted(result: true);
-                          ref
-                              .read(colorIndexProvider.notifier)
-                              .changeColor(cardIndex);
-                        },
-                      ),
+                    CreditCardsSlider(
+                      onIndexChanged: (cardIndex) {
+                        // print('CardIndex: $cardIndex');
+                        // creditCardIndex = cardIndex;
+                        // print('creditCardIndex: $creditCardIndex');
+                        // ref.read(coloredBgIndexProvider.notifier).state =
+                        //     cardIndex;
+                        // print(
+                        //     'ref(coloredBgIndexProvider): ${ref.watch(coloredBgIndexProvider)}');
+                        // ref
+                        //     .read(colorIndexProvider.notifier)
+                        //     .isAnimationStarted(result: true);
+                        // ref
+                        //     .read(colorIndexProvider.notifier)
+                        //     .changeColor(cardIndex);
+                      },
                     ),
 
                     Padding(

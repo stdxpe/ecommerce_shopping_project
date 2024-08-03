@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
@@ -66,17 +68,19 @@ class ProfileScreen extends StatelessWidget {
               // icon: Icons.credit_card,
               icon: UniconsLine.credit_card,
             ),
-            ProfileCardButton(
-              onPressed: () {},
-              buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
-              // icon: CupertinoIcons.moon_fill,
-              icon: UniconsLine.moon,
-              widgetContent: SwitchCupertinoCustom(
-                  switchState: isDarkModeEnabled,
-                  onChanged: (boolValue) {
-                    /// TODO: Theme Mode selection change globally.
-                    onDarkModeEnabled!();
-                  }),
+            Consumer(
+              builder: (context, ref, child) => ProfileCardButton(
+                onPressed: () {},
+                buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
+                icon: UniconsLine.moon,
+                widgetContent: SwitchCupertinoCustom(
+                    switchState: ref.watch(isDarkModeOnProvider),
+                    onChanged: (boolValue) {
+                      /// Theme Mode local storage saving here
+                      ref.read(themeModeProvider.notifier).toggleTheme();
+                      // onDarkModeEnabled!();
+                    }),
+              ),
             ),
             ProfileCardButton(
               onPressed: () {},
@@ -102,7 +106,6 @@ class ProfileScreen extends StatelessWidget {
               icon: TablerIcons.logout,
               useBottomDivider: true,
             ),
-            // SwitchCupertinoCustom(onChanged: () {}),
           ],
         ),
       ),

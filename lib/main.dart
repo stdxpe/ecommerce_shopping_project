@@ -102,7 +102,6 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
-      /// TODO: Theme riverpod
       /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality

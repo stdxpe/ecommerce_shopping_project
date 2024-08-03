@@ -26,16 +26,18 @@ dependencies:
   flutter_animate: ^4.5.0                 # Advanced Animations
   flutter_custom_carousel: ^0.1.0+1       # Advanced Built-In Slider Animations with flutter_animate package
   zoom_pinch_overlay: ^1.4.3              # Advanced Version of Flutter Interactive Widget
-  easy_stepper: ^0.8.5                    # Payment Screen Vertical Top Stepper
+  easy_stepper: ^0.8.5                    # Payment Screen Horizontal Top Stepper
   flutter_credit_card: ^4.0.1             # Credit Card Validation
-  shimmer: ^3.0.0                         # Animated Product Card Placeholders while Loading 
+  shimmer: ^3.0.0                         # Animated Product Card Placeholders while Loading State
   loading_animation_widget: ^1.2.1        # Animated Loading Progress Indicators 
-  flutter_rating_bar: ^4.0.1              # Product Ratings Bar
+  flutter_rating_bar: ^4.0.1              # Product Rating Bar
   msh_checkbox: ^2.0.1                    # Animated Checkbox Widget
   flutter_any_logo: ^1.1.1                # Brand Logos
   cupertino_icons: ^1.0.6                 # UI Icons
   flutter_tabler_icons: ^1.35.0           # UI Icons
   unicons: ^2.1.2                         # UI Icons
+
+  go_router: ^14.2.2
 
 
 #############################################################################################################

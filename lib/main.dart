@@ -45,7 +45,7 @@ import 'package:ecommerce_shopping_project/ui/test_screens/testing_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
-import 'package:ecommerce_shopping_project/utilities/screen_util_setup.dart';
+import 'package:ecommerce_shopping_project/app_configuration.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 void main() {
@@ -65,7 +65,7 @@ class RootApp extends StatelessWidget {
 // https://pub.dev/packages/pinput
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilSetup(
+    return AppConfiguration(
       // homeScreen: SplashScreen(),
       // homeScreen: OnboardingScreen(),
       // homeScreen: SignInScreen(),
@@ -73,8 +73,8 @@ class RootApp extends StatelessWidget {
       // homeScreen: ForgotPasswordScreen(),
       // homeScreen: VerificationScreen(),
 
-      // homeScreen: TestAnimationsScreen(),
-      homeScreen: MainScreen(),
+      homeScreen: TestAnimationsScreen(),
+      // homeScreen: MainScreen(),
       // homeScreen: HomeScreen(onPressed: () {}),
       // homeScreen: ProductDetailsScreen(product: dummyProductShortList[0]),
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),

@@ -162,7 +162,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
       builder: (context) {
         return Container(
             height: context.mediaQuery.size.height * 0.75,
-            child: PaymentScreenPayment(onPressed: () {}));
+            child: PaymentScreenPayment());
       },
     );
     state = AsyncData([...previousState]);

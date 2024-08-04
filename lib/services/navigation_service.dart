@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
@@ -10,8 +9,13 @@ import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/orders_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/payment_screen_pageview.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_result.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_summary.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
@@ -50,12 +54,11 @@ class Routes {
   /// Discover Tab Nested Navigation Stack
   static const String search = '/discover/search';
 
-  /// Shopping Cart Tab Nested Navigation Stack
-  static const String payment = '/payment';
-  static const String paymentShipping = '/paymentShipping';
-  static const String paymentPayment = '/paymentPayment';
-  static const String paymentSummary = '/paymentSummary';
-  static const String paymentResult = '/paymentResult';
+  /// Payment Screen Nested Stepper Tabs Navigation Stack
+  static const String paymentStepShipping = '/paymentStepShipping';
+  static const String paymentStepPayment = '/paymentStepPayment';
+  static const String paymentStepSummary = '/paymentStepSummary';
+  static const String paymentStepResult = '/paymentStepResult';
 
   /// Profile Tab Nested Navigation Stack
   static const String profileEdit = '/profileEdit';
@@ -86,13 +89,21 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GlobalKey<NavigatorState>(debugLabel: 'wishlistNavigatorKey');
   final profileNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'profileNavigatorKey');
+  final paymentShippingNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'paymentShippingNavigatorKey');
+  final paymentPaymentNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'paymentPaymentNavigatorKey');
+  final paymentSummaryNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'paymentSummaryNavigatorKey');
+  final paymentResultNavigatorKey =
+      GlobalKey<NavigatorState>(debugLabel: 'paymentResultNavigatorKey');
 
   return GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: Routes.home,
-    // errorBuilder: (context, state) => 404Screen(),
-    // initialLocation: Routes.test,
+    // initialLocation: Routes.paymentStepShipping,
 
+    // errorBuilder: (context, state) => 404Screen(),
     // redirect: (context, state) {
     //   bool userAuthenticated = true;
 
@@ -102,8 +113,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     // },
 
     /// TODO: OnWillPop behaviors test
+
     routes: [
-      /// TESTING WIDGET ROUTE TEMP
       GoRoute(
           path: Routes.test,
           builder: (context, state) => TestAnimationsScreen()),
@@ -122,11 +133,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: Routes.forgotPassword,
           builder: (context, state) => const ForgotPasswordScreen()),
-      GoRoute(
-          path: Routes.shoppingCart,
-          builder: (context, state) => const ShoppingCartScreen()),
+
       // StatefulShellRoute.indexedStack(
-      ///TEST
       StatefulShellRoute(
         parentNavigatorKey: rootNavigatorKey,
         builder: (BuildContext context, GoRouterState state,
@@ -214,9 +222,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         ],
       ),
       GoRoute(
-          path: Routes.payment,
-          builder: (context, state) => const PaymentScreenPageview()),
-      GoRoute(
           path: Routes.productDetails,
           builder: (context, state) {
             return ProductDetailsScreen(
@@ -239,9 +244,67 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               collection: state.extra! as Collection,
             );
           }),
+
+      GoRoute(
+          path: Routes.shoppingCart,
+          builder: (context, state) => const ShoppingCartScreen()),
+
+      /// PAYMENT SCREEN (Shipping, Payment, Summary & Result Steps Included)
+      /// StatefulShellRoute & StatefulShellBranches Used Instead of PageView or TabBar Widgets
+      StatefulShellRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (BuildContext context, GoRouterState state,
+            StatefulNavigationShell navigationShell) {
+          return navigationShell;
+        },
+        navigatorContainerBuilder: (BuildContext context,
+            StatefulNavigationShell navigationShell, List<Widget> children) {
+          return PaymentScreen(
+              navigationShell: navigationShell, children: children);
+        },
+        branches: [
+          StatefulShellBranch(
+            navigatorKey: paymentShippingNavigatorKey,
+            routes: <RouteBase>[
+              GoRoute(
+                  parentNavigatorKey: paymentShippingNavigatorKey,
+                  path: Routes.paymentStepShipping,
+                  builder: (context, state) => const PaymentScreenShipping()),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: paymentPaymentNavigatorKey,
+            routes: <RouteBase>[
+              GoRoute(
+                  parentNavigatorKey: paymentPaymentNavigatorKey,
+                  path: Routes.paymentStepPayment,
+                  builder: (context, state) => const PaymentScreenPayment()),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: paymentSummaryNavigatorKey,
+            routes: <RouteBase>[
+              GoRoute(
+                  parentNavigatorKey: paymentSummaryNavigatorKey,
+                  path: Routes.paymentStepSummary,
+                  builder: (context, state) => const PaymentScreenSummary()),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: paymentResultNavigatorKey,
+            routes: <RouteBase>[
+              GoRoute(
+                  parentNavigatorKey: paymentResultNavigatorKey,
+                  path: Routes.paymentStepResult,
+                  builder: (context, state) => const PaymentScreenResult()),
+            ],
+          ),
+        ],
+      ),
     ],
   );
 });
+
 
 
 /// Custom Transition Builder for go_router package if necessary

@@ -57,7 +57,7 @@ class ShoppingCartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButtonsShoppingCart(
                   onPressed: () {
-                    context.push(Routes.payment);
+                    context.push(Routes.paymentStepShipping);
                   },
                   totalAmount: 210.99,
                   shippingFee: 5.99,

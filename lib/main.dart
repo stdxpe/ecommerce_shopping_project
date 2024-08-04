@@ -18,7 +18,6 @@ import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/orders_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/payment_screen_pageview.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_result.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';

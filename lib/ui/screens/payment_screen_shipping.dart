@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
@@ -9,22 +11,20 @@ import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class PaymentScreenShipping extends StatelessWidget {
+class PaymentScreenShipping extends ConsumerWidget {
   const PaymentScreenShipping({
     super.key,
-    required this.onPressed,
     this.isCreateNewAddressMode = false,
     this.onPressedSave,
     this.onPressedDelete,
   });
 
-  final Function() onPressed;
   final bool? isCreateNewAddressMode;
   final Function()? onPressedSave;
   final Function()? onPressedDelete;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       // backgroundColor: Colors.red,
@@ -112,7 +112,9 @@ class PaymentScreenShipping extends StatelessWidget {
                 visible: MediaQuery.of(context).viewInsets.bottom == 0,
                 child: BottomSheetButtonsPaymentShipping(
                   onPressed: () {
-                    onPressed();
+                    ref
+                        .read(paymentScreenNavigationProvider.notifier)
+                        .goNextStep(context);
                   },
                 ),
               ),

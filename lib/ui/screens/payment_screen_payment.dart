@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_payment_method.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
@@ -10,23 +12,22 @@ import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class PaymentScreenPayment extends StatelessWidget {
+class PaymentScreenPayment extends ConsumerWidget {
   const PaymentScreenPayment({
     super.key,
-    required this.onPressed,
     this.isCreateNewCardMode = false,
     this.onPressedSave,
     this.onPressedDelete,
   });
 
-  final Function() onPressed;
   final bool? isCreateNewCardMode;
   final Function()? onPressedSave;
   final Function()? onPressedDelete;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       body: SafeArea(
         bottom: false,
         child: SizedBox(
@@ -122,7 +123,9 @@ class PaymentScreenPayment extends StatelessWidget {
                   visible: MediaQuery.of(context).viewInsets.bottom == 0,
                   child: BottomSheetButtonsPaymentMethod(
                     onPressed: () {
-                      onPressed();
+                      ref
+                          .read(paymentScreenNavigationProvider.notifier)
+                          .goNextStep(context);
                     },
                   ),
                 ),

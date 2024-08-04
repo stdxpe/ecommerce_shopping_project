@@ -12,8 +12,10 @@ class DialogPopupNewDeals extends StatelessWidget {
     required this.cardWidth,
     super.key,
     this.textColor,
+    required this.onPressed,
   });
 
+  final Function() onPressed;
   final String imageUrl;
   final Color? textColor;
   final double cardHeight;
@@ -68,7 +70,9 @@ class DialogPopupNewDeals extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: ButtonMain(
-                onPressed: () {},
+                onPressed: () {
+                  onPressed();
+                },
                 text: AppStrings.dialogPopupNewDealsButtonText,
                 backgroundColor:
                     context.colorPalette.buttonMainBackgroundSecondary,

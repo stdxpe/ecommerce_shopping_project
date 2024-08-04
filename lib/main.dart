@@ -35,13 +35,10 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/animation_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/animation_screen2.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/shimmer_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/test_animations_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/test_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/testing_screen.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/text_animations_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/dialog_popup_main_alert_dialog.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/utilities/app_configuration.dart';
@@ -101,6 +98,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
+      /// Icon Notifications
       /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality

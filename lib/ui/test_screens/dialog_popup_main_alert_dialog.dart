@@ -1,13 +1,15 @@
 import 'dart:ui';
-
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_new_deals.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_product_added_to_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_payment_result.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class TestScreen extends StatelessWidget {
-  const TestScreen({
+class DialogPopupMainAlertDialog extends StatelessWidget {
+  const DialogPopupMainAlertDialog({
     super.key,
     required this.onPressed,
   });
@@ -18,7 +20,7 @@ class TestScreen extends StatelessWidget {
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 7.5, sigmaY: 7.5),
       child: AlertDialog(
-        backgroundColor: context.colorPalette.scaffoldBackground,
+        backgroundColor: context.colorPalette.sheetBackground,
         surfaceTintColor: context.colorPalette.scaffoldBackground,
         insetPadding: EdgeInsets.zero,
         contentPadding: EdgeInsets.zero,
@@ -30,6 +32,9 @@ class TestScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(Constants.kRadiusDialogPopups.r),
         ),
         title: DialogPopupPaymentResult(
+          // title: DialogPopupNewDeals(
+          // title: DialogPopupProductAddedToCart(
+          // imageUrl: AppImages.productImage1,
           onPressed: () {
             onPressed();
           },
@@ -37,6 +42,6 @@ class TestScreen extends StatelessWidget {
           cardWidth: context.mediaQuery.size.width * 0.75,
         ),
       ),
-    );
+    ).animate().fadeIn(duration: 250.ms);
   }
 }

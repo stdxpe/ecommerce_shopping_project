@@ -39,6 +39,9 @@ abstract class ColorPalette {
   static const Color dismissibleBg = Colors.red;
   static const Color dismissibleFg = Colors.white;
 
+  /// TODO: dialogPopupBackgroundColor
+  static const Color dialogPopupBackground = Colors.white;
+
   // color: context.theme.appColors.error
 
   /// [DARK MODE THEME COLOR PALETTE]

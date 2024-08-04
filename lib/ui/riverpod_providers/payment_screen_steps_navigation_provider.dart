@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/dialog_popup_main_alert_dialog.dart';
 
 final paymentScreenNavigationProvider =
     StateNotifierProvider<PaymentScreenNavigationProviderNotifier, int>((ref) {
@@ -75,7 +76,20 @@ class PaymentScreenNavigationProviderNotifier extends StateNotifier<int> {
     } else if (currentIndex == 3) {
       /// Conditions/Validations of Shipping Step (using other ref's)
       /// another if(conditions are met) ? go(home) : null
-      context.go(Routes.home);
+      // context.go(Routes.home);
+      showDialog(
+        useRootNavigator: true,
+        barrierColor: Colors.black.withOpacity(0.75),
+        context: context,
+        builder: (context) {
+          return DialogPopupMainAlertDialog(
+            onPressed: () {
+              context.pop();
+              context.go(Routes.home);
+            },
+          );
+        },
+      );
     }
   }
 }

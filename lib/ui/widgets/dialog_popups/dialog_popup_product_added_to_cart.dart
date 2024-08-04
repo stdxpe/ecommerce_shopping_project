@@ -6,17 +6,18 @@ import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DialogPopupProductAddedToCart extends StatelessWidget {
-  final String imageUrl;
-  final double cardHeight;
-  final double cardWidth;
-
   const DialogPopupProductAddedToCart({
+    required this.onPressed,
     required this.imageUrl,
     required this.cardHeight,
     required this.cardWidth,
     super.key,
   });
 
+  final Function() onPressed;
+  final String imageUrl;
+  final double cardHeight;
+  final double cardWidth;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -53,7 +54,9 @@ class DialogPopupProductAddedToCart extends StatelessWidget {
           ),
           SizedBox(height: Constants.kDialogPopupSpacingBTWButtonsVertical.h),
           ButtonMain(
-            onPressed: () {},
+            onPressed: () {
+              onPressed();
+            },
             text: AppStrings.productDetailsScreenPopupButtonContinueShopping,
             backgroundColor: context.colorPalette.buttonMainBackgroundSecondary,
             foregroundColor: context.colorPalette.buttonMainForegroundSecondary,

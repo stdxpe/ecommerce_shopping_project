@@ -1,6 +1,8 @@
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class AnimationScreen extends StatelessWidget {
   const AnimationScreen({super.key});
@@ -24,6 +26,12 @@ class AnimationScreen extends StatelessWidget {
                 )
                 .fade(duration: 1.seconds)
                 .fadeIn(duration: 1.seconds),
+            LoadingAnimationWidget.threeArchedCircle(
+              color: Colors.black,
+              // leftDotColor: Colors.grey,
+              // rightDotColor: Colors.orange,
+              size: 100,
+            ),
             const Text("Hello")
                 .animate(
                   delay:

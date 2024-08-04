@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +29,6 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/test_animations_screen.dart';
 
 class Routes {
   Routes._();
@@ -100,8 +100,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: Routes.home,
-    // initialLocation: Routes.paymentStepShipping,
 
     // errorBuilder: (context, state) => 404Screen(),
     // redirect: (context, state) {
@@ -114,10 +112,13 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
     /// TODO: OnWillPop behaviors test
 
+    initialLocation: Routes.home,
+    // initialLocation: Routes.test,
+
     routes: [
       GoRoute(
           path: Routes.test,
-          builder: (context, state) => TestAnimationsScreen()),
+          builder: (context, state) => CreditCardRawSpinAnimation()),
       GoRoute(
           path: Routes.splash,
           builder: (context, state) => const SplashScreen()),
@@ -133,9 +134,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: Routes.forgotPassword,
           builder: (context, state) => const ForgotPasswordScreen()),
+      GoRoute(
+          path: Routes.shoppingCart,
+          builder: (context, state) => const ShoppingCartScreen()),
 
-      // StatefulShellRoute.indexedStack(
       StatefulShellRoute(
+        ///  StatefulShellRoute.indexedStack changed to
+        ///  StatefulShellRoute for Custom Transition Animations Between Branches
+        ///
         parentNavigatorKey: rootNavigatorKey,
         builder: (BuildContext context, GoRouterState state,
             StatefulNavigationShell navigationShell) {
@@ -245,10 +251,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             );
           }),
 
-      GoRoute(
-          path: Routes.shoppingCart,
-          builder: (context, state) => const ShoppingCartScreen()),
-
       /// PAYMENT SCREEN (Shipping, Payment, Summary & Result Steps Included)
       /// StatefulShellRoute & StatefulShellBranches Used Instead of PageView or TabBar Widgets
       StatefulShellRoute(
@@ -304,8 +306,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     ],
   );
 });
-
-
 
 /// Custom Transition Builder for go_router package if necessary
 //  GoRoute(

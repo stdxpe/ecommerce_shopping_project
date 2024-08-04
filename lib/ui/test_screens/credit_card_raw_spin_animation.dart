@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_custom_carousel/flutter_custom_carousel.dart';
 
-class AnimationScreen2 extends StatefulWidget {
-  const AnimationScreen2({super.key});
+class CreditCardRawSpinAnimation extends StatefulWidget {
+  const CreditCardRawSpinAnimation({super.key});
 
   @override
-  State<AnimationScreen2> createState() => _AnimationScreen2State();
+  State<CreditCardRawSpinAnimation> createState() =>
+      _CreditCardRawSpinAnimationState();
 }
 
-class _AnimationScreen2State extends State<AnimationScreen2> {
+class _CreditCardRawSpinAnimationState
+    extends State<CreditCardRawSpinAnimation> {
   bool _showFrontSide = true;
   @override
   Widget build(BuildContext context) {

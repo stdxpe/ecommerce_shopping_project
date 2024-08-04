@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -129,26 +131,38 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
       totalRating: 2.2,
     );
     var newList = [previousState.insert(foundProductIndex, updatedProduct)];
-    showDialog(
-      useRootNavigator: true,
-      barrierColor: Colors.black.withOpacity(0.75),
+    // showDialog(
+    //   useRootNavigator: true,
+    //   barrierColor: Colors.black.withOpacity(0.75),
+    //   context: context,
+    //   builder: (context) {
+    //     return TestScreen(
+    //       onPressed: () {
+    //         // Navigator.of(context, rootNavigator: false).pop();
+
+    //         /// TODO: Create riverpod ref for tab controller
+    //         context.pop();
+    //
+    //       },
+    //     );
+    //   },
+    // );
+    showCupertinoModalPopup(
+      // useSafeArea: false,
+      // enableDrag: true,
+      // constraints: BoxConstraints(
+      //   maxHeight: context.mediaQuery.size.height * 0.75,
+      //   minHeight: context.mediaQuery.size.height * 0.70,
+      // ),
+      // showDragHandle: true,
+      // barrierColor: Colors.red,
+      // useRootNavigator: false,
+      // useSafeArea: false,
       context: context,
       builder: (context) {
-        return TestScreen(
-          onPressed: () {
-            // Navigator.of(context, rootNavigator: false).pop();
-
-            /// TODO: Create riverpod ref for tab controller
-            context.pop();
-            context.push(Routes.shoppingCart);
-            // PersistentNavBarNavigator.pushNewScreen(
-            //   pageTransitionAnimation: PageTransitionAnimation.fade,
-            //   context,
-            //   screen: const ProfileScreen(),
-            //   withNavBar: true,
-            // );
-          },
-        );
+        return Container(
+            height: context.mediaQuery.size.height * 0.75,
+            child: PaymentScreenPayment(onPressed: () {}));
       },
     );
     state = AsyncData([...previousState]);

@@ -44,7 +44,7 @@ import 'package:ecommerce_shopping_project/ui/test_screens/test_screen.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/testing_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/%20bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dark_mode_transition/dark_sample.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_changer_credit_cards_slider.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_credit_cards_slider.dart';
 import 'package:ecommerce_shopping_project/utilities/app_configuration.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

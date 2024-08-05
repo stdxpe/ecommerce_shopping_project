@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_summary.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_product_card_horizontal_detailed.dart';
@@ -35,7 +35,7 @@ class PaymentScreenSummary extends ConsumerWidget {
                       isCardElevated: false,
                       useItemCounter: false,
                       // productsList: dummyProductList,
-                      productsList: dummyProducts,
+                      productsList: dummyAllProducts,
                       cardHeight: 290,
                       paddingMain: Constants.kMainPaddingHorizontal,
                       paddingBetweenElements:

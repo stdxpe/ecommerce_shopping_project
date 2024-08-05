@@ -1,5 +1,5 @@
 import 'package:ecommerce_shopping_project/models/store.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 List<Store> dummyStores = [
@@ -9,7 +9,7 @@ List<Store> dummyStores = [
     photo: AppImages.blackBg,
     totalRatings: 3.75,
     products: [
-      dummyProducts[0],
+      dummyAllProducts[0],
     ],
     followersCount: 432000,
   ),
@@ -19,7 +19,7 @@ List<Store> dummyStores = [
     photo: AppImages.blackBg,
     totalRatings: 4.75,
     products: [
-      dummyProducts[1],
+      dummyAllProducts[1],
     ],
     followersCount: 29932,
   ),
@@ -29,7 +29,7 @@ List<Store> dummyStores = [
     photo: AppImages.blackBg,
     totalRatings: 3.05,
     products: [
-      dummyProducts[2],
+      dummyAllProducts[2],
     ],
     followersCount: 10932,
   ),

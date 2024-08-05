@@ -1,5 +1,5 @@
 import 'package:ecommerce_shopping_project/models/category.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final List<Category> dummyCategories = [
@@ -9,7 +9,7 @@ final List<Category> dummyCategories = [
     subtitle: 'Most fashionate top wear',
     photo: AppImages.productImage5,
     products: [
-      dummyProducts[0],
+      dummyAllProducts[0],
     ],
   ),
   Category(
@@ -18,7 +18,7 @@ final List<Category> dummyCategories = [
     subtitle: 'Modern Signature',
     photo: AppImages.productImage10,
     products: [
-      dummyProducts[0],
+      dummyAllProducts[0],
     ],
   ),
 ];

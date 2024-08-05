@@ -1,20 +1,25 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_screen_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class DoubleButtonAddOrFav extends StatelessWidget {
+class DoubleButtonAddOrFav extends ConsumerWidget {
   const DoubleButtonAddOrFav({
     super.key,
+    required this.productId,
     this.paddingHorizontal,
   });
+
+  final String productId;
   final double? paddingHorizontal;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       color: context.colorPalette.scaffoldBackground,
       padding: EdgeInsets.only(
@@ -46,7 +51,11 @@ class DoubleButtonAddOrFav extends StatelessWidget {
           ),
           SizedBox(width: 50.w),
           IconButtonLike(
-            onPressed: () {},
+            onPressed: () {
+              ref
+                  .read(wishlistScreenProvider.notifier)
+                  .addProductToWishlist(productId: productId);
+            },
           ),
         ],
       ),

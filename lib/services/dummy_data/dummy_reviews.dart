@@ -1,12 +1,12 @@
 import 'package:ecommerce_shopping_project/models/review.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 List<Review> dummyReviews = [
   Review(
     senderName: 'Carly West',
     senderPhoto: AppImages.productImage11,
-    product: dummyProducts[0],
+    product: dummyAllProducts[0],
     productRating: 4.0,
     createdAt: '12.02.2024',
     text:
@@ -15,7 +15,7 @@ List<Review> dummyReviews = [
   Review(
     senderName: 'Johnsson Piker',
     senderPhoto: AppImages.productImage12,
-    product: dummyProducts[0],
+    product: dummyAllProducts[0],
     productRating: 2.75,
     createdAt: '13.02.2024',
     text: 'Lorem ipsum dolor sit amet',
@@ -23,7 +23,7 @@ List<Review> dummyReviews = [
   Review(
     senderName: 'Mercy Ourstead',
     senderPhoto: AppImages.productImage12,
-    product: dummyProducts[1],
+    product: dummyAllProducts[1],
     productRating: 3.75,
     createdAt: '30.03.2024',
     text:
@@ -32,7 +32,7 @@ List<Review> dummyReviews = [
   Review(
     senderName: 'Micheal Corlys',
     senderPhoto: AppImages.productImage9,
-    product: dummyProducts[1],
+    product: dummyAllProducts[1],
     productRating: 2.5,
     createdAt: '12.02.2024',
     text:

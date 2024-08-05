@@ -1,9 +1,9 @@
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-List<Product> dummyProducts = [
+List<Product> dummyAllProducts = [
   Product(
-    id: '00000',
+    id: '000001',
     title: 'High Neck Shoulder T-Shirt',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
@@ -55,7 +55,7 @@ List<Product> dummyProducts = [
     reviews: [],
   ),
   Product(
-    id: '00001',
+    id: '000002',
     title: 'Buttoned Boot-Cut Jeans',
     brand: 'Zara',
     summary: 'For a retro take, team with a floral shirt',
@@ -101,7 +101,7 @@ List<Product> dummyProducts = [
     ],
   ),
   Product(
-    id: '00002',
+    id: '000003',
     title: 'Gucci Pantcaon',
     brand: 'Gucci',
     summary: 'For a retro take, team with a floral shirt',
@@ -147,7 +147,7 @@ List<Product> dummyProducts = [
     ],
   ),
   Product(
-    id: '00003',
+    id: '000004',
     title: 'High Neck Shoulder T-Shirt',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
@@ -198,7 +198,7 @@ List<Product> dummyProducts = [
     ],
   ),
   Product(
-    id: '00004',
+    id: '000005',
     title: 'High Neck Shoulder T-Shirt',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
@@ -249,7 +249,7 @@ List<Product> dummyProducts = [
     ],
   ),
   Product(
-    id: '00005',
+    id: '000006',
     title: 'High Neck Shoulder T-Shirt',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',

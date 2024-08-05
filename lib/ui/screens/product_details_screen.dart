@@ -108,9 +108,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Align(
+              Align(
                 alignment: Alignment.bottomCenter,
-                child: DoubleButtonAddOrFav(),
+                child: DoubleButtonAddOrFav(productId: product.id),
               ),
             ],
           ),

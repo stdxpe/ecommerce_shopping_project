@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/navigation_service.dart';
@@ -45,7 +45,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
 
     // state = const AsyncLoading();
     // var createdProduct = await AsyncValue.guard(_dbManager.createProduct);
-    var createdProduct = dummyProducts[1];
+    var createdProduct = dummyAllProducts[1];
 
     final previousState = await future;
     state = AsyncData([...previousState, createdProduct]);
@@ -56,7 +56,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
 
     state = const AsyncLoading();
     // var createdProduct = await AsyncValue.guard(_dbManager.createProduct);
-    var filteredProducts = dummyProducts.where(
+    var filteredProducts = dummyAllProducts.where(
       (element) {
         var tempItem = element.title.toLowerCase();
         var tempFilter = 'NECK'.toLowerCase();

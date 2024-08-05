@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
             HorizontalListviewProductCardVerticalAlternate(
               isCardElevated: false,
               // productsList: dummyProductShortList,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               cardWidth: 400,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
             ),
             HorizontalListviewProductCardHorizontal(
               // isCardElevated: false,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               cardWidth: 700,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
             ),
             VerticalListviewProductCardHorizontalMini(
               // isCardElevated: false,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
             ProductCardDealsSlider(
               /// HERE
               // productsList: dummyDealsOfTheWeekProductList,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
             ),
             TitleWithTextButton(
               onPressed: () {},
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
             VerticalListviewProductCardHorizontalDetailed(
               useItemCounter: false,
               isCardElevated: false,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               cardHeight: 300,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
             ),
             HorizontalListviewProductCardVertical(
               // isCardElevated: false,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               itemCountOnRow: 2,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardStack(
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               cardWidth: 500,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
             ),
             GridviewProductCardVertical(
               isCardElevated: false,
-              productsList: dummyProducts,
+              productsList: dummyAllProducts,
               itemCountOnRow: 3,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,

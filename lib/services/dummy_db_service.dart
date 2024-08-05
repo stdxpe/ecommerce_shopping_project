@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 

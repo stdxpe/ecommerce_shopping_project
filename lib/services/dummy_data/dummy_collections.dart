@@ -1,5 +1,5 @@
 import 'package:ecommerce_shopping_project/models/collection.dart';
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 Collection dummyCollection1 = Collection(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_filter_lists.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_filter_lists.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/single_size_picker_button.dart';
 
 class SwitchFilterSizeSelector extends StatelessWidget {

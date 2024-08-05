@@ -1,5 +1,5 @@
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_collections.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 var dummyProductShortList = [

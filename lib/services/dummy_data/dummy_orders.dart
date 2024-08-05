@@ -1,5 +1,5 @@
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/models/order.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
 
 List<Order> dummyOrders = [
   Order(

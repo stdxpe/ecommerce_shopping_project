@@ -6,8 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_product_short_list.dart';
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_product_short_list.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
@@ -56,9 +56,6 @@ void main() {
 class RootApp extends StatelessWidget {
   const RootApp({super.key});
 
-// Loading bars
-// https://pub.dev/packages/loading_animation_widget
-// https://pub.dev/packages/pinput
   @override
   Widget build(BuildContext context) {
     return AppConfiguration(
@@ -98,7 +95,12 @@ class RootApp extends StatelessWidget {
       // homeScreen: CreditCardsScreen(),
       // homeScreen: ProfileEditScreen(onPressed: () {}),
 
-      /// Icon Notifications
+// Loading bars
+// https://pub.dev/packages/loading_animation_widget
+// https://pub.dev/packages/pinput
+
+      /// Eth will be in Collections. getCollection(id?)
+      /// Icon Notifications and New/Sale Tag
       /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality

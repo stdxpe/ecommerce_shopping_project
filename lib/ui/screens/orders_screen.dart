@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_orders.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_orders.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_order_card_horizontal.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';

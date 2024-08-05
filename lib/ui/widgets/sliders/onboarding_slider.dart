@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_sliders_list.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_sliders_list.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class OnboardingSlider extends StatelessWidget {

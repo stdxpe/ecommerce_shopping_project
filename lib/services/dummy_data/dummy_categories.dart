@@ -1,5 +1,5 @@
 import 'package:ecommerce_shopping_project/models/category.dart';
-import 'package:ecommerce_shopping_project/models/dummy_data/dummy_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final List<Category> dummyCategories = [

@@ -45,8 +45,8 @@ class ShoppingCartScreen extends StatelessWidget {
                         OrderProduct(
                           id: '001',
 
-                          /// TODO: Need productId
-                          selectedProduct: dummyAllProducts[0],
+                          /// TODO: Need selectedProduct with productId
+                          selectedProduct: dummyAllProducts[1],
                           selectedColor: 'Yellow',
                           selectedSize: 'XL',
                           itemCount: 1,

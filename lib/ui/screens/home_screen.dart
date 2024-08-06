@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardVerticalAlternate(
-              useShimmer: true,
+              // useShimmer: true,
               isCardElevated: false,
               productsList: dummyAllProducts,
               cardWidth: 400,

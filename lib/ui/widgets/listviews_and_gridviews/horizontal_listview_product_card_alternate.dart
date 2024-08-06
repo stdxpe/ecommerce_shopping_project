@@ -58,6 +58,9 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
               child: useShimmer!
                   ? CardPlaceholderVertical(cardWidth: cardWidth)
                   : ProductCardVertical(
+                      /// TODO: New Product provider
+                      // isNewProduct: true,
+                      isOnSale: productsList[index].isOnSale,
                       product: productsList[index],
                       isCardElevated: isCardElevated,
                       cardWidth: cardWidth,

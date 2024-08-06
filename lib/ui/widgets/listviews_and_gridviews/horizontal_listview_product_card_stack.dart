@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_stack.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_stack.dart';
 
 class HorizontalListviewProductCardStack extends StatelessWidget {
   const HorizontalListviewProductCardStack({
@@ -11,12 +12,14 @@ class HorizontalListviewProductCardStack extends StatelessWidget {
     required this.cardWidth,
     required this.paddingMain,
     required this.paddingBetweenElements,
+    this.useShimmer = false,
   });
 
   final List<Product> productsList;
   final double cardWidth;
   final double paddingMain;
   final double paddingBetweenElements;
+  final bool? useShimmer;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +35,16 @@ class HorizontalListviewProductCardStack extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(right: paddingBetweenElements.w),
-              child: ProductCardStack(
-                product: productsList[index],
-                cardWidth: cardWidth,
+              child: useShimmer!
+                  ? CardPlaceholderStack(
+                      cardWidth: cardWidth, cardHeight: cardWidth)
+                  : ProductCardStack(
+                      product: productsList[index],
+                      cardWidth: cardWidth,
 
-                /// TODO: Bottom Text and Product Model Class relation?
-                bottomText: 'Size: M  |  Color: Red',
-              ),
+                      /// TODO: Bottom Text and Product Model Class relation?
+                      bottomText: 'Size: M  |  Color: Red',
+                    ),
             );
           }),
     );

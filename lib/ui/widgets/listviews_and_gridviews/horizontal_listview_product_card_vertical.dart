@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_vertical.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_vertical.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class HorizontalListviewProductCardVertical extends StatelessWidget {
@@ -13,6 +14,7 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
     this.isCardElevated = true,
     required this.paddingMain,
     required this.paddingBetweenElements,
+    this.useShimmer = false,
   });
 
   final List<Product> productsList;
@@ -20,6 +22,7 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
   final bool? isCardElevated;
   final double paddingMain;
   final double paddingBetweenElements;
+  final bool? useShimmer;
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +60,16 @@ class HorizontalListviewProductCardVertical extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(right: paddingBetweenElements.w),
-            child: ProductCardVertical(
-              product: productsList[index],
-              cardWidth: cardTotalWidth,
-              isCardElevated: isCardElevated,
-            ),
+            child: useShimmer!
+                ? CardPlaceholderVertical(
+                    cardWidth: cardTotalWidth,
+                    useDoubleLine: false,
+                  )
+                : ProductCardVertical(
+                    product: productsList[index],
+                    cardWidth: cardTotalWidth,
+                    isCardElevated: isCardElevated,
+                  ),
           );
         },
       ),

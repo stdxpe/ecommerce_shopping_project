@@ -41,6 +41,8 @@ abstract class ColorPalette {
 
   /// TODO: dialogPopupBackgroundColor
   static const Color dialogPopupBackground = Colors.white;
+  static const Color shimmerBackground = Color.fromARGB(255, 138, 138, 138);
+  static const Color shimmerForeground = Color.fromARGB(255, 42, 42, 42);
 
   // color: context.theme.appColors.error
 

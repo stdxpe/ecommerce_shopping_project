@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/shimmer_test_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -118,7 +119,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
           path: Routes.test,
-          builder: (context, state) => CreditCardRawSpinAnimation()),
+          // builder: (context, state) => CreditCardRawSpinAnimation()),
+          builder: (context, state) => ShimmerTestScreen()),
+
       GoRoute(
           path: Routes.splash,
           builder: (context, state) => const SplashScreen()),

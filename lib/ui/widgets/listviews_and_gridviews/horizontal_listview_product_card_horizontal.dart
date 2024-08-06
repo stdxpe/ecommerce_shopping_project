@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_horizontal.dart';
 
 class HorizontalListviewProductCardHorizontal extends StatelessWidget {
   const HorizontalListviewProductCardHorizontal({
@@ -13,6 +14,7 @@ class HorizontalListviewProductCardHorizontal extends StatelessWidget {
     required this.paddingMain,
     required this.paddingBetweenElements,
     this.isCardElevated = true,
+    this.useShimmer = false,
   });
 
   final List<Product> productsList;
@@ -21,6 +23,7 @@ class HorizontalListviewProductCardHorizontal extends StatelessWidget {
   final double cardHeight;
   final double paddingMain;
   final double paddingBetweenElements;
+  final bool? useShimmer;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +39,15 @@ class HorizontalListviewProductCardHorizontal extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(right: paddingBetweenElements.w),
-            child: ProductCardHorizontal(
-              isCardElevated: isCardElevated,
-              cardWidth: cardWidth,
-              cardHeight: cardHeight,
-              product: productsList[index],
-            ),
+            child: useShimmer!
+                ? CardPlaceholderHorizontal(
+                    cardHeight: cardHeight, cardWidth: cardWidth.w)
+                : ProductCardHorizontal(
+                    isCardElevated: isCardElevated,
+                    cardWidth: cardWidth,
+                    cardHeight: cardHeight,
+                    product: productsList[index],
+                  ),
           );
         },
       ),

@@ -99,6 +99,7 @@ class RootApp extends StatelessWidget {
 // https://pub.dev/packages/loading_animation_widget
 // https://pub.dev/packages/pinput
 
+      /// All riverpod's starts at appstart
       /// Eth will be in Collections. getCollection(id?)
       /// Icon Notifications and New/Sale Tag
       /// Shimmer Placeholders for waiting states

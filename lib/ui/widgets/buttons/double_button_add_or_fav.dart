@@ -51,11 +51,8 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           ),
           SizedBox(width: 50.w),
           IconButtonLike(
-            onPressed: () {
-              ref
-                  .read(wishlistScreenProvider.notifier)
-                  .addProductToWishlist(productId: productId);
-            },
+            isProductOnWishlist: ref.watch(isProductOnWishlist(productId)),
+            onPressed: () => ref.read(toggleLikeButtonProvider(productId)),
           ),
         ],
       ),

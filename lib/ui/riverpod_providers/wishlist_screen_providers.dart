@@ -6,6 +6,29 @@ import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_pr
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 
+final isProductOnWishlist =
+    StateProvider.family<bool, String>((ref, productId) {
+  return ((ref.watch(wishlistScreenProvider).value != null) &&
+          (ref
+              .watch(wishlistScreenProvider)
+              .value!
+              .where((e) => e.id == productId)
+              .isNotEmpty))
+      ? true
+      : false;
+});
+
+final toggleLikeButtonProvider =
+    StateProvider.family<void, String>((ref, productId) {
+  (ref.watch(isProductOnWishlist(productId)))
+      ? ref
+          .read(wishlistScreenProvider.notifier)
+          .deleteProductFromWishlist(productId: productId)
+      : ref
+          .read(wishlistScreenProvider.notifier)
+          .addProductToWishlist(productId: productId);
+});
+
 final wishlistScreenProvider =
     AsyncNotifierProvider<WishlistScreenNotifier, List<Product>>(() {
   return WishlistScreenNotifier();
@@ -75,5 +98,12 @@ class WishlistScreenNotifier extends AsyncNotifier<List<Product>> {
     );
     print('latestState : $state');
     print(dummyWishlistProductsId);
+  }
+
+  bool isProductLiked({required String productId}) {
+    return ((state.value != null) &&
+            (state.value!.where((e) => e.id == productId).isNotEmpty))
+        ? true
+        : false;
   }
 }

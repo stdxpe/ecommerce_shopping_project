@@ -1,11 +1,3 @@
-// class Product {
-//   final String title;
-//   final double price;
-//   final String mainPhoto;
-
-//   Product({required this.title, required this.price, required this.mainPhoto});
-// }
-
 import 'package:ecommerce_shopping_project/models/category.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/review.dart';

@@ -101,7 +101,6 @@ class RootApp extends StatelessWidget {
 
       /// All riverpod's starts at appstart
       /// Eth will be in Collections. getCollection(id?)
-      /// Icon Notifications and New/Sale Tag
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality
       /// TODO: Bottom Sheet functionality

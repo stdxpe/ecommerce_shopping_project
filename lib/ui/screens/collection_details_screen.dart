@@ -8,6 +8,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gr
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 class CollectionDetailsScreen extends StatelessWidget {
   const CollectionDetailsScreen({
@@ -31,14 +32,26 @@ class CollectionDetailsScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),
           children: [
-            Container(
-              height: context.mediaQuery.size.width,
-              padding: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    collection.photo,
+            ZoomOverlay(
+              modalBarrierColor: Colors.black12,
+              minScale: 0.5,
+              maxScale: 3.0,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: const Duration(
+                milliseconds: 300,
+              ),
+              twoTouchOnly: true,
+              onScaleStart: () {},
+              onScaleStop: () {},
+              child: Container(
+                height: context.mediaQuery.size.width,
+                padding: EdgeInsets.zero,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      collection.photo,
+                    ),
                   ),
                 ),
               ),

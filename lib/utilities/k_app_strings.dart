@@ -19,6 +19,7 @@ abstract class AppStrings {
 
   static const String collectionTitleRightButton = 'See all';
   static const String itemsFound = ' items found';
+  static const String itemFound = ' item found';
 
   static const String cardNewTag = 'NEW';
   static const String cardOnSaleTag = 'ON SALE';

@@ -33,8 +33,8 @@ class ShoppingCartScreen extends StatelessWidget {
                   children: [
                     const TitleMain(
                       title: AppStrings.shoppingCartScreenTitle,
-                      // ref.watch(shoppingCartProvider).length;
                       itemCount: 13,
+                      // itemCount: ref.watch(shoppingCartProvider).value?.length,
                     ),
                     // ref.watch(shoppingCartProvider).when
                     VerticalListviewOrderProductCardHorizontal(

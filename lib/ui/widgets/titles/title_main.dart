@@ -78,13 +78,15 @@ class TitleMain extends StatelessWidget {
                 ),
             ],
           ),
-          if (itemCount != null)
+          if (itemCount != null && itemCount != 0)
             SizedBox(
                 height:
                     Constants.kMainTitleSpacingBTWItemsFoundBTWStepsVertical.h),
-          if (itemCount != null)
+          if (itemCount != null && itemCount != 0)
             TextCustom(
-              text: '$itemCount${AppStrings.itemsFound}',
+              text: (itemCount == 1)
+                  ? '$itemCount${AppStrings.itemFound}'
+                  : '$itemCount${AppStrings.itemsFound}',
               textStyle: context.textTheme.titleSmall!,
               color: context.colorPalette.titleFaded,
             ),

@@ -19,9 +19,9 @@ class WishlistScreen extends ConsumerWidget {
         padding: EdgeInsets.zero,
         physics: const ClampingScrollPhysics(),
         children: [
-          const TitleMain(
+          TitleMain(
             title: AppStrings.wishlistScreenTitle,
-            itemCount: 13,
+            itemCount: ref.watch(wishlistScreenProvider).value?.length,
           ),
           ref.watch(wishlistScreenProvider).when(
                 loading: () => VerticalListviewProductCardHorizontalMini(
@@ -41,19 +41,24 @@ class WishlistScreen extends ConsumerWidget {
 
                 ///////////////////////////////////
                 //////////////////////////////////// HERE
-                data: (data) => VerticalListviewProductCardHorizontalMini(
-                  onDismissed: (index) => ref
-                      .read(wishlistScreenProvider.notifier)
-                      .deleteProductFromWishlist(productId: data[index].id),
-                  useShimmer: false,
-                  dismissibleEnabled: true,
-                  useSoftShadow: true,
-                  productsList: data,
-                  cardHeight: 200,
-                  paddingMain: Constants.kMainPaddingHorizontal,
-                  paddingBetweenElements:
-                      Constants.kMainSpacingBTWCardsHorizontal,
-                ),
+                data: (data) {
+                  if (data.isNotEmpty) {
+                    return VerticalListviewProductCardHorizontalMini(
+                      onDismissed: (index) => ref
+                          .read(wishlistScreenProvider.notifier)
+                          .deleteProductFromWishlist(productId: data[index].id),
+                      useShimmer: false,
+                      dismissibleEnabled: true,
+                      useSoftShadow: true,
+                      productsList: data,
+                      cardHeight: 200,
+                      paddingMain: Constants.kMainPaddingHorizontal,
+                      paddingBetweenElements:
+                          Constants.kMainSpacingBTWCardsHorizontal,
+                    );
+                  }
+                  return Icon(Icons.face);
+                },
               ),
         ],
       ),

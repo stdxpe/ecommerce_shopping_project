@@ -51,6 +51,7 @@ class CustomNavBar extends StatelessWidget {
             currentIndex: currentIndex,
             buttonIndex: 2,
             icon: Icons.shopping_cart_outlined,
+            useIconNotification: true,
           ),
           CustomNavBarItem(
             onPressed: onPressed,

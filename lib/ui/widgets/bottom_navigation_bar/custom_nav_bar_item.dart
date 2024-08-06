@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class CustomNavBarItem extends StatelessWidget {
@@ -10,12 +12,14 @@ class CustomNavBarItem extends StatelessWidget {
     required this.currentIndex,
     required this.buttonIndex,
     required this.icon,
+    this.useIconNotification = false,
   });
 
   final Function(int index) onPressed;
   final int currentIndex;
   final int buttonIndex;
   final IconData icon;
+  final bool? useIconNotification;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +34,46 @@ class CustomNavBarItem extends StatelessWidget {
           color: Colors.transparent,
           child: Column(
             children: [
-              Icon(
-                icon,
-                size: 75.h,
-                color: currentIndex == buttonIndex
-                    ? context.colorPalette.navigationBarActive
-                    : context.colorPalette.navigationBarPassive,
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    // color: Colors.green.withOpacity(0.5),
+                    child: Icon(
+                      icon,
+                      size: 75.h,
+                      color: currentIndex == buttonIndex
+                          ? context.colorPalette.navigationBarActive
+                          : context.colorPalette.navigationBarPassive,
+                    ),
+                  ),
+                  if (useIconNotification!)
+                    Positioned(
+                      right: -15.w,
+                      top: -13.h,
+                      child: Container(
+                        height: 46.h,
+                        width: 46.h,
+                        decoration: const BoxDecoration(
+                          color: ColorPalette.iconNotifications,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: FittedBox(
+                            child: TextCustom(
+                              /// TODO: ref.watch(shoppingCartProvider).length,
+                              text: '6',
+                              textStyle: context.textTheme.bodySmall!,
+                              fontSizeCustom: 28,
+                              fontWeightCustom: FontWeight.w600,
+                              color: Colors.white,
+                              textAlignCustom: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
               SizedBox(height: 40.h),
               const Dot()

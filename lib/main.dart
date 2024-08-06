@@ -102,13 +102,12 @@ class RootApp extends StatelessWidget {
       /// All riverpod's starts at appstart
       /// Eth will be in Collections. getCollection(id?)
       /// Icon Notifications and New/Sale Tag
-      /// Shimmer Placeholders for waiting states
       /// TODO: Address and Credit Card model classes
       /// TODO: Search functionality
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations
       /// TODO: Video BG Splash Screen
-      /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers
+      /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers or Dummys?
     );
   }
 }

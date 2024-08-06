@@ -24,7 +24,8 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: GestureDetector(
-        onTap: () => context.push(Routes.productDetails, extra: orderProduct),
+        onTap: () => context.push(Routes.productDetails,
+            extra: orderProduct.selectedProduct),
         child: Container(
           height: cardHeight.h,
           decoration: BoxDecoration(

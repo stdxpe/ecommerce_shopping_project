@@ -5,7 +5,7 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 
 /// TODO: Test this Circular Button
 class ButtonCircularMain extends StatelessWidget {
-  final Function onPressed;
+  final Function() onPressed;
   final IconData? icon;
   final Widget? alternativeWidgetContent;
   final double? buttonSize;

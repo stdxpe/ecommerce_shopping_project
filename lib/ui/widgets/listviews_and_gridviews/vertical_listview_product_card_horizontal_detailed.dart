@@ -75,7 +75,11 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
                             bottom: 10.h,
                             child: Align(
                               alignment: Alignment.bottomRight,
-                              child: SwitchItemCounter(),
+                              child: SwitchItemCounter(
+                                itemCount: 1,
+                                onPressedMinus: () {},
+                                onPressedPlus: () {},
+                              ),
                             ),
                           ),
                       ],

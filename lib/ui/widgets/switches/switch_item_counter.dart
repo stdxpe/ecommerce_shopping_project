@@ -5,20 +5,20 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_circular_ma
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class SwitchItemCounter extends StatefulWidget {
-  int itemCount;
-  double? itemPaddingHorizontal;
-  SwitchItemCounter({
+class SwitchItemCounter extends StatelessWidget {
+  const SwitchItemCounter({
     this.itemCount = 1,
     this.itemPaddingHorizontal = 0,
     super.key,
+    required this.onPressedMinus,
+    required this.onPressedPlus,
   });
 
-  @override
-  State<SwitchItemCounter> createState() => _SwitchItemCounterState();
-}
+  final int itemCount;
+  final double? itemPaddingHorizontal;
+  final Function() onPressedMinus;
+  final Function() onPressedPlus;
 
-class _SwitchItemCounterState extends State<SwitchItemCounter> {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
@@ -26,8 +26,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
         color: context.colorPalette.cardBackground,
         boxShadow: [
           BoxShadows.kBoxShadowProductCard(
-            color: context.colorPalette.shadowSecondary.withOpacity(0.2),
-          ),
+              color: context.colorPalette.shadowSecondary.withOpacity(0.2))
         ],
         borderRadius: BorderRadius.circular(Constants.kRadiusItemCounter.r),
       ),
@@ -37,11 +36,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ButtonCircularMain(
-            onPressed: () {
-              setState(() {
-                if (widget.itemCount > 1) widget.itemCount--;
-              });
-            },
+            onPressed: () => onPressedMinus(),
             iconColor: context.colorPalette.text,
             buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.minus,
@@ -52,7 +47,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
           SizedBox(
             width: 52.w,
             child: TextCustom(
-              text: widget.itemCount.toString(),
+              text: itemCount.toString(),
               textStyle: context.textTheme.bodyMedium!,
               color: context.colorPalette.text.withOpacity(0.8),
               fontSizeCustom: 38,
@@ -61,11 +56,7 @@ class _SwitchItemCounterState extends State<SwitchItemCounter> {
             ),
           ),
           ButtonCircularMain(
-            onPressed: () {
-              setState(() {
-                widget.itemCount++;
-              });
-            },
+            onPressed: () => onPressedPlus(),
             iconColor: context.colorPalette.text,
             buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.add,

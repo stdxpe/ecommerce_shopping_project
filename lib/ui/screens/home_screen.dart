@@ -47,8 +47,8 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardVerticalAlternate(
+              useShimmer: true,
               isCardElevated: false,
-              // productsList: dummyProductShortList,
               productsList: dummyAllProducts,
               cardWidth: 400,
               paddingMain: Constants.kMainPaddingHorizontal,
@@ -60,6 +60,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardHorizontal(
+              useShimmer: true,
               // isCardElevated: false,
               productsList: dummyAllProducts,
               cardWidth: 700,
@@ -73,6 +74,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             VerticalListviewProductCardHorizontalMini(
+              useShimmer: true,
               // isCardElevated: false,
               productsList: dummyAllProducts,
               cardHeight: 200,
@@ -95,6 +97,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             VerticalListviewProductCardHorizontalDetailed(
+              useShimmer: true,
               useItemCounter: false,
               isCardElevated: false,
               productsList: dummyAllProducts,
@@ -108,6 +111,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardVertical(
+              useShimmer: true,
               // isCardElevated: false,
               productsList: dummyAllProducts,
               itemCountOnRow: 2,
@@ -120,6 +124,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             HorizontalListviewProductCardStack(
+              useShimmer: true,
               productsList: dummyAllProducts,
               cardWidth: 500,
               paddingMain: Constants.kMainPaddingHorizontal,
@@ -131,6 +136,7 @@ class HomeScreen extends StatelessWidget {
               buttonText: AppStrings.collectionTitleRightButton,
             ),
             GridviewProductCardVertical(
+              useShimmer: true,
               isCardElevated: false,
               productsList: dummyAllProducts,
               itemCountOnRow: 3,

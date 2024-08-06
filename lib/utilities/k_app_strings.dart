@@ -20,6 +20,8 @@ abstract class AppStrings {
   static const String collectionTitleRightButton = 'See all';
   static const String itemsFound = ' items found';
 
+  static const String globalStateErrorMessage = 'Error. Please try again later';
+
   /// ONBOARDING SCREEN
   static const String onboardingScreenTitle = 'Swipe to browse';
   static const String onboardingScreenSubtitle =

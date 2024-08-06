@@ -9,12 +9,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class WishlistScreen extends ConsumerWidget {
-  const WishlistScreen({
-    super.key,
-    this.menuScreenContext,
-  });
-
-  final BuildContext? menuScreenContext;
+  const WishlistScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +23,6 @@ class WishlistScreen extends ConsumerWidget {
             title: AppStrings.wishlistScreenTitle,
             itemCount: 13,
           ),
-
           ref.watch(wishlistScreenProvider).when(
                 loading: () => VerticalListviewProductCardHorizontalMini(
                   useShimmer: true,
@@ -41,39 +35,26 @@ class WishlistScreen extends ConsumerWidget {
                       Constants.kMainSpacingBTWCardsHorizontal,
                 ),
                 error: (error, stackTrace) => const Text(
-                  'Error',
+                  AppStrings.globalStateErrorMessage,
                   style: TextStyle(color: Colors.black),
                 ),
 
                 ///////////////////////////////////
                 //////////////////////////////////// HERE
                 data: (data) => VerticalListviewProductCardHorizontalMini(
-                  onDismissed: (index) {
-                    ref
-                        .read(wishlistScreenProvider.notifier)
-                        .deleteProductFromWishlist(productId: data[index].id);
-                  },
+                  onDismissed: (index) => ref
+                      .read(wishlistScreenProvider.notifier)
+                      .deleteProductFromWishlist(productId: data[index].id),
                   useShimmer: false,
                   dismissibleEnabled: true,
                   useSoftShadow: true,
-                  // productsList:    ref.watch(myStateNotifierProvider1.notifier).getAllProducts(),
                   productsList: data,
                   cardHeight: 200,
-                  // cardHeight: ref.watch(testProvider),
                   paddingMain: Constants.kMainPaddingHorizontal,
                   paddingBetweenElements:
                       Constants.kMainSpacingBTWCardsHorizontal,
                 ),
               ),
-          // VerticalListviewProductCardHorizontalMini(
-          //   // dismissibleEnabled: true,
-          //   useSoftShadow: true,
-          //   productsList: dummyProducts,
-          //   cardHeight: 200,
-          //   // cardHeight: ref.watch(testProvider),
-          //   paddingMain: Constants.kMainPaddingHorizontal,
-          //   paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
-          // ),
         ],
       ),
     );

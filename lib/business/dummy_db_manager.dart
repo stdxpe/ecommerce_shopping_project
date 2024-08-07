@@ -1,10 +1,12 @@
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
+import 'package:ecommerce_shopping_project/models/order.dart';
+import 'package:ecommerce_shopping_project/models/order_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 
 class DummyDbManager extends IDBRepository {
-  var _dbService = locator<IDbService>();
+  final _dbService = locator<IDbService>();
 
   @override
   Future<List<Product>> getAllProducts() {
@@ -60,8 +62,45 @@ class DummyDbManager extends IDBRepository {
   }
 
   @override
-  Future<List<Product>> getProductsByFilter({required List<String> filters}) {
-    // TODO: implement getProductsByFilter
-    throw UnimplementedError();
+  Future<List<OrderProduct>> getShoppingCartProducts() async {
+    print(
+        'DummyDbManager getShoppingCartProducts() Executed: "Waiting 2 seconds...');
+    await Future.delayed(const Duration(seconds: 2));
+
+    List<Product> foundProducts = [];
+    List<OrderProduct> allShoppingCartProducts =
+        await _dbService.getShoppingCartProducts();
+
+    // for (var productId in wishlistProductsId) {
+    //   Product foundProduct =
+    //       await _dbService.getProductById(productId: productId);
+    //   foundProducts.add(foundProduct);
+    return Future.value(allShoppingCartProducts);
+  }
+
+  @override
+  Future<OrderProduct> addProductToShoppingCart(
+      {required OrderProduct orderProduct}) async {
+    print(
+        'DummyDbManager addProductToShoppingCart() Executed: "Waiting 2 seconds...');
+    await Future.delayed(const Duration(seconds: 0));
+
+    _dbService.addProductToShoppingCart(orderProduct: orderProduct);
+    // var addedProduct = _dbService.getProductById(productId: productId);
+    // return addedProduct;
+    return orderProduct;
+  }
+
+  @override
+  Future<OrderProduct> deleteProductFromShoppingCart(
+      {required OrderProduct orderProduct}) async {
+    print(
+        'DummyDbManager deleteProductFromShoppingCart() Executed: "Waiting 2 seconds...');
+    await Future.delayed(const Duration(seconds: 0));
+
+    _dbService.deleteProductFromShoppingCart(orderProduct: orderProduct);
+    // var deletedProduct = _dbService.getProductById(productId: productId);
+    // return deletedProduct;
+    return orderProduct;
   }
 }

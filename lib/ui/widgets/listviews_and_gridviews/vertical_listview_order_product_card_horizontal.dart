@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/order_product.dart';
@@ -8,16 +9,19 @@ import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placehol
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_item_counter.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class VerticalListviewOrderProductCardHorizontal extends StatelessWidget {
+class VerticalListviewOrderProductCardHorizontal extends ConsumerWidget {
   const VerticalListviewOrderProductCardHorizontal({
     super.key,
     required this.orderProductsList,
     required this.cardHeight,
-    this.isCardElevated = true,
+    this.isCardElevated = false,
     required this.paddingMain,
     required this.paddingBetweenElements,
     this.dismissibleEnabled = true,
     this.useShimmer = false,
+    required this.onPressedMinus,
+    required this.onPressedPlus,
+    required this.onDismissed,
   });
 
   final List<OrderProduct> orderProductsList;
@@ -27,9 +31,12 @@ class VerticalListviewOrderProductCardHorizontal extends StatelessWidget {
   final double paddingBetweenElements;
   final bool? dismissibleEnabled;
   final bool? useShimmer;
+  final Function() onPressedMinus;
+  final Function() onPressedPlus;
+  final Function(int index) onDismissed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: ListView.builder(
         padding: EdgeInsets.zero,
@@ -42,6 +49,7 @@ class VerticalListviewOrderProductCardHorizontal extends StatelessWidget {
           return DismissibleDeleteWidget(
             // TODO: UNIQUE KEY TO BE CHANGED with Product ID's.
             // TODO: orderProductsList[index].id,
+            onDismissed: () => onDismissed(index),
             uniqueKey: '$index',
             dismissibleEnabled: dismissibleEnabled,
             child: Padding(
@@ -60,6 +68,7 @@ class VerticalListviewOrderProductCardHorizontal extends StatelessWidget {
                       children: [
                         OrderProductCardHorizontalDetailed(
                           orderProduct: orderProductsList[index],
+                          product: orderProductsList[index].selectedProduct,
                           isCardElevated: isCardElevated,
                           cardHeight: cardHeight,
                         ),
@@ -70,10 +79,8 @@ class VerticalListviewOrderProductCardHorizontal extends StatelessWidget {
                             alignment: Alignment.bottomRight,
                             child: SwitchItemCounter(
                               itemCount: orderProductsList[index].itemCount,
-                              onPressedMinus: () {},
-                              // ref.read(shoppingCartProvider.notifier).decreaseItemCounter(index),
-                              onPressedPlus: () {},
-                              // ref.read(shoppingCartProvider.notifier).increaseItemCounter(index),
+                              onPressedMinus: onPressedMinus,
+                              onPressedPlus: onPressedPlus,
                             ),
                           ),
                         ),

@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/order_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
@@ -80,32 +80,32 @@ class DummyDbService extends IDbService {
 
   /// Shopping Cart Screen Related Methods
   @override
-  Future<List<OrderProduct>> getShoppingCartProducts() async {
+  Future<List<OrderProductDto>> getShoppingCartProducts() async {
     print(
         'DummyDbService getShoppingCartProducts() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    return dummyShoppingCartOrderProducts;
+    return dummyShoppingCartOrderProductDtos;
   }
 
   @override
   Future<void> addProductToShoppingCart(
-      {required OrderProduct orderProduct}) async {
+      {required OrderProductDto orderProductDto}) async {
     print(
         'DummyDbService addProductToShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyShoppingCartOrderProducts.add(orderProduct);
+    dummyShoppingCartOrderProductDtos.add(orderProductDto);
   }
 
   @override
   Future<void> deleteProductFromShoppingCart(
-      {required OrderProduct orderProduct}) async {
+      {required OrderProductDto orderProductDto}) async {
     print(
         'DummyDbService deleteProductFromShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyShoppingCartOrderProducts
-        .removeWhere((element) => element.id == orderProduct.id);
+    dummyShoppingCartOrderProductDtos
+        .removeWhere((element) => element.id == orderProductDto.id);
   }
 }

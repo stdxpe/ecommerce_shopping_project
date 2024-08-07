@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_screen_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';

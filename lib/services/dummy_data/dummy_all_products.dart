@@ -138,8 +138,8 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 12,
-    isFreeShipping: true,
-    shippingPrice: 0,
+    isFreeShipping: false,
+    shippingPrice: 4.99,
     estimatedShippingDurationInDays: 7,
     reviews: [
       // dummyReviews[0],
@@ -204,7 +204,7 @@ List<Product> dummyAllProducts = [
     summary: 'Sleeveless T-shirt',
     description:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
-    price: 199.99,
+    price: 20.00,
     mainPhoto: AppImages.productImage3,
     photos: [
       AppImages.productImage1,
@@ -238,8 +238,8 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
-    isFreeShipping: true,
-    shippingPrice: 0,
+    isFreeShipping: false,
+    shippingPrice: 1.99,
     estimatedShippingDurationInDays: 3,
     reviews: [
       // dummyReviews[0],

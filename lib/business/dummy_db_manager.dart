@@ -1,6 +1,6 @@
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/order.dart';
 import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/order_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
@@ -55,27 +55,38 @@ class DummyDbManager extends IDBRepository {
     return deletedProduct;
   }
 
-  @override
-  Future<Product> getProductById({required String productId}) {
-    // TODO: implement getProductById
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<Product> getProductById({required String productId}) async {
+  //   await Future.delayed(const Duration(seconds: 0));
 
+  //   return _dbService.getProductById(productId: productId);
+  // }
+
+  /// Shopping Cart Screen Related Methods
   @override
   Future<List<OrderProduct>> getShoppingCartProducts() async {
     print(
         'DummyDbManager getShoppingCartProducts() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 2));
 
-    List<Product> foundProducts = [];
-    List<OrderProduct> allShoppingCartProducts =
+    List<OrderProductDto> orderProductDtos =
         await _dbService.getShoppingCartProducts();
 
-    // for (var productId in wishlistProductsId) {
-    //   Product foundProduct =
-    //       await _dbService.getProductById(productId: productId);
-    //   foundProducts.add(foundProduct);
-    return Future.value(allShoppingCartProducts);
+    List<OrderProduct> orderProducts = [];
+
+    for (var dto in orderProductDtos) {
+      Product selectedProduct =
+          await _dbService.getProductById(productId: dto.selectedProductId);
+
+      OrderProduct orderProduct = OrderProduct(
+          id: dto.id,
+          selectedProduct: selectedProduct,
+          selectedColor: dto.selectedColor,
+          selectedSize: dto.selectedSize,
+          itemCount: dto.itemCount);
+      orderProducts.add(orderProduct);
+    }
+    return Future.value(orderProducts);
   }
 
   @override
@@ -85,9 +96,14 @@ class DummyDbManager extends IDBRepository {
         'DummyDbManager addProductToShoppingCart() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 0));
 
-    _dbService.addProductToShoppingCart(orderProduct: orderProduct);
-    // var addedProduct = _dbService.getProductById(productId: productId);
-    // return addedProduct;
+    OrderProductDto orderProductDto = OrderProductDto(
+        id: orderProduct.id,
+        selectedProductId: orderProduct.selectedProduct.id,
+        selectedColor: orderProduct.selectedColor,
+        selectedSize: orderProduct.selectedSize,
+        itemCount: orderProduct.itemCount);
+
+    _dbService.addProductToShoppingCart(orderProductDto: orderProductDto);
     return orderProduct;
   }
 
@@ -98,9 +114,15 @@ class DummyDbManager extends IDBRepository {
         'DummyDbManager deleteProductFromShoppingCart() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 0));
 
-    _dbService.deleteProductFromShoppingCart(orderProduct: orderProduct);
-    // var deletedProduct = _dbService.getProductById(productId: productId);
-    // return deletedProduct;
+    OrderProductDto orderProductDto = OrderProductDto(
+        id: orderProduct.id,
+        selectedProductId: orderProduct.selectedProduct.id,
+        selectedColor: orderProduct.selectedColor,
+        selectedSize: orderProduct.selectedSize,
+        itemCount: orderProduct.itemCount);
+
+    _dbService.deleteProductFromShoppingCart(orderProductDto: orderProductDto);
+
     return orderProduct;
   }
 }

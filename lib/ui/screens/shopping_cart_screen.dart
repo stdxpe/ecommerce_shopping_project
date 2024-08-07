@@ -1,21 +1,24 @@
+import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/models/order_product.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_order_product_card_horizontal.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class ShoppingCartScreen extends StatelessWidget {
+class ShoppingCartScreen extends ConsumerWidget {
   const ShoppingCartScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const AppBarMain(
           automaticallyImplyLeading: true, useSearchButton: false),
@@ -31,32 +34,46 @@ class ShoppingCartScreen extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    const TitleMain(
+                    TitleMain(
                       title: AppStrings.shoppingCartScreenTitle,
-                      itemCount: 13,
-                      // itemCount: ref.watch(shoppingCartProvider).value?.length,
+                      itemCount: ref.watch(shoppingCartProvider).value?.length,
                     ),
-                    // ref.watch(shoppingCartProvider).when
-                    VerticalListviewOrderProductCardHorizontal(
-                      // useShimmer: true,
-                      dismissibleEnabled: true,
-                      isCardElevated: false,
-                      orderProductsList: [
-                        OrderProduct(
-                          id: '001',
-
-                          /// TODO: Need selectedProduct with productId
-                          selectedProduct: dummyAllProducts[1],
-                          selectedColor: 'Yellow',
-                          selectedSize: 'XL',
-                          itemCount: 1,
-                        )
-                      ],
-                      cardHeight: 250,
-                      paddingMain: Constants.kMainPaddingHorizontal,
-                      paddingBetweenElements:
-                          Constants.kMainSpacingBTWCardsVertical,
-                    ),
+                    ref.watch(shoppingCartProvider).when(
+                          loading: () =>
+                              VerticalListviewOrderProductCardHorizontal(
+                            useShimmer: true,
+                            onPressedMinus: () {},
+                            onPressedPlus: () {},
+                            onDismissed: (index) {},
+                            dismissibleEnabled: false,
+                            orderProductsList: dummyShoppingCartOrderProducts,
+                            cardHeight: 250,
+                            paddingMain: Constants.kMainPaddingHorizontal,
+                            paddingBetweenElements:
+                                Constants.kMainSpacingBTWCardsVertical,
+                          ),
+                          error: (error, stackTrace) => const Text(
+                            AppStrings.globalStateErrorMessage,
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          data: (data) =>
+                              VerticalListviewOrderProductCardHorizontal(
+                            onDismissed: (index) => ref
+                                .read(shoppingCartProvider.notifier)
+                                .deleteProductFromShoppingCart(
+                                    orderProduct: data[index]),
+                            dismissibleEnabled: true,
+                            orderProductsList: data,
+                            // ref.read(shoppingCartProvider.notifier).decreaseItemCounter(index),
+                            // ref.read(shoppingCartProvider.notifier).increaseItemCounter(index),
+                            onPressedMinus: () {},
+                            onPressedPlus: () {},
+                            cardHeight: 250,
+                            paddingMain: Constants.kMainPaddingHorizontal,
+                            paddingBetweenElements:
+                                Constants.kMainSpacingBTWCardsVertical,
+                          ),
+                        ),
                     SizedBox(height: 100.h),
                   ],
                 ),
@@ -64,11 +81,24 @@ class ShoppingCartScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButtonsShoppingCart(
-                  onPressed: () => context.push(Routes.paymentStepShipping),
-
-                  // ref.watch(shoppingCartProvider.notifier).totalAmount();
-                  totalAmount: 210.99,
-                  shippingFee: 5.99,
+                  onPressed: () {
+                    // return context.push(Routes.paymentStepShipping);
+                    ref
+                        .read(shoppingCartProvider.notifier)
+                        .addProductToShoppingCart(
+                          orderProduct: OrderProduct(
+                            id: 'OrderProduct05',
+                            selectedProduct: dummyAllProducts[1],
+                            selectedColor: 'Purple',
+                            selectedSize: 'XS',
+                            itemCount: 13,
+                          ),
+                        );
+                  },
+                  totalAmount:
+                      ref.watch(shoppingCartProvider.notifier).getTotalAmount(),
+                  shippingFee:
+                      ref.watch(shoppingCartProvider.notifier).getShippingFee(),
                 ),
               ),
             ],

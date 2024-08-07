@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -48,30 +50,43 @@ class CustomNavBarItem extends StatelessWidget {
                     ),
                   ),
                   if (useIconNotification!)
-                    Positioned(
-                      right: -15.w,
-                      top: -13.h,
-                      child: Container(
-                        height: 46.h,
-                        width: 46.h,
-                        decoration: const BoxDecoration(
-                          color: ColorPalette.iconNotifications,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Center(
-                          child: FittedBox(
-                            child: TextCustom(
-                              /// TODO: ref.watch(shoppingCartProvider).length,
-                              text: '6',
-                              textStyle: context.textTheme.bodySmall!,
-                              fontSizeCustom: 28,
-                              fontWeightCustom: FontWeight.w600,
-                              color: Colors.white,
-                              textAlignCustom: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        return (ref.watch(shoppingCartProvider).value != null &&
+                                ref
+                                    .watch(shoppingCartProvider)
+                                    .value!
+                                    .isNotEmpty)
+                            ? Positioned(
+                                right: -15.w,
+                                top: -13.h,
+                                child: Container(
+                                  height: 46.h,
+                                  width: 46.h,
+                                  decoration: const BoxDecoration(
+                                    color: ColorPalette.iconNotifications,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Center(
+                                    child: FittedBox(
+                                      child: TextCustom(
+                                        text: ref
+                                            .read(shoppingCartProvider)
+                                            .value!
+                                            .length
+                                            .toString(),
+                                        textStyle: context.textTheme.bodySmall!,
+                                        fontSizeCustom: 28,
+                                        fontWeightCustom: FontWeight.w600,
+                                        color: Colors.white,
+                                        textAlignCustom: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : SizedBox();
+                      },
                     ),
                 ],
               ),

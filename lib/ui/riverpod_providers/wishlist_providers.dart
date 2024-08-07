@@ -8,9 +8,9 @@ import 'package:ecommerce_shopping_project/models/product.dart';
 
 final isProductOnWishlist =
     StateProvider.family<bool, String>((ref, productId) {
-  return ((ref.watch(wishlistScreenProvider).value != null) &&
+  return ((ref.watch(wishlistProvider).value != null) &&
           (ref
-              .watch(wishlistScreenProvider)
+              .watch(wishlistProvider)
               .value!
               .where((e) => e.id == productId)
               .isNotEmpty))
@@ -22,19 +22,19 @@ final toggleLikeButtonProvider =
     StateProvider.family<void, String>((ref, productId) {
   (ref.watch(isProductOnWishlist(productId)))
       ? ref
-          .read(wishlistScreenProvider.notifier)
+          .read(wishlistProvider.notifier)
           .deleteProductFromWishlist(productId: productId)
       : ref
-          .read(wishlistScreenProvider.notifier)
+          .read(wishlistProvider.notifier)
           .addProductToWishlist(productId: productId);
 });
 
-final wishlistScreenProvider =
-    AsyncNotifierProvider<WishlistScreenNotifier, List<Product>>(() {
-  return WishlistScreenNotifier();
+final wishlistProvider =
+    AsyncNotifierProvider<WishlistNotifier, List<Product>>(() {
+  return WishlistNotifier();
 });
 
-class WishlistScreenNotifier extends AsyncNotifier<List<Product>> {
+class WishlistNotifier extends AsyncNotifier<List<Product>> {
   @override
   FutureOr<List<Product>> build() async {
     /// Initial State Setting Operation

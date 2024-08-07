@@ -73,7 +73,7 @@ class RootApp extends StatelessWidget {
       // homeScreen: ReviewsScreen(product: dummyProductShortList[0]),
       // homeScreen: DiscoverScreen(),
       // homeScreen: CollectionDetailsScreen(product: dummyProducts[1]),
-      // // // homeScreen: WishlistScreen(),
+      // homeScreen: WishlistScreen(),
       // homeScreen: ShoppingCartScreen(),
       // homeScreen: PaymentScreenPageview(),
       // homeScreen: SearchScreen(),

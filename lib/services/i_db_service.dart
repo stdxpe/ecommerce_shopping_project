@@ -1,17 +1,22 @@
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/order_product.dart';
 
 abstract class IDbService {
   Future<List<Product>> getAllProducts();
   Future<Product> getProductById({required String productId});
-  Future<List<Product>> getProductsByFilter({required String filter});
+  // Future<List<Product>> getProductsByFilter({required String filter});
+
+  /// Wishlist Screen Related Methods
 
   Future<List<String>> getWishlistProducts();
   Future<void> addProductToWishlist({required String productId});
   Future<void> deleteProductFromWishlist({required String productId});
 
-  // Future<List<Product>> getShoppingCartProducts();
-  // Future<void> addProductToShoppingCart({required String productId});
-  // Future<void> deleteProductFromShoppingCart({required String productId});
+  /// Shopping Cart Related Methods
+  Future<List<OrderProduct>> getShoppingCartProducts();
+  Future<void> addProductToShoppingCart({required OrderProduct orderProduct});
+  Future<void> deleteProductFromShoppingCart(
+      {required OrderProduct orderProduct});
 }
 
 

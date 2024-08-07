@@ -1,5 +1,7 @@
+import 'package:ecommerce_shopping_project/models/order_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_products.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 
@@ -76,28 +78,34 @@ class DummyDbService extends IDbService {
 //     throw UnimplementedError();
 //   }
 
-//   /// Shopping Cart Screen Related Methods
-//   @override
-//   Future<List<Product>> getShoppingCartProducts() {
-//     // TODO: implement getShoppingCartProducts
-//     throw UnimplementedError();
-//   }
+  /// Shopping Cart Screen Related Methods
+  @override
+  Future<List<OrderProduct>> getShoppingCartProducts() async {
+    print(
+        'DummyDbService getShoppingCartProducts() Executed: "Waiting 0.5 seconds...');
+    await Future.delayed(const Duration(milliseconds: 500));
 
-//   @override
-//   Future<void> addProductToShoppingCart({required String productId}) {
-//     // TODO: implement addProductToShoppingCart
-//     throw UnimplementedError();
-//   }
-
-//   @override
-//   Future<void> deleteProductFromShoppingCart({required String productId}) {
-//     // TODO: implement deleteProductFromShoppingCart
-//     throw UnimplementedError();
-//   }
+    return dummyShoppingCartOrderProducts;
+  }
 
   @override
-  Future<List<Product>> getProductsByFilter({required String filter}) {
-    // TODO: implement getProductsByFilter
-    throw UnimplementedError();
+  Future<void> addProductToShoppingCart(
+      {required OrderProduct orderProduct}) async {
+    print(
+        'DummyDbService addProductToShoppingCart() Executed: "Waiting 0.5 seconds...');
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    dummyShoppingCartOrderProducts.add(orderProduct);
+  }
+
+  @override
+  Future<void> deleteProductFromShoppingCart(
+      {required OrderProduct orderProduct}) async {
+    print(
+        'DummyDbService deleteProductFromShoppingCart() Executed: "Waiting 0.5 seconds...');
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    dummyShoppingCartOrderProducts
+        .removeWhere((element) => element.id == orderProduct.id);
   }
 }

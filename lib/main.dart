@@ -102,7 +102,7 @@ class RootApp extends StatelessWidget {
       /// 'Your wishlist/cart is empty' widget
       /// All riverpod's starts at appstart
       /// Eth will be in Collections. getCollection(id?)
-      /// TODO: Address and Credit Card model classes
+      /// TODO: UserModel class
       /// TODO: Search functionality
       /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations

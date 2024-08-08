@@ -88,6 +88,8 @@ class DummyDbManager extends IDBRepository {
     await Future.delayed(const Duration(seconds: 0));
 
 // TODO: CartProduct named Ctor : CartProduct.fromDTO() method
+// TODO: CartProduct copyWith method
+
     CartProductDto cartProductDto = CartProductDto(
         id: cartProduct.id,
         selectedProductId: cartProduct.selectedProduct.id,

@@ -50,7 +50,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 432,
     isFreeShipping: true,
-    shippingPrice: 0,
+    shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     reviews: [],
   ),
@@ -93,7 +93,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 12,
     isFreeShipping: true,
-    shippingPrice: 0,
+    shippingFee: 0,
     estimatedShippingDurationInDays: 7,
     reviews: [
       // dummyReviews[0],
@@ -139,7 +139,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 12,
     isFreeShipping: false,
-    shippingPrice: 4.99,
+    shippingFee: 4.99,
     estimatedShippingDurationInDays: 7,
     reviews: [
       // dummyReviews[0],
@@ -188,7 +188,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 432,
     isFreeShipping: true,
-    shippingPrice: 0,
+    shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     reviews: [
       // dummyReviews[0],
@@ -239,7 +239,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 432,
     isFreeShipping: false,
-    shippingPrice: 1.99,
+    shippingFee: 1.99,
     estimatedShippingDurationInDays: 3,
     reviews: [
       // dummyReviews[0],
@@ -290,7 +290,7 @@ List<Product> dummyAllProducts = [
     storeName: 'dummyStores[0].name',
     stockCount: 432,
     isFreeShipping: true,
-    shippingPrice: 0,
+    shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     reviews: [
       // dummyReviews[0],

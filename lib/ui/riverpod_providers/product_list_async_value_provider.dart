@@ -120,7 +120,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
       isFreeShipping: true,
       photos: [],
       reviews: [],
-      shippingPrice: 0,
+      shippingFee: 0,
       sizes: [],
       stockCount: 12,
       storeId: '01',

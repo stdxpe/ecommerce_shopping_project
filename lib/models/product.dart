@@ -26,7 +26,7 @@ class Product {
   final String storeName;
   final int stockCount;
   final bool isFreeShipping;
-  final double? shippingPrice;
+  final double? shippingFee;
   final int estimatedShippingDurationInDays;
   final List<Review> reviews;
 
@@ -55,6 +55,6 @@ class Product {
       required this.storeName,
       required this.stockCount,
       required this.isFreeShipping,
-      required this.shippingPrice,
+      required this.shippingFee,
       required this.estimatedShippingDurationInDays});
 }

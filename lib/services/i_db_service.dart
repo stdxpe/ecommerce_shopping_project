@@ -12,9 +12,11 @@ abstract class IDbService {
 
   /// Shopping Cart Related Methods
   Future<List<CartProductDto>> getShoppingCartProducts();
-  Future<void> addProductToShoppingCart(
+  Future<bool> addProductToShoppingCart(
       {required CartProductDto cartProductDto});
-  Future<void> deleteProductFromShoppingCart(
+  Future<bool> deleteProductFromShoppingCart(
+      {required CartProductDto cartProductDto});
+  Future<bool> updateProductOnShoppingCart(
       {required CartProductDto cartProductDto});
 }
 

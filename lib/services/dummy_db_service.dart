@@ -66,17 +66,20 @@ class DummyDbService extends IDbService {
   }
 
   @override
-  Future<void> addProductToShoppingCart(
+  Future<bool> addProductToShoppingCart(
       {required CartProductDto cartProductDto}) async {
     print(
         'DummyDbService addProductToShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
     dummyCartProductDtoList.add(cartProductDto);
+
+    // Success
+    return Future.value(true);
   }
 
   @override
-  Future<void> deleteProductFromShoppingCart(
+  Future<bool> deleteProductFromShoppingCart(
       {required CartProductDto cartProductDto}) async {
     print(
         'DummyDbService deleteProductFromShoppingCart() Executed: "Waiting 0.5 seconds...');
@@ -84,5 +87,22 @@ class DummyDbService extends IDbService {
 
     dummyCartProductDtoList
         .removeWhere((element) => element.id == cartProductDto.id);
+
+    // Success
+    return Future.value(true);
+  }
+
+  @override
+  Future<bool> updateProductOnShoppingCart(
+      {required CartProductDto cartProductDto}) {
+    int updatedIndex = dummyCartProductDtoList
+        .indexWhere((element) => element.id == cartProductDto.id);
+
+    dummyCartProductDtoList.removeAt(updatedIndex);
+
+    dummyCartProductDtoList.insert(updatedIndex, cartProductDto);
+
+    // Success
+    return Future.value(true);
   }
 }

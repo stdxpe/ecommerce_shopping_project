@@ -98,7 +98,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
     state = await AsyncValue.guard(
       () async {
         CartProduct addedOrderProduct = await _dbManager
-            .addProductToShoppingCart(orderProduct: orderProduct);
+            .addProductToShoppingCart(cartProduct: orderProduct);
 
         print('addedOrderProduct: ${addedOrderProduct.selectedProduct.title}');
 
@@ -120,7 +120,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
     state = await AsyncValue.guard(
       () async {
         CartProduct deletedOrderProduct = await _dbManager
-            .deleteProductFromShoppingCart(orderProduct: orderProduct);
+            .deleteProductFromShoppingCart(cartProduct: orderProduct);
 
         print(
             'deletedOrderProduct: ${deletedOrderProduct.selectedProduct.title}');

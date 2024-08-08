@@ -13,8 +13,8 @@ abstract class IDBRepository {
 
   /// Shopping Cart Screen Related Methods
   Future<List<CartProduct>> getShoppingCartProducts();
-  Future<CartProduct> addProductToShoppingCart(
-      {required CartProduct orderProduct});
-  Future<CartProduct> deleteProductFromShoppingCart(
-      {required CartProduct orderProduct});
+  Future<bool> addProductToShoppingCart({required CartProduct cartProduct});
+  Future<bool> deleteProductFromShoppingCart(
+      {required CartProduct cartProduct});
+  Future<bool> updateProductOnShoppingCart({required CartProduct cartProduct});
 }

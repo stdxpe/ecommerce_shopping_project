@@ -107,7 +107,7 @@ class PaymentScreenPayment extends ConsumerWidget {
               if (isCreateNewCardMode == true)
                 Visibility(
                   /// isKeyboardOpen
-                  visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                  visible: context.mediaQuery.viewInsets.bottom == 0,
                   child: BottomSheetButtonsProfileSaveOrDelete(
                     onPressedDelete: () {
                       onPressedDelete!();
@@ -120,7 +120,7 @@ class PaymentScreenPayment extends ConsumerWidget {
               if (isCreateNewCardMode == false)
                 Visibility(
                   /// isKeyboardOpen
-                  visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                  visible: context.mediaQuery.viewInsets.bottom == 0,
                   child: BottomSheetButtonsPaymentMethod(
                     onPressed: () {
                       ref

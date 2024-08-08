@@ -86,6 +86,7 @@ abstract class Constants {
   /// GLOBAL BORDER RADIUSSES
   static const double kRadiusButtonMain = 100;
   static const double kRadiusDialogPopups = 50;
+  static const double kRadiusBottomSheets = 35;
   static const double kRadiusSliderCards = 30;
   static const double kRadiusCreditCards = 35;
   static const double kRadiusCardPrimary = 25;

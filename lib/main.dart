@@ -23,7 +23,7 @@ import 'package:ecommerce_shopping_project/ui/screens/payment_screen_result.dart
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_summary.dart';
 import 'package:ecommerce_shopping_project/ui/screens/product_details_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/profile_edit_screen.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
 import 'package:ecommerce_shopping_project/ui/screens/profile_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/reviews_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/search_screen.dart';
@@ -100,8 +100,9 @@ class RootApp extends StatelessWidget {
 // https://pub.dev/packages/pinput
 
       /// 'Your wishlist/cart is empty' widget
-      /// All riverpod's starts at appstart
+      /// All riverpod's starts at appstart while loading user
       /// Eth will be in Collections. getCollection(id?)
+      /// User Profile reviews section?
       /// TODO: UserModel class
       /// TODO: Search functionality
       /// TODO: Bottom Sheet functionality

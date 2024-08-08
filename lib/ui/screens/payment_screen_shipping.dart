@@ -49,6 +49,7 @@ class PaymentScreenShipping extends ConsumerWidget {
                       stepNumber: 1,
                       paddingHorizontal: 0,
                     ),
+                  if (isCreateNewAddressMode!) SizedBox(height: 50.h),
                   const TextformfieldMain(
                     text: AppStrings.paymentScreenShippingTextField1,
                   ),

@@ -106,12 +106,12 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
       },
     );
     print('latestState : $state');
-    print(dummyShoppingCartOrderProductDtos);
+    print(dummyCartProductDtosList);
   }
 
   deleteProductFromShoppingCart({required CartProduct orderProduct}) async {
     print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
-    print(dummyShoppingCartOrderProductDtos);
+    print(dummyCartProductDtosList);
 
     final previousStateOfShoppingCart = await future;
     print('previousStateOfShoppingCart : $previousStateOfShoppingCart');
@@ -132,7 +132,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
       },
     );
     print('latestState : $state');
-    print(dummyShoppingCartOrderProductDtos);
+    print(dummyCartProductDtosList);
   }
 
   double getTotalAmount() {

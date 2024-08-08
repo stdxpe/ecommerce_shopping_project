@@ -106,7 +106,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     // redirect: (context, state) {
     //   bool userAuthenticated = true;
 
-    //   /// TODO: AuthProvider Riverpod
+    //  TODO: AuthProvider Riverpod
     //   /// state.matchedLocation ?? https://www.youtube.com/watch?v=rxB4ena16Rk&t=616s
     //   return (userAuthenticated) ? Routes.home : null;
     // },

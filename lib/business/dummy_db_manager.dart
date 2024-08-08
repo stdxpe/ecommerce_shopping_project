@@ -103,7 +103,7 @@ class DummyDbManager extends IDBRepository {
         selectedSize: orderProduct.selectedSize,
         itemCount: orderProduct.itemCount);
 
-    _dbService.addProductToShoppingCart(orderProductDto: orderProductDto);
+    _dbService.addProductToShoppingCart(cartProductDto: orderProductDto);
     return orderProduct;
   }
 
@@ -121,7 +121,7 @@ class DummyDbManager extends IDBRepository {
         selectedSize: orderProduct.selectedSize,
         itemCount: orderProduct.itemCount);
 
-    _dbService.deleteProductFromShoppingCart(orderProductDto: orderProductDto);
+    _dbService.deleteProductFromShoppingCart(cartProductDto: orderProductDto);
 
     return orderProduct;
   }

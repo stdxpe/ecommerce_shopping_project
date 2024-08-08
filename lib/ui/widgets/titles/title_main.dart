@@ -17,7 +17,7 @@ class TitleMain extends StatelessWidget {
     this.paddingBottom,
   });
 
-  final Function? onPressed;
+  final Function()? onPressed;
   final String title;
   final int? itemCount;
   final int? stepNumber;

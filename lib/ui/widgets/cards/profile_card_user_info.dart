@@ -7,6 +7,7 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class ProfileCardUserInfo extends StatelessWidget {
   const ProfileCardUserInfo({
     super.key,
+    required this.onPressedEdit,
     required this.username,
     required this.email,
     required this.phoneNumber,
@@ -14,6 +15,7 @@ class ProfileCardUserInfo extends StatelessWidget {
     required this.cardHeight,
   });
 
+  final Function() onPressedEdit;
   final String username;
   final String email;
   final String phoneNumber;
@@ -71,12 +73,10 @@ class ProfileCardUserInfo extends StatelessWidget {
               ],
             ),
           ),
-          // SizedBox(width: Constants.kPaddingProfileCardTextsHorizontal.h),
 
           /// TEXTS
           Expanded(
-            child: Container(
-              // color: Colors.red.withOpacity(0.5),
+            child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: Constants.kProfileCardSpacingBTWItemsVertical.h,
                 horizontal: Constants.kProfileCardTextsPaddingHorizontal.w,
@@ -116,15 +116,18 @@ class ProfileCardUserInfo extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: SizedBox(
-              // color: Colors.blue.withOpacity(0.5),
-              height: 70.h,
-              width: 70.h,
-              child: Icon(
-                Icons.edit_note,
-                size: 70.h,
+          GestureDetector(
+            onTap: onPressedEdit,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                color: Colors.transparent,
+                height: 100.h,
+                width: 100.h,
+                child: Icon(
+                  Icons.edit_note,
+                  size: 70.h,
+                ),
               ),
             ),
           ),

@@ -1,8 +1,8 @@
-import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
@@ -55,6 +55,7 @@ class BottomSheetNotifier extends StateNotifier<void> {
       required Widget child,
       double heightRatio = 0.75}) {
     showModalBottomSheet(
+      useRootNavigator: true,
       isDismissible: true,
       enableDrag: false,
       constraints: BoxConstraints(

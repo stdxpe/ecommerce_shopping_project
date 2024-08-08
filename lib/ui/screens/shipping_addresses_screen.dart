@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_addresses_list.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_profile_addresses.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class ShippingAddressesScreen extends StatelessWidget {
+class ShippingAddressesScreen extends ConsumerWidget {
   const ShippingAddressesScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const AppBarMain(
         automaticallyImplyLeading: true,
@@ -24,10 +26,13 @@ class ShippingAddressesScreen extends StatelessWidget {
           ),
           physics: const ClampingScrollPhysics(),
           children: [
-            const TitleMain(
+            TitleMain(
               title: AppStrings.addressesScreenTitle,
               icon: Icons.add,
               paddingHorizontal: 0,
+              onPressed: () => ref
+                  .read(bottomSheetProvider.notifier)
+                  .addresses(context: context),
             ),
             const VerticalListviewProfileAddresses(
               addressesList: dummyAddressesList,

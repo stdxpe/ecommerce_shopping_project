@@ -80,8 +80,8 @@ class ProductDetailsScreen extends StatelessWidget {
                                   Flexible(
                                     flex: 1,
                                     child: TextCustom(
-                                      /// TODO: Reviews count gotta come from Product model class.
-                                      text: '  13 Reviews',
+                                      text:
+                                          '  ${product.reviews.length.toString()} Reviews',
                                       textStyle:
                                           context.textTheme.displayMedium!,
                                       color: context.colorPalette.text,
@@ -92,11 +92,7 @@ class ProductDetailsScreen extends StatelessWidget {
                             ),
                           ),
                           TextCustom(
-                            text:
-
-                                /// TODO: Description gotta come from Product model class.
-
-                                'Maxwel welted sole  construction deliversMaxwel welted sole  construction delivers exceptional and Maxwel welted sole  construction delivers exceptional and exceptional and Maxwel welted sole  construction delivers exceptional andMaxwel welted sole  construction delivers exceptional andMaxwel welted sole  construction delivers exceptional andMaxwel welted sole  construction delivers exceptional andand durability, and is Maxwel welted sole ended construction and delivers exceptional durability, and',
+                            text: product.description,
                             textStyle: context.textTheme.displayMedium!,
                             color: context.colorPalette.text,
                             maxLines: 4,

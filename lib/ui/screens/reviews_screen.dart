@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_reviews.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/product_card_horizontal_mini.dart';
@@ -39,11 +38,11 @@ class ReviewsScreen extends StatelessWidget {
             SizedBox(height: 100.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 55.w),
-              child: const SwitchRatingSummary(),
+              child: SwitchRatingSummary(product: product),
             ),
             SizedBox(height: 100.h),
             VerticalListviewReviewCard(
-              reviewsList: dummyReviews,
+              reviewsList: product.reviews,
               paddingMain: 0,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsVertical.h,
             ),

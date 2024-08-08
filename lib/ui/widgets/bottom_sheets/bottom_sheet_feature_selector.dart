@@ -19,7 +19,6 @@ class BottomSheetFeatureSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      // color: Colors.blue,
       padding:
           EdgeInsets.symmetric(horizontal: Constants.kMainPaddingHorizontal.w),
       child: Column(

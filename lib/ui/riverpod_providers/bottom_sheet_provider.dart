@@ -21,7 +21,7 @@ class BottomSheetNotifier extends StateNotifier<void> {
   featureSelector({required BuildContext context, required Product product}) {
     _showMainBottomSheet(
       context: context,
-      heightRatio: 0.5,
+      heightRatio: 0.35,
       child: BottomSheetFeatureSelector(product: product),
     );
   }

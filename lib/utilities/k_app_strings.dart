@@ -173,8 +173,8 @@ abstract class AppStrings {
   static const double filtersScreenMinPrice = 150;
   static const double filtersScreenMaxPrice = 750;
   static const String filtersScreenPriceRange = 'Price Range';
-  static const String filtersScreenSize = 'Sizes';
-  static const String filtersScreenColor = 'Colors';
+  static const String filtersScreenSize = 'Size';
+  static const String filtersScreenColor = 'Color';
   static const String filtersScreenCollections = 'Collections';
   static const String filtersScreenBrands = 'Brands';
   static const String filtersScreenRating = 'Rating';

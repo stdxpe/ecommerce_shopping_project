@@ -1,7 +1,8 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final addToCartButtonProvider =
     StateProvider.family<void, Product>((ref, product) {
@@ -10,7 +11,6 @@ final addToCartButtonProvider =
 
   ref.read(shoppingCartProvider.notifier).addProductToShoppingCart(
         cartProduct: CartProduct(
-          // id: '000007',
           id: product.id,
           selectedProduct: product,
           selectedColor: selectedColor,

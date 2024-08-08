@@ -1,12 +1,10 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
@@ -44,18 +42,6 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
                 ref
                     .read(bottomSheetProvider.notifier)
                     .featureSelector(context: context, product: product);
-
-                // ref
-                //     .read(shoppingCartProvider.notifier)
-                //     .addProductToShoppingCart(
-                //       cartProduct: CartProduct(
-                //         id: 'gottaBeRandom',
-                //         selectedProduct: product,
-                //         selectedColor: 'Dark Blue',
-                //         selectedSize: 'M',
-                //         itemCount: 1,
-                //       ),
-                //     );
               },
               text: AppStrings.detailsScreenButtonAddToShoppingCart,
               backgroundColor:

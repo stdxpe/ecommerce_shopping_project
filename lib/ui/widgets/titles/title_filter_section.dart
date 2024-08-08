@@ -20,6 +20,8 @@ class TitleFilterSection extends StatelessWidget {
       padding: EdgeInsets.only(
         top: paddingTop ?? Constants.kFilterSpacingBTWTitlesVertical.h * 2,
         bottom: Constants.kFilterSpacingBTWTitlesVertical.h,
+        left: Constants.kMainPaddingHorizontal.w,
+        right: Constants.kMainPaddingHorizontal.w,
       ),
       child: TextCustom(
         text: title,

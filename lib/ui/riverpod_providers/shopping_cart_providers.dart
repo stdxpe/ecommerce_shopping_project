@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_cart_product_dto_list.dart';
 
 final productProvider =
     FutureProvider.family<Product, String>((ref, productId) async {
@@ -106,12 +106,12 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
       },
     );
     print('latestState : $state');
-    print(dummyCartProductDtosList);
+    print(dummyCartProductDtoList);
   }
 
   deleteProductFromShoppingCart({required CartProduct orderProduct}) async {
     print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
-    print(dummyCartProductDtosList);
+    print(dummyCartProductDtoList);
 
     final previousStateOfShoppingCart = await future;
     print('previousStateOfShoppingCart : $previousStateOfShoppingCart');
@@ -132,7 +132,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
       },
     );
     print('latestState : $state');
-    print(dummyCartProductDtosList);
+    print(dummyCartProductDtoList);
   }
 
   double getTotalAmount() {

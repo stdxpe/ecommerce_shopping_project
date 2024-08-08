@@ -2,7 +2,7 @@ import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_cart_product_dto_list.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_products.dart';
 
 class DummyDbService extends IDbService {
@@ -61,8 +61,8 @@ class DummyDbService extends IDbService {
         'DummyDbService getShoppingCartProducts() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    print('dummyCartProductDtosList : $dummyCartProductDtosList');
-    return dummyCartProductDtosList;
+    print('dummyCartProductDtosList : $dummyCartProductDtoList');
+    return dummyCartProductDtoList;
   }
 
   @override
@@ -72,7 +72,7 @@ class DummyDbService extends IDbService {
         'DummyDbService addProductToShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyCartProductDtosList.add(cartProductDto);
+    dummyCartProductDtoList.add(cartProductDto);
   }
 
   @override
@@ -82,7 +82,7 @@ class DummyDbService extends IDbService {
         'DummyDbService deleteProductFromShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyCartProductDtosList
+    dummyCartProductDtoList
         .removeWhere((element) => element.id == cartProductDto.id);
   }
 }

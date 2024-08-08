@@ -1,6 +1,6 @@
 import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 
-List<CartProductDto> dummyCartProductDtosList = [
+List<CartProductDto> dummyCartProductDtoList = [
   CartProductDto(
     id: 'CartProductDto01',
     selectedProductId: '000003',

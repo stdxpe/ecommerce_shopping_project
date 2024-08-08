@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/double_button_add_or_fav.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/details_screen_slider.dart';
@@ -110,7 +110,8 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: DoubleButtonAddOrFav(productId: product.id),
+                // child: DoubleButtonAddOrFav(productId: product.id),
+                child: DoubleButtonAddOrFav(product: product),
               ),
             ],
           ),

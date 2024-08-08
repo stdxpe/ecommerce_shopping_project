@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,6 +47,8 @@ class VerticalListviewOrderProductCardHorizontal extends ConsumerWidget {
         itemCount: orderProductsList.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
+          var product = ref.watch(
+              productProvider(orderProductsList[index].selectedProduct.id));
           return DismissibleDeleteWidget(
             // TODO: UNIQUE KEY TO BE CHANGED with Product ID's.
             // TODO: orderProductsList[index].id,
@@ -68,7 +71,6 @@ class VerticalListviewOrderProductCardHorizontal extends ConsumerWidget {
                       children: [
                         OrderProductCardHorizontalDetailed(
                           orderProduct: orderProductsList[index],
-                          product: orderProductsList[index].selectedProduct,
                           isCardElevated: isCardElevated,
                           cardHeight: cardHeight,
                         ),

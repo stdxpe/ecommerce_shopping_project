@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_products.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';

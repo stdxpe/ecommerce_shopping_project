@@ -1,12 +1,13 @@
 import 'package:ecommerce_shopping_project/models/order_product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/placeholders/vertical_listview_card_placeholder_horizontal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
@@ -40,13 +41,9 @@ class ShoppingCartScreen extends ConsumerWidget {
                     ),
                     ref.watch(shoppingCartProvider).when(
                           loading: () =>
-                              VerticalListviewOrderProductCardHorizontal(
-                            useShimmer: true,
-                            onPressedMinus: () {},
-                            onPressedPlus: () {},
-                            onDismissed: (index) {},
-                            dismissibleEnabled: false,
-                            orderProductsList: dummyShoppingCartOrderProducts,
+                              const VerticalListviewCardPlaceholderHorizontal(
+                            itemCount: 3,
+                            useTopSpacingForExpandingTitle: true,
                             cardHeight: 250,
                             paddingMain: Constants.kMainPaddingHorizontal,
                             paddingBetweenElements:
@@ -66,8 +63,12 @@ class ShoppingCartScreen extends ConsumerWidget {
                             orderProductsList: data,
                             // ref.read(shoppingCartProvider.notifier).decreaseItemCounter(index),
                             // ref.read(shoppingCartProvider.notifier).increaseItemCounter(index),
-                            onPressedMinus: () {},
-                            onPressedPlus: () {},
+                            onPressedMinus: () {
+                              print('onPressedMinus onPressed');
+                            },
+                            onPressedPlus: () {
+                              print('onPressedPlus onPressed');
+                            },
                             cardHeight: 250,
                             paddingMain: Constants.kMainPaddingHorizontal,
                             paddingBetweenElements:

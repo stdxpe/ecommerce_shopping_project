@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_navigation_bar/custom_nav_bar_branch_animation.dart';
-import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_navigation_bar/custom_nav_bar.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

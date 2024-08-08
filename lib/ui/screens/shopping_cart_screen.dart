@@ -37,33 +37,35 @@ class ShoppingCartScreen extends ConsumerWidget {
                           .getShoppingCartCount(),
                     ),
                     ref.watch(shoppingCartProvider).when(
-                          loading: () =>
-                              const CardPlaceholderListView(cardHeight: 250),
-                          error: (error, stackTrace) => const Text(
-                            AppStrings.globalStateErrorMessage,
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          data: (data) =>
-                              VerticalListviewOrderProductCardHorizontal(
-                            cartProductsList: data,
-                            useItemCounter: true,
-                            dismissibleEnabled: true,
-                            onDismissed: (index) => ref
-                                .read(shoppingCartProvider.notifier)
-                                .deleteProductFromShoppingCart(
-                                    cartProduct: data[index]),
-                            onPressedDecrease: (index) => ref
-                                .read(shoppingCartProvider.notifier)
-                                .decreaseItemCounter(cartProduct: data[index]),
-                            onPressedIncrease: (index) => ref
-                                .read(shoppingCartProvider.notifier)
-                                .increaseItemCounter(cartProduct: data[index]),
-                            cardHeight: 250,
-                            paddingMain: Constants.kMainPaddingHorizontal,
-                            paddingBetweenElements:
-                                Constants.kMainSpacingBTWCardsVertical,
-                          ),
-                        ),
+                        loading: () =>
+                            const CardPlaceholderListView(cardHeight: 250),
+                        error: (error, stackTrace) => const Text(
+                              AppStrings.globalStateErrorMessage,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                        data: (data) => (data.isNotEmpty)
+                            ? VerticalListviewOrderProductCardHorizontal(
+                                cartProductsList: data,
+                                useItemCounter: true,
+                                dismissibleEnabled: true,
+                                onDismissed: (index) => ref
+                                    .read(shoppingCartProvider.notifier)
+                                    .deleteProductFromShoppingCart(
+                                        cartProduct: data[index]),
+                                onPressedDecrease: (index) => ref
+                                    .read(shoppingCartProvider.notifier)
+                                    .decreaseItemCounter(
+                                        cartProduct: data[index]),
+                                onPressedIncrease: (index) => ref
+                                    .read(shoppingCartProvider.notifier)
+                                    .increaseItemCounter(
+                                        cartProduct: data[index]),
+                                cardHeight: 250,
+                                paddingMain: Constants.kMainPaddingHorizontal,
+                                paddingBetweenElements:
+                                    Constants.kMainSpacingBTWCardsVertical,
+                              )
+                            : const Icon(Icons.face)),
                     SizedBox(height: 100.h),
                   ],
                 ),

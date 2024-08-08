@@ -36,11 +36,6 @@ class PaymentScreenShipping extends ConsumerWidget {
           // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            if (isCreateNewAddressMode == false)
-              const TitleMain(
-                title: AppStrings.paymentScreenTitleShipping,
-                stepNumber: 1,
-              ),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.symmetric(
@@ -48,6 +43,12 @@ class PaymentScreenShipping extends ConsumerWidget {
                 ),
                 physics: const ClampingScrollPhysics(),
                 children: [
+                  if (isCreateNewAddressMode == false)
+                    const TitleMain(
+                      title: AppStrings.paymentScreenTitleShipping,
+                      stepNumber: 1,
+                      paddingHorizontal: 0,
+                    ),
                   const TextformfieldMain(
                     text: AppStrings.paymentScreenShippingTextField1,
                   ),

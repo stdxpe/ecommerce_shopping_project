@@ -1,6 +1,6 @@
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/order_product.dart';
-import 'package:ecommerce_shopping_project/models/order_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
@@ -64,21 +64,21 @@ class DummyDbManager extends IDBRepository {
 
   /// Shopping Cart Screen Related Methods
   @override
-  Future<List<OrderProduct>> getShoppingCartProducts() async {
+  Future<List<CartProduct>> getShoppingCartProducts() async {
     print(
         'DummyDbManager getShoppingCartProducts() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 2));
 
-    List<OrderProductDto> orderProductDtos =
+    List<CartProductDto> orderProductDtos =
         await _dbService.getShoppingCartProducts();
 
-    List<OrderProduct> orderProducts = [];
+    List<CartProduct> orderProducts = [];
 
     for (var dto in orderProductDtos) {
       Product selectedProduct =
           await _dbService.getProductById(productId: dto.selectedProductId);
 
-      OrderProduct orderProduct = OrderProduct(
+      CartProduct orderProduct = CartProduct(
           id: dto.id,
           selectedProduct: selectedProduct,
           selectedColor: dto.selectedColor,
@@ -90,13 +90,13 @@ class DummyDbManager extends IDBRepository {
   }
 
   @override
-  Future<OrderProduct> addProductToShoppingCart(
-      {required OrderProduct orderProduct}) async {
+  Future<CartProduct> addProductToShoppingCart(
+      {required CartProduct orderProduct}) async {
     print(
         'DummyDbManager addProductToShoppingCart() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 0));
 
-    OrderProductDto orderProductDto = OrderProductDto(
+    CartProductDto orderProductDto = CartProductDto(
         id: orderProduct.id,
         selectedProductId: orderProduct.selectedProduct.id,
         selectedColor: orderProduct.selectedColor,
@@ -108,13 +108,13 @@ class DummyDbManager extends IDBRepository {
   }
 
   @override
-  Future<OrderProduct> deleteProductFromShoppingCart(
-      {required OrderProduct orderProduct}) async {
+  Future<CartProduct> deleteProductFromShoppingCart(
+      {required CartProduct orderProduct}) async {
     print(
         'DummyDbManager deleteProductFromShoppingCart() Executed: "Waiting 2 seconds...');
     await Future.delayed(const Duration(seconds: 0));
 
-    OrderProductDto orderProductDto = OrderProductDto(
+    CartProductDto orderProductDto = CartProductDto(
         id: orderProduct.id,
         selectedProductId: orderProduct.selectedProduct.id,
         selectedColor: orderProduct.selectedColor,

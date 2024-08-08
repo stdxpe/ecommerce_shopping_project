@@ -5,7 +5,7 @@ import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
 
@@ -66,12 +66,12 @@ final productProvider =
 // }
 
 final shoppingCartProvider =
-    AsyncNotifierProvider<ShoppingCartNotifier, List<OrderProduct>>(
+    AsyncNotifierProvider<ShoppingCartNotifier, List<CartProduct>>(
         () => ShoppingCartNotifier());
 
-class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
+class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
   @override
-  FutureOr<List<OrderProduct>> build() async {
+  FutureOr<List<CartProduct>> build() async {
     getShoppingCartProducts();
     return await future;
   }
@@ -88,7 +88,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
     return allProducts;
   }
 
-  addProductToShoppingCart({required OrderProduct orderProduct}) async {
+  addProductToShoppingCart({required CartProduct orderProduct}) async {
     print('ShoppingCartNotifier | addProductToShoppingCart() Executed');
 
     final previousStateOfShoppingCart = await future;
@@ -97,7 +97,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
 
     state = await AsyncValue.guard(
       () async {
-        OrderProduct addedOrderProduct = await _dbManager
+        CartProduct addedOrderProduct = await _dbManager
             .addProductToShoppingCart(orderProduct: orderProduct);
 
         print('addedOrderProduct: ${addedOrderProduct.selectedProduct.title}');
@@ -109,7 +109,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
     print(dummyShoppingCartOrderProductDtos);
   }
 
-  deleteProductFromShoppingCart({required OrderProduct orderProduct}) async {
+  deleteProductFromShoppingCart({required CartProduct orderProduct}) async {
     print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
     print(dummyShoppingCartOrderProductDtos);
 
@@ -119,7 +119,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
 
     state = await AsyncValue.guard(
       () async {
-        OrderProduct deletedOrderProduct = await _dbManager
+        CartProduct deletedOrderProduct = await _dbManager
             .deleteProductFromShoppingCart(orderProduct: orderProduct);
 
         print(
@@ -162,7 +162,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<OrderProduct>> {
 
   decreaseItemCounter({required String orderProductId}) {
     if ((state.value != null)) {
-      OrderProduct orderProduct =
+      CartProduct orderProduct =
           state.value!.firstWhere((element) => element.id == orderProductId);
     }
   }

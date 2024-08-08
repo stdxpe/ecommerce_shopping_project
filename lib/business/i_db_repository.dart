@@ -1,6 +1,6 @@
 import 'package:ecommerce_shopping_project/models/order.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 
 abstract class IDBRepository {
   Future<List<Product>> getAllProducts();
@@ -13,9 +13,9 @@ abstract class IDBRepository {
   Future<Product> deleteProductFromWishlist({required String productId});
 
   /// Shopping Cart Screen Related Methods
-  Future<List<OrderProduct>> getShoppingCartProducts();
-  Future<OrderProduct> addProductToShoppingCart(
-      {required OrderProduct orderProduct});
-  Future<OrderProduct> deleteProductFromShoppingCart(
-      {required OrderProduct orderProduct});
+  Future<List<CartProduct>> getShoppingCartProducts();
+  Future<CartProduct> addProductToShoppingCart(
+      {required CartProduct orderProduct});
+  Future<CartProduct> deleteProductFromShoppingCart(
+      {required CartProduct orderProduct});
 }

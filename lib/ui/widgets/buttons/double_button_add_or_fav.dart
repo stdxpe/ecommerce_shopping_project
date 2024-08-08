@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
@@ -43,7 +43,7 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
                 ref
                     .read(shoppingCartProvider.notifier)
                     .addProductToShoppingCart(
-                        orderProduct: OrderProduct(
+                        orderProduct: CartProduct(
                             id: 'gottaBeRandom',
                             selectedProduct: product,
                             selectedColor: 'Dark Blue',

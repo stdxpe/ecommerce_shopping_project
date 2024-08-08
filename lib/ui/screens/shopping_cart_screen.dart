@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/vertical_listview_card_placeholder_horizontal.dart';
@@ -87,7 +87,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                     ref
                         .read(shoppingCartProvider.notifier)
                         .addProductToShoppingCart(
-                          orderProduct: OrderProduct(
+                          orderProduct: CartProduct(
                             id: 'OrderProduct05',
                             selectedProduct: dummyAllProducts[1],
                             selectedColor: 'Purple',

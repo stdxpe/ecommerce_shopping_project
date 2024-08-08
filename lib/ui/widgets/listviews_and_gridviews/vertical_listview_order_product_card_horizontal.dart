@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/order_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/dismissible_delete_widget.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_horizontal.dart';
@@ -25,7 +25,7 @@ class VerticalListviewOrderProductCardHorizontal extends ConsumerWidget {
     required this.onDismissed,
   });
 
-  final List<OrderProduct> orderProductsList;
+  final List<CartProduct> orderProductsList;
   final double cardHeight;
   final bool? isCardElevated;
   final double paddingMain;

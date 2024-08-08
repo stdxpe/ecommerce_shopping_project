@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/models/order_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 
 abstract class IDbService {
   Future<List<Product>> getAllProducts();
@@ -14,11 +14,11 @@ abstract class IDbService {
   Future<void> deleteProductFromWishlist({required String productId});
 
   /// Shopping Cart Related Methods
-  Future<List<OrderProductDto>> getShoppingCartProducts();
+  Future<List<CartProductDto>> getShoppingCartProducts();
   Future<void> addProductToShoppingCart(
-      {required OrderProductDto orderProductDto});
+      {required CartProductDto orderProductDto});
   Future<void> deleteProductFromShoppingCart(
-      {required OrderProductDto orderProductDto});
+      {required CartProductDto orderProductDto});
 }
 
 

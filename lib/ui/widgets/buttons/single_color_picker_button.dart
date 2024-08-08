@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class SingleColorPickerButton extends StatelessWidget {
-  final Color itemColor;
+  final String itemColorHexCode;
   final bool isSelected;
   final double itemSize;
 
   const SingleColorPickerButton({
-    required this.itemColor,
+    required this.itemColorHexCode,
     required this.isSelected,
     required this.itemSize,
     super.key,
@@ -28,7 +28,7 @@ class SingleColorPickerButton extends StatelessWidget {
             ),
         ],
         shape: BoxShape.circle,
-        color: itemColor,
+        color: Color(int.parse(itemColorHexCode, radix: 16) + 0xFF000000),
         border: Border.all(
           width: isSelected ? 4 : 0,
           color: context.colorPalette.permaWhiteColor,

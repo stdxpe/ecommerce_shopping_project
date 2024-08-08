@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,18 +41,21 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           Expanded(
             child: ButtonMain(
               onPressed: () {
-                /// TODO: bottom sheet feature selection
                 ref
-                    .read(shoppingCartProvider.notifier)
-                    .addProductToShoppingCart(
-                      cartProduct: CartProduct(
-                        id: 'gottaBeRandom',
-                        selectedProduct: product,
-                        selectedColor: 'Dark Blue',
-                        selectedSize: 'M',
-                        itemCount: 1,
-                      ),
-                    );
+                    .read(bottomSheetProvider.notifier)
+                    .featureSelector(context: context, product: product);
+
+                // ref
+                //     .read(shoppingCartProvider.notifier)
+                //     .addProductToShoppingCart(
+                //       cartProduct: CartProduct(
+                //         id: 'gottaBeRandom',
+                //         selectedProduct: product,
+                //         selectedColor: 'Dark Blue',
+                //         selectedSize: 'M',
+                //         itemCount: 1,
+                //       ),
+                //     );
               },
               text: AppStrings.detailsScreenButtonAddToShoppingCart,
               backgroundColor:

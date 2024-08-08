@@ -1,22 +1,26 @@
 import 'dart:async';
+import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
+import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/order_product.dart';
-import 'package:ecommerce_shopping_project/services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_shopping_cart_order_products.dart';
 
-final getTotalAmountProvider = StateProvider<double>((ref) {
-  double totalAmount = 0;
-  var state = ref.watch(shoppingCartProvider);
-
-  if ((state.value != null)) {
-    for (var e in state.value!) {
-      totalAmount = totalAmount + e.selectedProduct.price;
-    }
-  }
-  return totalAmount;
+final productProvider =
+    FutureProvider.family<Product, String>((ref, productId) async {
+  final _dbService = locator<IDbService>();
+  var product = _dbService.getProductById(productId: productId);
+  return product;
 });
+
+// final productProvider = StateProvider.family<Product, String>((ref, productId) {
+//   final _dbService = locator<IDbService>();
+//   var product = await _dbService.getProductById(productId: productId);
+//   return product;
+// });
 
 // final productProvider = StateProvider.family<Product, String>((ref, productId) {
 // //   final _dbManager = locator<IDBRepository>();

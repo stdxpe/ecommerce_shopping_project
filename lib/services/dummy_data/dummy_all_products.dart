@@ -102,7 +102,7 @@ List<Product> dummyAllProducts = [
   ),
   Product(
     id: '000003',
-    title: 'Gucci Pantcaon',
+    title: 'Gucci Pantcaon22',
     brand: 'Gucci',
     summary: 'For a retro take, team with a floral shirt',
     description:

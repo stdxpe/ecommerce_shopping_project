@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/order_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -12,13 +12,11 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
   const OrderProductCardHorizontalDetailed({
     super.key,
     required this.orderProduct,
-    required this.product,
     required this.cardHeight,
     this.isCardElevated = false,
   });
 
   final OrderProduct orderProduct;
-  final Product product;
   final double cardHeight;
   final bool? isCardElevated;
 
@@ -27,7 +25,8 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: GestureDetector(
-        onTap: () => context.push(Routes.productDetails, extra: product),
+        onTap: () => context.push(Routes.productDetails,
+            extra: orderProduct.selectedProduct),
         child: Container(
           height: cardHeight.h,
           decoration: BoxDecoration(
@@ -54,7 +53,7 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage(
-                      product.mainPhoto,
+                      orderProduct.selectedProduct.mainPhoto,
                     ),
                   ),
                   borderRadius: BorderRadius.circular(
@@ -87,7 +86,7 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextCustom(
-                            text: product.title,
+                            text: orderProduct.selectedProduct.title,
                             textStyle: context.textTheme.bodyLarge!,
                             color: context.colorPalette.cardTextPrimary,
                             maxLines: 2,
@@ -99,7 +98,8 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
                                 .h,
                           ),
                           TextCustom(
-                            text: '\$${product.price.toStringAsFixed(2)}',
+                            text:
+                                '\$${orderProduct.selectedProduct.price.toStringAsFixed(2)}',
                             textStyle: context.textTheme.bodyMedium!,
                             color: context.colorPalette.cardTextSecondary,
                           ),

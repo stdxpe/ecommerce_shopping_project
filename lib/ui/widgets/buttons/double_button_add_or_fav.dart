@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/models/order_product.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
@@ -11,11 +14,11 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class DoubleButtonAddOrFav extends ConsumerWidget {
   const DoubleButtonAddOrFav({
     super.key,
-    required this.productId,
+    required this.product,
     this.paddingHorizontal,
   });
 
-  final String productId;
+  final Product product;
   final double? paddingHorizontal;
 
   @override
@@ -36,7 +39,17 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
         children: [
           Expanded(
             child: ButtonMain(
-              onPressed: () {},
+              onPressed: () {
+                ref
+                    .read(shoppingCartProvider.notifier)
+                    .addProductToShoppingCart(
+                        orderProduct: OrderProduct(
+                            id: 'gottaBeRandom',
+                            selectedProduct: product,
+                            selectedColor: 'Dark Blue',
+                            selectedSize: 'XM',
+                            itemCount: 23));
+              },
               text: AppStrings.detailsScreenButtonAddToShoppingCart,
               backgroundColor:
                   context.colorPalette.buttonMainBackgroundSecondary,
@@ -51,8 +64,10 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           ),
           SizedBox(width: 50.w),
           IconButtonLike(
-            isProductOnWishlist: ref.watch(isProductOnWishlist(productId)),
-            onPressed: () => ref.read(toggleLikeButtonProvider(productId)),
+            // isProductOnWishlist: ref.watch(isProductOnWishlist(productId)),
+            // onPressed: () => ref.read(toggleLikeButtonProvider(productId)),
+            isProductOnWishlist: ref.watch(isProductOnWishlist(product.id)),
+            onPressed: () => ref.read(toggleLikeButtonProvider(product.id)),
           ),
         ],
       ),

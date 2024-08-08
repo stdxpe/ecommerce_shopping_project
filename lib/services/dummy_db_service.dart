@@ -85,6 +85,8 @@ class DummyDbService extends IDbService {
         'DummyDbService getShoppingCartProducts() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
+    print(
+        'dummyShoppingCartOrderProductDtos : $dummyShoppingCartOrderProductDtos');
     return dummyShoppingCartOrderProductDtos;
   }
 

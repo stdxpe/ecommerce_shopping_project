@@ -10,14 +10,14 @@ class SwitchItemCounter extends StatelessWidget {
     this.itemCount = 1,
     this.itemPaddingHorizontal = 0,
     super.key,
-    required this.onPressedMinus,
-    required this.onPressedPlus,
+    required this.onPressedDecrease,
+    required this.onPressedIncrease,
   });
 
   final int itemCount;
   final double? itemPaddingHorizontal;
-  final Function() onPressedMinus;
-  final Function() onPressedPlus;
+  final Function() onPressedDecrease;
+  final Function() onPressedIncrease;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class SwitchItemCounter extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ButtonCircularMain(
-            onPressed: () => onPressedMinus(),
+            onPressed: () => onPressedDecrease(),
             iconColor: context.colorPalette.text,
             buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.minus,
@@ -56,7 +56,7 @@ class SwitchItemCounter extends StatelessWidget {
             ),
           ),
           ButtonCircularMain(
-            onPressed: () => onPressedPlus(),
+            onPressed: () => onPressedIncrease(),
             iconColor: context.colorPalette.text,
             buttonColor: context.colorPalette.cardBackground,
             icon: CupertinoIcons.add,

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -14,9 +13,11 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
     required this.orderProduct,
     required this.cardHeight,
     this.isCardElevated = false,
+    this.useItemCounter = false,
   });
 
   final CartProduct orderProduct;
+  final bool? useItemCounter;
   final double cardHeight;
   final bool? isCardElevated;
 
@@ -106,8 +107,9 @@ class OrderProductCardHorizontalDetailed extends StatelessWidget {
                         ],
                       ),
                       TextCustom(
-                        text:
-                            'Size: ${orderProduct.selectedSize}  |  Color: ${orderProduct.selectedColor}',
+                        text: useItemCounter!
+                            ? 'Size: ${orderProduct.selectedSize}  |  Color: ${orderProduct.selectedColor}'
+                            : 'Size: ${orderProduct.selectedSize}  |  Color: ${orderProduct.selectedColor}  |  ${orderProduct.itemCount}x',
                         textStyle: context.textTheme.bodySmall!,
                         color: context.colorPalette.cardTextTertiary,
                         fontWeightCustom: FontWeight.w400,

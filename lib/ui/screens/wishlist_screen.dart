@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/ui/widgets/placeholders/vertical_listview_card_placeholder_horizontal.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,15 +26,7 @@ class WishlistScreen extends ConsumerWidget {
             itemCount: ref.watch(wishlistProvider).value?.length,
           ),
           ref.watch(wishlistProvider).when(
-                loading: () => const VerticalListviewCardPlaceholderHorizontal(
-                  itemCount: 3,
-                  useTopSpacingForExpandingTitle: true,
-                  cardHeight: 200,
-                  paddingMain: Constants.kMainPaddingHorizontal,
-                  paddingBetweenElements:
-                      Constants.kMainSpacingBTWCardsVertical,
-                ),
-
+                loading: () => const CardPlaceholderListView(cardHeight: 200),
                 error: (error, stackTrace) => const Text(
                   AppStrings.globalStateErrorMessage,
                   style: TextStyle(color: Colors.black),

@@ -5,28 +5,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_horizontal.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class VerticalListviewCardPlaceholderHorizontal extends ConsumerWidget {
-  const VerticalListviewCardPlaceholderHorizontal({
+class CardPlaceholderListView extends ConsumerWidget {
+  const CardPlaceholderListView({
     super.key,
-    required this.itemCount,
-    required this.useTopSpacingForExpandingTitle,
     required this.cardHeight,
-    required this.paddingMain,
-    required this.paddingBetweenElements,
+    this.itemCount = 3,
+    this.useTopSpacingForExpandingTitle = true,
+    this.paddingMain,
+    this.paddingBetweenElements,
   });
 
-  final int itemCount;
-  final bool useTopSpacingForExpandingTitle;
   final double cardHeight;
-  final double paddingMain;
-  final double paddingBetweenElements;
+  final int? itemCount;
+  final bool? useTopSpacingForExpandingTitle;
+  final double? paddingMain;
+  final double? paddingBetweenElements;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    double paddingMain = this.paddingMain ?? Constants.kMainPaddingHorizontal;
+    double paddingBetweenElements =
+        this.paddingBetweenElements ?? Constants.kMainSpacingBTWCardsVertical;
     return SizedBox(
       child: ListView.builder(
         padding: EdgeInsets.only(
-            top: useTopSpacingForExpandingTitle
+            top: useTopSpacingForExpandingTitle!
                 ? Constants.kMainTitleSpacingBTWItemsFoundBTWStepsVertical.h +
                     context.textTheme.titleSmall!.fontSize!.h
                 : 0),

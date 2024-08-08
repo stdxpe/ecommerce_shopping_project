@@ -1,169 +1,175 @@
-// import 'dart:async';
-// import 'package:ecommerce_shopping_project/models/product.dart';
-// import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
-// import 'package:ecommerce_shopping_project/services/i_db_service.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:async';
 
-// import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-// import 'package:ecommerce_shopping_project/models/cart_product.dart';
-// import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-// import 'package:ecommerce_shopping_project/services/dummy_data/dummy_cart_product_dto_list.dart';
+import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-// final productProvider =
-//     FutureProvider.family<Product, String>((ref, productId) async {
-//   final _dbService = locator<IDbService>();
-//   var product = _dbService.getProductById(productId: productId);
-//   return product;
-// });
+final shoppingCartProvider =
+    AsyncNotifierProvider<ShoppingCartNotifier, List<CartProduct>>(
+  () {
+    return ShoppingCartNotifier();
+  },
+);
 
-// // final productProvider = StateProvider.family<Product, String>((ref, productId) {
-// //   final _dbService = locator<IDbService>();
-// //   var product = await _dbService.getProductById(productId: productId);
-// //   return product;
-// // });
+class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
+  @override
+  FutureOr<List<CartProduct>> build() async {
+    getShoppingCartProducts();
+    return await future;
+  }
 
-// // final productProvider = StateProvider.family<Product, String>((ref, productId) {
-// // //   final _dbManager = locator<IDBRepository>();
-// //   var product = ref
-// //       .read(shoppingCartProvider.notifier)
-// //       .getProductOfOrderProductWithProductId(productId: productId);
-// //   return product;
-// // });
+  final _dbManager = locator<IDBRepository>();
 
-// // final shoppingCartProductProviderWithProductId = StateProvider<Product>((ref) { return;});
+  getShoppingCartProducts() async {
+    print('ShoppingCartNotifier | getShoppingCartProducts() Executed');
 
-// // final shoppingCartProductProviderWithProductId =
-// //     StateProvider.family<Product, String>((ref, productId) {
-// //   final _dbManager = locator<IDBRepository>();
-// //   var product = _dbManager.getProductById(productId: productId);
-// //   return product;
-// // });
+    state = const AsyncLoading();
+    var allCartProducts =
+        await AsyncValue.guard(_dbManager.getShoppingCartProducts);
+    state = allCartProducts;
+  }
 
-// // final shoppingCartProductProviderWithProductId = AsyncNotifierProvider<
-// //     ShoppingCartProductProviderWithProductIdNotifier,
-// //     Product>(() => ShoppingCartProductProviderWithProductIdNotifier());
+  addProductToShoppingCart({required CartProduct cartProduct}) async {
+    print('ShoppingCartNotifier | addProductToShoppingCart() Executed');
 
-// // class ShoppingCartProductProviderWithProductIdNotifier
-// //     extends AsyncNotifier<Product> {
-// //   @override
-// //   FutureOr<Product> build() async {
-// //     return dummyAllProducts[0];
-// //   }
+    var previousState = await future;
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+      () async {
+        var result =
+            await _dbManager.addProductToShoppingCart(cartProduct: cartProduct);
 
-// //   final _dbManager = locator<IDBRepository>();
+        if (result) {
+          return [...previousState, cartProduct];
+        } else {
+          return previousState;
+        }
+      },
+    );
+  }
 
-// //   getProduct({required String productId}) async {
-// //     print('ShoppingCartNotifier | getShoppingCartProducts() Executed');
+  deleteProductFromShoppingCart({required CartProduct cartProduct}) async {
+    print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
 
-// //     state = const AsyncLoading();
-// //     var product =
-// //         await AsyncValue.guard(_dbManager.getProductById(productId: productId));
-// //     state = product;
-// //     return product;
-// //     // await _dbManager.getProductById(productId: productId);
-// //     // return
-// //   }
-// // }
+    var previousState = await future;
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+      () async {
+        var result = await _dbManager.deleteProductFromShoppingCart(
+            cartProduct: cartProduct);
 
-// final shoppingCartProvider =
-//     AsyncNotifierProvider<ShoppingCartNotifier, List<CartProduct>>(
-//         () => ShoppingCartNotifier());
+        if (result) {
+          var listWithDeletedCartProduct = previousState
+              .where((element) => element.id != cartProduct.id)
+              .toList();
+          return listWithDeletedCartProduct;
+        } else {
+          return previousState;
+        }
+      },
+    );
+  }
 
-// class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
-//   @override
-//   FutureOr<List<CartProduct>> build() async {
-//     getShoppingCartProducts();
-//     return await future;
-//   }
+  updateProductOnShoppingCart({required CartProduct cartProduct}) async {
+    print('ShoppingCartNotifier | updateProductOnShoppingCart() Executed');
 
-//   final _dbManager = locator<IDBRepository>();
+    var previousState = await future;
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+      () async {
+        var result = await _dbManager.updateProductOnShoppingCart(
+            cartProduct: cartProduct);
 
-//   getShoppingCartProducts() async {
-//     print('ShoppingCartNotifier | getShoppingCartProducts() Executed');
+        if (result) {
+          var updatedIndex = previousState
+              .indexWhere((element) => element.id == cartProduct.id);
 
-//     state = const AsyncLoading();
-//     var allProducts =
-//         await AsyncValue.guard(_dbManager.getShoppingCartProducts);
-//     state = allProducts;
-//     return allProducts;
-//   }
+          var latestList = previousState
+              .where((element) => element.id != cartProduct.id)
+              .toList();
 
-//   addProductToShoppingCart({required CartProduct orderProduct}) async {
-//     print('ShoppingCartNotifier | addProductToShoppingCart() Executed');
+          latestList.insert(updatedIndex, cartProduct);
 
-//     final previousStateOfShoppingCart = await future;
-//     print('previousStateOfShoppingCart : $previousStateOfShoppingCart');
-//     state = const AsyncLoading();
+          return latestList;
+        } else {
+          return previousState;
+        }
+      },
+    );
+  }
 
-//     state = await AsyncValue.guard(
-//       () async {
-//         CartProduct addedOrderProduct = await _dbManager
-//             .addProductToShoppingCart(cartProduct: orderProduct);
+  getShoppingCartCount() {
+    int productCount = 0;
+    if ((state.value != null)) productCount = state.value!.length;
+    return productCount;
+  }
 
-//         print('addedOrderProduct: ${addedOrderProduct.selectedProduct.title}');
+  getTotalAmount() {
+    double totalAmount = 0;
 
-//         return [...previousStateOfShoppingCart, addedOrderProduct];
-//       },
-//     );
-//     print('latestState : $state');
-//     print(dummyCartProductDtoList);
-//   }
+    if ((state.value != null)) {
+      for (var element in state.value!) {
+        totalAmount = totalAmount + element.selectedProduct.price;
+      }
+    }
+    return totalAmount;
+  }
 
-//   deleteProductFromShoppingCart({required CartProduct orderProduct}) async {
-//     print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
-//     print(dummyCartProductDtoList);
+  getShippingFee() {
+    double totalShippingFee = 0;
 
-//     final previousStateOfShoppingCart = await future;
-//     print('previousStateOfShoppingCart : $previousStateOfShoppingCart');
-//     state = const AsyncLoading();
+    if ((state.value != null)) {
+      for (var e in state.value!) {
+        if (e.selectedProduct.shippingFee != null) {
+          totalShippingFee = totalShippingFee + e.selectedProduct.shippingFee!;
+        }
+      }
+    }
+    return totalShippingFee;
+  }
 
-//     state = await AsyncValue.guard(
-//       () async {
-//         CartProduct deletedOrderProduct = await _dbManager
-//             .deleteProductFromShoppingCart(cartProduct: orderProduct);
+  increaseItemCounter({required CartProduct cartProduct}) async {
+    print('ShoppingCartNotifier | increaseItemCounter() Executed');
 
-//         print(
-//             'deletedOrderProduct: ${deletedOrderProduct.selectedProduct.title}');
+    /// TODO: CartProduct copyWith method!
+    ///
+    int newItemCount = cartProduct.itemCount + 1;
 
-//         return [
-//           ...previousStateOfShoppingCart
-//               .where((e) => (e.id != deletedOrderProduct.id))
-//         ];
-//       },
-//     );
-//     print('latestState : $state');
-//     print(dummyCartProductDtoList);
-//   }
+    CartProduct newCartProduct = CartProduct(
+      id: cartProduct.id,
+      selectedProduct: cartProduct.selectedProduct,
+      selectedColor: cartProduct.selectedColor,
+      selectedSize: cartProduct.selectedSize,
+      itemCount: newItemCount,
+    );
+    updateProductOnShoppingCart(cartProduct: newCartProduct);
+  }
 
-//   double getTotalAmount() {
-//     double totalAmount = 0;
+  decreaseItemCounter({required CartProduct cartProduct}) async {
+    /// TODO: CartProduct copyWith method!
+    ///
+    if (cartProduct.itemCount > 1) {
+      print('ShoppingCartNotifier | decreaseItemCounter() Executed');
+      int newItemCount = cartProduct.itemCount - 1;
 
-//     if ((state.value != null)) {
-//       for (var e in state.value!) {
-//         totalAmount = totalAmount + e.selectedProduct.price;
-//       }
-//     }
-//     return totalAmount;
-//   }
+      CartProduct newCartProduct = CartProduct(
+        id: cartProduct.id,
+        selectedProduct: cartProduct.selectedProduct,
+        selectedColor: cartProduct.selectedColor,
+        selectedSize: cartProduct.selectedSize,
+        itemCount: newItemCount,
+      );
+      updateProductOnShoppingCart(cartProduct: newCartProduct);
+    }
+  }
 
-//   double getShippingFee() {
-//     double totalShippingFee = 0;
-
-//     if ((state.value != null)) {
-//       for (var e in state.value!) {
-//         if (e.selectedProduct.shippingPrice != null) {
-//           totalShippingFee =
-//               totalShippingFee + e.selectedProduct.shippingPrice!;
-//         }
-//       }
-//     }
-//     return totalShippingFee;
-//   }
-
-//   decreaseItemCounter({required String orderProductId}) {
-//     if ((state.value != null)) {
-//       CartProduct orderProduct =
-//           state.value!.firstWhere((element) => element.id == orderProductId);
-//     }
-//   }
-// }
+  continueToPaymentButton({required BuildContext context}) {
+    if (state.value != null && state.value!.isNotEmpty) {
+      context.push(Routes.paymentStepShipping);
+    }
+  }
+}

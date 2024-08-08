@@ -40,15 +40,18 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           Expanded(
             child: ButtonMain(
               onPressed: () {
+                /// TODO: bottom sheet feature selection
                 ref
                     .read(shoppingCartProvider.notifier)
                     .addProductToShoppingCart(
-                        orderProduct: CartProduct(
-                            id: 'gottaBeRandom',
-                            selectedProduct: product,
-                            selectedColor: 'Dark Blue',
-                            selectedSize: 'XM',
-                            itemCount: 23));
+                      cartProduct: CartProduct(
+                        id: 'gottaBeRandom',
+                        selectedProduct: product,
+                        selectedColor: 'Dark Blue',
+                        selectedSize: 'M',
+                        itemCount: 1,
+                      ),
+                    );
               },
               text: AppStrings.detailsScreenButtonAddToShoppingCart,
               backgroundColor:
@@ -64,10 +67,8 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           ),
           SizedBox(width: 50.w),
           IconButtonLike(
-            // isProductOnWishlist: ref.watch(isProductOnWishlist(productId)),
-            // onPressed: () => ref.read(toggleLikeButtonProvider(productId)),
             isProductOnWishlist: ref.watch(isProductOnWishlist(product.id)),
-            onPressed: () => ref.read(toggleLikeButtonProvider(product.id)),
+            onPressed: () => ref.read(toggleWishlistButtonProvider(product.id)),
           ),
         ],
       ),

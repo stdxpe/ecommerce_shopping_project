@@ -71,9 +71,9 @@ class CustomNavBarItem extends StatelessWidget {
                                     child: FittedBox(
                                       child: TextCustom(
                                         text: ref
-                                            .read(shoppingCartProvider)
-                                            .value!
-                                            .length
+                                            .watch(
+                                                shoppingCartProvider.notifier)
+                                            .getShoppingCartCount()
                                             .toString(),
                                         textStyle: context.textTheme.bodySmall!,
                                         fontSizeCustom: 28,
@@ -85,7 +85,7 @@ class CustomNavBarItem extends StatelessWidget {
                                   ),
                                 ),
                               )
-                            : SizedBox();
+                            : const SizedBox();
                       },
                     ),
                 ],

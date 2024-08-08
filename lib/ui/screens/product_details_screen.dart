@@ -110,7 +110,6 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                // child: DoubleButtonAddOrFav(productId: product.id),
                 child: DoubleButtonAddOrFav(product: product),
               ),
             ],

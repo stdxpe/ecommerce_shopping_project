@@ -18,7 +18,7 @@ final isProductOnWishlist =
       : false;
 });
 
-final toggleLikeButtonProvider =
+final toggleWishlistButtonProvider =
     StateProvider.family<void, String>((ref, productId) {
   (ref.watch(isProductOnWishlist(productId)))
       ? ref

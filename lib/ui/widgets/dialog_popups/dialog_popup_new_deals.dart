@@ -70,9 +70,7 @@ class DialogPopupNewDeals extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: ButtonMain(
-                onPressed: () {
-                  onPressed();
-                },
+                onPressed: () => onPressed(),
                 text: AppStrings.dialogPopupNewDealsButtonText,
                 backgroundColor:
                     context.colorPalette.buttonMainBackgroundSecondary,

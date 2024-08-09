@@ -33,14 +33,16 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
     state = allCartProducts;
   }
 
-  addProductToShoppingCart({required CartProduct cartProduct}) async {
+  FutureOr<bool> addProductToShoppingCart(
+      {required CartProduct cartProduct}) async {
     print('ShoppingCartNotifier | addProductToShoppingCart() Executed');
 
+    bool result = false;
     var previousState = await future;
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        var result =
+        result =
             await _dbManager.addProductToShoppingCart(cartProduct: cartProduct);
 
         if (result) {
@@ -50,6 +52,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
         }
       },
     );
+    return result;
   }
 
   deleteProductFromShoppingCart({required CartProduct cartProduct}) async {

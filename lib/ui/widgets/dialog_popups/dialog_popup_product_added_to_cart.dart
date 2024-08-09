@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class DialogPopupProductAddedToCart extends StatelessWidget {
+class DialogPopupProductAddedToCart extends ConsumerWidget {
   const DialogPopupProductAddedToCart({
-    required this.onPressed,
     required this.imageUrl,
     required this.cardHeight,
     required this.cardWidth,
+    required this.onPressedGoToCart,
+    required this.onPressedContinue,
     super.key,
   });
 
-  final Function() onPressed;
+  final Function(BuildContext context) onPressedGoToCart;
+  final Function(BuildContext context) onPressedContinue;
   final String imageUrl;
   final double cardHeight;
   final double cardWidth;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       width: cardWidth,
       child: Column(
@@ -30,7 +33,7 @@ class DialogPopupProductAddedToCart extends StatelessWidget {
             width: cardWidth,
             imageUrl,
             fit: BoxFit.cover,
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
           ),
           SizedBox(height: Constants.kDialogPopupSpacingBTWTextVertical.h),
           TextCustom(
@@ -47,16 +50,14 @@ class DialogPopupProductAddedToCart extends StatelessWidget {
           ),
           SizedBox(height: Constants.kDialogPopupSpacingBTWTextVertical.h),
           ButtonMain(
-            onPressed: () {},
+            onPressed: () => onPressedGoToCart(context),
             text: AppStrings.productDetailsScreenPopupButtonGoToShoppingCart,
             paddingHorizontal: Constants.kDialogPopupPaddingButtonHorizontal.w,
             paddingVertical: 0,
           ),
           SizedBox(height: Constants.kDialogPopupSpacingBTWButtonsVertical.h),
           ButtonMain(
-            onPressed: () {
-              onPressed();
-            },
+            onPressed: () => onPressedContinue(context),
             text: AppStrings.productDetailsScreenPopupButtonContinueShopping,
             backgroundColor: context.colorPalette.buttonMainBackgroundSecondary,
             foregroundColor: context.colorPalette.buttonMainForegroundSecondary,

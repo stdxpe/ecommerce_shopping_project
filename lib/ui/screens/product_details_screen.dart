@@ -81,6 +81,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                     flex: 1,
                                     child: TextCustom(
                                       text:
+                                          // TODO: Static string
                                           '  ${product.reviews.length.toString()} Reviews',
                                       textStyle:
                                           context.textTheme.displayMedium!,

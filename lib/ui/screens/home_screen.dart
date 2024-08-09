@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
@@ -13,17 +15,13 @@ import 'package:ecommerce_shopping_project/ui/widgets/sliders/banner_slider.dart
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/product_card_deals_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_with_text_button.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-    // required this.onPressed,
-  });
-
-  // final Function onPressed;
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const AppBarMain(
         useShadow: true,
@@ -38,7 +36,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  // onPressed();
+                  ref.read(dialogPopupProvider.notifier).newDeals(
+                      context: context, collection: dummyCollections[2]);
                 },
                 child: const BannerSlider()),
             TitleWithTextButton(

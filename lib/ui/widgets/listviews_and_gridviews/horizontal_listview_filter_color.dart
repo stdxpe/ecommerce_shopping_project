@@ -21,13 +21,15 @@ class HorizontalListviewFilterColor extends ConsumerWidget {
     return SizedBox(
       height: height!.h,
       child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(
-                right: Constants.kFilterSpacingBTWSizeAndColorHorizontal.w),
+              right: Constants.kFilterSpacingBTWSizeAndColorHorizontal.w,
+            ),
             child: GestureDetector(
               onTap: () =>
                   ref.read(colorSelectorProvider.notifier).state = index,

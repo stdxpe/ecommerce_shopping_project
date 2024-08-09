@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/dialog_popup_main_alert_dialog.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_provider.dart';
 
 final paymentScreenNavigationProvider =
     StateNotifierProvider<PaymentScreenNavigationProviderNotifier, int>((ref) {
@@ -52,7 +51,7 @@ class PaymentScreenNavigationProviderNotifier extends StateNotifier<int> {
     }
   }
 
-  goNextStep(BuildContext context) {
+  goNextStep(BuildContext context, WidgetRef ref) {
     int currentIndex = _navigationShell.currentIndex;
 
     if (currentIndex == 0) {
@@ -77,19 +76,7 @@ class PaymentScreenNavigationProviderNotifier extends StateNotifier<int> {
       /// Conditions/Validations of Shipping Step (using other ref's)
       /// another if(conditions are met) ? go(home) : null
       // context.go(Routes.home);
-      showDialog(
-        useRootNavigator: true,
-        barrierColor: Colors.black.withOpacity(0.75),
-        context: context,
-        builder: (context) {
-          return DialogPopupMainAlertDialog(
-            onPressed: () {
-              context.pop();
-              context.go(Routes.home);
-            },
-          );
-        },
-      );
+      ref.read(dialogPopupProvider.notifier).paymentResult(context: context);
     }
   }
 }

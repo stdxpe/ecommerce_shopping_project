@@ -103,9 +103,7 @@ class RootApp extends StatelessWidget {
       /// All riverpod's starts at appstart while loading user
       /// Eth will be in Collections. getCollection(id?)
       /// User Profile reviews section?
-      /// TODO: UserModel class
       /// TODO: Search functionality
-      /// TODO: Bottom Sheet functionality
       /// TODO: TEXTFIELDS and Regex Validations
       /// TODO: Video BG Splash Screen
       /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers or Dummys?

@@ -21,6 +21,7 @@ class HorizontalListviewFilterSize extends ConsumerWidget {
     return SizedBox(
       height: height!.h,
       child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
         clipBehavior: Clip.none,
         scrollDirection: Axis.horizontal,
         itemCount: list.length,

@@ -39,7 +39,7 @@ class PaymentScreenResult extends ConsumerWidget {
                   onPressed: () {
                     ref
                         .read(paymentScreenNavigationProvider.notifier)
-                        .goNextStep(context);
+                        .goNextStep(context, ref);
                   },
                 ),
               ),

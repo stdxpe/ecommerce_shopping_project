@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/feature_selector_providers.dart';
@@ -46,10 +45,9 @@ class BottomSheetFeatureSelector extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ButtonMain(
-                      onPressed: () {
-                        ref.read(addToCartButtonProvider(product));
-                        context.pop();
-                      },
+                      onPressed: () => ref
+                          .read(featureSelectorProvider.notifier)
+                          .addToCart(context, ref, product),
                       text: AppStrings.detailsScreenButtonAddToShoppingCart,
                       backgroundColor:
                           context.colorPalette.buttonMainBackgroundSecondary,
@@ -60,16 +58,6 @@ class BottomSheetFeatureSelector extends StatelessWidget {
                       paddingHorizontal: 0,
                     ),
                   ),
-                  // SizedBox(
-                  //     width:
-                  //         Constants.kButtonSpacingBTWButtonsHorizontal.w),
-                  // Expanded(
-                  //   child: ButtonMain(
-                  //     onPressed: () {},
-                  //     text: AppStrings.filtersScreenButtonApply,
-                  //     paddingHorizontal: 0,
-                  //   ),
-                  // ),
                 ],
               ),
             ),

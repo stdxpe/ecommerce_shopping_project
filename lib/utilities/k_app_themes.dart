@@ -1,6 +1,6 @@
 part of 'utilities_library_imports.dart';
 
-abstract class AppTheme {
+abstract class AppThemes {
   /// [APP WIDE GLOBAL VARIABLE]
   /// ALL THEME SETTINGS
 
@@ -159,7 +159,7 @@ abstract class AppTheme {
 /// Usage example: Theme.of(context).colorPalette;
 extension AppThemeExtension on ThemeData {
   AppColorsExtension get colorPalette =>
-      extension<AppColorsExtension>() ?? AppTheme._lightModeColorPalette;
+      extension<AppColorsExtension>() ?? AppThemes._lightModeColorPalette;
 }
 
 /// [EASY ACCESS to COLOR PALETTE in UI]

@@ -11,10 +11,10 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class DialogPopupMainAlertDialog extends StatelessWidget {
   const DialogPopupMainAlertDialog({
     super.key,
-    required this.onPressed,
+    // required this.onPressed,
   });
 
-  final Function() onPressed;
+  // final Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
@@ -31,13 +31,14 @@ class DialogPopupMainAlertDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Constants.kRadiusDialogPopups.r),
         ),
-        title: DialogPopupPaymentResult(
-          // title: DialogPopupNewDeals(
-          // title: DialogPopupProductAddedToCart(
-          // imageUrl: AppImages.productImage1,
-          onPressed: () {
-            onPressed();
-          },
+        // title: DialogPopupPaymentResult(
+        // title: DialogPopupNewDeals(
+        title: DialogPopupProductAddedToCart(
+          onPressedContinue: (context) {}, onPressedGoToCart: (context) {},
+          imageUrl: AppImages.productImage1,
+          // onPressed: () {
+          //   onPressed();
+          // },
           cardHeight: context.mediaQuery.size.height * 0.5,
           cardWidth: context.mediaQuery.size.width * 0.75,
         ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
@@ -142,7 +143,7 @@ class HomeScreen extends ConsumerWidget {
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),
       ),

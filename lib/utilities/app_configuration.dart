@@ -7,9 +7,7 @@ import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_prov
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class AppConfiguration extends ConsumerWidget {
-  const AppConfiguration({super.key, required this.homeScreen});
-
-  final Widget homeScreen;
+  const AppConfiguration({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,17 +16,16 @@ class AppConfiguration extends ConsumerWidget {
       enableScaleText: () => false,
       minTextAdapt: true,
       ensureScreenSize: true,
-      builder: (_, screenUtilChild) {
+      builder: (_, __) {
         return MaterialApp.router(
-          routerConfig: ref.watch(goRouterProvider),
           title: 'ECommerce Shopping Project',
           debugShowCheckedModeBanner: false,
+          theme: AppThemes.light,
+          darkTheme: AppThemes.dark,
           themeMode: ref.watch(themeModeProvider),
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
+          routerConfig: ref.watch(goRouterProvider),
         );
       },
-      child: homeScreen,
     );
   }
 }

@@ -9,10 +9,7 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class BottomSheetProfileEdit extends StatelessWidget {
   const BottomSheetProfileEdit({
     super.key,
-    required this.onPressed,
   });
-
-  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -111,9 +108,7 @@ class BottomSheetProfileEdit extends StatelessWidget {
               visible: context.mediaQuery.viewInsets.bottom == 0,
               child: BottomSheetButtonsPaymentShipping(
                 buttonText: AppStrings.profileScreenButtonSaveProfile,
-                onPressed: () {
-                  onPressed();
-                },
+                onPressed: () {},
               ),
             ),
           ),

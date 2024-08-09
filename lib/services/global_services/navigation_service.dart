@@ -28,7 +28,7 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/bottom_sheets_test_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
 
 class Routes {
   Routes._();
@@ -75,6 +75,7 @@ class Routes {
   /// Dialog Popups and Bottom Sheets with No Nav-Bar
   static const String filters = '/filters';
 }
+// final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   final rootNavigatorKey =
@@ -118,8 +119,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
           path: Routes.test,
-          // builder: (context, state) => CreditCardRawSpinAnimation()),
-          builder: (context, state) => BottomSheetsTestScreen()),
+          builder: (context, state) => CreditCardRawSpinAnimation()),
 
       GoRoute(
           path: Routes.splash,

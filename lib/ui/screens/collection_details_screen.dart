@@ -1,16 +1,16 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 class CollectionDetailsScreen extends ConsumerWidget {
   const CollectionDetailsScreen({
@@ -95,6 +95,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,
             ),
+            SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),
       ),

@@ -1,16 +1,12 @@
-import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/dialog_popup_main_alert_dialog.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final myAsyncNotifierProvider1 =
@@ -130,41 +126,8 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
       totalOrdersCount: 32,
       totalRating: 2.2,
     );
-    var newList = [previousState.insert(foundProductIndex, updatedProduct)];
-    // showDialog(
-    //   useRootNavigator: true,
-    //   barrierColor: Colors.black.withOpacity(0.75),
-    //   context: context,
-    //   builder: (context) {
-    //     return TestScreen(
-    //       onPressed: () {
-    //         // Navigator.of(context, rootNavigator: false).pop();
+    var newList = previousState.insert(foundProductIndex, updatedProduct);
 
-    //         /// TODO: Create riverpod ref for tab controller
-    //         context.pop();
-    //
-    //       },
-    //     );
-    //   },
-    // );
-    showCupertinoModalPopup(
-      // useSafeArea: false,
-      // enableDrag: true,
-      // constraints: BoxConstraints(
-      //   maxHeight: context.mediaQuery.size.height * 0.75,
-      //   minHeight: context.mediaQuery.size.height * 0.70,
-      // ),
-      // showDragHandle: true,
-      // barrierColor: Colors.red,
-      // useRootNavigator: false,
-      // useSafeArea: false,
-      context: context,
-      builder: (context) {
-        return Container(
-            height: context.mediaQuery.size.height * 0.75,
-            child: PaymentScreenPayment());
-      },
-    );
     state = AsyncData([...previousState]);
   }
 }

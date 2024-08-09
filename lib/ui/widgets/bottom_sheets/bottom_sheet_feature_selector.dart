@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/feature_selector_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_filter_color.dart';
@@ -11,7 +13,10 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_filter_sectio
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class BottomSheetFeatureSelector extends StatelessWidget {
-  const BottomSheetFeatureSelector({super.key, required this.product});
+  const BottomSheetFeatureSelector({
+    super.key,
+    required this.product,
+  });
 
   final Product product;
 
@@ -45,9 +50,16 @@ class BottomSheetFeatureSelector extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ButtonMain(
-                      onPressed: () => ref
-                          .read(featureSelectorProvider.notifier)
-                          .addToCart(context, ref, product),
+                      onPressed: () async {
+                        var result = await ref.read(
+                            featureSelectorOnPressedProvider(product).future);
+                        if (context.mounted) context.pop();
+                        if (result) {
+                          ref
+                              .read(dialogPopupProvider.notifier)
+                              .addedToCart(context: context, product: product);
+                        }
+                      },
                       text: AppStrings.detailsScreenButtonAddToShoppingCart,
                       backgroundColor:
                           context.colorPalette.buttonMainBackgroundSecondary,

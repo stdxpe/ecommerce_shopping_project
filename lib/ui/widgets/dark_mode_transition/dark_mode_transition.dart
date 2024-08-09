@@ -74,9 +74,9 @@ class _DarkTransitionState extends State<DarkTransition>
 
   ThemeData getTheme(bool dark) {
     if (dark) {
-      return AppTheme.dark;
+      return AppThemes.dark;
     } else {
-      return AppTheme.light;
+      return AppThemes.light;
     }
   }
 

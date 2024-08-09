@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_filter_lists.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_filters_apply_or_clear.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_filter_chips.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_filter_brands.dart';

@@ -10,6 +10,7 @@ abstract class Constants {
   static const double kMainPaddingHorizontal = 15;
   static const double kMainSpacingBTWCardsHorizontal = 30;
   static const double kMainSpacingBTWCardsVertical = 30;
+  static const double kMainSpacingEndOfScreen = 125;
 
   /// Main Title
   static const double kMainTitlePaddingTop = 20;

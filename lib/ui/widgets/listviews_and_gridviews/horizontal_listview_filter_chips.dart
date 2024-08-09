@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/filters_screen_chip.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

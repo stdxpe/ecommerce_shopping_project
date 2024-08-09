@@ -53,6 +53,7 @@ class DiscoverScreen extends StatelessWidget {
               cardHeight: context.mediaQuery.size.height * 0.6,
               textColor: Colors.white,
             ),
+            SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),
       ),

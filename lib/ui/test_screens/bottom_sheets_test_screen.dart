@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 
 class BottomSheetsTestScreen extends ConsumerWidget {

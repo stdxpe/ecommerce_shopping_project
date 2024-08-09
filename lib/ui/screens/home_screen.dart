@@ -1,8 +1,9 @@
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_product_card_alternate.dart';
@@ -15,7 +16,6 @@ import 'package:ecommerce_shopping_project/ui/widgets/sliders/banner_slider.dart
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/product_card_deals_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_with_text_button.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

@@ -69,10 +69,14 @@ class TitleMain extends StatelessWidget {
                     onTap: () {
                       if (onPressed != null) onPressed!();
                     },
-                    child: Icon(
-                      icon,
-                      size: 70.w,
-                      color: context.colorPalette.title,
+                    child: SizedBox(
+                      height: 70.w,
+                      width: 70.w,
+                      child: Icon(
+                        icon,
+                        size: 70.w,
+                        color: context.colorPalette.title,
+                      ),
                     ),
                   ),
                 ),

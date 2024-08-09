@@ -12,7 +12,7 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/filters_screen.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';

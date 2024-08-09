@@ -4,16 +4,16 @@ import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class SingleSizePickerButton extends StatelessWidget {
-  final String item;
-  final bool isSelected;
-  final double itemSize;
-
   const SingleSizePickerButton({
     required this.item,
     required this.isSelected,
     required this.itemSize,
     super.key,
   });
+
+  final String item;
+  final bool isSelected;
+  final double itemSize;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class SingleSizePickerButton extends StatelessWidget {
               ? context.colorPalette.buttonMainBackgroundPrimary
               : context.colorPalette.sheetBackground,
           boxShadow: [
-            if (isSelected == true)
+            if (isSelected)
               BoxShadows.kBoxShadowTopBanner(
                   color: context.colorPalette.shadowPrimary),
           ]),

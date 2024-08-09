@@ -13,7 +13,7 @@ List dummyColorList = [
   Colors.orange,
 ];
 
-List dummySizeList = [
+List<String> dummySizeList = [
   'XS',
   'S',
   'M',
@@ -43,7 +43,7 @@ List dummyFilterCollectionList = [
   'Winter'
 ];
 
-List dummyBrandList = [
+List<String> dummyBrandList = [
   'All',
   'Nike',
   'Adidas',

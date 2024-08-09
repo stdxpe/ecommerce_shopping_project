@@ -39,7 +39,11 @@ class _SearchScreenState extends State<SearchScreen> {
               title: AppStrings.searchScreenTitle,
               itemCount: 13,
               icon: Icons.tune,
-              onPressed: () {},
+              onPressed: () {
+                // ref
+                //     .read(bottomSheetProvider.notifier)
+                //     .filters(context: context);
+              },
             ),
             VerticalListviewProductCardHorizontalMini(
               // isCardElevated: false,

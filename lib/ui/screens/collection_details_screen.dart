@@ -1,4 +1,6 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
@@ -10,7 +12,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
-class CollectionDetailsScreen extends StatelessWidget {
+class CollectionDetailsScreen extends ConsumerWidget {
   const CollectionDetailsScreen({
     super.key,
     required this.collection,
@@ -19,7 +21,7 @@ class CollectionDetailsScreen extends StatelessWidget {
   final Collection collection;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: const AppBarMain(
         automaticallyImplyLeading: true,
@@ -60,6 +62,11 @@ class CollectionDetailsScreen extends StatelessWidget {
               title: collection.title,
               itemCount: collection.products.length,
               icon: Icons.tune,
+              onPressed: () {
+                ref
+                    .read(bottomSheetProvider.notifier)
+                    .filters(context: context);
+              },
               // paddingHorizontal:
               //     Constants.kDetailsScreenMainPaddingHorizontal.w,
               paddingTop: 77.h,

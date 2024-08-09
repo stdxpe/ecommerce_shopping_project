@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class SwitchFilterRangeSlider extends StatefulWidget {
-  /// TODO: Remove Stateful Widget when Riverpod arrives
+class SwitchFilterRangeSlider extends ConsumerWidget {
   const SwitchFilterRangeSlider({super.key});
 
   @override
-  State<SwitchFilterRangeSlider> createState() =>
-      _SwitchFilterRangeSliderState();
-}
-
-class _SwitchFilterRangeSliderState extends State<SwitchFilterRangeSlider> {
-  ///
-  RangeValues _currentRangeValues = const RangeValues(150, 750);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    RangeValues currentRangeValues = ref.watch(filterPriceRangeProvider);
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextCustom(
-              text: '\$${_currentRangeValues.start.toStringAsFixed(0)}',
+              text: '\$${currentRangeValues.start.toStringAsFixed(0)}',
               textStyle: context.textTheme.displaySmall!,
               color: context.colorPalette.title,
             ),
             TextCustom(
-              text: '\$${_currentRangeValues.end.toStringAsFixed(0)}',
+              text: '\$${currentRangeValues.end.toStringAsFixed(0)}',
               textStyle: context.textTheme.displaySmall!,
               color: context.colorPalette.title,
             ),
@@ -41,14 +34,9 @@ class _SwitchFilterRangeSliderState extends State<SwitchFilterRangeSlider> {
           min: 0,
           divisions: 100,
           max: 1000,
-          values: _currentRangeValues,
-          onChanged: (value) {
-            setState(
-              () {
-                _currentRangeValues = value;
-              },
-            );
-          },
+          values: currentRangeValues,
+          onChanged: (value) =>
+              ref.read(filterPriceRangeProvider.notifier).state = value,
         ),
       ],
     );

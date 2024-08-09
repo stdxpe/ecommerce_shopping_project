@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/feature_selector_providers.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
@@ -28,6 +29,14 @@ class BottomSheetNotifier extends StateNotifier<void> {
       context: context,
       heightRatio: 0.35,
       child: BottomSheetFeatureSelector(product: product),
+    );
+  }
+
+  filters({required BuildContext context}) {
+    _showMainBottomSheet(
+      context: context,
+      heightRatio: 0.8,
+      child: const BottomSheetFilters(),
     );
   }
 

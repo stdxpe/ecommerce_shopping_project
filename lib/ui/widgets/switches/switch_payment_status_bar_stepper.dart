@@ -72,7 +72,7 @@ class _SwitchPaymentStatusBarStepperState
                 size: iconSize,
                 color: 0 <= widget.activeStep ? activeColor : passiveColor,
               ),
-              // enabled: true or false, depends on allowTabStepping() method..
+              // TODO: enabled: true or false, depends on allowTabStepping() method..
             ),
             EasyStep(
               customStep: Icon(

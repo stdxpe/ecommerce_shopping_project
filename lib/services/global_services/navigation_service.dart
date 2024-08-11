@@ -29,7 +29,7 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/bottom_sheet_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/bottom_sheet_screen.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
@@ -156,27 +156,27 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       /// Bottom Sheet Routes
       GoRoute(
           path: Routes.bottomSheetFilters,
-          pageBuilder: (context, state) => const BottomSheetScreen(
+          pageBuilder: (context, state) => const ModalBottomSheetScreen(
               heightRatio: 0.8, bottomSheet: BottomSheetFilters())),
       GoRoute(
           path: Routes.bottomSheetFeatureSelector,
-          pageBuilder: (context, state) => BottomSheetScreen(
+          pageBuilder: (context, state) => ModalBottomSheetScreen(
               heightRatio: 0.35,
               bottomSheet: BottomSheetFeatureSelector(
                   product: state.extra! as Product))),
       GoRoute(
           path: Routes.bottomSheetAddresses,
-          pageBuilder: (context, state) => const BottomSheetScreen(
+          pageBuilder: (context, state) => const ModalBottomSheetScreen(
               bottomSheet:
                   PaymentScreenShipping(isCreateNewAddressMode: true))),
       GoRoute(
           path: Routes.bottomSheetCreditCards,
-          pageBuilder: (context, state) => const BottomSheetScreen(
+          pageBuilder: (context, state) => const ModalBottomSheetScreen(
               bottomSheet: PaymentScreenPayment(isCreateNewCardMode: true))),
       GoRoute(
           path: Routes.bottomSheetProfileEdit,
-          pageBuilder: (context, state) =>
-              const BottomSheetScreen(bottomSheet: BottomSheetProfileEdit())),
+          pageBuilder: (context, state) => const ModalBottomSheetScreen(
+              bottomSheet: BottomSheetProfileEdit())),
 
       /// App Routes
       GoRoute(

@@ -46,9 +46,7 @@ class VerticalListviewProductCardHorizontalMini extends StatelessWidget {
           onDismissed: () {
             if (onDismissed != null) onDismissed!(index);
           },
-
-          /// TODO: UNIQUE KEY TO BE CHANGED with Product ID's.
-          uniqueKey: '$index',
+          uniqueKey: productsList[index].id,
           dismissibleEnabled: dismissibleEnabled,
           child: Padding(
             padding: EdgeInsets.only(

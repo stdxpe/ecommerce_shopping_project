@@ -38,7 +38,8 @@ class SearchScreen extends ConsumerWidget {
             },
           ),
           ref.watch(searchProvider).when(
-                loading: () => const CardPlaceholderListView(cardHeight: 200),
+                loading: () => const CardPlaceholderListView(
+                    cardHeight: 200, itemCount: 6),
                 error: (error, stackTrace) => const Text(
                   AppStrings.globalStateErrorMessage,
                   style: TextStyle(color: Colors.black),

@@ -1,9 +1,6 @@
 part of 'utilities_library_imports.dart';
 
-/// TODO: Size.config
-
 extension BuildContextExtensions on BuildContext {
-  ///
   /// Usage example: `context.mediaQuery.size.height`
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 

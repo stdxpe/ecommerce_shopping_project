@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetScreen<T> extends Page<T> {
+class ModalBottomSheetScreen<T> extends Page<T> {
   final Widget bottomSheet;
   final double? heightRatio;
   final bool barrierDismissible;
 
-  const BottomSheetScreen({
+  const ModalBottomSheetScreen({
     required this.bottomSheet,
     this.heightRatio = 0.75,
     this.barrierDismissible = true,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// TODO: Constants
 List dummyColorList = [
   Colors.red,
   Colors.green,

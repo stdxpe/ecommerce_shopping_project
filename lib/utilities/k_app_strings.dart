@@ -180,6 +180,49 @@ abstract class AppStrings {
   static const String filtersScreenRating = 'Rating';
   static const String filtersScreenSortBy = 'Sort By';
 
+  static const String filterSizeXS = 'XS';
+  static const String filterSizeS = 'S';
+  static const String filterSizeM = 'M';
+  static const String filterSizeL = 'L';
+  static const String filterSizeXL = 'XL';
+  static const List<String> filterSizeList = [
+    AppStrings.filterSizeXS,
+    AppStrings.filterSizeS,
+    AppStrings.filterSizeM,
+    AppStrings.filterSizeL,
+    AppStrings.filterSizeXL,
+  ];
+
+  static const String filterSortByRating = 'Rating';
+  static const String filterSortByNewest = 'Newest';
+  static const String filterSortByPriceHigh = 'Price High';
+  static const String filterSortByPriceLow = 'Price Low';
+  static const String filterSortByPopular = 'Popular';
+
+  static const List<String> filterSortByList = [
+    AppStrings.filterSortByRating,
+    AppStrings.filterSortByNewest,
+    AppStrings.filterSortByPriceHigh,
+    AppStrings.filterSortByPriceLow,
+    AppStrings.filterSortByPopular,
+  ];
+
+  static const String filterCollectionAll = 'All';
+  static const String filterCollectionAutumn = 'Autumn';
+  static const String filterCollectionWinter = 'Winter';
+  static const String filterCollectionSpring = 'Spring';
+  static const String filterCollectionSummer = 'Summer';
+  static const String filterCollectionDesigners = 'Designers';
+
+  static const List<String> filterCollectionsList = [
+    AppStrings.filterCollectionAll,
+    AppStrings.filterCollectionAutumn,
+    AppStrings.filterCollectionWinter,
+    AppStrings.filterCollectionSpring,
+    AppStrings.filterCollectionSummer,
+    AppStrings.filterCollectionDesigners,
+  ];
+
   /// PAYMENT SCREEN
   static const String paymentStep = 'Step ';
   static const String paymentScreenTitleShipping = 'Shipping';

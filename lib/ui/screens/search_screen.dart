@@ -20,7 +20,7 @@ class SearchScreen extends ConsumerWidget {
       appBar: AppBarSearchField(
         searchOnPressed: (query) {
           context.focusScope.unfocus();
-          ref.read(searchProvider.notifier).getProductsByQuery(query);
+          ref.read(searchProvider.notifier).getProductsByFilter();
         },
       ),
       body: ListView(

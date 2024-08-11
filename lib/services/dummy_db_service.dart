@@ -4,6 +4,7 @@ import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_user_model.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DummyDbService extends IDbService {
   @override
@@ -117,12 +118,44 @@ class DummyDbService extends IDbService {
     await Future.delayed(const Duration(seconds: 2));
 
     List<Product> foundProducts = dummyAllProducts.where(
-      (element) {
-        var tempTitle = element.title.toLowerCase();
+      (product) {
+        /// Contains Query
+        var productTitle = product.title.toLowerCase();
         var filterTitle = filter.query!.toLowerCase();
-        return tempTitle.contains(filterTitle);
+
+        return productTitle.contains(filterTitle) &&
+
+            /// Size Match
+            (filter.sizes!
+                .where((filterSize) => product.sizes.contains(filterSize))
+                .toList()
+                .isNotEmpty) &&
+
+            /// Price Range
+            (product.price <= filter.priceMax! &&
+                product.price >= filter.priceMin!);
       },
     ).toList();
+
+    /// Sort By Rating
+    if (filter.sortBy == AppStrings.filterSortByRating) {
+      foundProducts.sort((a, b) => b.totalRating.compareTo(a.totalRating));
+    } else if (filter.sortBy == AppStrings.filterSortByNewest) {
+      /// Sort By Newest
+      /// TODO: CreatedAt, NEED DateTime Comparison
+      foundProducts.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    } else if (filter.sortBy == AppStrings.filterSortByPriceLow) {
+      /// Sort By Price Low
+      foundProducts.sort((a, b) => a.price.compareTo(b.price));
+    } else if (filter.sortBy == AppStrings.filterSortByPriceHigh) {
+      /// Sort By Price High
+      foundProducts.sort((a, b) => b.price.compareTo(a.price));
+    } else if (filter.sortBy == AppStrings.filterSortByPriceHigh) {
+      /// Sort By Popular
+      foundProducts
+          .sort((a, b) => a.totalLikesCount.compareTo(b.totalLikesCount));
+    }
+
     return Future.value(foundProducts);
   }
 }

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/filters_screen_brand.dart';
 
-class VerticalListviewFilterBrands extends ConsumerWidget {
-  const VerticalListviewFilterBrands({
+class VerticalListviewFilterCollections extends ConsumerWidget {
+  const VerticalListviewFilterCollections({
     super.key,
     required this.list,
     this.icon,
@@ -28,10 +28,11 @@ class VerticalListviewFilterBrands extends ConsumerWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () => ref
-              .read(filterBrandProvider.notifier)
-              .toggleBrandElement(index: index),
+              .read(filterProvider.notifier)
+              .toggleCollectionElement(collection: list[index]),
           child: FiltersScreenBrand(
-            isSelected: ref.watch(filterBrandIsSelectedProvider(index)),
+            isSelected:
+                ref.watch(filterProvider).collections!.contains(list[index]),
             icon: icon,
             text: list[index],
             height: height?.h ?? 150,

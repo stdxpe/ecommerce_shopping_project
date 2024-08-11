@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/filters_screen_chip.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -34,11 +34,13 @@ class HorizontalListviewFilterChips extends StatelessWidget {
             ),
             child: Consumer(
               builder: (context, ref, child) => GestureDetector(
-                onTap: () {
-                  ref.read(filterSortByProvider.notifier).state = index;
-                },
+                onTap: () => ref
+                    .read(filterProvider.notifier)
+                    .setFilterParameter(
+                        sortBy: AppStrings.filterSortByList[index]),
                 child: FiltersScreenChip(
-                  isSelected: ref.watch(filterSortByIsSelectedProvider(index)),
+                  isSelected:
+                      ref.watch(filterProvider).sortBy == filterList[index],
                   icon: icon,
                   text: filterList[index],
                   height: height?.h ?? 100,

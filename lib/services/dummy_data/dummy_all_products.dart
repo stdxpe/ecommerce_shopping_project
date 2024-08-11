@@ -148,12 +148,12 @@ List<Product> dummyAllProducts = [
   ),
   Product(
     id: '000004',
-    title: 'High Neck Shoulder T-Shirt',
+    title: 'Channel Crop',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
     description:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
-    price: 199.99,
+    price: 709.99,
     mainPhoto: AppImages.productImage8,
     photos: [
       AppImages.productImage1,
@@ -174,10 +174,6 @@ List<Product> dummyAllProducts = [
     ],
     sizes: [
       'XS',
-      'S',
-      'M',
-      'L',
-      'XL',
     ],
     totalOrdersCount: 32,
     totalLikesCount: 152,
@@ -199,12 +195,12 @@ List<Product> dummyAllProducts = [
   ),
   Product(
     id: '000005',
-    title: 'High Neck Shoulder T-Shirt',
+    title: 'Louis Vuitton Jacket',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
     description:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
-    price: 20.00,
+    price: 998.00,
     mainPhoto: AppImages.productImage3,
     photos: [
       AppImages.productImage1,
@@ -224,15 +220,12 @@ List<Product> dummyAllProducts = [
       'A0207C',
     ],
     sizes: [
-      'XS',
-      'S',
       'M',
       'L',
-      'XL',
     ],
     totalOrdersCount: 32,
     totalLikesCount: 152,
-    totalRating: 3.45,
+    totalRating: 3.49,
     // storeId: dummyStores[0].id,
     // storeName: dummyStores[0].name,
     storeId: 'dummyStores[0].id',
@@ -250,7 +243,7 @@ List<Product> dummyAllProducts = [
   ),
   Product(
     id: '000006',
-    title: 'High Neck Shoulder T-Shirt',
+    title: 'Giorgino Armani Coat',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
     description:
@@ -275,10 +268,6 @@ List<Product> dummyAllProducts = [
       'A0207C',
     ],
     sizes: [
-      'XS',
-      'S',
-      'M',
-      'L',
       'XL',
     ],
     totalOrdersCount: 32,

@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/single_size_picker_button.dart';
 
 class SwitchFilterSizeSelector extends ConsumerWidget {
@@ -27,10 +27,11 @@ class SwitchFilterSizeSelector extends ConsumerWidget {
             .mapIndexed(
               (index, element) => GestureDetector(
                 onTap: () => ref
-                    .read(filterSizeProvider.notifier)
-                    .toggleSizeElement(index: index),
+                    .read(filterProvider.notifier)
+                    .toggleSizeElement(size: list[index]),
                 child: SingleSizePickerButton(
-                  isSelected: ref.watch(filterSizeIsSelectedProvider(index)),
+                  isSelected:
+                      ref.watch(filterProvider).sizes!.contains(list[index]),
                   item: list[index],
                   itemSize: height.h,
                 ),

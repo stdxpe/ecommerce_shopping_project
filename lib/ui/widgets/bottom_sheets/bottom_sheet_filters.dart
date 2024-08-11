@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_filter_lists.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_selector_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/search_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_filters_apply_or_clear.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/horizontal_listview_filter_chips.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_filter_brands.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_filter_collections.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_filter_range_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_filter_size_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_filter_section.dart';
@@ -49,14 +49,16 @@ class BottomSheetFilters extends StatelessWidget {
                     const SwitchFilterRangeSlider(),
                     const TitleFilterSection(
                         title: AppStrings.filtersScreenSortBy),
-                    HorizontalListviewFilterChips(filterList: dummySortList),
+                    const HorizontalListviewFilterChips(
+                        filterList: AppStrings.filterSortByList),
                     const TitleFilterSection(
                         title: AppStrings.filtersScreenSize),
-                    SwitchFilterSizeSelector(list: dummySizeList, height: 125),
+                    const SwitchFilterSizeSelector(
+                        list: AppStrings.filterSizeList, height: 125),
                     const TitleFilterSection(
-                        title: AppStrings.filtersScreenBrands),
-                    VerticalListviewFilterBrands(
-                      list: dummyBrandList,
+                        title: AppStrings.filtersScreenCollections),
+                    const VerticalListviewFilterCollections(
+                      list: AppStrings.filterCollectionsList,
                     ),
                     SizedBox(height: 100.h),
                   ],
@@ -66,13 +68,11 @@ class BottomSheetFilters extends StatelessWidget {
                 builder: (context, ref, child) =>
                     BottomSheetButtonsFiltersApplyOrClear(
                   onPressedApply: () {
-                    ref
-                        .read(filterAllProviders.notifier)
-                        .getAllFilterSelections(ref);
+                    ref.read(searchProvider.notifier).getProductsByFilter();
                     context.pop();
                   },
                   onPressedClear: () {
-                    ref.read(filterAllProviders.notifier).resetAllFilters(ref);
+                    ref.read(filterProvider.notifier).resetAllFilters();
                     context.pop();
                   },
                 ),

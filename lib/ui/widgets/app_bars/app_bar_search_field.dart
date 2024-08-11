@@ -11,7 +11,7 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
     required this.searchOnPressed,
   });
 
-  final Function() searchOnPressed;
+  final Function(String query) searchOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,9 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
             icon: const Icon(UniconsLine.search),
             alignment: Alignment.center,
             onPressed: () {
-              searchOnPressed();
+              /// TODO: Temp query variable before textfield
+              String tempQuery = '';
+              searchOnPressed(tempQuery);
             },
           ),
         ],

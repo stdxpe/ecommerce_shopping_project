@@ -65,12 +65,16 @@ class BottomSheetFilters extends StatelessWidget {
               Consumer(
                 builder: (context, ref, child) =>
                     BottomSheetButtonsFiltersApplyOrClear(
-                  onPressedApply: () => ref
-                      .read(filterAllProviders.notifier)
-                      .getAllFilterSelections(ref),
-                  onPressedClear: () => ref
-                      .read(filterAllProviders.notifier)
-                      .resetAllFilters(ref),
+                  onPressedApply: () {
+                    ref
+                        .read(filterAllProviders.notifier)
+                        .getAllFilterSelections(ref);
+                    context.pop();
+                  },
+                  onPressedClear: () {
+                    ref.read(filterAllProviders.notifier).resetAllFilters(ref);
+                    context.pop();
+                  },
                 ),
               ),
             ],

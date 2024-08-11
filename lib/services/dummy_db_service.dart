@@ -1,9 +1,10 @@
-import 'package:ecommerce_shopping_project/services/i_db_service.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_cart_product_dto_list.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_products.dart';
+import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 
 class DummyDbService extends IDbService {
   @override
@@ -94,7 +95,11 @@ class DummyDbService extends IDbService {
 
   @override
   Future<bool> updateProductOnShoppingCart(
-      {required CartProductDto cartProductDto}) {
+      {required CartProductDto cartProductDto}) async {
+    print(
+        'DummyDbService updateProductOnShoppingCart() Executed: "Waiting 0.5 seconds...');
+    await Future.delayed(const Duration(milliseconds: 500));
+
     int updatedIndex = dummyCartProductDtoList
         .indexWhere((element) => element.id == cartProductDto.id);
 
@@ -104,5 +109,22 @@ class DummyDbService extends IDbService {
 
     // Success
     return Future.value(true);
+  }
+
+  @override
+  Future<List<Product>> getProductsByFilter({required Filter filter}) async {
+    print(
+        'DummyDbService getProductsByFilter() Executed: "Waiting 2 seconds...');
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    List<Product> foundProducts = dummyAllProducts.where(
+      (element) {
+        var tempTitle = element.title.toLowerCase();
+        var filterTitle = filter.query!.toLowerCase();
+        return tempTitle.contains(filterTitle);
+      },
+    ).toList();
+    return Future.value(foundProducts);
   }
 }

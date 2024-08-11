@@ -5,7 +5,7 @@ class UserModel {
   final String email;
   final String? phone;
   final String photo;
-  final String birthday;
+  final String? birthday;
   final List<String> wishlist;
   final List<String> shoppingCart;
   final List<String> orders;

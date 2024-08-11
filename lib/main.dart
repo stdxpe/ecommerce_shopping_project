@@ -26,7 +26,7 @@ class RootApp extends StatelessWidget {
 // https://pub.dev/packages/pinput
 
     /// 'Your wishlist/cart is empty' widget
-    /// All riverpod's starts at appstart while loading user
+    /// All riverpod's starts at appstart while loading user??
     ///   AVOID initializing providers in a widget
     ///   Providers should initialize themselves.
     ///   They should not be initialized by an external element such as a widget.

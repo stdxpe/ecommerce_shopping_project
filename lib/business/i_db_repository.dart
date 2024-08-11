@@ -1,10 +1,11 @@
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
 
 abstract class IDBRepository {
   Future<List<Product>> getAllProducts();
   // Future<Product> getProductById({required String productId});
-  // Future<List<Product>> getProductsByFilter({required List<String> filters});
+  Future<List<Product>> getProductsByFilter({required Filter filter});
 
   /// Wishlist Screen Related Methods
   Future<List<Product>> getWishlistProducts();

@@ -7,11 +7,12 @@ import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
 
-final searchProvider = AsyncNotifierProvider<SearchNotifier, List<Product>>(() {
+final searchProvider =
+    AutoDisposeAsyncNotifierProvider<SearchNotifier, List<Product>>(() {
   return SearchNotifier();
 });
 
-class SearchNotifier extends AsyncNotifier<List<Product>> {
+class SearchNotifier extends AutoDisposeAsyncNotifier<List<Product>> {
   @override
   FutureOr<List<Product>> build() async {
     return [];

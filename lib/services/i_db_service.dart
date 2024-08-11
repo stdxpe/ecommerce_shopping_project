@@ -23,7 +23,7 @@ abstract class IDbService {
 }
 
 
-// TODO: To-be Personal Collections, 'Recommended For You' Section. Above method to-be-called.
+// TODO: To-be Personal Collections, 'Recommended For You' Section. Below methods to-be-called.
 // Future<List<Collection>> getAllCollections();
 // Future<List<Collection>> getCollectionById({required String collectionId});
 

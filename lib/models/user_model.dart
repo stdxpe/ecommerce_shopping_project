@@ -1,3 +1,8 @@
+import 'package:ecommerce_shopping_project/models/address.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/credit_card.dart';
+import 'package:ecommerce_shopping_project/models/order.dart';
+
 class UserModel {
   final String id;
   final String notificationId;
@@ -7,9 +12,10 @@ class UserModel {
   final String photo;
   final String? birthday;
   final List<String> wishlist;
-  final List<String> shoppingCart;
-  final List<String> orders;
-  final List<String> addresses;
+  final List<CartProductDto> shoppingCart;
+  final List<Order> orders;
+  final List<Address> addresses;
+  final List<CreditCard> creditCards;
 
   UserModel({
     required this.id,
@@ -23,5 +29,6 @@ class UserModel {
     required this.shoppingCart,
     required this.orders,
     required this.addresses,
+    required this.creditCards,
   });
 }

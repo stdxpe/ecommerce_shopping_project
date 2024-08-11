@@ -2,8 +2,7 @@ import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_cart_product_dto_list.dart';
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_wishlist_products.dart';
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_user_model.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 
 class DummyDbService extends IDbService {
@@ -34,7 +33,7 @@ class DummyDbService extends IDbService {
         'DummyDbService getWishlistProducts() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    return dummyWishlistProductsId;
+    return dummyUserModel.wishlist;
   }
 
   @override
@@ -43,7 +42,7 @@ class DummyDbService extends IDbService {
         'DummyDbService addProductToWishlist() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyWishlistProductsId.add(productId);
+    dummyUserModel.wishlist.add(productId);
   }
 
   @override
@@ -52,7 +51,7 @@ class DummyDbService extends IDbService {
         'DummyDbService deleteProductFromWishlist() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyWishlistProductsId.removeWhere((element) => element == productId);
+    dummyUserModel.wishlist.removeWhere((element) => element == productId);
   }
 
   /// Shopping Cart Screen Related Methods
@@ -62,8 +61,7 @@ class DummyDbService extends IDbService {
         'DummyDbService getShoppingCartProducts() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    print('dummyCartProductDtosList : $dummyCartProductDtoList');
-    return dummyCartProductDtoList;
+    return dummyUserModel.shoppingCart;
   }
 
   @override
@@ -73,7 +71,7 @@ class DummyDbService extends IDbService {
         'DummyDbService addProductToShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyCartProductDtoList.add(cartProductDto);
+    dummyUserModel.shoppingCart.add(cartProductDto);
 
     // Success
     return Future.value(true);
@@ -86,7 +84,7 @@ class DummyDbService extends IDbService {
         'DummyDbService deleteProductFromShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    dummyCartProductDtoList
+    dummyUserModel.shoppingCart
         .removeWhere((element) => element.id == cartProductDto.id);
 
     // Success
@@ -100,12 +98,12 @@ class DummyDbService extends IDbService {
         'DummyDbService updateProductOnShoppingCart() Executed: "Waiting 0.5 seconds...');
     await Future.delayed(const Duration(milliseconds: 500));
 
-    int updatedIndex = dummyCartProductDtoList
+    int updatedIndex = dummyUserModel.shoppingCart
         .indexWhere((element) => element.id == cartProductDto.id);
 
-    dummyCartProductDtoList.removeAt(updatedIndex);
+    dummyUserModel.shoppingCart.removeAt(updatedIndex);
 
-    dummyCartProductDtoList.insert(updatedIndex, cartProductDto);
+    dummyUserModel.shoppingCart.insert(updatedIndex, cartProductDto);
 
     // Success
     return Future.value(true);

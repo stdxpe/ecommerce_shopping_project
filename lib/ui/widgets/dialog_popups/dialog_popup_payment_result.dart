@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DialogPopupPaymentResult extends StatelessWidget {
-  final double cardHeight;
-  final double cardWidth;
-  final Function() onPressed;
-
   const DialogPopupPaymentResult({
-    required this.cardHeight,
-    required this.cardWidth,
     super.key,
-    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
+    var cardHeight = context.mediaQuery.size.height * 0.5;
+    var cardWidth = context.mediaQuery.size.width * 0.75;
     return SizedBox(
       width: cardWidth,
       child: Column(
@@ -65,7 +62,8 @@ class DialogPopupPaymentResult extends StatelessWidget {
           SizedBox(height: Constants.kDialogPopupSpacingBTWTextVertical.h),
           ButtonMain(
             onPressed: () {
-              onPressed();
+              context.pop();
+              context.go(Routes.home);
             },
             text: AppStrings.paymentScreenResultMessageButton,
             paddingHorizontal: Constants.kDialogPopupPaddingButtonHorizontal.w,

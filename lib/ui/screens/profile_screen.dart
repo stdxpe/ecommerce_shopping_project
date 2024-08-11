@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,9 +43,7 @@ class ProfileScreen extends ConsumerWidget {
               phoneNumber: '555 545342',
               profilePhoto: AppImages.productImage10,
               cardHeight: 225,
-              onPressedEdit: () => ref
-                  .read(bottomSheetProvider.notifier)
-                  .profileEdit(context: context),
+              onPressedEdit: () => context.push(Routes.bottomSheetProfileEdit),
             ),
             SizedBox(height: 30.h),
             ProfileCardButton(
@@ -98,6 +95,7 @@ class ProfileScreen extends ConsumerWidget {
               icon: TablerIcons.logout,
               useBottomDivider: true,
             ),
+            SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),
       ),

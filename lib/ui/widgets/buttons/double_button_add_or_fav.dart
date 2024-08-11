@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_providers.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.dart';
@@ -39,9 +40,7 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
           Expanded(
             child: ButtonMain(
               onPressed: () {
-                ref
-                    .read(bottomSheetProvider.notifier)
-                    .featureSelector(context: context, product: product);
+                context.push(Routes.bottomSheetFeatureSelector, extra: product);
               },
               text: AppStrings.detailsScreenButtonAddToShoppingCart,
               backgroundColor:

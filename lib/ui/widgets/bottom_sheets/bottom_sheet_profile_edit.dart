@@ -7,9 +7,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class BottomSheetProfileEdit extends StatelessWidget {
-  const BottomSheetProfileEdit({
-    super.key,
-  });
+  const BottomSheetProfileEdit({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,7 @@ class BottomSheetProfileEdit extends StatelessWidget {
           Expanded(
             child: ListView(
               padding: EdgeInsets.symmetric(
-                horizontal: Constants.kMainPaddingHorizontal.w * 2,
-              ),
+                  horizontal: Constants.kMainPaddingHorizontal.w * 2),
               physics: const ClampingScrollPhysics(),
               children: [
                 SizedBox(height: 50.h),

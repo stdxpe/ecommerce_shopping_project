@@ -66,7 +66,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                                     Constants.kMainSpacingBTWCardsVertical,
                               )
                             : const Icon(Icons.face)),
-                    SizedBox(height: 100.h),
+                    SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
                   ],
                 ),
               ),

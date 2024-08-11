@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/wishlist_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
@@ -45,6 +46,7 @@ class WishlistScreen extends ConsumerWidget {
                       )
                     : const Icon(Icons.face),
               ),
+          SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
         ],
       ),
     );

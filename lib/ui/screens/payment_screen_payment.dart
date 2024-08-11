@@ -56,7 +56,6 @@ class PaymentScreenPayment extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // SizedBox(height: 50.h),
                           const TextformfieldMain(
                             text: AppStrings.paymentScreenCreditCardTextField1,
                           ),
@@ -121,11 +120,9 @@ class PaymentScreenPayment extends ConsumerWidget {
                   /// isKeyboardOpen
                   visible: context.mediaQuery.viewInsets.bottom == 0,
                   child: BottomSheetButtonsPaymentMethod(
-                    onPressed: () {
-                      ref
-                          .read(paymentScreenNavigationProvider.notifier)
-                          .goNextStep(context, ref);
-                    },
+                    onPressed: () => ref
+                        .read(paymentScreenNavigationProvider.notifier)
+                        .goNextStep(context, ref),
                   ),
                 ),
             ],

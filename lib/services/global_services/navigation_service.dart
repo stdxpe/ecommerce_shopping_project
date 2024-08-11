@@ -6,6 +6,7 @@ import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/dialog_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
@@ -28,14 +29,20 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/bottom_sheet_screen.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_new_deals.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_payment_result.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_product_added_to_cart.dart';
 
 class Routes {
   Routes._();
 
   static const String root = '/';
   static const String test = '/test';
-  // static const String main = '/main';
 
   static const String splash = '/splash';
   static const String onboarding = '/onboarding';
@@ -72,10 +79,17 @@ class Routes {
   static const String reviews = '/productDetails/reviews';
   static const String collectionDetails = '/collectionDetails';
 
-  /// Dialog Popups and Bottom Sheets with No Nav-Bar
-  static const String filters = '/filters';
+  /// Dialog Popups and Bottom Sheets
+  static const String dialogNewDeals = '/dialogNewDeals';
+  static const String dialogAddedToCart = '/dialogAddedToCart';
+  static const String dialogPaymentResult = '/dialogPaymentResult';
+  static const String bottomSheetFilters = '/bottomSheetFilters';
+  static const String bottomSheetAddresses = '/bottomSheetAddresses';
+  static const String bottomSheetCreditCards = '/bottomSheetCreditCards';
+  static const String bottomSheetProfileEdit = '/bottomSheetProfileEdit';
+  static const String bottomSheetFeatureSelector =
+      '/bottomSheetFeatureSelector';
 }
-// final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   final rootNavigatorKey =
@@ -119,8 +133,52 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
           path: Routes.test,
-          builder: (context, state) => CreditCardRawSpinAnimation()),
+          builder: (context, state) => const CreditCardRawSpinAnimation()),
 
+      /// Dialog Popup Routes
+      GoRoute(
+          path: Routes.dialogPaymentResult,
+          pageBuilder: (context, state) => const DialogScreen(
+              dialogPopup: DialogPopupPaymentResult(),
+              barrierDismissible: false)),
+      GoRoute(
+          path: Routes.dialogAddedToCart,
+          pageBuilder: (context, state) => DialogScreen(
+              barrierDismissible: false,
+              dialogPopup: DialogPopupProductAddedToCart(
+                  product: state.extra! as Product))),
+      GoRoute(
+          path: Routes.dialogNewDeals,
+          pageBuilder: (context, state) => DialogScreen(
+              dialogPopup:
+                  DialogPopupNewDeals(collection: state.extra! as Collection))),
+
+      /// Bottom Sheet Routes
+      GoRoute(
+          path: Routes.bottomSheetFilters,
+          pageBuilder: (context, state) => const BottomSheetScreen(
+              heightRatio: 0.8, bottomSheet: BottomSheetFilters())),
+      GoRoute(
+          path: Routes.bottomSheetFeatureSelector,
+          pageBuilder: (context, state) => BottomSheetScreen(
+              heightRatio: 0.35,
+              bottomSheet: BottomSheetFeatureSelector(
+                  product: state.extra! as Product))),
+      GoRoute(
+          path: Routes.bottomSheetAddresses,
+          pageBuilder: (context, state) => const BottomSheetScreen(
+              bottomSheet:
+                  PaymentScreenShipping(isCreateNewAddressMode: true))),
+      GoRoute(
+          path: Routes.bottomSheetCreditCards,
+          pageBuilder: (context, state) => const BottomSheetScreen(
+              bottomSheet: PaymentScreenPayment(isCreateNewCardMode: true))),
+      GoRoute(
+          path: Routes.bottomSheetProfileEdit,
+          pageBuilder: (context, state) =>
+              const BottomSheetScreen(bottomSheet: BottomSheetProfileEdit())),
+
+      /// App Routes
       GoRoute(
           path: Routes.splash,
           builder: (context, state) => const SplashScreen()),

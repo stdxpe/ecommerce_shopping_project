@@ -26,14 +26,10 @@ class PaymentScreenShipping extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      // backgroundColor: Colors.red,
-      // appBar: const AppBarMain(),
       body: SizedBox(
         height: context.mediaQuery.size.height,
         width: context.mediaQuery.size.width,
         child: Column(
-          // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
@@ -113,11 +109,9 @@ class PaymentScreenShipping extends ConsumerWidget {
                 /// isKeyboardOpen
                 visible: MediaQuery.of(context).viewInsets.bottom == 0,
                 child: BottomSheetButtonsPaymentShipping(
-                  onPressed: () {
-                    ref
-                        .read(paymentScreenNavigationProvider.notifier)
-                        .goNextStep(context, ref);
-                  },
+                  onPressed: () => ref
+                      .read(paymentScreenNavigationProvider.notifier)
+                      .goNextStep(context, ref),
                 ),
               ),
           ],

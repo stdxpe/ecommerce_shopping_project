@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/dialog_popup_providers.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 
 final paymentScreenNavigationProvider =
     StateNotifierProvider<PaymentScreenNavigationProviderNotifier, int>((ref) {
@@ -76,7 +76,7 @@ class PaymentScreenNavigationProviderNotifier extends StateNotifier<int> {
       /// Conditions/Validations of Shipping Step (using other ref's)
       /// another if(conditions are met) ? go(home) : null
       // context.go(Routes.home);
-      ref.read(dialogPopupProvider.notifier).paymentResult(context: context);
+      context.push(Routes.dialogPaymentResult);
     }
   }
 }

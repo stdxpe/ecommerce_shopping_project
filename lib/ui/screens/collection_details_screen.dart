@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/bottom_sheet_providers.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -62,11 +63,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
               title: collection.title,
               itemCount: collection.products.length,
               icon: Icons.tune,
-              onPressed: () {
-                ref
-                    .read(bottomSheetProvider.notifier)
-                    .filters(context: context);
-              },
+              onPressed: () => context.push(Routes.bottomSheetFilters),
               // paddingHorizontal:
               //     Constants.kDetailsScreenMainPaddingHorizontal.w,
               paddingTop: 77.h,

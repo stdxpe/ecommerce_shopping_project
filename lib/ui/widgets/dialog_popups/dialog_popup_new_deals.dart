@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DialogPopupNewDeals extends StatelessWidget {
   const DialogPopupNewDeals({
-    required this.imageUrl,
-    required this.cardHeight,
-    required this.cardWidth,
-    super.key,
+    required this.collection,
     this.textColor,
-    required this.onPressed,
+    super.key,
   });
 
-  final Function() onPressed;
-  final String imageUrl;
+  final Collection collection;
   final Color? textColor;
-  final double cardHeight;
-  final double cardWidth;
 
   @override
   Widget build(BuildContext context) {
+    var cardHeight = context.mediaQuery.size.height * 0.5;
+    var cardWidth = context.mediaQuery.size.width * 0.75;
     return Container(
       width: cardWidth,
       height: cardHeight,
@@ -30,7 +29,7 @@ class DialogPopupNewDeals extends StatelessWidget {
           image: DecorationImage(
         fit: BoxFit.cover,
         image: AssetImage(
-          imageUrl,
+          collection.photo,
         ),
       )),
       child: Stack(
@@ -70,7 +69,10 @@ class DialogPopupNewDeals extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomCenter,
               child: ButtonMain(
-                onPressed: () => onPressed(),
+                onPressed: () {
+                  context.pop();
+                  context.push(Routes.collectionDetails, extra: collection);
+                },
                 text: AppStrings.dialogPopupNewDealsButtonText,
                 backgroundColor:
                     context.colorPalette.buttonMainBackgroundSecondary,

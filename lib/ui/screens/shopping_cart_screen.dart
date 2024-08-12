@@ -6,6 +6,8 @@ import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_p
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_order_product_card_horizontal.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occured_widget.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/no_items_found_widget.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_listview.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -39,10 +41,8 @@ class ShoppingCartScreen extends ConsumerWidget {
                     ref.watch(shoppingCartProvider).when(
                         loading: () =>
                             const CardPlaceholderListView(cardHeight: 250),
-                        error: (error, stackTrace) => const Text(
-                              AppStrings.globalStateErrorMessage,
-                              style: TextStyle(color: Colors.black),
-                            ),
+                        error: (error, stackTrace) =>
+                            const ErrorOccuredWidget(),
                         data: (data) => (data.isNotEmpty)
                             ? VerticalListviewOrderProductCardHorizontal(
                                 cartProductsList: data,
@@ -65,7 +65,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                                 paddingBetweenElements:
                                     Constants.kMainSpacingBTWCardsVertical,
                               )
-                            : const Icon(Icons.face)),
+                            : const NoItemsFoundWidget()),
                     SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
                   ],
                 ),

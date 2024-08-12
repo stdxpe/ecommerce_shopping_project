@@ -20,11 +20,13 @@ abstract class AppStrings {
   static const String collectionTitleRightButton = 'See all';
   static const String itemsFound = ' items found';
   static const String itemFound = ' item found';
+  static const String noItemsFound = 'No Items Found';
+
+  static const String globalStateErrorMessage =
+      'An Error Occured.\nPlease Try Again';
 
   static const String cardNewTag = 'NEW';
   static const String cardOnSaleTag = 'ON SALE';
-
-  static const String globalStateErrorMessage = 'Error. Please try again later';
 
   /// ONBOARDING SCREEN
   static const String onboardingScreenTitle = 'Swipe to browse';

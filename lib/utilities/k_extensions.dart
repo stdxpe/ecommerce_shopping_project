@@ -1,7 +1,6 @@
 part of 'utilities_library_imports.dart';
 
 extension BuildContextExtensions on BuildContext {
-  /// Usage example: `context.mediaQuery.size.height`
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
   DefaultTextStyle get defaultTextStyle => DefaultTextStyle.of(this);
@@ -13,4 +12,6 @@ extension BuildContextExtensions on BuildContext {
   ScaffoldState get scaffold => Scaffold.of(this);
 
   ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+
+  /// Usage example: `context.mediaQuery.size.height`
 }

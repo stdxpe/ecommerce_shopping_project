@@ -16,7 +16,7 @@ class VerticalListviewProfileCreditCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       itemCount: cardsList.length,
       scrollDirection: Axis.vertical,

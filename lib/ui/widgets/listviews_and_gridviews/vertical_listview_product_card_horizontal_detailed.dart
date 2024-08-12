@@ -44,8 +44,7 @@ class VerticalListviewProductCardHorizontalDetailed extends StatelessWidget {
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
           return DismissibleDeleteWidget(
-            /// TODO: UNIQUE KEY TO BE CHANGED with Product ID's.
-            uniqueKey: '$index',
+            uniqueKey: productsList[index].id,
             dismissibleEnabled: dismissibleEnabled,
             child: Padding(
               padding: EdgeInsets.only(

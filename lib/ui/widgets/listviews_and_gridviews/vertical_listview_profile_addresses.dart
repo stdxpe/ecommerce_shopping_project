@@ -16,7 +16,7 @@ class VerticalListviewProfileAddresses extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       itemCount: addressesList.length,
       scrollDirection: Axis.vertical,

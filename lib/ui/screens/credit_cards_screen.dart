@@ -22,15 +22,13 @@ class CreditCardsScreen extends ConsumerWidget {
       ),
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: Constants.kMainPaddingHorizontal.w,
-          ),
+          padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),
           children: [
             TitleMain(
               title: AppStrings.creditCardsScreenTitle,
               icon: Icons.add,
-              paddingHorizontal: 0,
+              paddingHorizontal: Constants.kMainPaddingHorizontal.w,
               onPressed: () => context.push(Routes.bottomSheetCreditCards),
             ),
             const VerticalListviewProfileCreditCards(

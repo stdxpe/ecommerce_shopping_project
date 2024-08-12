@@ -23,15 +23,7 @@ abstract class AppThemes {
     ),
 
     // inputDecorationTheme:
-    // bottomSheetTheme:
-    // snackBarTheme:
-    // Usage example: 'Card(
-    // shape: Theme.of(context).cardTheme.shape,'
-    // cardTheme: CardTheme(
-    //   shape: RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.circular(4.0),
-    //     ),
-    //   ),
+
     textTheme: AppTextThemes.textTheme,
     primaryTextTheme: AppTextThemes.textTheme,
 

@@ -33,45 +33,45 @@ class SplashScreen extends StatelessWidget {
           children: [
             SizedBox(height: 1035.h),
             Align(
-              alignment: Alignment.center,
-              child: TextCustom(
-                text: AppStrings.appTitle,
-                textStyle: context.textTheme.headlineLarge!,
-                color: context.colorPalette.title,
-                boxShadowsCustom: [
-                  BoxShadows.kBoxShadowTitle(
-                    color:
-                        context.colorPalette.permaBlackColor.withOpacity(0.54),
-                  ),
-                ],
-                foregroundPaintCustom: Paint()
-                  ..shader = LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      context.colorPalette.permaWhiteColor,
-                      context.colorPalette.permaWhiteColor.withOpacity(0.8),
-                    ],
-                  ).createShader(Rect.fromLTWH(0.0, 0.0, 0.0, 150.0.h)),
-              )
-                  .animate(
-                    onPlay: (controller) {
-                      // controller.repeat();
-                    },
-                    onComplete: (controller) {
-                      controller.loop(reverse: true);
-                    },
-                  )
-                  .tint(
-                    duration: 2000.ms,
-                    color:
-                        context.colorPalette.permaBlackColor.withOpacity(0.3),
-                  )
-                  .tint(
-                    duration: 2000.ms,
-                    color: Colors.transparent,
-                  ),
-            ),
+                alignment: Alignment.center,
+                child: TextCustom(
+                  text: AppStrings.appTitle,
+                  textStyle: context.textTheme.headlineLarge!,
+                  color: context.colorPalette.title,
+                  boxShadowsCustom: [
+                    BoxShadows.kBoxShadowTitle(
+                      color: context.colorPalette.permaBlackColor
+                          .withOpacity(0.54),
+                    ),
+                  ],
+                  foregroundPaintCustom: Paint()
+                    ..shader = LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[
+                        context.colorPalette.permaWhiteColor,
+                        context.colorPalette.permaWhiteColor.withOpacity(0.85),
+                      ],
+                    ).createShader(Rect.fromLTWH(0.0, 0.0, 0.0, 150.0.h)),
+                )
+                // .animate(
+                //   onPlay: (controller) {
+                //     // controller.repeat();
+                //   },
+                //   onComplete: (controller) {
+                //     controller.loop(reverse: true);
+                //   },
+                // )
+                // .tint(
+                //   duration: 2000.ms,
+                //   color:
+                //       context.colorPalette.permaBlackColor.withOpacity(0.3),
+                // )
+                // .tint(
+                //   duration: 2000.ms,
+                //   color: Colors.transparent,
+                // ),
+                ),
             SizedBox(height: 60.h),
             Align(
               alignment: Alignment.center,

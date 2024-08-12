@@ -58,7 +58,7 @@ abstract class AppStrings {
       'Enter the Code\nto Verify Your Phone';
   static const String verificationScreenSubtitle =
 
-      ///TODO: Number gotta be dynamic.
+      ///TODO: Number gotta be dynamic. user.phone
       'We have sent you an SMS with a code \nto the number +123 456 789';
   static const String verificationScreenButton = 'Send a new code';
 

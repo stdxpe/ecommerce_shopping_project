@@ -9,6 +9,7 @@ void main() {
   setDeviceOrientationToPortraitModeOnly();
   registerDependencyInjectionService();
   runApp(
+    /// Riverpod Implemented as State Management Solution
     const ProviderScope(
       child: RootApp(),
     ),
@@ -29,7 +30,6 @@ class RootApp extends StatelessWidget {
 // https://pub.dev/packages/pinput
 
 
-    /// 'Your wishlist/cart is empty' widget
     /// All riverpod's starts at appstart while loading user??
     ///   AVOID initializing providers in a widget
     ///   Providers should initialize themselves.

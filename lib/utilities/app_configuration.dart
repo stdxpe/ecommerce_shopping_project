@@ -12,6 +12,7 @@ class AppConfiguration extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ScreenUtilInit(
+      /// ScreenUtil Implemented for Responsive/Adaptive Design with Raw Figma Sizes
       designSize: const Size(1179, 2556),
       enableScaleText: () => false,
       minTextAdapt: true,
@@ -23,6 +24,8 @@ class AppConfiguration extends ConsumerWidget {
           theme: AppThemes.light,
           darkTheme: AppThemes.dark,
           themeMode: ref.watch(themeModeProvider),
+
+          /// Go_Router Implemented as Advanced Navigation Solution
           routerConfig: ref.watch(goRouterProvider),
         );
       },

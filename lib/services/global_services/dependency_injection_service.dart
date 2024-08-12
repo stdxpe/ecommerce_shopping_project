@@ -7,7 +7,7 @@ import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 
 final locator = GetIt.instance;
 
-void setDependencyInjection() {
+void registerDependencyInjectionService() {
   /// Database Services (Data Access Layer)
   locator.registerLazySingleton<IDbService>(() => DummyDbService());
 

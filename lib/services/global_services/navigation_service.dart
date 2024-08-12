@@ -29,7 +29,7 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/bottom_sheet_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/modal_bottom_sheet_screen.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
@@ -116,7 +116,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     navigatorKey: rootNavigatorKey,
 
+    /// TODO: 404 Screen
     // errorBuilder: (context, state) => 404Screen(),
+    /// TODO: Redirect with LogOut/Auth
     // redirect: (context, state) {
     //   bool userAuthenticated = true;
 
@@ -125,7 +127,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     //   return (userAuthenticated) ? Routes.home : null;
     // },
 
-    /// TODO: OnWillPop behaviors test
+    /// TODO: OnWillPop behaviors test physical android button
 
     initialLocation: Routes.home,
     // initialLocation: Routes.test,

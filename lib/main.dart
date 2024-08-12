@@ -7,7 +7,7 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setDeviceOrientationToPortraitModeOnly();
-  setDependencyInjection();
+  registerDependencyInjectionService();
   runApp(
     const ProviderScope(
       child: RootApp(),

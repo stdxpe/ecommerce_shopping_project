@@ -212,7 +212,7 @@ abstract class AppStrings {
   static const String filterCollectionWinter = 'Winter';
   static const String filterCollectionSpring = 'Spring';
   static const String filterCollectionSummer = 'Summer';
-  static const String filterCollectionDesigners = 'Designers';
+  static const String filterCollectionSelected = 'Selected';
 
   static const List<String> filterCollectionsList = [
     AppStrings.filterCollectionAll,
@@ -220,7 +220,7 @@ abstract class AppStrings {
     AppStrings.filterCollectionWinter,
     AppStrings.filterCollectionSpring,
     AppStrings.filterCollectionSummer,
-    AppStrings.filterCollectionDesigners,
+    AppStrings.filterCollectionSelected,
   ];
 
   /// PAYMENT SCREEN

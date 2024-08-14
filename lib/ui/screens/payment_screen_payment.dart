@@ -89,6 +89,7 @@ class PaymentScreenPayment extends ConsumerWidget {
                           SizedBox(height: 100.h),
                           if (isCreateNewCardMode == false)
                             SwitchCheckboxMain(
+                              onChanged: () {},
                               isChecked: true,
                               text: TextCustom(
                                 text:

@@ -80,6 +80,7 @@ class PaymentScreenShipping extends ConsumerWidget {
                   SizedBox(height: 100.h),
                   if (isCreateNewAddressMode == false)
                     SwitchCheckboxMain(
+                      onChanged: () {},
                       isChecked: true,
                       text: TextCustom(
                         text: AppStrings.paymentScreenShippingCheckBox,

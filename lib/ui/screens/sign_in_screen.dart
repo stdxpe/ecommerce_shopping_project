@@ -33,7 +33,7 @@ class SignInScreen extends ConsumerWidget {
               physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               children: [
-                SizedBox(height: 463.h),
+                SizedBox(height: 363.h),
                 TextCustom(
                   text: AppStrings.signInScreenTitle,
                   textStyle: context.textTheme.headlineMedium!,
@@ -67,9 +67,12 @@ class SignInScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 74.h),
                 SwitchCheckboxMain(
+                  isChecked: ref.watch(checkboxSignInProvider),
+                  onChanged: () => ref
+                      .read(checkboxSignInProvider.notifier)
+                      .state = !ref.read(checkboxSignInProvider.notifier).state,
                   checkedColor: ColorPalette.permaBlackColor,
                   uncheckedColor: ColorPalette.sheetBackground,
-                  isChecked: true,
                   text: TextCustom(
                     text: AppStrings.signInScreenCheckboxRememberMe,
                     textStyle: context.textTheme.labelSmall!,
@@ -101,7 +104,7 @@ class SignInScreen extends ConsumerWidget {
                   foregroundColor:
                       context.colorPalette.buttonMainForegroundSecondary,
                 ),
-                SizedBox(height: 595.h),
+                SizedBox(height: 695.h),
                 ButtonAlreadyHaveAccount(
                   onPressed: () {},
                   buttonText: AppStrings.signUp,

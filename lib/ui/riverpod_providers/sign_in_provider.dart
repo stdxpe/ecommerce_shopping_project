@@ -47,9 +47,15 @@ class SignInNotifier extends StateNotifier<SignInFormState> {
   getStatus() {
     validateEmail();
     validatePassword();
-    state = state.email.isValid && state.password.isValid
+    state = state.email.isValid &&
+            state.password.isValid &&
+            ref.read(checkboxSignInProvider)
         ? state.copyWith(status: true)
         : state.copyWith(status: false);
     return state.status;
   }
 }
+
+final checkboxSignInProvider = StateProvider<bool>((ref) {
+  return true;
+});

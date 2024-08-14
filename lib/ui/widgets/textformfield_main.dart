@@ -67,10 +67,13 @@ class TextformfieldMain extends StatelessWidget {
                 context.colorPalette.text.withOpacity(0.50),
             fontSize: context.textTheme.labelMedium!.fontSize!.h,
           ),
-          errorMaxLines: 2,
+          errorMaxLines: 3,
           errorStyle: context.textTheme.labelMedium!.copyWith(
             color: ColorPalette.favoriteRed,
-            fontSize: context.textTheme.labelMedium!.fontSize!.h,
+            height: 1.1,
+            // fontSize: context.textTheme.labelMedium!.fontSize!.h,
+            fontSize: 35.h,
+            fontWeight: FontWeight.w500,
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(

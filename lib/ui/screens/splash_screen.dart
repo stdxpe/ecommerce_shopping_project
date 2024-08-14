@@ -92,8 +92,8 @@ class SplashScreen extends StatelessWidget {
             ),
             SizedBox(height: 734.h),
             ButtonMain(
-              onPressed: () => context.push(Routes.signUp),
-              // onPressed: () => context.push(Routes.signIn),
+              // onPressed: () => context.push(Routes.signUp),
+              onPressed: () => context.push(Routes.signIn),
               text: AppStrings.signUpWithEmail,
               icon: Icon(Icons.mail, size: 48.h),
               backgroundColor:

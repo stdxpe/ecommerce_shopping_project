@@ -65,9 +65,14 @@ class SignUpNotifier extends StateNotifier<SignUpFormState> {
     validateConfirmPassword();
     state = (state.email.isValid &&
             state.password.isValid &&
-            state.confirmPassword.isValid)
+            state.confirmPassword.isValid &&
+            ref.read(checkboxSignUpProvider))
         ? state.copyWith(status: true)
         : state.copyWith(status: false);
     return state.status;
   }
 }
+
+final checkboxSignUpProvider = StateProvider<bool>((ref) {
+  return true;
+});

@@ -11,24 +11,25 @@ class ValidatorNotifier extends StateNotifier<TextFieldModel> {
   ValidatorNotifier(StateNotifierProviderRef ref)
       : super(TextFieldModel(isValid: false));
 
-  TextFieldModel validateTextfieldModel(TextFieldModel model, String? text,
-      bool? isValidCheckExtension, String fieldName,
-      {String? optionalErrorText}) {
-    if (model.text == null || model.text!.isEmpty) {
-      return TextFieldModel(
-          isValid: false, text: text, error: '$fieldName cant be empty');
-    } else if (model.text != null &&
-        model.text!.isNotEmpty &&
-        isValidCheckExtension!) {
-      return TextFieldModel(isValid: true, text: text, error: null);
-    } else {
+  TextFieldModel validateTextfieldModel(
+      {required TextFieldModel textfieldModel,
+      required String? textFieldModelText,
+      required bool? isValidCheckExtension,
+      required String textFieldName,
+      required String errorText}) {
+    if (textfieldModel.text == null || textfieldModel.text!.isEmpty) {
       return TextFieldModel(
           isValid: false,
-          text: text,
-          error:
-
-              /// TODO: optionalErrorText
-              'Enter a valid ${fieldName.toLowerCase()}\n$optionalErrorText');
+          text: textFieldModelText,
+          error: '$textFieldName cant be empty');
+    } else if (textfieldModel.text != null &&
+        textfieldModel.text!.isNotEmpty &&
+        isValidCheckExtension!) {
+      return TextFieldModel(
+          isValid: true, text: textFieldModelText, error: null);
+    } else {
+      return TextFieldModel(
+          isValid: false, text: textFieldModelText, error: errorText);
     }
   }
 }

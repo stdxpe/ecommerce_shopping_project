@@ -53,6 +53,40 @@ Complete ECommerce Project with Flutter, Firebase Auth, Cloud Firestore, Firebas
 
 <img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/javascript/javascript-original.svg" alt="JavaScript" width="50" height="50"/> &nbsp;<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/nodejs/nodejs-plain.svg" alt="NodeJS" width="50" height="50"/> &nbsp;<img  src="https://github.com/CyrisXD/CyrisXD/raw/master/assets/ExpressJS.png" alt="ExpressJS"/> &nbsp; <img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/react/react-original.svg" alt="ReactJS" width="50" height="50" style="margin:0 auto; display:block;"/> &nbsp;<img  src="https://github.com/CyrisXD/CyrisXD/raw/master/assets/NextJS.png" alt="NextJS"/> &nbsp; <img  src="https://github.com/CyrisXD/CyrisXD/raw/master/assets/TailwindCSS.png" alt="TailwindCSS"/> &nbsp;<img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase" width="50" height="50"/> &nbsp;<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/vscode/vscode-original.svg" alt="VSCode" width="50" height="50"/> &nbsp;<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/photoshop/photoshop-line.svg" alt="Photoshop" width="50" height="50"/> &nbsp;<img  src="https://github.com/CyrisXD/CyrisXD/raw/master/assets/Github.png" alt="Github"/> &nbsp;<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/html5/html5-plain.svg" alt="HTML5" width="50" height="50"/> &nbsp;<img  src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/css3/css3-original.svg" alt="CSS3" width="50" height="50"/>
 
+## pubspec.yaml
+```yaml
+#############################################################################################################
+
+  flutter_riverpod: ^2.5.1                # State Management Solution
+  get_it: ^7.7.0                          # Dependency Injection Service
+  go_router: ^14.2.2                      # Advanced Navigation & Routing System
+  flutter_screenutil: ^5.9.3              # Responsive & Adaptive Design
+
+  firebase_core: ^3.3.0                   # Firebase Services
+  firebase_auth: ^5.1.4                   # Firebase Authentication Service
+  cloud_firestore: ^5.2.1                 # Firebase Cloud Storage Service
+
+  card_swiper: ^3.0.1                     # Carousel Image Slider
+  smooth_page_indicator: ^1.2.0           # Image Slider Pagination
+  flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
+  flutter_animate: ^4.5.0                 # Advanced Animations
+  flutter_custom_carousel: ^0.1.0+1       # Advanced Built-In Slider Animations with flutter_animate package
+  zoom_pinch_overlay: ^1.4.3              # Advanced Version of Flutter Interactive Widget
+  easy_stepper: ^0.8.5                    # Payment Screen Horizontal Top Stepper Widget
+  flutter_credit_card: ^4.0.1             # Credit Card Validation
+  shimmer: ^3.0.0                         # Animated Product Card Placeholders while Loading State
+  loading_animation_widget: ^1.2.1        # Animated Loading Progress Indicators 
+  flutter_rating_bar: ^4.0.1              # Product Rating Bar
+  msh_checkbox: ^2.0.1                    # Animated Checkbox Widget
+  flutter_any_logo: ^1.1.1                # Brand Logos
+  cupertino_icons: ^1.0.6                 # UI Icons
+  flutter_tabler_icons: ^1.35.0           # UI Icons
+  unicons: ^2.1.2                         # UI Icons
+
+#############################################################################################################
+```
+
+
 A little more about the code:  AKA Dependencies
 
 ```php

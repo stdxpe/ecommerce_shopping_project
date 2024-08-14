@@ -16,6 +16,7 @@ abstract class AppStrings {
   static const String alreadyHaveAnAccount = 'Already have an account?   ';
   static const String dontHaveAnAccount = 'Don\'t have an account?   ';
   static const String continueButton = 'Continue';
+  static const String forgotYourPassword = 'Forgot your password?';
 
   static const String collectionTitleRightButton = 'See all';
   static const String itemsFound = ' items found';
@@ -26,11 +27,13 @@ abstract class AppStrings {
       'An Error Occured.\nPlease Try Again';
 
   static const String textfieldEmailErrorMessage = 'Enter a valid email';
-
   static const String textfieldPasswordErrorMessage =
       'Password must be 8 characters long, with upper and lower case characters, at least one number and no symbol';
   static const String textfieldConfirmPasswordErrorMessage =
       'Passwords dont match';
+  static const String textfieldPhoneErrorMessage = 'Enter a valid phone number';
+  static const String textfieldVerificationCodeErrorMessage =
+      'Enter a valid verification code';
 
   static const String cardNewTag = 'NEW';
   static const String cardOnSaleTag = 'ON SALE';
@@ -66,9 +69,7 @@ abstract class AppStrings {
   static const String verificationScreenTitle =
       'Enter the Code\nto Verify Your Phone';
   static const String verificationScreenSubtitle =
-
-      ///TODO: Number gotta be dynamic. user.phone
-      'We have sent you an SMS with a code \nto the number +123 456 789';
+      'We have sent you an SMS with a code \nto the number';
   static const String verificationScreenButton = 'Send a new code';
 
   /// HOME SCREEN

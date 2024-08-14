@@ -7,9 +7,12 @@ extension Validator on String {
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?!.*\W).{8,30}$')
           .hasMatch(this);
 
-  bool isPasswordsMatch(String? other) {
-    return (other != null && other == this) ? true : false;
-  }
+  bool isPasswordsMatch(String? other) =>
+      (other != null && other == this) ? true : false;
+
+  bool isValidPhoneNumber() => RegExp(r'^[0-9.].{9,11}$').hasMatch(this);
+
+  bool isValidVerificationCode() => RegExp(r'^[0-9.].{3,30}$').hasMatch(this);
 
   // TODO: Credit Card Number Validator
 }

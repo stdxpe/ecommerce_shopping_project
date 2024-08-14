@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/forgot_password_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_verification_textfield.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -29,14 +31,17 @@ class VerificationScreen extends StatelessWidget {
               fontLetterSpacingCustom: -1,
             ),
             SizedBox(height: 100.h),
-            TextCustom(
-              text: AppStrings.verificationScreenSubtitle,
-              textStyle: context.textTheme.headlineSmall!,
-              color: context.colorPalette.title,
-              fontSizeCustom: 40,
-              fontWeightCustom: FontWeight.w600,
-              maxLines: 2,
-            ),
+            Consumer(builder: (context, ref, child) {
+              return TextCustom(
+                text:
+                    '${AppStrings.verificationScreenSubtitle} ${ref.watch(forgotPasswordProvider).phone.text ?? ''}',
+                textStyle: context.textTheme.headlineSmall!,
+                color: context.colorPalette.title,
+                fontSizeCustom: 40,
+                fontWeightCustom: FontWeight.w600,
+                maxLines: 2,
+              );
+            }),
             SizedBox(height: 175.h),
             const SwitchVerificationTextField(),
             SizedBox(height: 60.h),

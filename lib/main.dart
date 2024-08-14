@@ -37,7 +37,6 @@ void main() {
     ///   They should not be initialized by an external element such as a widget.
     /// Eth will be in Collections. getCollection(id?)
     /// User Profile reviews section?
-    /// TODO: TEXTFIELDS and Regex Validations
     /// TODO: Video BG Splash Screen
-    /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers or Dummys?
+    /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers or Dummys? Hive Boxes
  

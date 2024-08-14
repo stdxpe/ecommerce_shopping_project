@@ -2,31 +2,18 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class SwitchCupertinoCustom extends StatefulWidget {
-  SwitchCupertinoCustom({
-    super.key,
-    required this.onChanged,
-    this.switchState = false,
-  });
+class SwitchCupertinoCustom extends StatelessWidget {
+  const SwitchCupertinoCustom(
+      {super.key, required this.switchState, required this.onChanged});
 
-  bool? switchState;
-  final Function(bool) onChanged;
+  final bool switchState;
+  final Function() onChanged;
 
-  @override
-  State<SwitchCupertinoCustom> createState() => _SwitchCupertinoCustomState();
-}
-
-class _SwitchCupertinoCustomState extends State<SwitchCupertinoCustom> {
   @override
   Widget build(BuildContext context) {
     return CupertinoSwitch(
-      value: widget.switchState!,
-      onChanged: (value) {
-        setState(() {
-          widget.switchState = value;
-          widget.onChanged(widget.switchState!);
-        });
-      },
+      value: switchState,
+      onChanged: (value) => onChanged(),
       thumbColor: context.colorPalette.scaffoldBackground,
       activeColor: context.colorPalette.text,
       trackColor: context.colorPalette.text.withOpacity(0.13),

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/notification_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
@@ -67,7 +68,7 @@ class ProfileScreen extends ConsumerWidget {
               icon: UniconsLine.moon,
               widgetContent: SwitchCupertinoCustom(
                   switchState: ref.watch(isDarkModeOnProvider),
-                  onChanged: (boolValue) {
+                  onChanged: () {
                     /// Theme Mode local storage saving here
                     ref.read(themeModeProvider.notifier).toggleTheme();
                   }),
@@ -77,7 +78,10 @@ class ProfileScreen extends ConsumerWidget {
               buttonText: AppStrings.profileScreenButtonsListItemNotifications,
               icon: TablerIcons.notification,
               widgetContent: SwitchCupertinoCustom(
-                  switchState: true, onChanged: (boolValue) {}),
+                  switchState: ref.watch(notificationsProvider),
+                  onChanged: () {
+                    ref.read(notificationsProvider.notifier).toggleSwitch();
+                  }),
             ),
             ProfileCardButton(
               onPressed: () {},

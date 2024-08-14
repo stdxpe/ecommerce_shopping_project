@@ -123,7 +123,7 @@ class SignUpScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 470.h),
                 ButtonAlreadyHaveAccount(
-                  onPressed: () {},
+                  onPressed: () => context.pushReplacement(Routes.signIn),
                   buttonText: AppStrings.logIn,
                   textStatic: AppStrings.alreadyHaveAnAccount,
                   textStaticColor: context.colorPalette.permaWhiteColor,

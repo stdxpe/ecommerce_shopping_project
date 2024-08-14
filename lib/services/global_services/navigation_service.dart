@@ -12,6 +12,7 @@ import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dar
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/modal_bottom_sheet_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/orders_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/payment_screen_payment.dart';
@@ -30,7 +31,6 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/credit_card_raw_spin_animation.dart';
 import 'package:ecommerce_shopping_project/ui/test_screens/textformfield_test_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
@@ -130,8 +130,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
     /// TODO: OnWillPop behaviors test physical android button
 
-    // initialLocation: Routes.home,
-    initialLocation: Routes.splash,
+    // initialLocation: Routes.splash,
+    initialLocation: Routes.home,
     // initialLocation: Routes.test,
 
     routes: [
@@ -186,6 +186,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
           path: Routes.splash,
           builder: (context, state) => const SplashScreen()),
+      GoRoute(
+          path: Routes.onboarding,
+          builder: (context, state) => const OnboardingScreen()),
       GoRoute(
           path: Routes.signUp,
           builder: (context, state) => const SignUpScreen()),

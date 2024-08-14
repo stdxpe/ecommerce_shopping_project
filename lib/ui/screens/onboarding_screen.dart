@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,10 +7,10 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/onboarding_slider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key, this.onPressed});
-  final Function? onPressed;
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +47,12 @@ class OnboardingScreen extends StatelessWidget {
           const OnboardingSlider(),
           SizedBox(height: 142.h),
           ButtonMain(
-            onPressed: () {
-              if (onPressed != null) onPressed!();
-            },
+            onPressed: () => context.push(Routes.signUp),
             text: AppStrings.continueButton,
           ),
           SizedBox(height: 107.h),
           ButtonAlreadyHaveAccount(
-            onPressed: () {
-              if (onPressed != null) onPressed!();
-            },
+            onPressed: () => context.push(Routes.signIn),
             textStatic: AppStrings.alreadyHaveAnAccount,
             buttonText: AppStrings.logIn,
           ),

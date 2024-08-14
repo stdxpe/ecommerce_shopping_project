@@ -9,7 +9,6 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_hav
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/background_blur_filter.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -51,6 +50,7 @@ class SignInScreen extends ConsumerWidget {
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
+                  // autoFocus: true,
                 ),
                 SizedBox(height: 74.h),
                 TextformfieldMain(
@@ -66,19 +66,29 @@ class SignInScreen extends ConsumerWidget {
                   textInputAction: TextInputAction.done,
                 ),
                 SizedBox(height: 74.h),
-                SwitchCheckboxMain(
-                  isChecked: ref.watch(checkboxSignInProvider),
-                  onChanged: () => ref
-                      .read(checkboxSignInProvider.notifier)
-                      .state = !ref.read(checkboxSignInProvider.notifier).state,
-                  checkedColor: ColorPalette.permaBlackColor,
-                  uncheckedColor: ColorPalette.sheetBackground,
-                  text: TextCustom(
-                    text: AppStrings.signInScreenCheckboxRememberMe,
-                    textStyle: context.textTheme.labelSmall!,
-                    color: context.colorPalette.permaWhiteColor,
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: ButtonAlreadyHaveAccount(
+                    fontSize: 32,
+                    onPressed: () => context.push(Routes.forgotPassword),
+                    buttonText: AppStrings.forgotYourPassword,
+                    textStaticColor: context.colorPalette.permaWhiteColor,
+                    buttonTextColor: context.colorPalette.permaWhiteColor,
                   ),
                 ),
+                // SwitchCheckboxMain(
+                //   isChecked: ref.watch(checkboxSignInProvider),
+                //   onChanged: () => ref
+                //       .read(checkboxSignInProvider.notifier)
+                //       .state = !ref.read(checkboxSignInProvider.notifier).state,
+                //   checkedColor: ColorPalette.permaBlackColor,
+                //   uncheckedColor: ColorPalette.sheetBackground,
+                //   text: TextCustom(
+                //     text: AppStrings.signInScreenCheckboxRememberMe,
+                //     textStyle: context.textTheme.labelSmall!,
+                //     color: context.colorPalette.permaWhiteColor,
+                //   ),
+                // ),
                 SizedBox(height: 100.h),
                 ButtonMain(
                   onPressed: () {
@@ -91,7 +101,7 @@ class SignInScreen extends ConsumerWidget {
                     }
                   },
                   paddingHorizontal: 0,
-                  text: AppStrings.signIn,
+                  text: AppStrings.logIn,
                 ),
                 SizedBox(height: Constants.kButtonSpacingBTWButtonsVertical.h),
                 ButtonMain(
@@ -106,7 +116,7 @@ class SignInScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 695.h),
                 ButtonAlreadyHaveAccount(
-                  onPressed: () {},
+                  onPressed: () => context.pushReplacement(Routes.signUp),
                   buttonText: AppStrings.signUp,
                   textStatic: AppStrings.dontHaveAnAccount,
                   textStaticColor: context.colorPalette.permaWhiteColor,

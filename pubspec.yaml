@@ -22,6 +22,7 @@ dependencies:
   go_router: ^14.2.2                      # Advanced Navigation & Routing System
 
   firebase_core: ^3.3.0                   # Firebase Services
+  firebase_auth: ^5.1.4                   # Firebase Authentication Service
 
   card_swiper: ^3.0.1                     # Carousel Image Slider
   smooth_page_indicator: ^1.2.0           # Image Slider Pagination

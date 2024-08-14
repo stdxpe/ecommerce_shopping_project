@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_in_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
@@ -10,11 +14,11 @@ import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends ConsumerWidget {
   const SignInScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -39,18 +43,27 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 120.h),
                 TextformfieldMain(
+                  onChanged: (value) =>
+                      ref.watch(signInProvider.notifier).updateEmail(value),
+                  validator: (value) => ref.watch(signInProvider).email.error,
                   hintText: AppStrings.signInScreenTextFieldEmail,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                 ),
                 SizedBox(height: 74.h),
                 TextformfieldMain(
+                  onChanged: (value) =>
+                      ref.watch(signInProvider.notifier).updatePassword(value),
+                  validator: (value) =>
+                      ref.watch(signInProvider).password.error,
+                  obscureText: true,
                   hintText: AppStrings.signInScreenTextFieldPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  textInputAction: TextInputAction.done,
                 ),
                 SizedBox(height: 74.h),
                 SwitchCheckboxMain(
@@ -65,7 +78,15 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 100.h),
                 ButtonMain(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.watch(signInProvider.notifier).getStatus();
+                    print('status: ${ref.watch(signInProvider).status}');
+
+                    if (ref.watch(signInProvider).status!) {
+                      /// TODO: Firebase Methods Here
+                      context.push(Routes.home);
+                    }
+                  },
                   paddingHorizontal: 0,
                   text: AppStrings.signIn,
                 ),

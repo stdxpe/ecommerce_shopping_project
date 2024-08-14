@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_up_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
@@ -10,11 +14,11 @@ import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends ConsumerWidget {
   const SignUpScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -39,32 +43,47 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 120.h),
                 TextformfieldMain(
+                  onChanged: (value) =>
+                      ref.watch(signUpProvider.notifier).updateEmail(value),
+                  validator: (value) => ref.watch(signUpProvider).email.error,
                   hintText: AppStrings.signUpScreenTextFieldEmail,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                 ),
                 SizedBox(height: 65.h),
                 TextformfieldMain(
+                  onChanged: (value) =>
+                      ref.watch(signUpProvider.notifier).updatePassword(value),
+                  validator: (value) =>
+                      ref.watch(signUpProvider).password.error,
+                  obscureText: true,
                   hintText: AppStrings.signUpScreenTextFieldPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  textInputAction: TextInputAction.next,
                 ),
                 SizedBox(height: 65.h),
                 TextformfieldMain(
+                  onChanged: (value) => ref
+                      .watch(signUpProvider.notifier)
+                      .updateConfirmPassword(value),
+                  validator: (value) =>
+                      ref.watch(signUpProvider).confirmPassword.error,
+                  obscureText: true,
                   hintText: AppStrings.signUpScreenTextFieldConfirmPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  textInputAction: TextInputAction.done,
                 ),
                 SizedBox(height: 75.h),
                 SwitchCheckboxMain(
                   checkedColor: ColorPalette.permaBlackColor,
                   uncheckedColor: ColorPalette.sheetBackground,
-                  isChecked: true,
+                  isChecked: false,
                   text: TextCustom(
                     text: AppStrings.signUpScreenCheckboxPolicy,
                     textStyle: context.textTheme.labelSmall!,
@@ -76,7 +95,15 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 100.h),
                 ButtonMain(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.watch(signUpProvider.notifier).getStatus();
+                    print('status: ${ref.watch(signUpProvider).status}');
+
+                    if (ref.watch(signUpProvider).status!) {
+                      /// TODO: Firebase methods here
+                      context.push(Routes.shoppingCart);
+                    }
+                  },
                   paddingHorizontal: 0,
                   text: AppStrings.signUp,
                 ),

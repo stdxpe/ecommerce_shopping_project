@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/validator_provider.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/form_states/sign_in_form_state.dart';
+import 'package:ecommerce_shopping_project/models/form_state_models/sign_in_form_state.dart';
 import 'package:ecommerce_shopping_project/models/textfield_model.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/validator_provider.dart';
 import 'package:ecommerce_shopping_project/utilities/k_validators.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final signInProvider =
     StateNotifierProvider.autoDispose<SignInNotifier, SignInFormState>((ref) {
@@ -27,20 +28,21 @@ class SignInNotifier extends StateNotifier<SignInFormState> {
 
   validateEmail() => state = state.copyWith(
       email: ref.watch(validatorProvider.notifier).validateTextfieldModel(
-          state.email,
-          state.email.text,
-          state.email.text?.isValidEmail(),
-          'Email'));
-  // validateTextfieldModel(state.email, state.email.text,
-  //     state.email.text?.isValidEmail(), 'Email'));
+            textfieldModel: state.email,
+            textFieldModelText: state.email.text,
+            isValidCheckExtension: state.email.text?.isValidEmail(),
+            textFieldName: 'Email',
+            errorText: AppStrings.textfieldEmailErrorMessage,
+          ));
 
   validatePassword() => state = state.copyWith(
       password: ref.watch(validatorProvider.notifier).validateTextfieldModel(
-          state.password,
-          state.password.text,
-          // TODO: optionalErrorText: 'Your password must contain 8 characters',
-          state.password.text?.isValidPassword(),
-          'Password'));
+            textfieldModel: state.password,
+            textFieldModelText: state.password.text,
+            isValidCheckExtension: state.password.text?.isValidPassword(),
+            textFieldName: 'Password',
+            errorText: AppStrings.textfieldPasswordErrorMessage,
+          ));
 
   getStatus() {
     validateEmail();

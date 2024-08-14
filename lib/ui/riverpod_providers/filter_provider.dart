@@ -1,17 +1,19 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/search_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final filterProvider = StateNotifierProvider<FilterNotifier, Filter>((ref) {
-  return FilterNotifier();
+  return FilterNotifier(ref);
 });
 
 class FilterNotifier extends StateNotifier<Filter> {
-  FilterNotifier()
+  FilterNotifier(Ref ref)
       : super(
           Filter(
             query: '',
+            // query: ref.watch(searchQueryProvider).query.text,
             priceMin: 0,
             priceMax: 1000,
             sortBy: AppStrings.filterSortByRating,

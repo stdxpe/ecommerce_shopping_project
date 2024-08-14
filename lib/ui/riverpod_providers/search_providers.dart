@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
@@ -35,3 +36,15 @@ class SearchNotifier extends AutoDisposeAsyncNotifier<List<Product>> {
     return productCount;
   }
 }
+
+final searchQueryTextControllerProvider =
+    Provider.autoDispose<TextEditingController>((ref) {
+  TextEditingController controller = TextEditingController();
+  ref.onDispose(
+    () {
+      controller.dispose();
+      print('controller disposed');
+    },
+  );
+  return controller;
+});

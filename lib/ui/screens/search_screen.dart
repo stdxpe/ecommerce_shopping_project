@@ -19,7 +19,7 @@ class SearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBarSearchField(
-        searchOnPressed: (query) {
+        searchOnPressed: () {
           context.focusScope.unfocus();
           ref.read(searchProvider.notifier).getProductsByFilter();
         },

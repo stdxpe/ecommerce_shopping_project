@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/search_providers.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class TextformfieldSearchBox extends StatelessWidget {
+class TextformfieldSearchBox extends ConsumerWidget {
   const TextformfieldSearchBox({
     super.key,
     required this.text,
@@ -24,10 +27,9 @@ class TextformfieldSearchBox extends StatelessWidget {
   final bool? autoFocus;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: 100.h,
-
       alignment: Alignment.center,
       // color: Colors.red.withOpacity(0.5),
       child: Padding(
@@ -36,6 +38,10 @@ class TextformfieldSearchBox extends StatelessWidget {
           vertical: 0,
         ),
         child: TextFormField(
+          controller: ref.watch(searchQueryTextControllerProvider),
+          onChanged: (value) => ref
+              .watch(filterProvider.notifier)
+              .setFilterParameter(query: value),
           textAlignVertical: TextAlignVertical.center,
           autofocus: autoFocus!,
           cursorColor: textColor ?? context.colorPalette.permaBlackColor,
@@ -55,17 +61,22 @@ class TextformfieldSearchBox extends StatelessWidget {
               minHeight: 2,
             ),
             suffixIcon: InkWell(
-                borderRadius: BorderRadius.circular(100.r),
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.w, left: 15.w),
-                  child: Icon(
-                    Icons.clear,
-                    size: 60.h,
-                    color: context.colorPalette.appBarForeground,
-                  ),
+              onTap: () {
+                ref.read(searchQueryTextControllerProvider).clear();
+                ref
+                    .watch(filterProvider.notifier)
+                    .setFilterParameter(query: '');
+              },
+              borderRadius: BorderRadius.circular(100.r),
+              child: Padding(
+                padding: EdgeInsets.only(right: 15.w, left: 15.w),
+                child: Icon(
+                  Icons.clear,
+                  size: 60.h,
+                  color: context.colorPalette.appBarForeground,
                 ),
-                onTap: () {}),
-
+              ),
+            ),
             fillColor: Colors.black12,
             filled: true,
             border: OutlineInputBorder(
@@ -75,14 +86,12 @@ class TextformfieldSearchBox extends StatelessWidget {
                 style: BorderStyle.none,
               ),
             ),
-
             hintText: text,
             hintStyle: context.textTheme.labelMedium!.copyWith(
               color: textColor?.withOpacity(0.8) ??
                   context.colorPalette.text.withOpacity(0.50),
               fontSize: context.textTheme.labelMedium!.fontSize!.h,
             ),
-            // labelStyle:
           ),
         ),
       ),

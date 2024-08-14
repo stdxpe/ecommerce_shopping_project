@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_search_box.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarSearchField({
-    super.key,
-    required this.searchOnPressed,
-  });
+  const AppBarSearchField({super.key, required this.searchOnPressed});
 
-  final Function(String query) searchOnPressed;
+  final Function() searchOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +23,16 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
         color: context.colorPalette.appBarForeground,
         size: 60.h,
       ),
-      automaticallyImplyLeading: true,
+      automaticallyImplyLeading: false,
       title: Row(
         children: [
-          // IconButton(
-          //   alignment: Alignment.centerLeft,
-          //   onPressed: () {
-          //     Navigator.of(context).pop();
-          //   },
-          //   icon: const Icon(
-          //     CupertinoIcons.back,
-          //   ),
-          // ),
+          IconButton(
+            alignment: Alignment.centerLeft,
+            onPressed: () => context.pop(),
+            icon: const Icon(
+              CupertinoIcons.back,
+            ),
+          ),
           const Expanded(
             child: TextformfieldSearchBox(
               text: AppStrings.searchScreenSearchBoxTextfieldHintText,
@@ -44,15 +41,10 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
               paddingHorizontal: 0,
             ),
           ),
-
           IconButton(
             icon: const Icon(UniconsLine.search),
             alignment: Alignment.center,
-            onPressed: () {
-              /// TODO: Temp query variable before textfield
-              String tempQuery = '';
-              searchOnPressed(tempQuery);
-            },
+            onPressed: () => searchOnPressed(),
           ),
         ],
       ),

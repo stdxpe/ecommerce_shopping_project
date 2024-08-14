@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/app_configuration.dart';
+import 'package:ecommerce_shopping_project/firebase_options.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   setDeviceOrientationToPortraitModeOnly();
   registerDependencyInjectionService();
+
+  /// Firebase Implemented as Cloud Solution
+  initializeFirebase();
+
   runApp(
     /// Riverpod Implemented as State Management Solution
     const ProviderScope(
@@ -17,20 +23,11 @@ void main() {
   );
 }
 
-// class RootApp extends StatelessWidget {
-//   const RootApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const AppConfiguration();
-//   }
-// }
-
 // Loading bars
 // https://pub.dev/packages/loading_animation_widget
 // https://pub.dev/packages/pinput
 
-
+    /// flutter_dotenv: ^5.1.0
     /// All riverpod's starts at appstart while loading user??
     ///   AVOID initializing providers in a widget
     ///   Providers should initialize themselves.

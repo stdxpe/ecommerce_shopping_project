@@ -21,6 +21,8 @@ dependencies:
   flutter_screenutil: ^5.9.3              # Responsive & Adaptive Design
   go_router: ^14.2.2                      # Advanced Navigation & Routing System
 
+  firebase_core: ^3.3.0                   # Firebase Services
+
   card_swiper: ^3.0.1                     # Carousel Image Slider
   smooth_page_indicator: ^1.2.0           # Image Slider Pagination
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget

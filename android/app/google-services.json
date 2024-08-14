@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "970016209623",
+    "project_id": "ecommerce-shopping-project",
+    "storage_bucket": "ecommerce-shopping-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970016209623:android:f20cb45e22eb8206854e92",
+        "android_client_info": {
+          "package_name": "com.yasinbilgin.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1LAW063QjVAOfTaLWVroN6M5yPfdUr9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

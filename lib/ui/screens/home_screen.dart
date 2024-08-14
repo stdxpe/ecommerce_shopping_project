@@ -24,6 +24,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // print(ref.read(firebaseAuthProvider).currentUser?.email);
     return Scaffold(
       appBar: const AppBarMain(
         useShadow: true,

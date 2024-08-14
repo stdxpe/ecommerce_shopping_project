@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_auth_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -98,13 +100,26 @@ class SignUpScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 100.h),
                 ButtonMain(
-                  onPressed: () {
+                  onPressed: () async {
                     ref.watch(signUpProvider.notifier).getStatus();
                     print('status: ${ref.watch(signUpProvider).status}');
 
                     if (ref.watch(signUpProvider).status!) {
                       /// TODO: Firebase methods here
-                      context.push(Routes.shoppingCart);
+
+                      try {
+                        await ref
+                            .read(firebaseAuthProvider)
+                            .createUserWithEmailAndPassword(
+                              email: ref.read(signUpProvider).email.text!,
+                              password: ref.read(signUpProvider).password.text!,
+                            );
+
+                        if (ref.read(firebaseAuthProvider).currentUser != null)
+                          context.push(Routes.home);
+                      } catch (e) {
+                        print(e);
+                      }
                     }
                   },
                   paddingHorizontal: 0,

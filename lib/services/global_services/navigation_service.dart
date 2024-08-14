@@ -130,8 +130,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
     /// TODO: OnWillPop behaviors test physical android button
 
-    // initialLocation: Routes.splash,
-    initialLocation: Routes.home,
+    initialLocation: Routes.splash,
+    // initialLocation: Routes.home,
     // initialLocation: Routes.test,
 
     routes: [

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_providers.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_collections.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // print(ref.read(firebaseAuthProvider).currentUser?.email);
+    print(ref.read(firebaseAuthProvider).currentUser?.email);
     return Scaffold(
       appBar: const AppBarMain(
         useShadow: true,

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_providers.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_in_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
@@ -91,12 +92,26 @@ class SignInScreen extends ConsumerWidget {
                 // ),
                 SizedBox(height: 100.h),
                 ButtonMain(
-                  onPressed: () {
+                  onPressed: () async {
                     ref.watch(signInProvider.notifier).getStatus();
                     print('status: ${ref.watch(signInProvider).status}');
 
                     if (ref.watch(signInProvider).status!) {
                       /// TODO: Firebase Methods Here
+
+                      try {
+                        await ref
+                            .read(firebaseAuthProvider)
+                            .signInWithEmailAndPassword(
+                              email: ref.read(signInProvider).email.text!,
+                              password: ref.read(signInProvider).password.text!,
+                            );
+
+                        if (ref.read(firebaseAuthProvider).currentUser != null)
+                          context.push(Routes.home);
+                      } catch (e) {
+                        print(e);
+                      }
                       context.push(Routes.home);
                     }
                   },

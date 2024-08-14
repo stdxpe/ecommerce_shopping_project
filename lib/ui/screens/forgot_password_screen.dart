@@ -40,7 +40,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             SizedBox(height: 100.h),
             const TextformfieldMain(
               autoFocus: true,
-              text: AppStrings.forgotPasswordScreenTextField,
+              hintText: AppStrings.forgotPasswordScreenTextField,
               textInputType: TextInputType.number,
             ),
             SizedBox(height: 125.h),

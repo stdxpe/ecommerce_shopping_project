@@ -57,11 +57,13 @@ class PaymentScreenPayment extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const TextformfieldMain(
-                            text: AppStrings.paymentScreenCreditCardTextField1,
+                            hintText:
+                                AppStrings.paymentScreenCreditCardTextField1,
                           ),
                           SizedBox(height: 50.h),
                           const TextformfieldMain(
-                            text: AppStrings.paymentScreenCreditCardTextField2,
+                            hintText:
+                                AppStrings.paymentScreenCreditCardTextField2,
                             textInputType: TextInputType.number,
                           ),
                           SizedBox(height: 50.h),
@@ -69,7 +71,7 @@ class PaymentScreenPayment extends ConsumerWidget {
                             children: [
                               const Flexible(
                                 child: TextformfieldMain(
-                                  text: AppStrings
+                                  hintText: AppStrings
                                       .paymentScreenCreditCardTextField3,
                                   textInputType: TextInputType.number,
                                 ),
@@ -77,7 +79,7 @@ class PaymentScreenPayment extends ConsumerWidget {
                               SizedBox(width: 30.w),
                               const Flexible(
                                 child: TextformfieldMain(
-                                  text: AppStrings
+                                  hintText: AppStrings
                                       .paymentScreenCreditCardTextField4,
                                   textInputType: TextInputType.number,
                                 ),

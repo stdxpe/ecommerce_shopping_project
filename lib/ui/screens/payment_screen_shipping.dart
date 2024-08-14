@@ -47,11 +47,11 @@ class PaymentScreenShipping extends ConsumerWidget {
                     ),
                   if (isCreateNewAddressMode!) SizedBox(height: 50.h),
                   const TextformfieldMain(
-                    text: AppStrings.paymentScreenShippingTextField1,
+                    hintText: AppStrings.paymentScreenShippingTextField1,
                   ),
                   SizedBox(height: 50.h),
                   const TextformfieldMain(
-                    text: AppStrings.paymentScreenShippingTextField2,
+                    hintText: AppStrings.paymentScreenShippingTextField2,
 
                     /// TODO: Multiline address entry.
                     textInputType: TextInputType.multiline,
@@ -61,13 +61,13 @@ class PaymentScreenShipping extends ConsumerWidget {
                     children: [
                       const Flexible(
                         child: TextformfieldMain(
-                          text: AppStrings.paymentScreenShippingTextField3,
+                          hintText: AppStrings.paymentScreenShippingTextField3,
                         ),
                       ),
                       SizedBox(width: 30.w),
                       const Flexible(
                         child: TextformfieldMain(
-                          text: AppStrings.paymentScreenShippingTextField4,
+                          hintText: AppStrings.paymentScreenShippingTextField4,
                           textInputType: TextInputType.number,
                         ),
                       ),
@@ -75,7 +75,7 @@ class PaymentScreenShipping extends ConsumerWidget {
                   ),
                   SizedBox(height: 50.h),
                   const TextformfieldMain(
-                    text: AppStrings.paymentScreenShippingTextField5,
+                    hintText: AppStrings.paymentScreenShippingTextField5,
                   ),
                   SizedBox(height: 100.h),
                   if (isCreateNewAddressMode == false)

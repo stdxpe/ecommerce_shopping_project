@@ -39,14 +39,14 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 120.h),
                 TextformfieldMain(
-                  text: AppStrings.signUpScreenTextFieldEmail,
+                  hintText: AppStrings.signUpScreenTextFieldEmail,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 65.h),
                 TextformfieldMain(
-                  text: AppStrings.signUpScreenTextFieldPassword,
+                  hintText: AppStrings.signUpScreenTextFieldPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,
@@ -54,7 +54,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 65.h),
                 TextformfieldMain(
-                  text: AppStrings.signUpScreenTextFieldConfirmPassword,
+                  hintText: AppStrings.signUpScreenTextFieldConfirmPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,

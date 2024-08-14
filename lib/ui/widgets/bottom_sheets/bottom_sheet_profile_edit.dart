@@ -77,21 +77,21 @@ class BottomSheetProfileEdit extends StatelessWidget {
                   ],
                 ),
                 const TextformfieldMain(
-                  text: AppStrings.profileEditScreenTextfieldName,
+                  hintText: AppStrings.profileEditScreenTextfieldName,
                 ),
                 SizedBox(height: 50.h),
                 const TextformfieldMain(
-                  text: AppStrings.profileEditScreenTextfieldEmail,
+                  hintText: AppStrings.profileEditScreenTextfieldEmail,
                   textInputType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 50.h),
                 const TextformfieldMain(
-                  text: AppStrings.profileEditScreenTextfieldPhone,
+                  hintText: AppStrings.profileEditScreenTextfieldPhone,
                   textInputType: TextInputType.number,
                 ),
                 SizedBox(height: 50.h),
                 const TextformfieldMain(
-                  text: AppStrings.profileEditScreenTextfieldBirthday,
+                  hintText: AppStrings.profileEditScreenTextfieldBirthday,
                   textInputType: TextInputType.datetime,
                 ),
                 SizedBox(height: 100.h),

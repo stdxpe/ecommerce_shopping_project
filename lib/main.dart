@@ -1,8 +1,9 @@
-import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ecommerce_shopping_project/utilities/app_configuration.dart';
+
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/app_configuration.dart';
+import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,14 +17,14 @@ void main() {
   );
 }
 
-class RootApp extends StatelessWidget {
-  const RootApp({super.key});
+// class RootApp extends StatelessWidget {
+//   const RootApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const AppConfiguration();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return const AppConfiguration();
+//   }
+// }
 
 // Loading bars
 // https://pub.dev/packages/loading_animation_widget

@@ -39,14 +39,14 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 120.h),
                 TextformfieldMain(
-                  text: AppStrings.signInScreenTextFieldEmail,
+                  hintText: AppStrings.signInScreenTextFieldEmail,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 74.h),
                 TextformfieldMain(
-                  text: AppStrings.signInScreenTextFieldPassword,
+                  hintText: AppStrings.signInScreenTextFieldPassword,
                   textColor: context.colorPalette.permaWhiteColor,
                   lineColor: context.colorPalette.permaWhiteColor,
                   textInputType: TextInputType.visiblePassword,

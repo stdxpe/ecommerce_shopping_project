@@ -6,8 +6,8 @@ import 'package:ecommerce_shopping_project/services/global_services/navigation_s
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_provider.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class AppConfiguration extends ConsumerWidget {
-  const AppConfiguration({super.key});
+class RootApp extends ConsumerWidget {
+  const RootApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

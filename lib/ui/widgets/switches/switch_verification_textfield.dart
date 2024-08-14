@@ -14,7 +14,7 @@ class SwitchVerificationTextField extends StatelessWidget {
           // color: Colors.red.withOpacity(0.5),
           child: TextformfieldMain(
             autoFocus: true,
-            text: '',
+            hintText: '',
             textInputType: TextInputType.number,
             lineColor: Colors.transparent,
             textColor: Colors.transparent,

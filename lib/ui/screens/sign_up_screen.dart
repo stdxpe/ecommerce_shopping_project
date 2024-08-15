@@ -1,11 +1,10 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_auth_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_up_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';

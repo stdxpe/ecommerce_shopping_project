@@ -32,6 +32,7 @@ UserModel dummyUserModel = UserModel(
   orders: [],
   addresses: [
     Address(
+      id: 'sdfgsd',
       addressTitle: 'Home Address',
       addressText: '21st Greenday Street',
       city: 'New York',
@@ -39,6 +40,7 @@ UserModel dummyUserModel = UserModel(
       zipCode: 10021,
     ),
     Address(
+      id: 'sdfgsd',
       addressTitle: 'Work Address',
       addressText: '39th Avenue',
       city: 'Manhattan',
@@ -46,6 +48,7 @@ UserModel dummyUserModel = UserModel(
       zipCode: 9021,
     ),
     Address(
+      id: 'sdfgsd',
       addressTitle: 'Jane\'s Home',
       addressText: '100th Muse Street',
       city: 'Chicago',
@@ -55,6 +58,7 @@ UserModel dummyUserModel = UserModel(
   ],
   creditCards: [
     CreditCard(
+      id: 'sdfgsd',
       cardTitle: 'My American Express',
       cardHolder: 'Jane Doe',
       cardNumber: '5555 5555 4444 3333',
@@ -62,6 +66,7 @@ UserModel dummyUserModel = UserModel(
       cvv: '134',
     ),
     CreditCard(
+      id: 'sdfgsd',
       cardTitle: 'My Master Card',
       cardHolder: 'Jane Doe',
       cardNumber: '3232 5555 1312 3333',

@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/deprecated/store.dart';
+import 'package:ecommerce_shopping_project/models/store.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -7,9 +7,9 @@ List<Store> dummyStores = [
     id: '0000',
     name: 'Louis Vuitton',
     photo: AppImages.blackBg,
-    totalRatings: 3.75,
+    totalRating: 3.75,
     products: [
-      dummyAllProducts[0],
+      // dummyAllProducts[0],
     ],
     followersCount: 432000,
   ),
@@ -17,9 +17,9 @@ List<Store> dummyStores = [
     id: '0001',
     name: 'Versace',
     photo: AppImages.blackBg,
-    totalRatings: 4.75,
+    totalRating: 4.75,
     products: [
-      dummyAllProducts[1],
+      // dummyAllProducts[1],
     ],
     followersCount: 29932,
   ),
@@ -27,9 +27,9 @@ List<Store> dummyStores = [
     id: '0002',
     name: 'Zara',
     photo: AppImages.blackBg,
-    totalRatings: 3.05,
+    totalRating: 3.05,
     products: [
-      dummyAllProducts[2],
+      // dummyAllProducts[2],
     ],
     followersCount: 10932,
   ),

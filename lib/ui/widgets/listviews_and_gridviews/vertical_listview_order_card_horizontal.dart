@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/new/order.dart';
+import 'package:ecommerce_shopping_project/models/order.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/order_card_horizontal.dart';
 
 class VerticalListviewOrderCardHorizontal extends StatelessWidget {

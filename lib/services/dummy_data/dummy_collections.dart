@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/deprecated/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -8,7 +8,7 @@ Collection dummyCollection1 = Collection(
   subtitle: 'Catch the most fashionate trends of this autumn!',
   photo: AppImages.productImage10,
   products: [
-    ...dummyAllProducts,
+    // ...dummyAllProducts,
   ],
 );
 
@@ -20,7 +20,7 @@ List<Collection> dummyCollections = [
     photo: AppImages.productImage10,
     products: [
       // dummyProducts[0],
-      ...dummyAllProducts,
+      // ...dummyAllProducts,
     ],
   ),
   Collection(
@@ -29,7 +29,7 @@ List<Collection> dummyCollections = [
     subtitle: 'Awarded Designers of Paris Fashion Week \'24',
     photo: AppImages.productImage11,
     products: [
-      ...dummyAllProducts,
+      // ...dummyAllProducts,
     ],
   ),
   Collection(
@@ -38,7 +38,7 @@ List<Collection> dummyCollections = [
     subtitle: 'Up to 20% Off',
     photo: AppImages.productImage13,
     products: [
-      ...dummyAllProducts,
+      // ...dummyAllProducts,
     ],
   ),
 ];

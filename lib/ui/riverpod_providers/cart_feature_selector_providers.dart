@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/models/deprecated/cart_product.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 

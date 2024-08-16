@@ -1,7 +1,7 @@
-import 'package:ecommerce_shopping_project/models/new/address.dart';
-import 'package:ecommerce_shopping_project/models/new/cart_product_dto.dart';
-import 'package:ecommerce_shopping_project/models/new/credit_card.dart';
-import 'package:ecommerce_shopping_project/models/new/user_model.dart';
+import 'package:ecommerce_shopping_project/models/address.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/credit_card.dart';
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 UserModel dummyUserModel = UserModel(

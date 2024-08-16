@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_reviews.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -8,7 +8,7 @@ List<Product> dummyAllProducts = [
     title: 'High Neck Shoulder T-Shirt',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
-    description:
+    detailedDescription:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
     price: 199.99,
     mainPhoto: AppImages.productImage12,
@@ -18,9 +18,7 @@ List<Product> dummyAllProducts = [
       AppImages.productImage3,
       AppImages.productImage4,
     ],
-    collections: [
-      // dummyCollections[0],
-    ],
+    collections: [],
     isOnSale: true,
     saleLastDate: '19.03.2024',
     salePrice: 179.99,
@@ -47,7 +45,6 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
-    isFreeShipping: true,
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     reviews: [],
@@ -57,7 +54,7 @@ List<Product> dummyAllProducts = [
     title: 'Buttoned Boot-Cut Jeans',
     brand: 'Zara',
     summary: 'For a retro take, team with a floral shirt',
-    description:
+    detailedDescription:
         'Bootcut jeans are an endearingly flattering cut and our collection has contemporary designs to suit every silhouette. Low-rise, mid-rise and high-rise styles are - like our wider collection which features skinny, flared and baggy jeans - made from comfortable denim',
     price: 86.99,
     mainPhoto: AppImages.productImage11,
@@ -87,20 +84,17 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 12,
-    isFreeShipping: true,
     shippingFee: 0,
     estimatedShippingDurationInDays: 7,
-    reviews: [
-      // dummyReviews[0],
-      // dummyReviews[1],
-    ],
+    collections: [],
+    reviews: [],
   ),
   Product(
     id: '000003',
     title: 'Gucci Pantcaon22',
     brand: 'Gucci',
     summary: 'For a retro take, team with a floral shirt',
-    description:
+    detailedDescription:
         'Bootcut jeans are an endearingly flattering cut and our collection has contemporary designs to suit every silhouette. Low-rise, mid-rise and high-rise styles are - like our wider collection which features skinny, flared and baggy jeans - made from comfortable denim',
     price: 86.99,
     mainPhoto: AppImages.productImage10,
@@ -130,20 +124,17 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 12,
-    isFreeShipping: false,
     shippingFee: 4.99,
     estimatedShippingDurationInDays: 7,
-    reviews: [
-      // dummyReviews[0],
-      // dummyReviews[1],
-    ],
+    collections: [],
+    reviews: [],
   ),
   Product(
     id: '000004',
     title: 'Channel Crop',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
-    description:
+    detailedDescription:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
     price: 709.99,
     mainPhoto: AppImages.productImage8,
@@ -172,22 +163,17 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
-    isFreeShipping: true,
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
-    reviews: [
-      // dummyReviews[0],
-      // dummyReviews[1],
-      // dummyReviews[2],
-      // dummyReviews[3],
-    ],
+    collections: [],
+    reviews: [],
   ),
   Product(
     id: '000005',
     title: 'Louis Vuitton Jacket',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
-    description:
+    detailedDescription:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
     price: 998.00,
     mainPhoto: AppImages.productImage3,
@@ -217,22 +203,17 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
-    isFreeShipping: false,
     shippingFee: 1.99,
     estimatedShippingDurationInDays: 3,
-    reviews: [
-      // dummyReviews[0],
-      // dummyReviews[1],
-      // dummyReviews[2],
-      // dummyReviews[3],
-    ],
+    collections: [],
+    reviews: [],
   ),
   Product(
     id: '000006',
     title: 'Giorgino Armani Coat',
     brand: 'Louis Vuitton',
     summary: 'Sleeveless T-shirt',
-    description:
+    detailedDescription:
         'This sleeveless T-shirt is cut from soft, lightweight cotton jersey for elevated everyday styling. The classic straight-cut shape is refreshed with a casual high neckline and the runway’s directional broad shoulders for a defined silhouette. A metallic LV circle chain adds a modern signature accent to the chest.',
     price: 199.99,
     mainPhoto: AppImages.productImage4,
@@ -261,14 +242,9 @@ List<Product> dummyAllProducts = [
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
-    isFreeShipping: true,
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
-    reviews: [
-      // dummyReviews[0],
-      // dummyReviews[1],
-      // dummyReviews[2],
-      // dummyReviews[3],
-    ],
+    collections: [],
+    reviews: [],
   ),
 ];

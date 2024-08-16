@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/filter.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/filter_provider.dart';
 

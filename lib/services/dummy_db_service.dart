@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/models/new/cart_product_dto.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/filter.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_user_model.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';

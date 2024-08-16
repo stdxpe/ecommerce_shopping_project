@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/cart_product.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/filter.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
 
 abstract class IDBRepository {
   Future<List<Product>> getAllProducts();

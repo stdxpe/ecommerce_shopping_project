@@ -1,8 +1,8 @@
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/cart_product.dart';
-import 'package:ecommerce_shopping_project/models/new/cart_product_dto.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/filter.dart';
-import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service.dart';
 

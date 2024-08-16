@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/deprecated/review.dart';
+import 'package:ecommerce_shopping_project/models/review.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/review_card.dart';
 
 class VerticalListviewReviewCard extends StatelessWidget {
@@ -33,12 +33,13 @@ class VerticalListviewReviewCard extends StatelessWidget {
             padding: EdgeInsets.only(bottom: paddingBetweenElements.h),
             child: ReviewCard(
               review: Review(
+                id: '123123',
+                productId: '000001',
                 senderName: currentItem.senderName,
                 senderPhoto: currentItem.senderPhoto,
                 productRating: currentItem.productRating,
                 createdAt: currentItem.createdAt,
                 text: currentItem.text,
-                product: currentItem.product,
               ),
             ),
           );

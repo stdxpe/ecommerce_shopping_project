@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
-import 'package:ecommerce_shopping_project/models/deprecated/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';

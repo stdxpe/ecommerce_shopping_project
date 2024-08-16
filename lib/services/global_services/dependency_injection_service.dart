@@ -33,8 +33,10 @@ void registerDependencyInjectionService() {
   locator.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
 
   /// Firebase Database Service Instance
-  locator.registerSingleton(() => FirebaseFirestore.instance);
+  locator.registerLazySingleton<FirebaseFirestore>(
+      () => FirebaseFirestore.instance);
 
   /// Firebase Storage Service Instance
-  locator.registerSingleton(() => FirebaseStorage.instance);
+  locator
+      .registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
 }

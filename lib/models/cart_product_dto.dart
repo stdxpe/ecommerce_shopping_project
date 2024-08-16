@@ -1,58 +1,43 @@
 import 'dart:convert';
 
-class OrderProduct {
+class CartProductDto {
   final String id;
   final String selectedProductId;
-  final String title;
-  final String photo;
-  final double price;
   final String selectedColor;
   final String selectedSize;
   final int itemCount;
 
-  OrderProduct({
+  CartProductDto({
     required this.id,
     required this.selectedProductId,
-    required this.title,
-    required this.photo,
-    required this.price,
     required this.selectedColor,
     required this.selectedSize,
     required this.itemCount,
   });
 
-  OrderProduct copyWith({
+  CartProductDto copyWith({
     String? id,
     String? selectedProductId,
-    String? title,
-    String? photo,
-    double? price,
     String? selectedColor,
     String? selectedSize,
     int? itemCount,
   }) =>
-      OrderProduct(
+      CartProductDto(
         id: id ?? this.id,
         selectedProductId: selectedProductId ?? this.selectedProductId,
-        title: title ?? this.title,
-        photo: photo ?? this.photo,
-        price: price ?? this.price,
         selectedColor: selectedColor ?? this.selectedColor,
         selectedSize: selectedSize ?? this.selectedSize,
         itemCount: itemCount ?? this.itemCount,
       );
 
-  factory OrderProduct.fromJson(String str) =>
-      OrderProduct.fromMap(json.decode(str));
+  factory CartProductDto.fromJson(String str) =>
+      CartProductDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory OrderProduct.fromMap(Map<String, dynamic> json) => OrderProduct(
+  factory CartProductDto.fromMap(Map<String, dynamic> json) => CartProductDto(
         id: json["id"],
         selectedProductId: json["selectedProductId"],
-        title: json["title"],
-        photo: json["photo"],
-        price: json["price"]?.toDouble(),
         selectedColor: json["selectedColor"],
         selectedSize: json["selectedSize"],
         itemCount: json["itemCount"],
@@ -61,11 +46,13 @@ class OrderProduct {
   Map<String, dynamic> toMap() => {
         "id": id,
         "selectedProductId": selectedProductId,
-        "title": title,
-        "photo": photo,
-        "price": price,
         "selectedColor": selectedColor,
         "selectedSize": selectedSize,
         "itemCount": itemCount,
       };
+
+  @override
+  String toString() {
+    return 'CartProductDto(id: $id, selectedProductId: $selectedProductId, selectedColor: $selectedColor, selectedSize: $selectedSize, itemCount: $itemCount)';
+  }
 }

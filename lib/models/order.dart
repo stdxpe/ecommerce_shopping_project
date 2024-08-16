@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ecommerce_shopping_project/models/new/order_product.dart';
+import 'package:ecommerce_shopping_project/models/order_product.dart';
 
 class Order {
   final String id;
@@ -46,21 +46,9 @@ class Order {
         "totalPrice": totalPrice,
         "createdAt": createdAt,
       };
+
+  @override
+  String toString() {
+    return 'Order(id: $id, products: $products, totalPrice: $totalPrice, createdAt: $createdAt)';
+  }
 }
-
-
-// import 'package:ecommerce_shopping_project/models/product.dart';
-
-// class Order {
-//   final String id;
-//   final List<Product> products;
-//   final double totalPrice;
-//   final String createdAt;
-
-//   Order({
-//     required this.id,
-//     required this.products,
-//     required this.totalPrice,
-//     required this.createdAt,
-//   });
-// }

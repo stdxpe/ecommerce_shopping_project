@@ -61,26 +61,9 @@ class Address {
         "country": country,
         "zipCode": zipCode,
       };
+
+  @override
+  String toString() {
+    return 'Address(id: $id, fullName: $fullName, addressTitle: $addressTitle, addressText: $addressText, city: $city, country: $country, zipCode: $zipCode)';
+  }
 }
-
-
-
-// class Address {
-//   final String id;
-//   final String? fullName;
-//   final String? addressTitle;
-//   final String addressText;
-//   final String city;
-//   final String country;
-//   final int zipCode;
-
-//   Address({
-//     required this.id,
-//     this.fullName,
-//     this.addressTitle,
-//     required this.addressText,
-//     required this.city,
-//     required this.country,
-//     required this.zipCode,
-//   });
-// }

@@ -56,24 +56,9 @@ class CreditCard {
         "validThru": validThru,
         "cvv": cvv,
       };
+
+  @override
+  String toString() {
+    return 'CreditCard(id: $id, cardTitle: $cardTitle, cardHolder: $cardHolder, cardNumber: $cardNumber, validThru: $validThru, cvv: $cvv)';
+  }
 }
-
-
-
-// class CreditCard {
-//   final String id;
-//   final String? cardTitle;
-//   final String cardHolder;
-//   final String cardNumber;
-//   final String validThru;
-//   final String cvv;
-
-//   CreditCard({
-//     required this.id,
-//     this.cardTitle,
-//     required this.cardHolder,
-//     required this.cardNumber,
-//     required this.validThru,
-//     required this.cvv,
-//   });
-// }

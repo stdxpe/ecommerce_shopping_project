@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:ecommerce_shopping_project/models/new/address.dart';
-import 'package:ecommerce_shopping_project/models/new/cart_product_dto.dart';
-import 'package:ecommerce_shopping_project/models/new/credit_card.dart';
-import 'package:ecommerce_shopping_project/models/new/order.dart';
+import 'package:ecommerce_shopping_project/models/address.dart';
+import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/credit_card.dart';
+import 'package:ecommerce_shopping_project/models/order.dart';
 
 class UserModel {
   final String id;

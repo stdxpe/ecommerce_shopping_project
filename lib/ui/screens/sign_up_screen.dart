@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_auth_provider.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occured_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -105,20 +107,35 @@ class SignUpScreen extends ConsumerWidget {
 
                     if (ref.watch(signUpProvider).status!) {
                       /// TODO: Firebase methods here
+                      ref
+                          .read(firebaseAuthProvider.notifier)
+                          .createUserWithEmailAndPassword(
+                            email: ref.read(signUpProvider).email.text!,
+                            password: ref.read(signUpProvider).password.text!,
+                          );
+                      // ref.watch(firebaseAuthProvider).when(loading: () {
+                      //   print('ui loading');
+                      //   return CircularProgressIndicator();
+                      // }, error: (error, stackTrace) {
+                      //   print('ui error: ${error}');
+                      //   return const ErrorOccuredWidget();
+                      // }, data: (data) {
+                      //   print(data!.email.toString());
+                      //   return Text(data!.email.toString());
+                      // });
+                      // try {
+                      //   await ref
+                      //       .read(firebaseAuthProvider)
+                      //       .createUserWithEmailAndPassword(
+                      //         email: ref.read(signUpProvider).email.text!,
+                      //         password: ref.read(signUpProvider).password.text!,
+                      //       );
 
-                      try {
-                        await ref
-                            .read(firebaseAuthProvider)
-                            .createUserWithEmailAndPassword(
-                              email: ref.read(signUpProvider).email.text!,
-                              password: ref.read(signUpProvider).password.text!,
-                            );
-
-                        if (ref.read(firebaseAuthProvider).currentUser != null)
-                          context.push(Routes.home);
-                      } catch (e) {
-                        print(e);
-                      }
+                      //   if (ref.read(firebaseAuthProvider).currentUser != null)
+                      //     context.push(Routes.home);
+                      // } catch (e) {
+                      //   print(e);
+                      // }
                     }
                   },
                   paddingHorizontal: 0,

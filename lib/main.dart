@@ -23,6 +23,9 @@ void main() {
   );
 }
 
+/// Catching All Errors in Top Level
+  // https://stackoverflow.com/questions/57879455/flutter-catching-all-unhandled-exceptions
+
 // Loading bars
 // https://pub.dev/packages/loading_animation_widget
 // https://pub.dev/packages/pinput

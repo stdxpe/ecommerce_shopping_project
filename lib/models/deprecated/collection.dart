@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
 
-class Category {
+class Collection {
   final String id;
   final String title;
   final String subtitle;
@@ -10,7 +10,7 @@ class Category {
   /// TODO: List<Product> or List<String> ??
   final List<Product> products;
 
-  Category({
+  Collection({
     required this.id,
     required this.title,
     required this.subtitle,

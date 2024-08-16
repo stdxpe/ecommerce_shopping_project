@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/cart_product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:flutter/material.dart';

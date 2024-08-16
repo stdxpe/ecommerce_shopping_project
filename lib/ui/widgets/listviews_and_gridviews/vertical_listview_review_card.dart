@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/review.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/review.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/review_card.dart';
 
 class VerticalListviewReviewCard extends StatelessWidget {

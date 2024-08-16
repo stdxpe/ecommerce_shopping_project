@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ecommerce_shopping_project/models/review.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/review.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_stars.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';

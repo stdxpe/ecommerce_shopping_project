@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
 
 class CartProduct {
   final String id;

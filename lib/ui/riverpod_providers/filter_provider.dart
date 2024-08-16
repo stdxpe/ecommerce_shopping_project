@@ -1,7 +1,7 @@
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/search_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/filter.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final filterProvider = StateNotifierProvider<FilterNotifier, Filter>((ref) {

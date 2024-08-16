@@ -1,6 +1,6 @@
-import 'package:ecommerce_shopping_project/models/category.dart';
-import 'package:ecommerce_shopping_project/models/collection.dart';
-import 'package:ecommerce_shopping_project/models/review.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/category.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/collection.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/review.dart';
 
 class Product {
   final String id;
@@ -14,7 +14,6 @@ class Product {
   final String? saleLastDate;
   final String mainPhoto;
   final List<String> photos;
-  final List<Category> categories;
   final List<Collection>? collections;
   final String createdAt;
   final List<String> colors;
@@ -42,7 +41,6 @@ class Product {
       this.saleLastDate,
       required this.mainPhoto,
       required this.photos,
-      required this.categories,
       this.collections,
       required this.createdAt,
       required this.colors,

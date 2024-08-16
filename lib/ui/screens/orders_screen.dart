@@ -26,7 +26,8 @@ class OrdersScreen extends StatelessWidget {
               itemCount: 2,
             ),
             VerticalListviewOrderCardHorizontal(
-              ordersList: dummyOrders,
+              // ordersList: dummyOrders,
+              ordersList: [],
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsVertical,

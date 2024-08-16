@@ -1,7 +1,7 @@
-import 'package:ecommerce_shopping_project/models/address.dart';
-import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
-import 'package:ecommerce_shopping_project/models/credit_card.dart';
-import 'package:ecommerce_shopping_project/models/user_model.dart';
+import 'package:ecommerce_shopping_project/models/new/address.dart';
+import 'package:ecommerce_shopping_project/models/new/cart_product_dto.dart';
+import 'package:ecommerce_shopping_project/models/new/credit_card.dart';
+import 'package:ecommerce_shopping_project/models/new/user_model.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 UserModel dummyUserModel = UserModel(
@@ -33,6 +33,7 @@ UserModel dummyUserModel = UserModel(
   addresses: [
     Address(
       id: 'sdfgsd',
+      fullName: 'Jane Doe',
       addressTitle: 'Home Address',
       addressText: '21st Greenday Street',
       city: 'New York',
@@ -41,6 +42,7 @@ UserModel dummyUserModel = UserModel(
     ),
     Address(
       id: 'sdfgsd',
+      fullName: 'Jane Doe',
       addressTitle: 'Work Address',
       addressText: '39th Avenue',
       city: 'Manhattan',
@@ -49,6 +51,7 @@ UserModel dummyUserModel = UserModel(
     ),
     Address(
       id: 'sdfgsd',
+      fullName: 'Jane Doe',
       addressTitle: 'Jane\'s Home',
       addressText: '100th Muse Street',
       city: 'Chicago',

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';

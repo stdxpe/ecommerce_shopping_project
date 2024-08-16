@@ -1,9 +1,10 @@
+import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/models/order.dart';
+import 'package:ecommerce_shopping_project/models/new/order.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -54,7 +55,8 @@ class OrderCardHorizontal extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                        order.products[0].mainPhoto,
+                        // order.products[0].mainPhoto,
+                        dummyAllProducts[0].mainPhoto,
                       ),
                     ),
                     borderRadius: BorderRadius.only(
@@ -93,7 +95,7 @@ class OrderCardHorizontal extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextCustom(
-                                text: '#${order.orderId}',
+                                text: '#${order.id}',
                                 textStyle: context.textTheme.bodyLarge!,
                                 color: context.colorPalette.cardTextPrimary,
                               ),

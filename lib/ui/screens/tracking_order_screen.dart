@@ -28,7 +28,8 @@ class TrackingOrderScreen extends StatelessWidget {
             ),
             VerticalListviewProductCardHorizontalMini(
               isCardElevated: true,
-              productsList: dummyOrders[0].products,
+              // productsList: dummyOrders[0].products,
+              productsList: [],
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,
               paddingBetweenElements: Constants.kMainSpacingBTWCardsHorizontal,

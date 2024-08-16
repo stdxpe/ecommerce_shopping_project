@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/user_model.dart';
+import 'package:ecommerce_shopping_project/models/new/user_model.dart';
 
 abstract class IUserModelService {
   Future<UserModel> getUserModel({required String uid});

@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_reviews.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -17,9 +17,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage2,
       AppImages.productImage3,
       AppImages.productImage4,
-    ],
-    categories: [
-      // dummyCategories[0],
     ],
     collections: [
       // dummyCollections[0],
@@ -70,9 +67,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage8,
       AppImages.productImage9,
     ],
-    categories: [
-      // dummyCategories[1],
-    ],
     createdAt: '19.02.2024',
     colors: [
       '312525',
@@ -116,9 +110,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage8,
       AppImages.productImage9,
     ],
-    categories: [
-      // dummyCategories[1],
-    ],
     createdAt: '19.02.2024',
     colors: [
       '312525',
@@ -161,9 +152,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage2,
       AppImages.productImage3,
       AppImages.productImage4,
-    ],
-    categories: [
-      // dummyCategories[0],
     ],
     createdAt: '12.03.2024',
     colors: [
@@ -209,9 +197,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage3,
       AppImages.productImage4,
     ],
-    categories: [
-      // dummyCategories[0],
-    ],
     createdAt: '12.03.2024',
     colors: [
       'FF0000',
@@ -256,9 +241,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage2,
       AppImages.productImage3,
       AppImages.productImage4,
-    ],
-    categories: [
-      // dummyCategories[0],
     ],
     createdAt: '12.03.2024',
     colors: [

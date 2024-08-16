@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/models/review.dart';
+import 'package:ecommerce_shopping_project/models/deprecated/review.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 

@@ -35,6 +35,9 @@ abstract class AppStrings {
   static const String textfieldVerificationCodeErrorMessage =
       'Enter a valid verification code';
 
+  static const String firebaseErrorWrongEmailOrPassword =
+      'Wrong email or password';
+
   static const String cardNewTag = 'NEW';
   static const String cardOnSaleTag = 'ON SALE';
 

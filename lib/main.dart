@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:ecommerce_shopping_project/app_configuration.dart';
 import 'package:ecommerce_shopping_project/firebase_options.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setDeviceOrientationToPortraitModeOnly();
@@ -14,6 +15,7 @@ void main() {
 
   /// Firebase Implemented as Cloud Solution
   initializeFirebase();
+  await Firebase.initializeApp();
 
   runApp(
     /// Riverpod Implemented as State Management Solution

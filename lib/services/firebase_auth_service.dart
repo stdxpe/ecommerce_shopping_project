@@ -24,4 +24,9 @@ class FirebaseAuthService extends IAuthService {
   Future<User?> getCurrentUser() async {
     return _firebaseAuthService.currentUser;
   }
+
+  @override
+  Future<void> signOut() {
+    return _firebaseAuthService.signOut();
+  }
 }

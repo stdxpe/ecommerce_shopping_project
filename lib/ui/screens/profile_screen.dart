@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -94,7 +95,8 @@ class ProfileScreen extends ConsumerWidget {
               icon: TablerIcons.code,
             ),
             ProfileCardButton(
-              onPressed: () => context.push(Routes.splash),
+              // onPressed: () => context.push(Routes.splash),
+              onPressed: () => ref.read(userProvider.notifier).signOut(),
               buttonText: AppStrings.profileScreenButtonsListItemSignOut,
               icon: TablerIcons.logout,
               useBottomDivider: true,

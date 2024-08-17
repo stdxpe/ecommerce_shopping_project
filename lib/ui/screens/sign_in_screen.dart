@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_auth_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,8 +99,8 @@ class SignInScreen extends ConsumerWidget {
 
                     if (ref.watch(signInProvider).status!) {
                       /// TODO: Firebase Methods Here
-                      ref
-                          .read(firebaseAuthProvider.notifier)
+                      await ref
+                          .read(userProvider.notifier)
                           .signInWithEmailAndPassword(
                             email: ref.read(signInProvider).email.text!,
                             password: ref.read(signInProvider).password.text!,

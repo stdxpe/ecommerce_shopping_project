@@ -22,6 +22,16 @@ class SignUpNotifier extends StateNotifier<SignUpFormState> {
           status: false,
         ));
 
+  // reset() {
+  //   state = state.copyWith(
+  //     email: TextFieldModel(text: 'asdf', error: null, isValid: false),
+  //     password: TextFieldModel(text: '', error: null, isValid: false),
+  //     confirmPassword: TextFieldModel(text: null, error: null, isValid: false),
+  //     status: false,
+  //   );
+  //   print('state: ${state.email.text}');
+  // }
+
   updateEmail(String value) =>
       state = state.copyWith(email: state.email.copyWith(text: value));
 
@@ -37,7 +47,9 @@ class SignUpNotifier extends StateNotifier<SignUpFormState> {
           textfieldModel: state.email,
           textFieldModelText: state.email.text,
           isValidCheckExtension: state.email.text?.isValidEmail(),
-          errorText: AppStrings.textfieldEmailErrorMessage));
+          errorText:
+              // ref.watch(setErrorTextProvider) ??
+              AppStrings.textfieldEmailErrorMessage));
 
   validatePassword() => state = state.copyWith(
       password: ref.watch(validatorProvider.notifier).validateTextfieldModel(
@@ -70,6 +82,19 @@ class SignUpNotifier extends StateNotifier<SignUpFormState> {
         ? state.copyWith(status: true)
         : state.copyWith(status: false);
     return state.status;
+  }
+
+  String? setErrorText(String? errorText) {
+    return errorText;
+  }
+
+  updateEmailErrorMessage(String errorMessage) {
+    state = state.copyWith(email: state.email.copyWith(error: errorMessage));
+  }
+
+  updatePasswordErrorMessage(String errorMessage) {
+    state =
+        state.copyWith(password: state.password.copyWith(error: errorMessage));
   }
 }
 

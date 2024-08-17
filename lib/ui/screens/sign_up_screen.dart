@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_auth_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occured_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -109,11 +109,12 @@ class SignUpScreen extends ConsumerWidget {
 
                     if (ref.watch(signUpProvider).status!) {
                       /// TODO: Firebase methods here
-                      ref
-                          .read(firebaseAuthProvider.notifier)
+                      await ref
+                          .read(userProvider.notifier)
                           .createUserWithEmailAndPassword(
                             email: ref.read(signUpProvider).email.text!,
                             password: ref.read(signUpProvider).password.text!,
+                            context: context,
                           );
                     }
                   },

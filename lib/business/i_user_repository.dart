@@ -1,9 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 
 abstract class IUserRepository {
-  Future<User?> createUserWithEmailAndPassword(
+  Future<UserModel?> createUserWithEmailAndPassword(
       {required String email, required String password});
 
-  Future<User?> signInWithEmailAndPassword(
+  Future<UserModel?> signInWithEmailAndPassword(
       {required String email, required String password});
+
+  Future<void> signOut();
 }

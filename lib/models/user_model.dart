@@ -99,6 +99,11 @@ class UserModel {
         "addresses": List<dynamic>.from(addresses.map((x) => x.toMap())),
         "creditCards": List<dynamic>.from(creditCards.map((x) => x.toMap())),
       };
+
+  @override
+  String toString() {
+    return 'UserModel(id: $id, email: $email, notificationId: $notificationId, username: $username, phone: $phone, photo: $photo, birthday: $birthday, wishlist: $wishlist, shoppingCart: $shoppingCart, orders: $orders, addresses: $addresses, creditCards: $creditCards)';
+  }
 }
 
 // import 'package:ecommerce_shopping_project/models/new/address.dart';

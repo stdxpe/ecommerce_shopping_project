@@ -1,5 +1,7 @@
 import 'package:ecommerce_shopping_project/business/firebase_user_manager.dart';
 import 'package:ecommerce_shopping_project/business/i_user_repository.dart';
+import 'package:ecommerce_shopping_project/services/firebase_user_service.dart';
+import 'package:ecommerce_shopping_project/services/i_user_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,6 +22,9 @@ void registerDependencyInjectionService() {
 
   /// Auth Service (Data Access Layer)
   locator.registerLazySingleton<IAuthService>(() => FirebaseAuthService());
+
+  /// User Service (Data Access Layer)
+  locator.registerLazySingleton<IUserService>(() => FirebaseUserService());
 
   /// Database Managers (Business Layer)
   locator.registerLazySingleton<IDBRepository>(() => DummyDbManager());

@@ -20,6 +20,15 @@ class SignInNotifier extends StateNotifier<SignInFormState> {
           status: false,
         ));
 
+  updateEmailErrorMessage(String errorMessage) {
+    state = state.copyWith(email: state.email.copyWith(error: errorMessage));
+  }
+
+  updatePasswordErrorMessage(String errorMessage) {
+    state =
+        state.copyWith(password: state.password.copyWith(error: errorMessage));
+  }
+
   updateEmail(String value) =>
       state = state.copyWith(email: state.email.copyWith(text: value));
 

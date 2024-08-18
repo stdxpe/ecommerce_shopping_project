@@ -7,30 +7,45 @@ class FirebaseUserService extends IUserService {
   final _db = locator<FirebaseFirestore>();
 
   @override
-  Future<UserModel?> getUserModel({required String uid}) async {
+  Future<UserModel> getUserModel({required String uid}) async {
     var returnedSnapshot = await _db.doc('users/$uid').get();
     var returnedMap = returnedSnapshot.data();
 
-    UserModel? userModel;
-    if (returnedMap != null) {
-      userModel = UserModel.fromMap(returnedMap);
-      print('New UserModel created on the Firebase DB!');
+    // UserModel userModel;
+    if (returnedSnapshot.exists && returnedMap != null) {
+      UserModel userModel = UserModel.fromMap(returnedMap);
+      print(
+          'FirebaseUserService getUserModel if block exec. UserModel is not null');
+      return userModel;
+    } else {
+      print(
+          'FirebaseUserService getUserModel else block exec. UserModel is null. Throwing exception');
+      throw Exception();
+      // throw Error();
     }
-    return userModel;
   }
 
   @override
   Future<void> createUserModel({required UserModel userModel}) async {
+    print('FirebaseUserService createUserModel exec');
     _db.doc('users/${userModel.id}').set(userModel.toMap());
   }
 
   @override
   Future<void> updateUserModel({required UserModel userModel}) async {
+    print('FirebaseUserService updateUserModel exec');
     _db.doc('users/${userModel.id}').update(userModel.toMap());
   }
 
   @override
   Future<void> deleteUserModel({required String uid}) async {
+    print('FirebaseUserService deleteUserModel exec');
     _db.doc('users/$uid').delete();
+  }
+
+  @override
+  Future<bool> checkIfUserDocumentExistsOnDb({required String uid}) async {
+    var returnedSnapshot = await _db.doc('users/$uid').get();
+    return returnedSnapshot.exists;
   }
 }

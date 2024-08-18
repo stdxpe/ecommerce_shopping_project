@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/icons/google_logo.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -92,7 +94,6 @@ class SplashScreen extends StatelessWidget {
             ),
             SizedBox(height: 734.h),
             ButtonMain(
-              // onPressed: () => context.push(Routes.signUp),
               onPressed: () => context.push(Routes.onboarding),
               text: AppStrings.signUpWithEmail,
               icon: Icon(Icons.mail, size: 48.h),
@@ -102,11 +103,15 @@ class SplashScreen extends StatelessWidget {
                   context.colorPalette.buttonMainForegroundSecondary,
             ),
             SizedBox(height: Constants.kButtonSpacingBTWButtonsVertical.h),
-            ButtonMain(
-              onPressed: () {},
-              text: AppStrings.continueWithGoogle,
-              icon: GoogleLogo(size: 38.h),
-            ),
+            Consumer(builder: (context, ref, child) {
+              return ButtonMain(
+                onPressed: () async => await ref
+                    .read(userProvider.notifier)
+                    .signInWithGoogle(context),
+                text: AppStrings.continueWithGoogle,
+                icon: GoogleLogo(size: 38.h),
+              );
+            }),
             SizedBox(height: 200.h),
           ],
         ),

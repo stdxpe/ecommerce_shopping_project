@@ -1,11 +1,10 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_providers.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_in_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
@@ -98,7 +97,6 @@ class SignInScreen extends ConsumerWidget {
                     print('status: ${ref.watch(signInProvider).status}');
 
                     if (ref.watch(signInProvider).status!) {
-                      /// TODO: Firebase Methods Here
                       await ref
                           .read(userProvider.notifier)
                           .signInWithEmailAndPassword(
@@ -127,7 +125,9 @@ class SignInScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: Constants.kButtonSpacingBTWButtonsVertical.h),
                 ButtonMain(
-                  onPressed: () {},
+                  onPressed: () async => await ref
+                      .read(userProvider.notifier)
+                      .signInWithGoogle(context),
                   paddingHorizontal: 0,
                   text: AppStrings.continueWithGoogle,
                   icon: GoogleLogo(size: 38.h),

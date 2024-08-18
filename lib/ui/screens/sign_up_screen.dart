@@ -1,14 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occured_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_up_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_already_have_account.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
@@ -123,7 +119,9 @@ class SignUpScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: Constants.kButtonSpacingBTWButtonsVertical.h),
                 ButtonMain(
-                  onPressed: () {},
+                  onPressed: () async => await ref
+                      .read(userProvider.notifier)
+                      .signInWithGoogle(context),
                   paddingHorizontal: 0,
                   text: AppStrings.continueWithGoogle,
                   icon: GoogleLogo(size: 38.h),

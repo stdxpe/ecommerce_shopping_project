@@ -38,6 +38,10 @@ abstract class AppStrings {
   static const String firebaseErrorWrongEmailOrPassword =
       'Wrong email or password';
 
+  static const String dialogPopupErrorTitle = 'An Error Occured';
+  static const String dialogPopupErrorSubtitle = 'Please try again';
+  static const String dialogPopupErrorButton = 'OK';
+
   static const String cardNewTag = 'NEW';
   static const String cardOnSaleTag = 'ON SALE';
 

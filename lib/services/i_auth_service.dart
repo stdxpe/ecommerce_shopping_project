@@ -7,6 +7,8 @@ abstract class IAuthService {
   Future<UserCredential> signInWithEmailAndPassword(
       {required String email, required String password});
 
+  Future<UserCredential> signInWithGoogle();
+
   Future<User?> getCurrentUser();
 
   Future<void> signOut();

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -81,6 +82,7 @@ class Routes {
   static const String collectionDetails = '/collectionDetails';
 
   /// Dialog Popups and Bottom Sheets
+  static const String dialogError = '/dialogError';
   static const String dialogNewDeals = '/dialogNewDeals';
   static const String dialogAddedToCart = '/dialogAddedToCart';
   static const String dialogPaymentResult = '/dialogPaymentResult';
@@ -127,11 +129,24 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     //   /// state.matchedLocation ?? https://www.youtube.com/watch?v=rxB4ena16Rk&t=616s
     //   return (userAuthenticated) ? Routes.home : null;
     // },
+    // redirect: (context, state) {
+    //   state.matchedLocation
+    //   return (ref.watch(userProvider) == null) ? Routes.splash : Routes.home;
+    // },
 
     /// TODO: OnWillPop behaviors test physical android button
 
-    // initialLocation: Routes.splash,
-    initialLocation: Routes.home,
+    // redirect: (context, state) => ref.watch(redirectRouteProvider(state)),
+    // redirect: (context, state) => null,
+    // redirect: (context, state) {
+    //   return FirebaseAuth.instance.currentUser == null ? Routes.splash : null;
+    // : Routes.home;
+    //  || state.matchedLocation;
+    // },
+
+    // refreshListenable: FirebaseAuth.instance.authStateChanges(),
+    initialLocation: Routes.splash,
+    // initialLocation: Routes.home,
     // initialLocation: Routes.test,
 
     routes: [
@@ -140,6 +155,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           builder: (context, state) => const TextformfieldTestScreen()),
 
       /// Dialog Popup Routes
+      GoRoute(
+          path: Routes.dialogError,
+          pageBuilder: (context, state) =>
+              const DialogScreen(dialogPopup: DialogPopupError())),
       GoRoute(
           path: Routes.dialogPaymentResult,
           pageBuilder: (context, state) => const DialogScreen(
@@ -184,11 +203,23 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
       /// App Routes
       GoRoute(
+          // redirect: (context, state) {
+          //   return FirebaseAuth.instance.currentUser == null
+          //       // ? Routes.splash
+          //       // ? state.matchedLocation
+          //       ? null
+          //       : Routes.home;
+          // },
           path: Routes.splash,
+          // routes: [
+
+          // ],
           builder: (context, state) => const SplashScreen()),
       GoRoute(
           path: Routes.onboarding,
+          // path: 'onboarding',
           builder: (context, state) => const OnboardingScreen()),
+
       GoRoute(
           path: Routes.signUp,
           builder: (context, state) => const SignUpScreen()),

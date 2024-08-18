@@ -27,10 +27,12 @@ dependencies:
   cloud_firestore: ^5.2.1                 # Firebase Cloud Database Service
   firebase_storage: ^12.1.3               # Firebase Cloud Storage Service
 
+  uuid: ^4.4.2                            # Random ID Generator
+  faker_dart: ^0.2.2                      # Random Fake Data Generator
   card_swiper: ^3.0.1                     # Carousel Image Slider
   smooth_page_indicator: ^1.2.0           # Image Slider Pagination
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
-  flutter_animate: ^4.5.0                 # Advanced Animations
+  flutter_animate: ^4.5.0                 # Advanced Animation Builder
   flutter_custom_carousel: ^0.1.0+1       # Advanced Built-In Slider Animations with flutter_animate package
   zoom_pinch_overlay: ^1.4.3              # Advanced Version of Flutter Interactive Widget
   easy_stepper: ^0.8.5                    # Payment Screen Horizontal Top Stepper Widget

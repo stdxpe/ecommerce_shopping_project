@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,10 +31,11 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/textformfield_test_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/product_crud_test_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_error.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_new_deals.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_payment_result.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_product_added_to_cart.dart';
@@ -145,14 +145,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     // },
 
     // refreshListenable: FirebaseAuth.instance.authStateChanges(),
-    initialLocation: Routes.splash,
+    // initialLocation: Routes.splash,
     // initialLocation: Routes.home,
-    // initialLocation: Routes.test,
+    initialLocation: Routes.test,
 
     routes: [
       GoRoute(
           path: Routes.test,
-          builder: (context, state) => const TextformfieldTestScreen()),
+          builder: (context, state) => const ProductCrudTestScreen()),
 
       /// Dialog Popup Routes
       GoRoute(

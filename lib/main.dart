@@ -25,6 +25,18 @@ Future<void> main() async {
   );
 }
 
+// intl?
+// basic_utils: ^5.7.0
+// ColorUtils
+
+// Helper class for color operations.
+
+// int hexToInt(String hex);
+// String intToHex(int i);
+// String shadeColor(String hex, int percent);
+// String fillUpHex(String hex);
+///////////// bool isDark(String hex);
+
 /// Catching All Errors in Top Level
   // https://stackoverflow.com/questions/57879455/flutter-catching-all-unhandled-exceptions
 

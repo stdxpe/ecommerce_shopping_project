@@ -52,10 +52,10 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
         String? errorMessage;
 
         if (error is FirebaseAuthException) {
-          print(error.code);
           errorCode = error.code;
-          print(error.message);
+          print(errorCode);
           errorMessage = error.message;
+          print(errorMessage);
         }
 
         ref
@@ -95,10 +95,10 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
         String? errorMessage;
 
         if (error is FirebaseAuthException) {
-          print(error.code);
           errorCode = error.code;
-          print(error.message);
+          print(errorCode);
           errorMessage = error.message;
+          print(errorMessage);
         }
 
         ref.read(signInProvider.notifier).updateEmailErrorMessage(

@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/search_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/models/filter.dart';

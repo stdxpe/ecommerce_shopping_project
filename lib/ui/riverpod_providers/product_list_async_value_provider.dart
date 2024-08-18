@@ -7,7 +7,6 @@ import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final myAsyncNotifierProvider1 =
     AsyncNotifierProvider<MyAsyncNotifier, List<Product>>(() {
@@ -18,7 +17,7 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
   @override
   FutureOr<List<Product>> build() async {
     // return await _dbManager.getAllProducts();
-    var tempList = getAllProducts();
+    // var tempList = getAllProducts();
     var temp2 = await future;
     return temp2;
   }
@@ -97,32 +96,32 @@ class MyAsyncNotifier extends AsyncNotifier<List<Product>> {
     if (foundProductIndex.isNegative) return;
     previousState.removeAt(foundProductIndex);
 
-    var updatedProduct = Product(
-      title: 'Valencia',
-      price: 21.21,
-      mainPhoto: AppImages.blackBg,
-      brand: 'Ver',
-      collections: [
-        // dummyCollections[0],
-      ],
-      colors: [],
-      createdAt: '123',
-      detailedDescription: 'sdfgsdf',
-      estimatedShippingDurationInDays: 2,
-      id: '234',
-      photos: [],
-      reviews: [],
-      shippingFee: 0,
-      sizes: [],
-      stockCount: 12,
-      storeId: '01',
-      storeName: 'sdfg',
-      summary: 'asasdfasd',
-      totalLikesCount: 12,
-      totalOrdersCount: 32,
-      totalRating: 2.2,
-    );
-    var newList = previousState.insert(foundProductIndex, updatedProduct);
+    // var updatedProduct = Product(
+    //   title: 'Valencia',
+    //   price: 21.21,
+    //   mainPhoto: AppImages.blackBg,
+    //   brand: 'Ver',
+    //   collections: [
+    //     // dummyCollections[0],
+    //   ],
+    //   colors: [],
+    //   createdAt: '123',
+    //   detailedDescription: 'sdfgsdf',
+    //   estimatedShippingDurationInDays: 2,
+    //   id: '234',
+    //   photos: [],
+    //   reviews: [],
+    //   shippingFee: 0,
+    //   sizes: [],
+    //   stockCount: 12,
+    //   storeId: '01',
+    //   storeName: 'sdfg',
+    //   summary: 'asasdfasd',
+    //   totalLikesCount: 12,
+    //   totalOrdersCount: 32,
+    //   totalRating: 2.2,
+    // );
+    // var newList = previousState.insert(foundProductIndex, updatedProduct);
 
     state = AsyncData([...previousState]);
   }

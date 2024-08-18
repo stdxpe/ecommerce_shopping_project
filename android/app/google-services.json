@@ -12,7 +12,20 @@
           "package_name": "com.yasinbilgin.com"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "970016209623-dcn2iode1lbm9p4381vk3ocrlscvm9ei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yasinbilgin.com",
+            "certificate_hash": "53051121323e3ae76736d35c192950ab08e6d3eb"
+          }
+        },
+        {
+          "client_id": "970016209623-uga8prve3ls8bnht0hu5sep68lu68vln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB1LAW063QjVAOfTaLWVroN6M5yPfdUr9I"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970016209623-uga8prve3ls8bnht0hu5sep68lu68vln.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "970016209623-hcqfom331vu9opplubq35m5jdvd4ketn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yasinbilgin.ecommerceShoppingProject"
+              }
+            }
+          ]
         }
       }
     }

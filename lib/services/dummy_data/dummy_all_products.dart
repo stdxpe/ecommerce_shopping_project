@@ -37,6 +37,8 @@ List<Product> dummyAllProducts = [
       'L',
       'XL',
     ],
+    keywords: [],
+
     totalOrdersCount: 32,
     totalLikesCount: 152,
     totalRating: 3.45,
@@ -78,6 +80,7 @@ List<Product> dummyAllProducts = [
       '11',
       '14',
     ],
+    keywords: [],
     totalOrdersCount: 11,
     totalLikesCount: 9,
     totalRating: 1.56,
@@ -118,6 +121,7 @@ List<Product> dummyAllProducts = [
       '11',
       '14',
     ],
+    keywords: [],
     totalOrdersCount: 11,
     totalLikesCount: 9,
     totalRating: 1.56,
@@ -155,6 +159,8 @@ List<Product> dummyAllProducts = [
     sizes: [
       'XS',
     ],
+    keywords: [],
+
     totalOrdersCount: 32,
     totalLikesCount: 152,
     totalRating: 3.45,
@@ -195,6 +201,8 @@ List<Product> dummyAllProducts = [
       'M',
       'L',
     ],
+    keywords: [],
+
     totalOrdersCount: 32,
     totalLikesCount: 152,
     totalRating: 3.49,
@@ -234,6 +242,8 @@ List<Product> dummyAllProducts = [
     sizes: [
       'XL',
     ],
+    keywords: [],
+
     totalOrdersCount: 32,
     totalLikesCount: 152,
     totalRating: 3.45,

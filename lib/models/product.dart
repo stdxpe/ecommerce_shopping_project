@@ -18,6 +18,7 @@ class Product {
   final List<String> photos;
   final List<String> colors;
   final List<String> sizes;
+  final List<String> keywords;
   final int totalOrdersCount;
   final int totalLikesCount;
   final double totalRating;
@@ -44,6 +45,7 @@ class Product {
     required this.photos,
     required this.colors,
     required this.sizes,
+    required this.keywords,
     required this.totalOrdersCount,
     required this.totalLikesCount,
     required this.totalRating,
@@ -71,6 +73,7 @@ class Product {
     List<String>? photos,
     List<String>? colors,
     List<String>? sizes,
+    List<String>? keywords,
     int? totalOrdersCount,
     int? totalLikesCount,
     double? totalRating,
@@ -97,6 +100,7 @@ class Product {
         photos: photos ?? this.photos,
         colors: colors ?? this.colors,
         sizes: sizes ?? this.sizes,
+        keywords: keywords ?? this.keywords,
         totalOrdersCount: totalOrdersCount ?? this.totalOrdersCount,
         totalLikesCount: totalLikesCount ?? this.totalLikesCount,
         totalRating: totalRating ?? this.totalRating,
@@ -129,6 +133,7 @@ class Product {
         photos: List<String>.from(json["photos"].map((x) => x)),
         colors: List<String>.from(json["colors"].map((x) => x)),
         sizes: List<String>.from(json["sizes"].map((x) => x)),
+        keywords: List<String>.from(json["keywords"].map((x) => x)),
         totalOrdersCount: json["totalOrdersCount"],
         totalLikesCount: json["totalLikesCount"],
         totalRating: json["totalRating"]?.toDouble(),
@@ -159,6 +164,7 @@ class Product {
         "photos": List<dynamic>.from(photos.map((x) => x)),
         "colors": List<dynamic>.from(colors.map((x) => x)),
         "sizes": List<dynamic>.from(sizes.map((x) => x)),
+        "keywords": List<dynamic>.from(keywords.map((x) => x)),
         "totalOrdersCount": totalOrdersCount,
         "totalLikesCount": totalLikesCount,
         "totalRating": totalRating,
@@ -173,6 +179,6 @@ class Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, brand: $brand, summary: $summary, detailedDescription: $detailedDescription, price: $price, createdAt: $createdAt, isOnSale: $isOnSale, salePrice: $salePrice, saleLastDate: $saleLastDate, mainPhoto: $mainPhoto, photos: $photos, colors: $colors, sizes: $sizes, totalOrdersCount: $totalOrdersCount, totalLikesCount: $totalLikesCount, totalRating: $totalRating, storeId: $storeId, storeName: $storeName, stockCount: $stockCount, shippingFee: $shippingFee, estimatedShippingDurationInDays: $estimatedShippingDurationInDays, collections: $collections, reviews: $reviews)';
+    return 'Product(id: $id, title: $title, brand: $brand, summary: $summary, detailedDescription: $detailedDescription, price: $price, createdAt: $createdAt, isOnSale: $isOnSale, salePrice: $salePrice, saleLastDate: $saleLastDate, mainPhoto: $mainPhoto, photos: $photos, colors: $colors, sizes: $sizes, keywords: $keywords, totalOrdersCount: $totalOrdersCount, totalLikesCount: $totalLikesCount, totalRating: $totalRating, storeId: $storeId, storeName: $storeName, stockCount: $stockCount, shippingFee: $shippingFee, estimatedShippingDurationInDays: $estimatedShippingDurationInDays, collections: $collections, reviews: $reviews)';
   }
 }

@@ -1,15 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class FirebaseProductService extends IProductService {
   final _db = locator<FirebaseFirestore>();
 
   @override
-  Future<Product?> getProductById({required String productId}) async {
-    var returnedSnapshot = await _db.doc('products/$productId').get();
+  Future<Product?> getProductById(
+      {required String productId, required String sourcePath}) async {
+    var returnedSnapshot = await _db.doc('$sourcePath/$productId').get();
     var returnedMap = returnedSnapshot.data();
 
     if (returnedSnapshot.exists &&
@@ -29,28 +30,33 @@ class FirebaseProductService extends IProductService {
   }
 
   @override
-  Future<void> createProduct({required Product product}) async {
+  Future<void> createProduct(
+      {required Product product, required String sourcePath}) async {
     print('FirebaseProductService createProduct exec');
-    _db.doc('products/${product.id}').set(product.toMap());
+    _db.doc('$sourcePath/${product.id}').set(product.toMap());
     // _db.collection('products').add(product.toMap());
   }
 
   @override
-  Future<void> updateProduct({required Product product}) async {
+  Future<void> updateProduct(
+      {required Product product, required String sourcePath}) async {
     print('FirebaseProductService updateProduct exec');
-    _db.doc('products/${product.id}').update(product.toMap());
+    _db.doc('$sourcePath/${product.id}').update(product.toMap());
   }
 
   @override
-  Future<void> deleteProduct({required String productId}) async {
-    _db.doc('products/$productId').delete();
+  Future<void> deleteProduct(
+      {required String productId, required String sourcePath}) async {
+    _db.doc('$sourcePath/$productId').delete();
   }
 
   @override
   Future<List<Product>> getProductsByFilter(
-      {required filter, int maxResultCount = 20}) async {
+      {required filter,
+      int maxResultCount = 20,
+      required String sourcePath}) async {
     var collectionRef = _db
-        .collection('products')
+        .collection(sourcePath)
         .where('price', isGreaterThan: filter.priceMin)
         .where('price', isLessThan: filter.priceMax)
         .where("keywords", arrayContainsAny: [...filter.query!.split(' ')]);

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:ecommerce_shopping_project/services/firebase_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/business/dummy_db_manager.dart';
 import 'package:ecommerce_shopping_project/business/firebase_user_manager.dart';
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
@@ -11,10 +13,10 @@ import 'package:ecommerce_shopping_project/services/dummy_db_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_auth_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_product_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_user_service.dart';
-import 'package:ecommerce_shopping_project/services/i_auth_service.dart';
-import 'package:ecommerce_shopping_project/services/i_db_service.dart';
-import 'package:ecommerce_shopping_project/services/i_product_service.dart';
-import 'package:ecommerce_shopping_project/services/i_user_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_db_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
 
 final locator = GetIt.instance;
 
@@ -31,6 +33,10 @@ void registerDependencyInjectionService() {
   /// Product Service (Data Access Layer)
   locator
       .registerLazySingleton<IProductService>(() => FirebaseProductService());
+
+  /// Collection Service (Data Access Layer)
+  locator.registerLazySingleton<ICollectionService>(
+      () => FirebaseCollectionService());
 
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////

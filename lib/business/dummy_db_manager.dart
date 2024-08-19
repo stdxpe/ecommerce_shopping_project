@@ -4,7 +4,7 @@ import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/i_db_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_db_service.dart';
 
 class DummyDbManager extends IDBRepository {
   final _dbService = locator<IDbService>();

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/models/filter.dart' as filter;
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_product_service.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class FirebaseProductService extends IProductService {
   final _db = locator<FirebaseFirestore>();
@@ -47,22 +47,28 @@ class FirebaseProductService extends IProductService {
   }
 
   @override
-  Future<List<Product>> getProductsByFilter({required filter}) async {
-    /// TODO: Filter.OR
-    /// .where("keywords", arrayContainsAny: ['']) doesnt work. Need OR operator
-    /// https://firebase.google.com/docs/firestore/query-data/queries#array_membership
-
-    var returnedSnapshot = await _db
+  Future<List<Product>> getProductsByFilter(
+      {required filter, int maxResultCount = 20}) async {
+    var collectionRef = _db
         .collection('products')
-        .where("keywords", arrayContainsAny: [...filter.query!.split(' ')])
-        // .where("collections", arrayContainsAny: [...filter.collections!])
-        // .where("sizes", arrayContainsAny: [...filter.sizes!])
         .where('price', isGreaterThan: filter.priceMin)
         .where('price', isLessThan: filter.priceMax)
-        .limit(20)
-        .orderBy('price',
-            descending: filter.sortBy == 'priceHigh' ? true : false)
-        .get();
+        .where("keywords", arrayContainsAny: [...filter.query!.split(' ')]);
+
+    if (filter.sortBy == AppStrings.filterSortByPopular) {
+      collectionRef =
+          collectionRef.orderBy('totalLikesCount', descending: true);
+    } else if (filter.sortBy == AppStrings.filterSortByRating) {
+      collectionRef = collectionRef.orderBy('totalRating', descending: true);
+    } else if (filter.sortBy == AppStrings.filterSortByNewest) {
+      collectionRef = collectionRef.orderBy('createdAt', descending: true);
+    } else if (filter.sortBy == AppStrings.filterSortByPriceHigh) {
+      collectionRef = collectionRef.orderBy('price', descending: true);
+    } else if (filter.sortBy == AppStrings.filterSortByPriceLow) {
+      collectionRef = collectionRef.orderBy('price', descending: false);
+    }
+
+    var returnedSnapshot = await collectionRef.limit(maxResultCount).get();
 
     List<Product> tempList = [];
     var returnedList = returnedSnapshot.docs;
@@ -84,100 +90,106 @@ class FirebaseProductService extends IProductService {
 }
 
   // onPressed: () async {
-  //             final faker = Faker.instance;
+            //   final faker = Faker.instance;
 
-  //             var randomId = const Uuid().v4();
-  //             // print(randomId);
+            //   var randomId = const Uuid().v4();
+            //   // print(randomId);
 
-  //             String randomProduct = faker.commerce.productName();
+            //   String randomProduct = faker.commerce.productName();
 
-  //             String randomName = faker.name.fullName();
-  //             String randomProductName = faker.commerce.productAdjective();
-  //             String randomDesc = faker.commerce.productDescription();
-  //             String randomLoremSummary = faker.lorem.sentence();
-  //             String randomLoremDetailedDesc = faker.lorem.text();
-  //             String randomLoremShortDesc = faker.lorem.paragraph();
-  //             String randomLoremWord1 = faker.lorem.word();
-  //             String randomLoremWord2 = faker.lorem.word();
-  //             String randomPrice =
-  //                 faker.commerce.price(symbol: '', min: 10, max: 1000);
-  //             String randomCompany = faker.company.companyName();
-  //             String randomHex1 = faker.datatype.hexaDecimal(length: 6);
-  //             String randomHex2 = faker.datatype.hexaDecimal(length: 6);
-  //             String randomHex3 = faker.datatype.hexaDecimal(length: 6);
-  //             String random = faker.commerce.productDescription();
-  //             String randomImage = faker.image.loremPicsum.image();
+            //   String randomName = faker.name.fullName();
+            //   String randomProductName = faker.commerce.productAdjective();
+            //   String randomDesc = faker.commerce.productDescription();
+            //   String randomLoremSummary = faker.lorem.sentence();
+            //   String randomLoremDetailedDesc = faker.lorem.text();
+            //   String randomLoremShortDesc = faker.lorem.paragraph();
+            //   String randomLoremWord1 = faker.lorem.word();
+            //   String randomLoremWord2 = faker.lorem.word();
+            //   String randomPrice =
+            //       faker.commerce.price(symbol: '', min: 10, max: 1000);
+            //   String randomCompany = faker.company.companyName();
+            //   String randomHex1 = faker.datatype.hexaDecimal(length: 6);
+            //   String randomHex2 = faker.datatype.hexaDecimal(length: 6);
+            //   String randomHex3 = faker.datatype.hexaDecimal(length: 6);
+            //   String random = faker.commerce.productDescription();
+            //   String randomImage = faker.image.loremPicsum.image();
 
-  //             var randomDate = faker.date.past(DateTime.now());
+            //   var randomDate = faker.date.past(DateTime.now());
 
-  //             // faker.image
-  //             String randomSize1 =
-  //                 faker.datatype.number(min: 1, max: 50).toString();
-  //             String randomSize2 =
-  //                 faker.datatype.number(min: 1, max: 50).toString();
+            //   // faker.image
+            //   String randomSize1 =
+            //       faker.datatype.number(min: 1, max: 50).toString();
+            //   String randomSize2 =
+            //       faker.datatype.number(min: 1, max: 50).toString();
 
-  //             print(randomHex1);
-  //             print('random: $random');
-  //             print('randomImage: $randomImage');
+            //   print(randomHex1);
+            //   print('random: $random');
+            //   print('randomImage: $randomImage');
 
-  //             print('randomDate: $randomDate');
+            //   print('randomDate: $randomDate');
 
-  //             print(randomName);
-  //             print(randomProductName);
-  //             print(randomDesc);
-  //             print(randomPrice);
-  //             print('randomCompany: $randomCompany');
+            //   print(randomName);
+            //   print(randomProductName);
+            //   print(randomDesc);
+            //   print(randomPrice);
+            //   print('randomCompany: $randomCompany');
 
-  //             print('randomLoremWord: $randomLoremWord1 $randomLoremWord2 ');
-  //             print('randomLoremSummary: $randomLoremSummary');
-  //             print('randomLoremShortDesc: $randomLoremShortDesc');
-  //             print('randomLoremDetailedDesc: $randomLoremDetailedDesc');
+            //   print('randomLoremWord: $randomLoremWord1 $randomLoremWord2 ');
+            //   print('randomLoremSummary: $randomLoremSummary');
+            //   print('randomLoremShortDesc: $randomLoremShortDesc');
+            //   print('randomLoremDetailedDesc: $randomLoremDetailedDesc');
 
-  //             final _productService = locator<IProductService>();
+            //   final _productService = locator<IProductService>();
 
-  //             // keywords: [...generatedTitle.split(' ')],
+            //   for (var i = 0; i < 50; i++) {
+            //     String generatedTitle =
+            //         '${faker.name.fullName()} ${faker.commerce.productName()}';
+            //     String generatedBrand =
+            //         '${faker.lorem.word()} ${faker.lorem.word()}';
 
-  //             for (var i = 0; i < 20; i++) {
-  //               String generatedTitle =
-  //                   '${faker.name.fullName()} ${faker.commerce.productName()}';
+            //     List<String> keywords = [
+            //       'All',
+            //       ...generatedTitle.toLowerCase().split(' '),
+            //       ...generatedBrand.toLowerCase().split(' ')
+            //     ];
 
-  //               List<String> keywords = [...generatedTitle.split(' ')];
-  //               await _productService.createProduct(
-  //                   product: Product(
-  //                 id: const Uuid().v4(),
-  //                 title: generatedTitle,
-  //                 // '${faker.name.fullName()} ${faker.commerce.productName()}',
-  //                 summary: faker.lorem.sentence(),
-  //                 detailedDescription: faker.lorem.text(),
-  //                 price: double.parse(
-  //                     faker.commerce.price(symbol: '', min: 10, max: 1000)),
-  //                 createdAt: faker.date
-  //                     .past(DateTime.now(), rangeInYears: 5)
-  //                     .toString(),
-  //                 mainPhoto: faker.image.loremPicsum.image(),
-  //                 photos: List.generate(faker.datatype.number(min: 1, max: 6),
-  //                     (index) => faker.image.loremPicsum.image()),
-  //                 colors: List.generate(faker.datatype.number(min: 3, max: 10),
-  //                     (index) => faker.datatype.hexaDecimal(length: 6)),
-  //                 sizes: List.generate(
-  //                     faker.datatype.number(min: 4, max: 7),
-  //                     (index) =>
-  //                         faker.datatype.number(min: 1, max: 50).toString()),
-  //                 keywords: keywords,
-  //                 totalOrdersCount: faker.datatype.number(min: 0, max: 500),
-  //                 totalLikesCount: faker.datatype.number(min: 0, max: 1000),
-  //                 totalRating:
-  //                     faker.datatype.float(min: 0, max: 5, precision: 2),
-  //                 storeId: const Uuid().v1(),
-  //                 storeName: faker.company.companyName(),
-  //                 stockCount: faker.datatype.number(min: 0, max: 500),
-  //                 shippingFee: double.parse(
-  //                     faker.commerce.price(symbol: '', min: 0, max: 15)),
-  //                 estimatedShippingDurationInDays:
-  //                     faker.datatype.number(min: 0, max: 5),
-  //                 brand: '${faker.lorem.word()} ${faker.lorem.word()}',
-  //                 collections: [],
-  //                 reviews: [],
-  //               ));
-  //             }
-  //           },
+            //     var createdAt = Timestamp.fromDate(
+            //         faker.date.past(DateTime.now(), rangeInYears: 5));
+
+            //     await _productService.createProduct(
+            //         product: Product(
+            //       id: const Uuid().v4(),
+            //       title: generatedTitle,
+            //       // '${faker.name.fullName()} ${faker.commerce.productName()}',
+            //       summary: faker.lorem.sentence(),
+            //       detailedDescription: faker.lorem.text(),
+            //       price: double.parse(
+            //           faker.commerce.price(symbol: '', min: 10, max: 1000)),
+            //       createdAt: createdAt,
+            //       mainPhoto: faker.image.loremPicsum.image(),
+            //       photos: List.generate(faker.datatype.number(min: 1, max: 6),
+            //           (index) => faker.image.loremPicsum.image()),
+            //       colors: List.generate(faker.datatype.number(min: 3, max: 10),
+            //           (index) => faker.datatype.hexaDecimal(length: 6)),
+            //       sizes: List.generate(
+            //           faker.datatype.number(min: 4, max: 7),
+            //           (index) =>
+            //               faker.datatype.number(min: 1, max: 50).toString()),
+            //       keywords: keywords,
+            //       totalOrdersCount: faker.datatype.number(min: 0, max: 500),
+            //       totalLikesCount: faker.datatype.number(min: 0, max: 1000),
+            //       totalRating:
+            //           faker.datatype.float(min: 0, max: 5, precision: 2),
+            //       storeId: const Uuid().v1(),
+            //       storeName: faker.company.companyName(),
+            //       stockCount: faker.datatype.number(min: 0, max: 500),
+            //       shippingFee: double.parse(
+            //           faker.commerce.price(symbol: '', min: 0, max: 15)),
+            //       estimatedShippingDurationInDays:
+            //           faker.datatype.number(min: 0, max: 5),
+            //       brand: generatedBrand,
+            //       collections: [],
+            //       reviews: [],
+            //     ));
+            //   }
+            // },

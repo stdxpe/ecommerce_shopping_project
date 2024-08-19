@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -22,7 +23,7 @@ List<Product> dummyAllProducts = [
     isOnSale: true,
     saleLastDate: '19.03.2024',
     salePrice: 179.99,
-    createdAt: '12.03.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       'FF0000',
       '05FF00',
@@ -66,7 +67,8 @@ List<Product> dummyAllProducts = [
       AppImages.productImage8,
       AppImages.productImage9,
     ],
-    createdAt: '19.02.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
+    // '19.02.2024'
     colors: [
       '312525',
       'F9AC15',
@@ -107,7 +109,7 @@ List<Product> dummyAllProducts = [
       AppImages.productImage8,
       AppImages.productImage9,
     ],
-    createdAt: '19.02.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       '312525',
       'F9AC15',
@@ -148,7 +150,7 @@ List<Product> dummyAllProducts = [
       AppImages.productImage3,
       AppImages.productImage4,
     ],
-    createdAt: '12.03.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       'FF0000',
       '05FF00',
@@ -189,7 +191,7 @@ List<Product> dummyAllProducts = [
       AppImages.productImage3,
       AppImages.productImage4,
     ],
-    createdAt: '12.03.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       'FF0000',
       '05FF00',
@@ -231,7 +233,7 @@ List<Product> dummyAllProducts = [
       AppImages.productImage3,
       AppImages.productImage4,
     ],
-    createdAt: '12.03.2024',
+    createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       'FF0000',
       '05FF00',

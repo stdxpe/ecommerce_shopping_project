@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/review.dart';
 
@@ -10,7 +11,7 @@ class Product {
   final String summary;
   final String detailedDescription;
   final double price;
-  final String createdAt;
+  final Timestamp createdAt;
   final bool? isOnSale;
   final double? salePrice;
   final String? saleLastDate;
@@ -65,7 +66,7 @@ class Product {
     String? summary,
     String? detailedDescription,
     double? price,
-    String? createdAt,
+    Timestamp? createdAt,
     bool? isOnSale,
     double? salePrice,
     String? saleLastDate,

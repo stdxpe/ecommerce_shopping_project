@@ -1,12 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/models/filter.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart' as filter;
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/i_product_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class ProductCrudTestScreen extends ConsumerWidget {
@@ -33,17 +36,23 @@ class ProductCrudTestScreen extends ConsumerWidget {
               ];
 
               var temp = await _productService.getProductsByFilter(
-                  filter: Filter(
+                  filter: filter.Filter(
                 id: '123',
-                query: 'Abby Generic Cotton Fish',
-                sortBy: 'priceLow',
+                query: 'Rubber'.toLowerCase(),
+                // query: 'All',
+                // collections: ['Autumn'],
+                sizes: ['40'],
+                sortBy: AppStrings.filterSortByRating,
                 priceMin: 0,
                 priceMax: 1000,
               ));
 
               for (var item in temp) {
-                print('${item.id}  ||  ${item.price}');
+                print(
+                    // '${item.id}  ||  ${item.title} || ${item.price} || R${item.totalRating} || <3${item.totalLikesCount}');
+                    'T: ${DateFormat('dd.MM.yyyy').format(item.createdAt.toDate())} ||R: ${item.totalRating} ||<3: ${item.totalLikesCount} || ${item.id}  ||  ${item.title} || ${item.price}');
               }
+
               // List temp = [];
 
               // for (var item in wishlist) {

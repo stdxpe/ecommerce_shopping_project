@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
+import 'package:ecommerce_shopping_project/business/profile_manager.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_order_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
@@ -68,6 +70,9 @@ void registerDependencyInjectionService() {
 
   /// Order Manager (Business Layer)
   locator.registerLazySingleton<IOrderRepository>(() => OrderManager());
+
+  /// Profile Manager (Business Layer)
+  locator.registerLazySingleton<IProfileRepository>(() => ProfileManager());
 
   /// Collection Manager (Business Layer)
   locator

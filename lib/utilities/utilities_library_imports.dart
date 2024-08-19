@@ -1,7 +1,9 @@
 library utilities;
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 /// These imports are utilized by the following sections.
 part 'package:ecommerce_shopping_project/utilities/k_app_images.dart';

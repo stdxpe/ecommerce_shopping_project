@@ -1,8 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_order_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
+import 'package:ecommerce_shopping_project/business/collection_manager.dart';
+import 'package:ecommerce_shopping_project/business/order_manager.dart';
+import 'package:ecommerce_shopping_project/business/shopping_cart_manager.dart';
+import 'package:ecommerce_shopping_project/business/wishlist_manager.dart';
 import 'package:ecommerce_shopping_project/services/firebase_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/business/dummy_db_manager.dart';
@@ -21,6 +30,9 @@ import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_serv
 final locator = GetIt.instance;
 
 void registerDependencyInjectionService() {
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   /// Database Services (Data Access Layer)
   locator.registerLazySingleton<IDbServiceDummy>(() => DummyDbService());
 
@@ -47,9 +59,22 @@ void registerDependencyInjectionService() {
   /// User Manager (Business Layer)
   locator.registerLazySingleton<IUserRepository>(() => FirebaseUserManager());
 
+  /// Wishlist Manager (Business Layer)
+  locator.registerLazySingleton<IWishlistRepository>(() => WishlistManager());
+
+  /// Shopping Cart Manager (Business Layer)
+  locator.registerLazySingleton<IShoppingCartRepository>(
+      () => ShoppingCartManager());
+
+  /// Order Manager (Business Layer)
+  locator.registerLazySingleton<IOrderRepository>(() => OrderManager());
+
+  /// Collection Manager (Business Layer)
+  locator
+      .registerLazySingleton<ICollectionRepository>(() => CollectionManager());
+
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
-  /// FIREBASE INSTANCES
 
   /// Firebase Auth Service Instance
   locator.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);

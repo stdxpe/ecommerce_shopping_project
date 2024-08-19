@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ecommerce_shopping_project/business/i_user_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
 import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';

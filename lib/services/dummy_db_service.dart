@@ -3,10 +3,10 @@ import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:ecommerce_shopping_project/services/dummy_data/dummy_user_model.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_db_service.dart';
+import 'package:ecommerce_shopping_project/services/i_db_service_dummy.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class DummyDbService extends IDbService {
+class DummyDbService extends IDbServiceDummy {
   @override
   Future<List<Product>> getAllProducts() async {
     print('DummyDbService getAllProducts() Executed: "Waiting 2 seconds...');

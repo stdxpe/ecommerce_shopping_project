@@ -2,7 +2,7 @@ import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
 
-abstract class IDbService {
+abstract class IDbServiceDummy {
   Future<List<Product>> getAllProducts();
   Future<Product> getProductById({required String productId});
   Future<List<Product>> getProductsByFilter({required Filter filter});

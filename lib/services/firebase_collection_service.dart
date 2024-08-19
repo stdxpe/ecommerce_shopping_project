@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 

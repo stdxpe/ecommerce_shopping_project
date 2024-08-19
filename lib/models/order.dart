@@ -1,12 +1,13 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/models/order_product.dart';
 
 class Order {
   final String id;
   final List<OrderProduct> products;
   final double totalPrice;
-  final String createdAt;
+  final Timestamp createdAt;
 
   Order({
     required this.id,
@@ -19,7 +20,7 @@ class Order {
     String? id,
     List<OrderProduct>? products,
     double? totalPrice,
-    String? createdAt,
+    Timestamp? createdAt,
   }) =>
       Order(
         id: id ?? this.id,

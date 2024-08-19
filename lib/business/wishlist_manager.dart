@@ -10,12 +10,15 @@ class WishlistManager extends IWishlistRepository {
   final _userService = locator<IUserService>();
 
   @override
-  Future<List<Product>> getWishlistProducts(
-      {required UserModel userModel}) async {
+  Future<List<Product>> getWishlistProducts({
+    required UserModel userModel,
+  }) async {
     try {
       print('WishlistManager getWishlistProducts try block exec');
 
       List<Product> wishlistProducts = [];
+
+      // await _userService.getUserModel(uid: userId); ??
 
       for (var productId in userModel.wishlist) {
         Product? selectedProduct = await _productService.getProductById(

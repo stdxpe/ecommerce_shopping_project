@@ -16,14 +16,15 @@ Future<void> main() async {
   /// Firebase Implemented as Cloud Solution
   initializeFirebase();
   await Firebase.initializeApp();
-
   runApp(
     /// Riverpod Implemented as State Management Solution
     const ProviderScope(
       child: RootApp(),
     ),
+    // TODO: Remove Print Ignore in analysis_options.yaml
   );
 }
+
 
 // intl?
 // basic_utils: ^5.7.0

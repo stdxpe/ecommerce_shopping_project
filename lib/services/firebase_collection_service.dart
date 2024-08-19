@@ -1,6 +1,7 @@
-import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+
+import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 
 class FirebaseCollectionService extends ICollectionService {
@@ -15,14 +16,19 @@ class FirebaseCollectionService extends ICollectionService {
         returnedMap != null &&
         returnedMap.isNotEmpty) {
       print(
-          'FirebaseCollectionService getCollectionById if block exec. Product is NOT null');
+          'FirebaseCollectionService getCollectionById if block exec. Collection is NOT null');
 
-      Collection collection = Collection.fromMap(returnedMap);
-      return collection;
+      return Collection.fromMap(returnedMap);
     } else {
       print(
-          'FirebaseCollectionService getCollectionById else block exec. Product is null');
+          'FirebaseCollectionService getCollectionById else block exec. Collection is null');
       return null;
     }
+  }
+
+  @override
+  Future<void> createCollection({required Collection collection}) async {
+    print('FirebaseCollectionService createCollection exec');
+    _db.doc('collections/${collection.id}').set(collection.toMap());
   }
 }

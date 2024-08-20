@@ -4,12 +4,15 @@ import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_redirect_service.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/dialog_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/error_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/loading_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/main_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/modal_bottom_sheet_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/onboarding_screen.dart';
@@ -44,6 +47,7 @@ class Routes {
   Routes._();
 
   static const String root = '/';
+  static const String loading = '/loading';
   static const String test = '/test';
 
   static const String splash = '/splash';
@@ -116,43 +120,19 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   final paymentResultNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'paymentResultNavigatorKey');
 
+  /// TODO: OnWillPop behaviors test physical android button
   return GoRouter(
+    initialLocation: Routes.loading,
+    redirect: (context, state) => ref.watch(navigationRedirectProvider(state)),
+    errorBuilder: (context, state) => const ErrorScreen(),
     navigatorKey: rootNavigatorKey,
-
-    /// TODO: 404 Screen
-    // errorBuilder: (context, state) => 404Screen(),
-    /// TODO: Redirect with LogOut/Auth
-    // redirect: (context, state) {
-    //   bool userAuthenticated = true;
-
-    //  TODO: AuthProvider Riverpod
-    //   /// state.matchedLocation ?? https://www.youtube.com/watch?v=rxB4ena16Rk&t=616s
-    //   return (userAuthenticated) ? Routes.home : null;
-    // },
-    // redirect: (context, state) {
-    //   state.matchedLocation
-    //   return (ref.watch(userProvider) == null) ? Routes.splash : Routes.home;
-    // },
-
-    /// TODO: OnWillPop behaviors test physical android button
-
-    // redirect: (context, state) => ref.watch(redirectRouteProvider(state)),
-    // redirect: (context, state) => null,
-    // redirect: (context, state) {
-    //   return FirebaseAuth.instance.currentUser == null ? Routes.splash : null;
-    // : Routes.home;
-    //  || state.matchedLocation;
-    // },
-
-    // refreshListenable: FirebaseAuth.instance.authStateChanges(),
-    // initialLocation: Routes.splash,
-    // initialLocation: Routes.home,
-    initialLocation: Routes.test,
-
     routes: [
       GoRoute(
           path: Routes.test,
           builder: (context, state) => const ProductCrudTestScreen()),
+      GoRoute(
+          path: Routes.loading,
+          builder: (context, state) => const LoadingScreen()),
 
       /// Dialog Popup Routes
       GoRoute(
@@ -203,23 +183,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
       /// App Routes
       GoRoute(
-          // redirect: (context, state) {
-          //   return FirebaseAuth.instance.currentUser == null
-          //       // ? Routes.splash
-          //       // ? state.matchedLocation
-          //       ? null
-          //       : Routes.home;
-          // },
           path: Routes.splash,
-          // routes: [
-
-          // ],
           builder: (context, state) => const SplashScreen()),
       GoRoute(
           path: Routes.onboarding,
-          // path: 'onboarding',
           builder: (context, state) => const OnboardingScreen()),
-
       GoRoute(
           path: Routes.signUp,
           builder: (context, state) => const SignUpScreen()),
@@ -239,14 +207,16 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       StatefulShellRoute(
         ///  StatefulShellRoute.indexedStack changed to
         ///  StatefulShellRoute for Custom Transition Animations Between Branches
-        ///
         parentNavigatorKey: rootNavigatorKey,
         builder: (BuildContext context, GoRouterState state,
             StatefulNavigationShell navigationShell) {
           return navigationShell;
         },
-        navigatorContainerBuilder: (BuildContext context,
-            StatefulNavigationShell navigationShell, List<Widget> children) {
+        navigatorContainerBuilder: (
+          BuildContext context,
+          StatefulNavigationShell navigationShell,
+          List<Widget> children,
+        ) {
           return MainScreen(
               navigationShell: navigationShell, children: children);
         },

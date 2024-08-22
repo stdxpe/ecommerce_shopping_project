@@ -1,7 +1,8 @@
 # ECommerse Shopping Project
-Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase Auth, Cloud Firestore, Firebase Storage, Hive and Stripe
+Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hive and Stripe
 
 ![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
+
 (Videos/Gifs to-be-updated soon, dont mind the placeholders)
 
 ## Project Structure
@@ -103,19 +104,24 @@ namespace AR_Vuforia;
             native: ["Android Development"]
 ```
 App wide globals handled elegantly under Utility classes:
+
  *** All text styles and color palette (both light and dark mode colors) implemented to Flutter's theming system, and used in the project accordingly
+
  *** All the padding, spacing, radius and layout dimensions can be controlled in a single central place dynamically
+
  *** Language Internationalization's NOT implemented (not a big fan of code generation actually). But we can easily add a new language just by extending an abstract class, since app wide constant strings are derived from it.
 
 
 ## To-Be-New-Section
 ![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
+
 (Videos/Gifs to-be-updated soon, dont mind the placeholders)
 ```
 namespace AR_Vuforia;
     public function getDailyKnowledge():
 ```
 ![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360low.gif)
+
 (Videos/Gifs to-be-updated soon, dont mind the placeholders)
 
 ## To-Be-New-Section
@@ -143,14 +149,7 @@ const anmol = {
 
 ## To-Be-New-Section
 ![alt-text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps480low.gif)
+
 (Videos/Gifs to-be-updated soon, dont mind the placeholders)
 
 ## To-Be-New-Section
-
-&nbsp;
-[![Twitter Follow](https://img.shields.io/twitter/follow/misteranmol?label=Follow)](https://twitter.com)
-[![Linkedin: anmol](https://img.shields.io/badge/-anmol-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/)](https://www.linkedin.com/)
-![GitHub followers](https://img.shields.io/github/followers/anmol098?label=Follow&style=social)
-[![website](https://img.shields.io/badge/Website-46a2f1.svg?&style=flat-square&logo=Google-Chrome&logoColor=white&link=https://google.com/)](https://google.com/)
-![](https://visitor-badge.glitch.me/badge?page_id=anmol098.anmol098)
-![Readme](https://github.com/anmol098/anmol098/workflows/Waka%20Readme/badge.svg)

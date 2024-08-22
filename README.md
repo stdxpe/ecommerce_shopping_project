@@ -65,24 +65,19 @@ Complete ECommerce Project with Flutter, Firebase Auth, Cloud Firestore, Firebas
 
   firebase_core: ^3.3.0                   # Firebase Services
   firebase_auth: ^5.1.4                   # Firebase Authentication Service
-  cloud_firestore: ^5.2.1                 # Firebase Cloud Storage Service
+  google_sign_in: ^6.2.1                  # Google Authentication Service
+  cloud_firestore: ^5.2.1                 # Firebase Cloud Database Service
+  firebase_storage: ^12.1.3               # Firebase Cloud Storage Service
 
+  uuid: ^4.4.2                            # Random ID Generator
+  intl: ^0.19.0                           # Date-Time Formatter
+  faker_dart: ^0.2.2                      # Random Fake Data Generator
   card_swiper: ^3.0.1                     # Carousel Image Slider
   smooth_page_indicator: ^1.2.0           # Image Slider Pagination
+  flutter_animate: ^4.5.0                 # Advanced Animation Builder
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
-  flutter_animate: ^4.5.0                 # Advanced Animations
-  flutter_custom_carousel: ^0.1.0+1       # Advanced Built-In Slider Animations with flutter_animate package
   zoom_pinch_overlay: ^1.4.3              # Advanced Version of Flutter Interactive Widget
-  easy_stepper: ^0.8.5                    # Payment Screen Horizontal Top Stepper Widget
-  flutter_credit_card: ^4.0.1             # Credit Card Validation
-  shimmer: ^3.0.0                         # Animated Product Card Placeholders while Loading State
-  loading_animation_widget: ^1.2.1        # Animated Loading Progress Indicators 
-  flutter_rating_bar: ^4.0.1              # Product Rating Bar
-  msh_checkbox: ^2.0.1                    # Animated Checkbox Widget
-  flutter_any_logo: ^1.1.1                # Brand Logos
-  cupertino_icons: ^1.0.6                 # UI Icons
-  flutter_tabler_icons: ^1.35.0           # UI Icons
-  unicons: ^2.1.2                         # UI Icons
+  ...
 
 #############################################################################################################
 ```

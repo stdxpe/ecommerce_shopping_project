@@ -100,6 +100,21 @@ class UserModel {
         "creditCards": List<dynamic>.from(creditCards.map((x) => x.toMap())),
       };
 
+  factory UserModel.createNewDefaultUser(String uid, String email) => UserModel(
+        id: uid,
+        email: email,
+        username: email.split('@').first,
+        notificationId: '000000',
+        phone: '000000',
+        photo: 'defaultPhotoUrl',
+        birthday: '01.01.2000',
+        wishlist: [],
+        shoppingCart: [],
+        orders: [],
+        addresses: [],
+        creditCards: [],
+      );
+
   @override
   String toString() {
     return 'UserModel(id: $id, email: $email, notificationId: $notificationId, username: $username, phone: $phone, photo: $photo, birthday: $birthday, wishlist: $wishlist, shoppingCart: $shoppingCart, orders: $orders, addresses: $addresses, creditCards: $creditCards)';

@@ -11,7 +11,58 @@ class FirebaseUserManager extends IUserRepository {
   final _userService = locator<IUserService>();
 
   @override
-  Future<UserModel> createUserWithEmailAndPassword(
+  Future<UserModel?> getUserModel() async {
+    try {
+      print('FirebaseUserManager getUserModel try block exec');
+
+      User? currentUser = await _authService.getCurrentUser();
+      UserModel? userModel;
+
+      if (currentUser != null) {
+        userModel = await _userService.getUserModel(uid: currentUser.uid);
+      }
+      return userModel;
+    } on Exception catch (_) {
+      print(
+          'FirebaseUserManager getUserModel catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'FirebaseUserManager getUserModel catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    print(
+        'FirebaseUserManager signOut.. Operations to be done before sign-out');
+    return _authService.signOut();
+  }
+
+  @override
+  Future<void> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      print('FirebaseUserManager signInWithEmailAndPassword try block exec');
+
+      await _authService.signOut();
+
+      await _authService.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on Exception catch (_) {
+      print(
+          'FirebaseUserManager signInWithEmailAndPassword catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'FirebaseUserManager signInWithEmailAndPassword catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       print(
@@ -28,99 +79,37 @@ class FirebaseUserManager extends IUserRepository {
       User? user = await _authService.getCurrentUser();
       print('FirebaseUserManager createUserWithEmailAndPassword User: $user');
 
-      if (user != null && userCredential.user!.email == user.email) {
+      if (user != null && userCredential.user!.uid == user.uid) {
         print(
             'FirebaseUserManager createUserWithEmailAndPassword if block exec');
 
         await _userService.createUserModel(
-          userModel: UserModel(
-            id: user.uid,
-            email: user.email!,
-            username: user.email!,
-            notificationId: 'notificationId',
-            phone: 'phone',
-            photo: 'photo',
-            birthday: 'birthday',
-            wishlist: [],
-            shoppingCart: [],
-            orders: [],
-            addresses: [],
-            creditCards: [],
-          ),
-        );
-
-        UserModel userModel = await _userService.getUserModel(uid: user.uid);
-        print(
-            'FirebaseUserManager createUserWithEmailAndPassword userModelWeGet: ${userModel.toString()}');
-        return userModel;
+            userModel: UserModel.createNewDefaultUser(user.uid, user.email!));
       } else {
         print(
-            'FirebaseUserManager createUserWithEmailAndPassword else block exec, throwing error');
+            'FirebaseUserManager createUserWithEmailAndPassword else block exec, throwing exception');
         throw Exception();
       }
-    } on FirebaseAuthException catch (_) {
-      print(
-          'FirebaseUserManager createUserWithEmailAndPassword Auth catch block exec, rethrowing');
-
-      rethrow;
     } on Exception catch (_) {
       print(
-          'FirebaseUserManager createUserWithEmailAndPassword catch block exec, rethrowing');
+          'FirebaseUserManager createUserWithEmailAndPassword catch exception block exec, rethrowing');
 
-      rethrow;
-    }
-  }
-
-  @override
-  Future<UserModel> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
-    try {
-      print('FirebaseUserManager signInWithEmailAndPassword try block exec');
-
-      await _authService.signOut();
-
-      UserCredential userCredential = await _authService
-          .signInWithEmailAndPassword(email: email, password: password);
-
-      print(
-          'FirebaseUserManager signInWithEmailAndPassword UserCredential: $userCredential');
-
-      User? user = await _authService.getCurrentUser();
-      print('FirebaseUserManager signInWithEmailAndPassword User: $user');
-
-      if (user != null && userCredential.user!.email == user.email) {
-        print('FirebaseUserManager signInWithEmailAndPassword if block exec');
-
-        UserModel userModelWeGet =
-            await _userService.getUserModel(uid: user.uid);
-        print(
-            'FirebaseUserManager signInWithEmailAndPassword userModelWeGet: ${userModelWeGet.toString()}');
-        return userModelWeGet;
-      } else {
-        print(
-            'FirebaseUserManager signInWithEmailAndPassword else block exec, throwing error');
-        throw Exception();
-      }
-      // return true;
-    } on Exception catch (_) {
-      print(
-          'FirebaseUserManager signInWithEmailAndPassword catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
       print(
-          'FirebaseUserManager signInWithEmailAndPassword catch error block exec, rethrowing');
+          'FirebaseUserManager createUserWithEmailAndPassword catch error block exec, rethrowing');
       rethrow;
     }
   }
 
   @override
-  Future<UserModel> signInWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     try {
       print('FirebaseUserManager signInWithGoogle try block exec');
 
       await _authService.signOut();
 
-      UserCredential? userCredential = await _authService.signInWithGoogle();
+      UserCredential userCredential = await _authService.signInWithGoogle();
 
       print(
           'FirebaseUserManager signInWithGoogle UserCredential: $userCredential');
@@ -128,48 +117,23 @@ class FirebaseUserManager extends IUserRepository {
       User? user = await _authService.getCurrentUser();
       print('FirebaseUserManager signInWithGoogle User: $user');
 
-      if (user != null && userCredential.user!.email == user.email) {
+      if (user != null && userCredential.user!.uid == user.uid) {
         print('FirebaseUserManager signInWithGoogle if block exec');
 
         bool isUserDocExist =
             await _userService.checkIfUserDocumentExistsOnDb(uid: user.uid);
         if (isUserDocExist == false) {
           await _userService.createUserModel(
-              userModel: UserModel(
-                  id: user.uid,
-                  email: user.email!,
-                  username: user.email!,
-                  notificationId: 'notificationId',
-                  phone: 'phone',
-                  photo: 'photo',
-                  birthday: 'birthday',
-                  wishlist: [],
-                  shoppingCart: [],
-                  orders: [],
-                  addresses: [],
-                  creditCards: []));
+              userModel: UserModel.createNewDefaultUser(user.uid, user.email!));
         }
-
-        UserModel userModel = await _userService.getUserModel(uid: user.uid);
-        print(
-            'FirebaseUserManager signInWithGoogle userModel: ${userModel.toString()}');
-
-        return userModel;
       } else {
         print(
             'FirebaseUserManager signInWithGoogle else block exec, throwing error');
         throw Exception();
       }
-    }
-    // on FirebaseAuthException catch (_) {
-    //   print(
-    //       'FirebaseUserManager signInWithGoogle Auth catch block exec, rethrowing');
-
-    //   rethrow;
-    // }
-    on Exception catch (_) {
+    } on Exception catch (_) {
       print(
-          'FirebaseUserManager signInWithGoogle catch block exec, rethrowing');
+          'FirebaseUserManager signInWithGoogle Exception catch block exec, rethrowing');
 
       rethrow;
     } on Error catch (_) {
@@ -177,12 +141,5 @@ class FirebaseUserManager extends IUserRepository {
           'FirebaseUserManager signInWithGoogle error catch block exec, rethrowing');
       rethrow;
     }
-  }
-
-  @override
-  Future<void> signOut() async {
-    print(
-        'FirebaseUserManager signOut.. Operations to be done before sign-out');
-    return await _authService.signOut();
   }
 }

@@ -6,14 +6,16 @@ import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/fireba
 
 final navigationRedirectProvider =
     Provider.family<String?, GoRouterState>((ref, state) {
-  bool? isAuthenticated;
+  bool? isAuthenticated = false;
   ref.watch(userProvider).whenData(
       (userModel) => isAuthenticated = (userModel != null) ? true : false);
+  bool isLoading = ref.watch(userProvider).isLoading;
 
-  print('isAuthenticated: $isAuthenticated');
+  print('redirectService | isAuthenticated: $isAuthenticated');
 
   bool subloc(String route) => state.matchedLocation == route;
-  if (isAuthenticated == null) return Routes.loading;
+  // if (isAuthenticated == null) return Routes.loading;
+  if (isAuthenticated == false && isLoading) return Routes.loading;
   if (isAuthenticated == true) {
     if (subloc(Routes.loading)) return Routes.home;
     if (subloc(Routes.splash)) return Routes.home;

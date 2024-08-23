@@ -13,8 +13,6 @@ class DummyDbService extends IDbServiceDummy {
     await Future.delayed(const Duration(seconds: 2));
     List<Product> productsList = dummyAllProducts;
 
-    /// TODO: FromJSON methods here.
-    /// dummyProductJsonList.map((e) => Product.fromJson(e)).toList();
     return await Future.value(productsList);
   }
 
@@ -142,7 +140,6 @@ class DummyDbService extends IDbServiceDummy {
       foundProducts.sort((a, b) => b.totalRating.compareTo(a.totalRating));
     } else if (filter.sortBy == AppStrings.filterSortByNewest) {
       /// Sort By Newest
-      /// TODO: CreatedAt, NEED DateTime Comparison
       foundProducts.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     } else if (filter.sortBy == AppStrings.filterSortByPriceLow) {
       /// Sort By Price Low

@@ -103,21 +103,6 @@ class SignInScreen extends ConsumerWidget {
                             email: ref.read(signInProvider).email.text!,
                             password: ref.read(signInProvider).password.text!,
                           );
-
-                      // try {
-                      //   await ref
-                      //       .read(firebaseAuthProvider)
-                      //       .signInWithEmailAndPassword(
-                      //         email: ref.read(signInProvider).email.text!,
-                      //         password: ref.read(signInProvider).password.text!,
-                      //       );
-
-                      //   if (ref.read(firebaseAuthProvider).currentUser != null)
-                      //     context.push(Routes.home);
-                      // } catch (e) {
-                      //   print(e);
-                      // }
-                      // context.push(Routes.home);
                     }
                   },
                   paddingHorizontal: 0,

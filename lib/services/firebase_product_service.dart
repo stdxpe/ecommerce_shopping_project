@@ -10,8 +10,14 @@ class FirebaseProductService extends IProductService {
   @override
   Future<Product?> getProductById(
       {required String productId, required String sourcePath}) async {
-    var returnedSnapshot = await _db.doc('$sourcePath/$productId').get();
+    var returnedSnapshot = await _db.doc('products/$productId').get();
+
     var returnedMap = returnedSnapshot.data();
+    print('productId: ${productId}');
+
+    print('returnedSnapshot.exists: ${returnedSnapshot.exists}');
+
+    print('returnedMap: $returnedMap');
 
     if (returnedSnapshot.exists &&
         returnedMap != null &&

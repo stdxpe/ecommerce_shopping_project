@@ -26,6 +26,9 @@ abstract class AppStrings {
   static const String globalStateErrorMessage =
       'An Error Occured.\nPlease Try Again';
 
+  static const String error404Title = '404';
+  static const String error404Subtitle = 'Page not found';
+
   static const String textfieldEmailErrorMessage = 'Enter a valid email';
   static const String textfieldPasswordErrorMessage =
       'Password must be 8 characters long, with upper and lower case characters, at least one number and no symbol';

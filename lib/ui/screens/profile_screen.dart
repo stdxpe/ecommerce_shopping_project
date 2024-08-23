@@ -95,7 +95,6 @@ class ProfileScreen extends ConsumerWidget {
               icon: TablerIcons.code,
             ),
             ProfileCardButton(
-              // onPressed: () => context.push(Routes.splash),
               onPressed: () => ref.read(userProvider.notifier).signOut(),
               buttonText: AppStrings.profileScreenButtonsListItemSignOut,
               icon: TablerIcons.logout,

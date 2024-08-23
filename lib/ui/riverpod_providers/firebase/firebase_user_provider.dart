@@ -20,44 +20,72 @@ final userProvider =
 
 class UserNotifier extends AsyncNotifier<UserModel?> {
   @override
-  FutureOr<UserModel?> build() async => Future.value(null);
+  FutureOr<UserModel?> build() async {
+    /// Initial State Setting Operation
+    getUserModel();
+
+    /// Waiting for above method to be completed
+    return await future;
+  }
 
   final _userManager = locator<IUserRepository>();
+
+  getUserModel() async {
+    print('FirebaseAuthNotifier | getUserModel() Executed');
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      /// Getting the Current Logged-in User's Id from Firebase Auth Service
+      /// and Fetching the User's Data from DB
+      UserModel? userModel = await _userManager.getUserModel();
+
+      /// Setting the State of this Provider into Fetched User's Data
+      /// In case it is null, go_router will redirect
+      return userModel;
+    });
+  }
+
+  signOut() async {
+    print('FirebaseAuthNotifier | signOut() Executed');
+    await _userManager.signOut();
+    state = const AsyncData(null);
+  }
 
   createUserWithEmailAndPassword(
       {required String email,
       required String password,
       required BuildContext context}) async {
     print('FirebaseAuthNotifier | createUserWithEmailAndPassword() Executed');
-
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        print('guard block exec');
+        print('Guard block exec');
 
-        UserModel userModel = await _userManager.createUserWithEmailAndPassword(
+        /// User Created on Firebase Auth Service with given credentials and Logging-In
+        await _userManager.createUserWithEmailAndPassword(
             email: email, password: password);
+
+        /// Getting the Current Logged-in User's Id from Firebase Auth Service
+        /// and Fetching the User's Data from DB
+        UserModel? userModel = await _userManager.getUserModel();
+
         print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
 
+        /// Setting the State of this Provider into Fetched User's Data
+        /// In case it is null, go_router will redirect
         return userModel;
       },
       (error) {
-        print('provider error block exec');
-
-        print('provider runtimeType: ${error.runtimeType}');
-
-        print('provider error: $error');
-
-        String? errorCode;
-        String? errorMessage;
+        print('Provider error block exec | ${error.runtimeType} | $error');
+        String? errorCode, errorMessage;
 
         if (error is FirebaseAuthException) {
           errorCode = error.code;
-          print(errorCode);
           errorMessage = error.message;
-          print(errorMessage);
+          print('FirebaseAuthException | $errorCode | $errorMessage');
         }
 
+        /// Error Messages will be shown in textfields if FirebaseAuthException Occured
+        /// e.g. "User not found" or "Wrong Email or Password"..
         ref
             .read(signUpProvider.notifier)
             .updateEmailErrorMessage(errorMessage!);
@@ -72,75 +100,55 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   signInWithEmailAndPassword(
       {required String email, required String password}) async {
     print('FirebaseAuthNotifier | signInWithEmailAndPassword() Executed');
-
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        print('guard block exec');
+        print('Guard block exec');
 
-        UserModel userModel = await _userManager.signInWithEmailAndPassword(
+        await _userManager.signInWithEmailAndPassword(
             email: email, password: password);
-        print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
 
+        UserModel? userModel = await _userManager.getUserModel();
+        print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
         return userModel;
       },
       (error) {
-        print('provider error block exec');
-
-        print('provider runtimeType: ${error.runtimeType}');
-
-        print('provider error: $error');
-
-        String? errorCode;
-        String? errorMessage;
+        print('Provider error block exec | ${error.runtimeType} | $error');
+        String? errorCode, errorMessage;
 
         if (error is FirebaseAuthException) {
           errorCode = error.code;
-          print(errorCode);
           errorMessage = error.message;
-          print(errorMessage);
+          print('FirebaseAuthException | $errorCode | $errorMessage');
         }
 
         ref.read(signInProvider.notifier).updateEmailErrorMessage(
-              // errorMessage!
-              AppStrings.firebaseErrorWrongEmailOrPassword,
-            );
+            AppStrings.firebaseErrorWrongEmailOrPassword);
+
         ref.read(signInProvider.notifier).updatePasswordErrorMessage(
-              // errorMessage!
-              AppStrings.firebaseErrorWrongEmailOrPassword,
-            );
+            AppStrings.firebaseErrorWrongEmailOrPassword);
 
         return error is Exception || error is Error;
       },
     );
 
-    print('state: ${state.value.toString()}');
+    print('state: ${state.toString()}');
   }
 
   signInWithGoogle(BuildContext context) async {
     print('FirebaseAuthNotifier | signInWithGoogle() Executed');
-
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        print('guard block exec');
+        print('Guard block exec');
 
-        UserModel userModel = await _userManager.signInWithGoogle();
+        await _userManager.signInWithGoogle();
+        UserModel? userModel = await _userManager.getUserModel();
         print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
-
         return userModel;
       },
       (error) {
-        print('provider error block exec');
-
-        print('provider runtimeType: ${error.runtimeType}');
-
-        print('provider error: $error');
-
-        if (error is FirebaseAuthException) {
-          print(error.code);
-          print(error.message);
-        }
+        print('Provider error block exec | ${error.runtimeType} | $error');
 
         /// TODO: Test Error Dialog Popup
         if (error is! ExceptionGoogleSignInAborted) {
@@ -152,10 +160,5 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
     );
 
     print('state: ${state.value.toString()}');
-  }
-
-  signOut() {
-    print('FirebaseAuthNotifier | signOut() Executed');
-    _userManager.signOut();
   }
 }

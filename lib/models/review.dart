@@ -1,12 +1,14 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Review {
   final String id;
   final String productId;
   final String senderName;
   final String senderPhoto;
   final double productRating;
-  final String createdAt;
+  final Timestamp createdAt;
   final String text;
 
   Review({
@@ -25,7 +27,7 @@ class Review {
     String? senderName,
     String? senderPhoto,
     double? productRating,
-    String? createdAt,
+    Timestamp? createdAt,
     String? text,
   }) =>
       Review(

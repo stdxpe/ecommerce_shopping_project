@@ -21,7 +21,7 @@ class ShoppingCartManager extends IShoppingCartRepository {
 
       for (var cartItem in userModel.shoppingCart) {
         Product? selectedProduct = await _productService.getProductById(
-            productId: cartItem.selectedProductId, sourcePath: 'products');
+            productId: cartItem.selectedProductId);
 
         if (selectedProduct != null) {
           CartProduct temp = CartProduct(

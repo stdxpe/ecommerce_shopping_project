@@ -21,8 +21,9 @@ class WishlistManager extends IWishlistRepository {
       // await _userService.getUserModel(uid: userId); ??
 
       for (var productId in userModel.wishlist) {
-        Product? selectedProduct = await _productService.getProductById(
-            productId: productId, sourcePath: 'products');
+        print('productId: $productId');
+        Product? selectedProduct =
+            await _productService.getProductById(productId: productId);
 
         if (selectedProduct != null) wishlistProducts.add(selectedProduct);
       }

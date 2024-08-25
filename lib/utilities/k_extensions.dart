@@ -22,3 +22,11 @@ extension DateTimeExtensions on Timestamp {
   // ignore: unnecessary_this
   String get formatDate => DateFormat('dd.MM.yyyy').format(this.toDate());
 }
+
+extension StringExtension on String {
+  String? get capitalize {
+    // ignore: unnecessary_this, unnecessary_null_comparison
+    if (this == null || this.isEmpty) return this;
+    return StringUtils.capitalize(this, allWords: true);
+  }
+}

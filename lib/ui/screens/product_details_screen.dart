@@ -81,8 +81,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                     flex: 1,
                                     child: TextCustom(
                                       text:
-                                          // TODO: Static string
-                                          '  ${product.reviews.length.toString()} Reviews',
+                                          '  ${product.reviews.length.toString()} ${AppStrings.productDetailsScreenReviews}',
                                       textStyle:
                                           context.textTheme.displayMedium!,
                                       color: context.colorPalette.text,

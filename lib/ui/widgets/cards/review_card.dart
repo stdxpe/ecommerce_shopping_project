@@ -98,7 +98,8 @@ class ReviewCard extends StatelessWidget {
                       ),
                       Flexible(
                         child: TextCustom(
-                          text: review.createdAt,
+                          /// TODO: review.createdAt
+                          text: 'review.createdAt',
                           textStyle: context.textTheme.bodyMedium!,
                           color: context.colorPalette.cardTextSecondary,
                           fontLetterSpacingCustom: 0,

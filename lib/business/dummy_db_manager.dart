@@ -216,11 +216,4 @@ class DummyDbManager extends IDBRepository {
 
   //   return cartProduct;
   // }
-
-  // @override
-  // Future<CartProduct> updateProductOnShoppingCart(
-  //     {required CartProduct cartProduct}) {
-  //   // TODO: implement updateProductOnShoppingCart
-  //   throw UnimplementedError();
-  // }
 }

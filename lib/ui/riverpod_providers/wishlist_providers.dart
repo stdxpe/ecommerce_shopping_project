@@ -1,12 +1,18 @@
 import 'dart:async';
 
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 
 final isProductOnWishlist =
     StateProvider.family<bool, String>((ref, productId) {
+  var wishlist = ref.watch(wishlistProvider).value;
+  print('data: $wishlist');
+
   return ((ref.watch(wishlistProvider).value != null) &&
           (ref
               .watch(wishlistProvider)
@@ -44,12 +50,19 @@ class WishlistNotifier extends AsyncNotifier<List<Product>> {
   }
 
   final _dbManager = locator<IDBRepository>();
+  final _wishlistManager = locator<IWishlistRepository>();
 
   getWishlistProducts() async {
     print('WishlistScreenNotifier | getWishlistProducts() Executed');
-
+    // print('///// user: ${ref.watch(userProvider).value!}');
     state = const AsyncLoading();
-    var allProducts = await AsyncValue.guard(_dbManager.getWishlistProducts);
+    // var allProducts = await AsyncValue.guard(_dbManager.getWishlistProducts);
+    var allProducts = await AsyncValue.guard(
+      () async {
+        return await _wishlistManager.getWishlistProducts(
+            userModel: ref.watch(userProvider).value!);
+      },
+    );
     state = allProducts;
     return allProducts;
   }
@@ -86,7 +99,7 @@ class WishlistNotifier extends AsyncNotifier<List<Product>> {
 
   getWishlistCount() {
     int productCount = 0;
-    if ((state.value != null)) productCount = state.value!.length;
+    // if ((state.value != null)) productCount = state.value!.length;
     return productCount;
   }
 }

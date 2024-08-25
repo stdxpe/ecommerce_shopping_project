@@ -161,7 +161,7 @@ abstract class AppStrings {
   static const String creditCardsCvvTextfieldHintText = '123';
 
   /// DETAILS SCREEN
-  static const String productDetailsScreenReviews = ' Reviews';
+  static const String productDetailsScreenReviews = 'Reviews';
   static const String detailsScreenButtonAddToShoppingCart =
       'Add to Shopping Cart';
   static const String productDetailsScreenDialogPopupAddedToWishlistMessage =

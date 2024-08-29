@@ -1,20 +1,98 @@
-import 'package:ecommerce_shopping_project/models/collection.dart';
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+
+import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection_dto.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
+
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_storage_service.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 
 class CollectionManager extends ICollectionRepository {
   final _collectionService = locator<ICollectionService>();
+  final _productService = locator<IProductService>();
+  final _storageService = locator<IStorageService>();
+
+  @override
+  Future<List<Collection>> getAllCollections() async {
+    try {
+      List<Collection> tempCollectionList = [];
+
+      List<CollectionDto> tempCollectionDtoList =
+          await _collectionService.getAllCollections();
+
+      for (var collectionDto in tempCollectionDtoList) {
+        /// Converting Firebase Storage Relative Image Path, into Actual Image Link
+        String tempImageUrl = await _storageService.getImageUrl(
+            imageRelativePath: collectionDto.photo);
+
+        /// Converting List<String> productId's, into List<Product> to work with
+        List<Product> tempProductList = [];
+        for (String productId in collectionDto.products) {
+          Product? selectedProduct =
+              await _productService.getProductById(productId: productId);
+          if (selectedProduct != null) tempProductList.add(selectedProduct);
+        }
+
+        /// Creating a new Collection model from CollectionDto model, with new params
+        Collection tempCollection = Collection(
+          id: collectionDto.id,
+          title: collectionDto.title,
+          subtitle: collectionDto.subtitle,
+          photo: tempImageUrl,
+          products: tempProductList,
+        );
+
+        tempCollectionList.add(tempCollection);
+      }
+      return tempCollectionList;
+    } on Exception catch (_) {
+      print(
+          'CollectionManager getAllCollections catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'CollectionManager getAllCollections catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
 
   @override
   Future<Collection> getCollectionById({required String collectionId}) async {
     try {
       print('CollectionManager getCollectionById try block exec');
 
-      Collection? collection = await _collectionService.getCollectionById(
+      CollectionDto? collectionDto = await _collectionService.getCollectionById(
           collectionId: collectionId);
 
-      return (collection != null) ? collection : throw Exception();
+      if (collectionDto != null) {
+        print('CollectionManager getCollectionById if block exec');
+
+        List<Product> tempProductList = [];
+
+        for (String productId in collectionDto.products) {
+          Product? selectedProduct =
+              await _productService.getProductById(productId: productId);
+          if (selectedProduct != null) tempProductList.add(selectedProduct);
+        }
+
+        String tempImageUrl = await _storageService.getImageUrl(
+            imageRelativePath: collectionDto.photo);
+
+        Collection collection = Collection(
+          id: collectionDto.id,
+          title: collectionDto.title,
+          subtitle: collectionDto.subtitle,
+          photo: tempImageUrl,
+          products: tempProductList,
+        );
+        return collection;
+      } else {
+        print(
+            'CollectionManager getCollectionById else block exec. Collection is Null. throwing Exception');
+        throw Exception();
+      }
     } on Exception catch (_) {
       print(
           'CollectionManager getCollectionById catch exception block exec, rethrowing');
@@ -30,7 +108,15 @@ class CollectionManager extends ICollectionRepository {
   Future<void> createCollection({required Collection collection}) async {
     try {
       print('CollectionManager createCollection try block exec');
-      await _collectionService.createCollection(collection: collection);
+      CollectionDto collectionDto = CollectionDto(
+        id: collection.id,
+        title: collection.title,
+        subtitle: collection.subtitle,
+        photo: collection.photo,
+        products: collection.products.map((product) => product.id).toList(),
+      );
+
+      await _collectionService.createCollection(collectionDto: collectionDto);
     } on Exception catch (_) {
       print(
           'CollectionManager createCollection catch exception block exec, rethrowing');

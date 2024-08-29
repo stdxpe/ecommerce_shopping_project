@@ -1,6 +1,7 @@
 import 'package:ecommerce_shopping_project/models/collection.dart';
 
 abstract class ICollectionRepository {
+  Future<List<Collection>> getAllCollections();
   Future<Collection> getCollectionById({required String collectionId});
   Future<void> createCollection({required Collection collection});
 

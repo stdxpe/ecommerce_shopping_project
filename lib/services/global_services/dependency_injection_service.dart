@@ -1,33 +1,34 @@
 import 'package:get_it/get_it.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
-import 'package:ecommerce_shopping_project/business/profile_manager.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_order_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
 import 'package:ecommerce_shopping_project/business/collection_manager.dart';
-import 'package:ecommerce_shopping_project/business/order_manager.dart';
-import 'package:ecommerce_shopping_project/business/shopping_cart_manager.dart';
-import 'package:ecommerce_shopping_project/business/wishlist_manager.dart';
-import 'package:ecommerce_shopping_project/services/firebase_collection_service.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/business/dummy_db_manager.dart';
 import 'package:ecommerce_shopping_project/business/firebase_user_manager.dart';
 import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
+import 'package:ecommerce_shopping_project/business/order_manager.dart';
+import 'package:ecommerce_shopping_project/business/profile_manager.dart';
+import 'package:ecommerce_shopping_project/business/shopping_cart_manager.dart';
+import 'package:ecommerce_shopping_project/business/wishlist_manager.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_storage_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
 import 'package:ecommerce_shopping_project/services/dummy_db_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_auth_service.dart';
+import 'package:ecommerce_shopping_project/services/firebase_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_product_service.dart';
+import 'package:ecommerce_shopping_project/services/firebase_storage_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_user_service.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';
 import 'package:ecommerce_shopping_project/services/i_db_service_dummy.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
 
 final locator = GetIt.instance;
 
@@ -51,6 +52,10 @@ void registerDependencyInjectionService() {
   /// Collection Service (Data Access Layer)
   locator.registerLazySingleton<ICollectionService>(
       () => FirebaseCollectionService());
+
+  /// Storage Service (Data Access Layer)
+  locator
+      .registerLazySingleton<IStorageService>(() => FirebaseStorageService());
 
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////

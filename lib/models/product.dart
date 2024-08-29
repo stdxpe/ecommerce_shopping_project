@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/models/review.dart';
 
 class Product {
@@ -28,7 +28,7 @@ class Product {
   final int stockCount;
   final double shippingFee;
   final int estimatedShippingDurationInDays;
-  final List<Collection> collections;
+  final List<CollectionDto> collections;
   final List<Review> reviews;
 
   Product({
@@ -83,7 +83,7 @@ class Product {
     int? stockCount,
     double? shippingFee,
     int? estimatedShippingDurationInDays,
-    List<Collection>? collections,
+    List<CollectionDto>? collections,
     List<Review>? reviews,
   }) =>
       Product(
@@ -144,8 +144,8 @@ class Product {
         shippingFee: json["shippingFee"]?.toDouble(),
         estimatedShippingDurationInDays:
             json["estimatedShippingDurationInDays"],
-        collections: List<Collection>.from(
-            json["collections"].map((x) => Collection.fromMap(x))),
+        collections: List<CollectionDto>.from(
+            json["collections"].map((x) => CollectionDto.fromMap(x))),
         reviews:
             List<Review>.from(json["reviews"].map((x) => Review.fromMap(x))),
       );

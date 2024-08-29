@@ -1,10 +1,10 @@
-import 'package:ecommerce_shopping_project/models/user_model.dart';
-import 'package:ecommerce_shopping_project/models/address.dart';
-import 'package:ecommerce_shopping_project/models/credit_card.dart';
+import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
+import 'package:ecommerce_shopping_project/models/address.dart';
+import 'package:ecommerce_shopping_project/models/credit_card.dart';
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
-
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 class ProfileManager extends IProfileRepository {
@@ -13,15 +13,16 @@ class ProfileManager extends IProfileRepository {
   @override
   Future<List<Address>> getAddresses({required UserModel userModel}) async {
     try {
-      print('ProfileManager getAddresses try block exec');
+      debugPrint('ProfileManager getAddresses try block exec');
 
       return userModel.addresses;
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager getAddresses catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print('ProfileManager getAddresses catch error block exec, rethrowing');
+      debugPrint(
+          'ProfileManager getAddresses catch error block exec, rethrowing');
       rethrow;
     }
   }
@@ -30,7 +31,7 @@ class ProfileManager extends IProfileRepository {
   Future<void> createAddress(
       {required Address address, required UserModel userModel}) async {
     try {
-      print('ProfileManager createAddress try block exec');
+      debugPrint('ProfileManager createAddress try block exec');
 
       List<Address> tempAddresses = userModel.addresses;
       tempAddresses.add(address);
@@ -38,11 +39,12 @@ class ProfileManager extends IProfileRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(addresses: tempAddresses));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager createAddress catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print('ProfileManager createAddress catch error block exec, rethrowing');
+      debugPrint(
+          'ProfileManager createAddress catch error block exec, rethrowing');
       rethrow;
     }
   }
@@ -51,7 +53,7 @@ class ProfileManager extends IProfileRepository {
   Future<void> deleteAddress(
       {required Address address, required UserModel userModel}) async {
     try {
-      print('ProfileManager deleteAddress try block exec');
+      debugPrint('ProfileManager deleteAddress try block exec');
 
       List<Address> tempAddresses = userModel.addresses;
 
@@ -60,11 +62,12 @@ class ProfileManager extends IProfileRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(addresses: tempAddresses));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager deleteAddress catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print('ProfileManager deleteAddress catch error block exec, rethrowing');
+      debugPrint(
+          'ProfileManager deleteAddress catch error block exec, rethrowing');
       rethrow;
     }
   }
@@ -73,15 +76,16 @@ class ProfileManager extends IProfileRepository {
   Future<List<CreditCard>> getCreditCards(
       {required UserModel userModel}) async {
     try {
-      print('ProfileManager getCreditCards try block exec');
+      debugPrint('ProfileManager getCreditCards try block exec');
 
       return userModel.creditCards;
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager getCreditCards catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print('ProfileManager getCreditCards catch error block exec, rethrowing');
+      debugPrint(
+          'ProfileManager getCreditCards catch error block exec, rethrowing');
       rethrow;
     }
   }
@@ -90,7 +94,7 @@ class ProfileManager extends IProfileRepository {
   Future<void> createCreditCard(
       {required CreditCard creditCard, required UserModel userModel}) async {
     try {
-      print('ProfileManager createCreditCard try block exec');
+      debugPrint('ProfileManager createCreditCard try block exec');
 
       List<CreditCard> tempCreditCards = userModel.creditCards;
       tempCreditCards.add(creditCard);
@@ -98,11 +102,11 @@ class ProfileManager extends IProfileRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(creditCards: tempCreditCards));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager createCreditCard catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ProfileManager createCreditCard catch error block exec, rethrowing');
       rethrow;
     }
@@ -112,7 +116,7 @@ class ProfileManager extends IProfileRepository {
   Future<void> deleteCreditCard(
       {required CreditCard creditCard, required UserModel userModel}) async {
     try {
-      print('ProfileManager deleteCreditCard try block exec');
+      debugPrint('ProfileManager deleteCreditCard try block exec');
 
       List<CreditCard> tempCreditCards = userModel.creditCards;
 
@@ -121,11 +125,11 @@ class ProfileManager extends IProfileRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(creditCards: tempCreditCards));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ProfileManager deleteCreditCard catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ProfileManager deleteCreditCard catch error block exec, rethrowing');
       rethrow;
     }

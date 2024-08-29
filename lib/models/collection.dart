@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'package:ecommerce_shopping_project/models/product.dart';
 
 class Collection {
   final String id;
@@ -6,7 +6,7 @@ class Collection {
   final String subtitle;
   final String? detailedDescription;
   final String photo;
-  final List<String> products;
+  final List<Product> products;
 
   Collection({
     required this.id,
@@ -23,7 +23,7 @@ class Collection {
     String? subtitle,
     String? detailedDescription,
     String? photo,
-    List<String>? products,
+    List<Product>? products,
   }) =>
       Collection(
         id: id ?? this.id,
@@ -33,29 +33,6 @@ class Collection {
         photo: photo ?? this.photo,
         products: products ?? this.products,
       );
-
-  factory Collection.fromJson(String str) =>
-      Collection.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Collection.fromMap(Map<String, dynamic> json) => Collection(
-        id: json["id"],
-        title: json["title"],
-        subtitle: json["subtitle"],
-        detailedDescription: json["detailedDescription"],
-        photo: json["photo"],
-        products: List<String>.from(json["products"].map((x) => x)),
-      );
-
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "title": title,
-        "subtitle": subtitle,
-        "detailedDescription": detailedDescription,
-        "photo": photo,
-        "products": List<dynamic>.from(products.map((x) => x)),
-      };
 
   @override
   String toString() {

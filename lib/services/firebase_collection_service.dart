@@ -1,34 +1,55 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
-import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 class FirebaseCollectionService extends ICollectionService {
   final _db = locator<FirebaseFirestore>();
 
   @override
-  Future<Collection?> getCollectionById({required String collectionId}) async {
+  Future<List<CollectionDto>> getAllCollections() async {
+    var returnedSnapshot = await _db.collection('collections').get();
+    var returnedList = returnedSnapshot.docs;
+
+    List<CollectionDto> tempList = [];
+
+    if (returnedSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+      debugPrint(
+          'FirebaseCollectionService getAllCollections if block exec. List is NOT empty');
+
+      for (var doc in returnedList) {
+        var returnedMap = doc.data();
+        tempList.add(CollectionDto.fromMap(returnedMap));
+      }
+    }
+    return tempList;
+  }
+
+  @override
+  Future<CollectionDto?> getCollectionById(
+      {required String collectionId}) async {
     var returnedSnapshot = await _db.doc('collections/$collectionId').get();
     var returnedMap = returnedSnapshot.data();
 
     if (returnedSnapshot.exists &&
         returnedMap != null &&
         returnedMap.isNotEmpty) {
-      print(
+      debugPrint(
           'FirebaseCollectionService getCollectionById if block exec. Collection is NOT null');
 
-      return Collection.fromMap(returnedMap);
+      return CollectionDto.fromMap(returnedMap);
     } else {
-      print(
+      debugPrint(
           'FirebaseCollectionService getCollectionById else block exec. Collection is null');
       return null;
     }
   }
 
   @override
-  Future<void> createCollection({required Collection collection}) async {
-    print('FirebaseCollectionService createCollection exec');
-    _db.doc('collections/${collection.id}').set(collection.toMap());
+  Future<void> createCollection({required CollectionDto collectionDto}) async {
+    debugPrint('FirebaseCollectionService createCollection exec');
+    _db.doc('collections/${collectionDto.id}').set(collectionDto.toMap());
   }
 }

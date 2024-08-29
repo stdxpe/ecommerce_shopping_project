@@ -1,6 +1,7 @@
-import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 
 abstract class ICollectionService {
-  Future<Collection?> getCollectionById({required String collectionId});
-  Future<void> createCollection({required Collection collection});
+  Future<List<CollectionDto>> getAllCollections();
+  Future<CollectionDto?> getCollectionById({required String collectionId});
+  Future<void> createCollection({required CollectionDto collectionDto});
 }

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/models/cart_product_dto.dart';
@@ -15,7 +17,7 @@ class ShoppingCartManager extends IShoppingCartRepository {
   Future<List<CartProduct>> getShoppingCartProducts(
       {required UserModel userModel}) async {
     try {
-      print('ShoppingCartManager getShoppingCartProducts try block exec');
+      debugPrint('ShoppingCartManager getShoppingCartProducts try block exec');
 
       List<CartProduct> shoppingCartProducts = [];
 
@@ -36,11 +38,11 @@ class ShoppingCartManager extends IShoppingCartRepository {
       }
       return shoppingCartProducts;
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager getShoppingCartProducts catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager getShoppingCartProducts catch error block exec, rethrowing');
       rethrow;
     }
@@ -52,7 +54,7 @@ class ShoppingCartManager extends IShoppingCartRepository {
     required UserModel userModel,
   }) async {
     try {
-      print('ShoppingCartManager addProductToShoppingCart try block exec');
+      debugPrint('ShoppingCartManager addProductToShoppingCart try block exec');
 
       CartProductDto temp = CartProductDto(
           id: cartProduct.id,
@@ -67,11 +69,11 @@ class ShoppingCartManager extends IShoppingCartRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(shoppingCart: tempShoppingCart));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager addProductToShoppingCart catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager addProductToShoppingCart catch error block exec, rethrowing');
       rethrow;
     }
@@ -81,7 +83,8 @@ class ShoppingCartManager extends IShoppingCartRepository {
   Future<void> updateProductOnShoppingCart(
       {required CartProduct cartProduct, required UserModel userModel}) async {
     try {
-      print('ShoppingCartManager updateProductOnShoppingCart try block exec');
+      debugPrint(
+          'ShoppingCartManager updateProductOnShoppingCart try block exec');
       List<CartProductDto> tempShoppingCart = userModel.shoppingCart;
 
       int updatedIndex = tempShoppingCart
@@ -95,11 +98,11 @@ class ShoppingCartManager extends IShoppingCartRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(shoppingCart: tempShoppingCart));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager updateProductOnShoppingCart catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager updateProductOnShoppingCart catch error block exec, rethrowing');
       rethrow;
     }
@@ -109,7 +112,8 @@ class ShoppingCartManager extends IShoppingCartRepository {
   Future<void> deleteProductFromShoppingCart(
       {required CartProduct cartProduct, required UserModel userModel}) async {
     try {
-      print('ShoppingCartManager deleteProductFromShoppingCart try block exec');
+      debugPrint(
+          'ShoppingCartManager deleteProductFromShoppingCart try block exec');
 
       List<CartProductDto> tempShoppingCart = userModel.shoppingCart;
 
@@ -118,11 +122,11 @@ class ShoppingCartManager extends IShoppingCartRepository {
       await _userService.updateUserModel(
           userModel: userModel.copyWith(shoppingCart: tempShoppingCart));
     } on Exception catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager deleteProductFromShoppingCart catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print(
+      debugPrint(
           'ShoppingCartManager deleteProductFromShoppingCart catch error block exec, rethrowing');
       rethrow;
     }

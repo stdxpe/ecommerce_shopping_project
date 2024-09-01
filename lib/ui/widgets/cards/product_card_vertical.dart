@@ -81,7 +81,8 @@ class ProductCardVertical extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(
+                    alignment: Alignment.topCenter,
+                    image: NetworkImage(
                       product.mainPhoto,
                     ),
                   ),

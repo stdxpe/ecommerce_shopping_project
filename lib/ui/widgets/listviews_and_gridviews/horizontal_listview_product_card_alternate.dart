@@ -50,13 +50,16 @@ class HorizontalListviewProductCardVerticalAlternate extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           clipBehavior: Clip.none,
           itemExtent: cardWidth.w + paddingBetweenElements.w,
-          itemCount: productsList.length,
+          itemCount: useShimmer! ? 5 : productsList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(right: paddingBetweenElements.w),
               child: useShimmer!
-                  ? CardPlaceholderVertical(cardWidth: cardWidth)
+                  ? CardPlaceholderVertical(
+                      cardWidth: cardWidth,
+                      useDoubleLine: true,
+                    )
                   : ProductCardVertical(
                       /// TODO: New Product provider
                       // isNewProduct: true,

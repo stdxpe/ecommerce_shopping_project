@@ -7,10 +7,12 @@ class CardImage extends StatelessWidget {
     required this.imageUrl,
     required this.height,
     required this.width,
+    this.useFadeInAnimation = true,
   });
   final String imageUrl;
   final double height;
   final double width;
+  final bool? useFadeInAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,8 @@ class CardImage extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         fit: BoxFit.cover,
-        fadeInDuration: const Duration(milliseconds: 250),
+        alignment: Alignment.topCenter,
+        fadeInDuration: Duration(milliseconds: useFadeInAnimation! ? 250 : 0),
         errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );

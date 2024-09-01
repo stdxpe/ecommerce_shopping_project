@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DetailsScreenSlider extends StatelessWidget {
@@ -21,12 +23,12 @@ class DetailsScreenSlider extends StatelessWidget {
     return Container(
       height: imageHeight ?? context.mediaQuery.size.width,
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadows.kBoxShadowTopBanner(
-            color: context.theme.colorPalette.shadowSecondary,
+          // boxShadow: [
+          //   BoxShadows.kBoxShadowTopBanner(
+          //     color: context.theme.colorPalette.shadowSecondary,
+          //   ),
+          // ],
           ),
-        ],
-      ),
       child: Swiper(
         fade: 0,
         index: 0,
@@ -49,16 +51,12 @@ class DetailsScreenSlider extends StatelessWidget {
             twoTouchOnly: true,
             onScaleStart: () {},
             onScaleStop: () {},
-            child: Container(
-              height: imageHeight ?? context.mediaQuery.size.width,
-              padding: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    imagesList[index],
-                  ),
-                ),
+            child: Consumer(
+              builder: (context, ref, child) => CardImage(
+                imageUrl: imagesList[index],
+                useFadeInAnimation: false,
+                height: imageHeight ?? context.mediaQuery.size.width,
+                width: context.mediaQuery.size.width,
               ),
             ),
           );

@@ -26,7 +26,7 @@ class DialogPopupProductAddedToCart extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
+          Image.network(
             height: cardHeight * 0.5,
             width: cardWidth,
             product.mainPhoto,

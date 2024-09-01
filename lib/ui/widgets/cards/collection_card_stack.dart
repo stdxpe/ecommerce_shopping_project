@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -17,7 +18,6 @@ class CollectionCardStack extends StatelessWidget {
   final Function onPressed;
   final Color textColor;
   final double? paddingMain;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -31,12 +31,7 @@ class CollectionCardStack extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: paddingMain!.w),
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                collection.photo,
-              ),
-            ),
+            color: context.colorPalette.scaffoldBackground,
             borderRadius: BorderRadius.circular(
               Constants.kRadiusCardPrimary.r,
             ),
@@ -48,6 +43,11 @@ class CollectionCardStack extends StatelessWidget {
           ),
           child: Stack(
             children: [
+              CardImage(
+                imageUrl: collection.photo,
+                height: context.mediaQuery.size.width - paddingMain! * 2.w,
+                width: context.mediaQuery.size.width - paddingMain! * 2.w,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: TextCustom(
@@ -75,10 +75,60 @@ class CollectionCardStack extends StatelessWidget {
           ),
         ),
       ),
+      // child: Align(
+      //   child: Container(
+      //     height: context.mediaQuery.size.width - paddingMain! * 2.w,
+      //     width: context.mediaQuery.size.width - paddingMain! * 2.w,
+      //     margin: EdgeInsets.symmetric(horizontal: paddingMain!.w),
+      //     clipBehavior: Clip.hardEdge,
+      //     decoration: BoxDecoration(
+      //       image: DecorationImage(
+      //         fit: BoxFit.cover,
+      //         image: NetworkImage(
+      //           collection.photo,
+      //         ),
+      //       ),
+      //       borderRadius: BorderRadius.circular(
+      //         Constants.kRadiusCardPrimary.r,
+      //       ),
+      //       boxShadow: [
+      //         BoxShadows.kBoxShadowProductCard(
+      //           color: context.colorPalette.shadowPrimary,
+      //         ),
+      //       ],
+      //     ),
+      //     child: Stack(
+      //       children: [
+      //         Align(
+      //           alignment: Alignment.center,
+      //           child: TextCustom(
+      //             text: collection.title,
+      //             textStyle: context.textTheme.bodyLarge!,
+      //             color: textColor,
+      //             fontSizeCustom: 100,
+      //           ),
+      //         ),
+      //         Positioned.fill(
+      //           top: 200.h,
+      //           child: Align(
+      //             alignment: Alignment.center,
+      //             child: TextCustom(
+      //               text: collection.subtitle,
+      //               textStyle: context.textTheme.bodyMedium!,
+      //               fontSizeCustom: 45,
+      //               fontWeightCustom: FontWeight.w600,
+      //               fontLetterSpacingCustom: 0.5,
+      //               color: textColor.withOpacity(0.75),
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
-
 
 // GestureDetector(
 //       onTap: () {

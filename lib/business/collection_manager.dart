@@ -1,18 +1,15 @@
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
-
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_storage_service.dart';
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 
 class CollectionManager extends ICollectionRepository {
-  final _collectionService = locator<ICollectionService>();
   final _productService = locator<IProductService>();
-  final _storageService = locator<IStorageService>();
+  final _collectionService = locator<ICollectionService>();
 
   @override
   Future<List<Collection>> getAllCollections() async {
@@ -23,24 +20,30 @@ class CollectionManager extends ICollectionRepository {
           await _collectionService.getAllCollections();
 
       for (var collectionDto in tempCollectionDtoList) {
-        /// Converting Firebase Storage Relative Image Path, into Actual Image Link
-        String tempImageUrl = await _storageService.getImageUrl(
-            imageRelativePath: collectionDto.photo);
-
         /// Converting List<String> productId's, into List<Product> to work with
         List<Product> tempProductList = [];
-        for (String productId in collectionDto.products) {
+
+        /// TODO: Change into All Products (removed due to Firebase Costs)
+        // // // for (String productId in collectionDto.products) {
+        // // //   Product? selectedProduct =
+        // // //       await _productService.getProductById(productId: productId);
+        // // //   if (selectedProduct != null) tempProductList.add(selectedProduct);
+        // // // }
+        for (int i = 0; i <= 2; i++) {
+          String tempProductId = collectionDto.products[i];
           Product? selectedProduct =
-              await _productService.getProductById(productId: productId);
+              await _productService.getProductById(productId: tempProductId);
           if (selectedProduct != null) tempProductList.add(selectedProduct);
         }
+
+        /// TODO: END Change into All Products (removed due to Firebase Costs)
 
         /// Creating a new Collection model from CollectionDto model, with new params
         Collection tempCollection = Collection(
           id: collectionDto.id,
           title: collectionDto.title,
           subtitle: collectionDto.subtitle,
-          photo: tempImageUrl,
+          photo: collectionDto.photo,
           products: tempProductList,
         );
 
@@ -58,6 +61,7 @@ class CollectionManager extends ICollectionRepository {
     }
   }
 
+  /// TODO: Remove later?
   @override
   Future<Collection> getCollectionById({required String collectionId}) async {
     try {
@@ -77,14 +81,11 @@ class CollectionManager extends ICollectionRepository {
           if (selectedProduct != null) tempProductList.add(selectedProduct);
         }
 
-        String tempImageUrl = await _storageService.getImageUrl(
-            imageRelativePath: collectionDto.photo);
-
         Collection collection = Collection(
           id: collectionDto.id,
           title: collectionDto.title,
           subtitle: collectionDto.subtitle,
-          photo: tempImageUrl,
+          photo: collectionDto.photo,
           products: tempProductList,
         );
         return collection;
@@ -104,6 +105,7 @@ class CollectionManager extends ICollectionRepository {
     }
   }
 
+  /// TODO: Remove later
   @override
   Future<void> createCollection({required Collection collection}) async {
     try {

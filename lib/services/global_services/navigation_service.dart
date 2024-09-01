@@ -122,9 +122,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
   /// TODO: OnWillPop behaviors test physical android button
   return GoRouter(
-    initialLocation: Routes.test,
-    // initialLocation: Routes.loading,
-    // redirect: (context, state) => ref.watch(navigationRedirectProvider(state)),
+    // initialLocation: Routes.test,
+    initialLocation: Routes.loading,
+    redirect: (context, state) => ref.watch(navigationRedirectProvider(state)),
     errorBuilder: (context, state) => const ErrorScreen(),
     navigatorKey: rootNavigatorKey,
     routes: [

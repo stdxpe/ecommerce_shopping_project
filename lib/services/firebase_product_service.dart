@@ -1,34 +1,31 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+
+import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
 
 class FirebaseProductService extends IProductService {
   final _db = locator<FirebaseFirestore>();
 
   @override
   Future<Product?> getProductById({required String productId}) async {
-    var returnedSnapshot = await _db.doc('products/$productId').get();
+    var returnedDocSnapshot = await _db.doc('products/$productId').get();
+    var returnedMap = returnedDocSnapshot.data();
 
-    var returnedMap = returnedSnapshot.data();
-    print('productId: ${productId}');
-
-    print('returnedSnapshot.exists: ${returnedSnapshot.exists}');
-
-    print('returnedMap: $returnedMap');
-
-    if (returnedSnapshot.exists &&
+    if (returnedDocSnapshot.exists &&
         returnedMap != null &&
         returnedMap.isNotEmpty) {
       Product product = Product.fromMap(returnedMap);
 
-      print(
+      debugPrint(
           'FirebaseProductService getProductById if block exec. Product is NOT null');
 
       return product;
     } else {
-      print(
+      debugPrint(
           'FirebaseProductService getProductById else block exec. Product is null');
       return null;
     }
@@ -36,25 +33,27 @@ class FirebaseProductService extends IProductService {
 
   @override
   Future<void> createProduct({required Product product}) async {
-    print('FirebaseProductService createProduct exec');
+    debugPrint('FirebaseProductService createProduct exec');
     _db.doc('products/${product.id}').set(product.toMap());
-    // _db.collection('products').add(product.toMap());
   }
 
   @override
   Future<void> updateProduct({required Product product}) async {
-    print('FirebaseProductService updateProduct exec');
+    debugPrint('FirebaseProductService updateProduct exec');
     _db.doc('products/${product.id}').update(product.toMap());
   }
 
   @override
   Future<void> deleteProduct({required String productId}) async {
+    debugPrint('FirebaseProductService deleteProduct exec');
     _db.doc('products/$productId').delete();
   }
 
   @override
   Future<List<Product>> getProductsByFilter(
-      {required filter, int maxResultCount = 20}) async {
+      {required filter, int maxResultCount = 10}) async {
+    debugPrint('FirebaseProductService getProductsByFilter exec');
+
     var collectionRef = _db
         .collection('products')
         .where('price', isGreaterThan: filter.priceMin)
@@ -74,13 +73,14 @@ class FirebaseProductService extends IProductService {
       collectionRef = collectionRef.orderBy('price', descending: false);
     }
 
-    var returnedSnapshot = await collectionRef.limit(maxResultCount).get();
+    var returnedCollectionSnapshot =
+        await collectionRef.limit(maxResultCount).get();
 
     List<Product> tempList = [];
-    var returnedList = returnedSnapshot.docs;
+    var returnedList = returnedCollectionSnapshot.docs;
 
-    if (returnedSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
-      print(
+    if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+      debugPrint(
           'FirebaseProductService getProductsByFilter if block exec. List is NOT empty');
 
       for (var doc in returnedList) {
@@ -88,114 +88,9 @@ class FirebaseProductService extends IProductService {
         tempList.add(Product.fromMap(returnedMap));
       }
     } else {
-      print(
+      debugPrint(
           'FirebaseProductService getProductsByFilter else block exec. List is empty');
     }
     return tempList;
   }
 }
-
-  // onPressed: () async {
-            //   final faker = Faker.instance;
-
-            //   var randomId = const Uuid().v4();
-            //   // print(randomId);
-
-            //   String randomProduct = faker.commerce.productName();
-
-            //   String randomName = faker.name.fullName();
-            //   String randomProductName = faker.commerce.productAdjective();
-            //   String randomDesc = faker.commerce.productDescription();
-            //   String randomLoremSummary = faker.lorem.sentence();
-            //   String randomLoremDetailedDesc = faker.lorem.text();
-            //   String randomLoremShortDesc = faker.lorem.paragraph();
-            //   String randomLoremWord1 = faker.lorem.word();
-            //   String randomLoremWord2 = faker.lorem.word();
-            //   String randomPrice =
-            //       faker.commerce.price(symbol: '', min: 10, max: 1000);
-            //   String randomCompany = faker.company.companyName();
-            //   String randomHex1 = faker.datatype.hexaDecimal(length: 6);
-            //   String randomHex2 = faker.datatype.hexaDecimal(length: 6);
-            //   String randomHex3 = faker.datatype.hexaDecimal(length: 6);
-            //   String random = faker.commerce.productDescription();
-            //   String randomImage = faker.image.loremPicsum.image();
-
-            //   var randomDate = faker.date.past(DateTime.now());
-
-            //   // faker.image
-            //   String randomSize1 =
-            //       faker.datatype.number(min: 1, max: 50).toString();
-            //   String randomSize2 =
-            //       faker.datatype.number(min: 1, max: 50).toString();
-
-            //   print(randomHex1);
-            //   print('random: $random');
-            //   print('randomImage: $randomImage');
-
-            //   print('randomDate: $randomDate');
-
-            //   print(randomName);
-            //   print(randomProductName);
-            //   print(randomDesc);
-            //   print(randomPrice);
-            //   print('randomCompany: $randomCompany');
-
-            //   print('randomLoremWord: $randomLoremWord1 $randomLoremWord2 ');
-            //   print('randomLoremSummary: $randomLoremSummary');
-            //   print('randomLoremShortDesc: $randomLoremShortDesc');
-            //   print('randomLoremDetailedDesc: $randomLoremDetailedDesc');
-
-            //   final _productService = locator<IProductService>();
-
-            //   for (var i = 0; i < 50; i++) {
-            //     String generatedTitle =
-            //         '${faker.name.fullName()} ${faker.commerce.productName()}';
-            //     String generatedBrand =
-            //         '${faker.lorem.word()} ${faker.lorem.word()}';
-
-            //     List<String> keywords = [
-            //       'All',
-            //       ...generatedTitle.toLowerCase().split(' '),
-            //       ...generatedBrand.toLowerCase().split(' ')
-            //     ];
-
-            //     var createdAt = Timestamp.fromDate(
-            //         faker.date.past(DateTime.now(), rangeInYears: 5));
-
-            //     await _productService.createProduct(
-            //         product: Product(
-            //       id: const Uuid().v4(),
-            //       title: generatedTitle,
-            //       // '${faker.name.fullName()} ${faker.commerce.productName()}',
-            //       summary: faker.lorem.sentence(),
-            //       detailedDescription: faker.lorem.text(),
-            //       price: double.parse(
-            //           faker.commerce.price(symbol: '', min: 10, max: 1000)),
-            //       createdAt: createdAt,
-            //       mainPhoto: faker.image.loremPicsum.image(),
-            //       photos: List.generate(faker.datatype.number(min: 1, max: 6),
-            //           (index) => faker.image.loremPicsum.image()),
-            //       colors: List.generate(faker.datatype.number(min: 3, max: 10),
-            //           (index) => faker.datatype.hexaDecimal(length: 6)),
-            //       sizes: List.generate(
-            //           faker.datatype.number(min: 4, max: 7),
-            //           (index) =>
-            //               faker.datatype.number(min: 1, max: 50).toString()),
-            //       keywords: keywords,
-            //       totalOrdersCount: faker.datatype.number(min: 0, max: 500),
-            //       totalLikesCount: faker.datatype.number(min: 0, max: 1000),
-            //       totalRating:
-            //           faker.datatype.float(min: 0, max: 5, precision: 2),
-            //       storeId: const Uuid().v1(),
-            //       storeName: faker.company.companyName(),
-            //       stockCount: faker.datatype.number(min: 0, max: 500),
-            //       shippingFee: double.parse(
-            //           faker.commerce.price(symbol: '', min: 0, max: 15)),
-            //       estimatedShippingDurationInDays:
-            //           faker.datatype.number(min: 0, max: 5),
-            //       brand: generatedBrand,
-            //       collections: [],
-            //       reviews: [],
-            //     ));
-            //   }
-            // },

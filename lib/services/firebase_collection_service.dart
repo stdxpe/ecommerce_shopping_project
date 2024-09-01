@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 class FirebaseCollectionService extends ICollectionService {
   final _db = locator<FirebaseFirestore>();
 
   @override
   Future<List<CollectionDto>> getAllCollections() async {
-    var returnedSnapshot = await _db.collection('collections').get();
-    var returnedList = returnedSnapshot.docs;
+    var returnedCollectionSnapshot = await _db.collection('collections').get();
+    var returnedList = returnedCollectionSnapshot.docs;
 
     List<CollectionDto> tempList = [];
 
-    if (returnedSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+    if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
       debugPrint(
           'FirebaseCollectionService getAllCollections if block exec. List is NOT empty');
 
@@ -30,10 +30,10 @@ class FirebaseCollectionService extends ICollectionService {
   @override
   Future<CollectionDto?> getCollectionById(
       {required String collectionId}) async {
-    var returnedSnapshot = await _db.doc('collections/$collectionId').get();
-    var returnedMap = returnedSnapshot.data();
+    var returnedDocSnapshot = await _db.doc('collections/$collectionId').get();
+    var returnedMap = returnedDocSnapshot.data();
 
-    if (returnedSnapshot.exists &&
+    if (returnedDocSnapshot.exists &&
         returnedMap != null &&
         returnedMap.isNotEmpty) {
       debugPrint(

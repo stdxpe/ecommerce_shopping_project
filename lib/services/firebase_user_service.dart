@@ -9,12 +9,12 @@ class FirebaseUserService extends IUserService {
 
   @override
   Future<UserModel?> getUserModel({required String uid}) async {
-    var returnedSnapshot = await _db.doc('users/$uid').get();
-    var returnedMap = returnedSnapshot.data();
+    var returnedDocSnapshot = await _db.doc('users/$uid').get();
+    var returnedMap = returnedDocSnapshot.data();
 
     UserModel? userModel;
 
-    if (returnedSnapshot.exists && returnedMap != null) {
+    if (returnedDocSnapshot.exists && returnedMap != null) {
       userModel = UserModel.fromMap(returnedMap);
       print(
           'FirebaseUserService getUserModel if block exec. UserModel is not null');
@@ -42,7 +42,8 @@ class FirebaseUserService extends IUserService {
 
   @override
   Future<bool> checkIfUserDocumentExistsOnDb({required String uid}) async {
-    var returnedSnapshot = await _db.doc('users/$uid').get();
-    return returnedSnapshot.exists;
+    print('FirebaseUserService checkIfUserDocumentExistsOnDb exec');
+    var returnedDocSnapshot = await _db.doc('users/$uid').get();
+    return returnedDocSnapshot.exists;
   }
 }

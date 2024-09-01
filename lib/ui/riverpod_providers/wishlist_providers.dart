@@ -1,43 +1,15 @@
 import 'dart:async';
 
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
-import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
 
-final isProductOnWishlist =
-    StateProvider.family<bool, String>((ref, productId) {
-  var wishlist = ref.watch(wishlistProvider).value;
-  print('data: $wishlist');
-
-  return ((ref.watch(wishlistProvider).value != null) &&
-          (ref
-              .watch(wishlistProvider)
-              .value!
-              .where((e) => e.id == productId)
-              .isNotEmpty))
-      ? true
-      : false;
-});
-
-final toggleWishlistButtonProvider =
-    StateProvider.family<void, String>((ref, productId) {
-  (ref.watch(isProductOnWishlist(productId)))
-      ? ref
-          .read(wishlistProvider.notifier)
-          .deleteProductFromWishlist(productId: productId)
-      : ref
-          .read(wishlistProvider.notifier)
-          .addProductToWishlist(productId: productId);
-});
-
-final wishlistProvider =
-    AsyncNotifierProvider<WishlistNotifier, List<Product>>(() {
-  return WishlistNotifier();
-});
+final wishlistProvider = AsyncNotifierProvider<WishlistNotifier, List<Product>>(
+    () => WishlistNotifier());
 
 class WishlistNotifier extends AsyncNotifier<List<Product>> {
   @override
@@ -49,57 +21,76 @@ class WishlistNotifier extends AsyncNotifier<List<Product>> {
     return await future;
   }
 
-  final _dbManager = locator<IDBRepository>();
   final _wishlistManager = locator<IWishlistRepository>();
 
   getWishlistProducts() async {
-    print('WishlistScreenNotifier | getWishlistProducts() Executed');
-    // print('///// user: ${ref.watch(userProvider).value!}');
+    debugPrint('WishlistNotifier | getWishlistProducts() Executed');
+
     state = const AsyncLoading();
-    // var allProducts = await AsyncValue.guard(_dbManager.getWishlistProducts);
-    var allProducts = await AsyncValue.guard(
-      () async {
-        return await _wishlistManager.getWishlistProducts(
-            userModel: ref.watch(userProvider).value!);
-      },
-    );
-    state = allProducts;
-    return allProducts;
+    state = await AsyncValue.guard(() async {
+      return await _wishlistManager.getWishlistProducts(
+          userModel: ref.watch(userProvider).value!);
+    });
   }
 
-  addProductToWishlist({required String productId}) async {
-    print('WishlistScreenNotifier | addProductToWishlist() Executed');
+  addProductToWishlist({required Product product}) async {
+    debugPrint('WishlistNotifier | addProductToWishlist() Executed');
 
     final previousState = await future;
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        Product addedProduct =
-            await _dbManager.addProductToWishlist(productId: productId);
+        await _wishlistManager.addProductToWishlist(
+          productId: product.id,
+          userModel: ref.watch(userProvider).value!,
+        );
 
-        return [...previousState, addedProduct];
+        return [...previousState, product];
       },
     );
   }
 
-  deleteProductFromWishlist({required String productId}) async {
-    print('WishlistScreenNotifier | deleteProductFromWishlist() Executed');
+  deleteProductFromWishlist({required Product product}) async {
+    debugPrint('WishlistNotifier | deleteProductFromWishlist() Executed');
 
     final previousState = await future;
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        Product deletedProduct =
-            await _dbManager.deleteProductFromWishlist(productId: productId);
+        await _wishlistManager.deleteProductFromWishlist(
+          productId: product.id,
+          userModel: ref.watch(userProvider).value!,
+        );
 
-        return [...previousState.where((e) => (e.id != deletedProduct.id))];
+        return [...previousState.where((e) => (e.id != product.id))];
       },
     );
   }
 
-  getWishlistCount() {
-    int productCount = 0;
-    // if ((state.value != null)) productCount = state.value!.length;
-    return productCount;
+  int getWishlistCount() {
+    return ((state.value != null && state.value!.isNotEmpty))
+        ? state.value!.length
+        : 0;
   }
 }
+
+final isProductOnWishlist = StateProvider.family<bool, Product>((ref, product) {
+  bool result = false;
+  var wishlist = ref.watch(wishlistProvider).value;
+
+  result = (wishlist != null &&
+      wishlist.isNotEmpty &&
+      wishlist.map((e) => e.id).contains(product.id));
+
+  return result;
+});
+
+final toggleWishlistButton = Provider.family<void, Product>((ref, product) {
+  ref.watch(isProductOnWishlist(product))
+      ? ref
+          .read(wishlistProvider.notifier)
+          .deleteProductFromWishlist(product: product)
+      : ref
+          .read(wishlistProvider.notifier)
+          .addProductToWishlist(product: product);
+});

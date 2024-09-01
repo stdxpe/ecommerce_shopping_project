@@ -16,6 +16,17 @@ class SingleColorPickerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('///////////////////////////////////////////////////////////////');
+    print('///////////////////////////////////////////////////////////////');
+    // print('color: $itemColorHexCode');
+    // print('colorParsed: ${int.parse(itemColorHexCode)}');
+    // var formattedColor = itemColorHexCode.split('x').last;
+    // print('Color Hex: $formattedColor');
+    // print(Color(int.parse(formattedColor, radix: 16) + 0xFF000000));
+
+    print('///////////////////////////////////////////////////////////////');
+    print('///////////////////////////////////////////////////////////////');
+
     return Container(
       clipBehavior: Clip.none,
       height: itemSize,
@@ -28,6 +39,8 @@ class SingleColorPickerButton extends StatelessWidget {
             ),
         ],
         shape: BoxShape.circle,
+        // color: Color(int.parse(itemColorHexCode, radix: 16) + 0xFF000000),
+        // color: Color(int.parse(itemColorHexCode)),
         color: Color(int.parse(itemColorHexCode, radix: 16) + 0xFF000000),
         border: Border.all(
           width: isSelected ? 4 : 0,

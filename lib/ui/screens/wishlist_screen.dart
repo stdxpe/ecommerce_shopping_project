@@ -35,7 +35,7 @@ class WishlistScreen extends ConsumerWidget {
                       dismissibleEnabled: true,
                       onDismissed: (index) => ref
                           .read(wishlistProvider.notifier)
-                          .deleteProductFromWishlist(productId: data[index].id),
+                          .deleteProductFromWishlist(product: data[index]),
                       useSoftShadow: true,
                       cardHeight: 200,
                       paddingMain: Constants.kMainPaddingHorizontal,

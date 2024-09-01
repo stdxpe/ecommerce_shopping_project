@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/firebase/firebase_user_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

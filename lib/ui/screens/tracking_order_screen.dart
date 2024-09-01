@@ -25,7 +25,7 @@ class TrackingOrderScreen extends StatelessWidget {
             const TitleMain(
               title: AppStrings.trackingOrderScreenTitle,
             ),
-            VerticalListviewProductCardHorizontalMini(
+            const VerticalListviewProductCardHorizontalMini(
               isCardElevated: true,
               // productsList: dummyOrders[0].products,
               productsList: [],

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/models/review.dart';
 
 class Product {
@@ -28,7 +27,7 @@ class Product {
   final int stockCount;
   final double shippingFee;
   final int estimatedShippingDurationInDays;
-  final List<CollectionDto> collections;
+  final List<String> collections;
   final List<Review> reviews;
 
   Product({
@@ -83,7 +82,7 @@ class Product {
     int? stockCount,
     double? shippingFee,
     int? estimatedShippingDurationInDays,
-    List<CollectionDto>? collections,
+    List<String>? collections,
     List<Review>? reviews,
   }) =>
       Product(
@@ -144,8 +143,9 @@ class Product {
         shippingFee: json["shippingFee"]?.toDouble(),
         estimatedShippingDurationInDays:
             json["estimatedShippingDurationInDays"],
-        collections: List<CollectionDto>.from(
-            json["collections"].map((x) => CollectionDto.fromMap(x))),
+        collections: List<String>.from(json["collections"].map((x) => x)),
+        // collections: List<CollectionDto>.from(
+        //     json["collections"].map((x) => CollectionDto.fromMap(x))),
         reviews:
             List<Review>.from(json["reviews"].map((x) => Review.fromMap(x))),
       );
@@ -174,7 +174,8 @@ class Product {
         "stockCount": stockCount,
         "shippingFee": shippingFee,
         "estimatedShippingDurationInDays": estimatedShippingDurationInDays,
-        "collections": List<dynamic>.from(collections.map((x) => x.toMap())),
+        "collections": List<dynamic>.from(collections.map((x) => x)),
+        // "collections": List<dynamic>.from(collections.map((x) => x.toMap())),
         "reviews": List<dynamic>.from(reviews.map((x) => x.toMap())),
       };
 

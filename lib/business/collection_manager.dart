@@ -3,6 +3,7 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
+import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
@@ -126,6 +127,21 @@ class CollectionManager extends ICollectionRepository {
     } on Error catch (_) {
       print(
           'CollectionManager createCollection catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<Product>> getCollectionByFilter({required Filter filter}) async {
+    try {
+      return await _productService.getProductsByFilter(filter: filter);
+    } on Exception catch (_) {
+      print(
+          'CollectionManager getCollectionByFilter catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'CollectionManager getCollectionByFilter catch error block exec, rethrowing');
       rethrow;
     }
   }

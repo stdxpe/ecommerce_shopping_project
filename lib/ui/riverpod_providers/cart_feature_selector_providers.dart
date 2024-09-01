@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
 import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
@@ -10,10 +11,10 @@ final featureSelectorOnPressedProvider =
   String selectedColor = product.colors[ref.watch(colorSelectorProvider)];
   String selectedSize = product.sizes[ref.watch(sizeSelectorProvider)];
 
-  var result =
+  bool result =
       await ref.read(shoppingCartProvider.notifier).addProductToShoppingCart(
             cartProduct: CartProduct(
-              id: product.id,
+              id: const Uuid().v4(),
               selectedProduct: product,
               selectedColor: selectedColor,
               selectedSize: selectedSize,
@@ -25,9 +26,9 @@ final featureSelectorOnPressedProvider =
 
   if (result) {
     ref.watch(goRouterProvider).push(Routes.dialogAddedToCart, extra: product);
+  } else {
+    ref.watch(goRouterProvider).push(Routes.dialogError);
   }
-
-  /// TODO: Else error message
 });
 
 final sizeSelectorProvider = StateProvider<int>((ref) {

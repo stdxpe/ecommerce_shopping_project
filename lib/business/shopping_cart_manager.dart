@@ -58,7 +58,7 @@ class ShoppingCartManager extends IShoppingCartRepository {
 
       CartProductDto temp = CartProductDto(
           id: cartProduct.id,
-          selectedProductId: cartProduct.id,
+          selectedProductId: cartProduct.selectedProduct.id,
           selectedColor: cartProduct.selectedColor,
           selectedSize: cartProduct.selectedSize,
           itemCount: cartProduct.itemCount);
@@ -92,8 +92,14 @@ class ShoppingCartManager extends IShoppingCartRepository {
 
       tempShoppingCart.removeAt(updatedIndex);
 
-      tempShoppingCart.insert(
-          updatedIndex, CartProductDto.fromMap(cartProduct.toMap()));
+      CartProductDto newCartDto = CartProductDto(
+          id: cartProduct.id,
+          selectedProductId: cartProduct.selectedProduct.id,
+          selectedColor: cartProduct.selectedColor,
+          selectedSize: cartProduct.selectedSize,
+          itemCount: cartProduct.itemCount);
+
+      tempShoppingCart.insert(updatedIndex, newCartDto);
 
       await _userService.updateUserModel(
           userModel: userModel.copyWith(shoppingCart: tempShoppingCart));

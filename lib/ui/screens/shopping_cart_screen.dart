@@ -75,7 +75,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                 child: BottomSheetButtonsShoppingCart(
                   onPressed: () => ref
                       .read(shoppingCartProvider.notifier)
-                      .continueToPaymentButton(context: context),
+                      .continueToPayment(context: context),
                   totalAmount:
                       ref.watch(shoppingCartProvider.notifier).getTotalAmount(),
                   shippingFee:

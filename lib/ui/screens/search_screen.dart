@@ -32,7 +32,7 @@ class SearchScreen extends ConsumerWidget {
           TitleMain(
             title: AppStrings.searchScreenTitle,
             itemCount:
-                ref.watch(searchProvider.notifier).getFoundProductCount(),
+                ref.watch(searchProvider.notifier).getFoundProductsCount(),
             icon: Icons.tune,
             onPressed: () {
               context.focusScope.unfocus();

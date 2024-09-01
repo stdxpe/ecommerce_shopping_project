@@ -1,19 +1,19 @@
 import 'dart:async';
 
-import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
-import 'package:ecommerce_shopping_project/models/cart_product.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
+
 final shoppingCartProvider =
     AsyncNotifierProvider<ShoppingCartNotifier, List<CartProduct>>(
-  () {
-    return ShoppingCartNotifier();
-  },
-);
+        () => ShoppingCartNotifier());
 
 class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
   @override
@@ -22,99 +22,89 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
     return await future;
   }
 
-  final _dbManager = locator<IDBRepository>();
+  final _shoppingCartManager = locator<IShoppingCartRepository>();
 
   getShoppingCartProducts() async {
-    print('ShoppingCartNotifier | getShoppingCartProducts() Executed');
+    debugPrint('ShoppingCartNotifier | getShoppingCartProducts() Executed');
 
     state = const AsyncLoading();
-    var allCartProducts =
-        await AsyncValue.guard(_dbManager.getShoppingCartProducts);
-    state = allCartProducts;
+    state = await AsyncValue.guard(() async {
+      return await _shoppingCartManager.getShoppingCartProducts(
+          userModel: ref.watch(userProvider).value!);
+    });
   }
 
   FutureOr<bool> addProductToShoppingCart(
       {required CartProduct cartProduct}) async {
-    print('ShoppingCartNotifier | addProductToShoppingCart() Executed');
-
+    debugPrint('WishlistNotifier | addProductToWishlist() Executed');
     bool result = false;
-    var previousState = await future;
+    final previousState = await future;
     state = const AsyncLoading();
-    state = await AsyncValue.guard(
-      () async {
-        result =
-            await _dbManager.addProductToShoppingCart(cartProduct: cartProduct);
+    state = await AsyncValue.guard(() async {
+      await _shoppingCartManager.addProductToShoppingCart(
+          cartProduct: cartProduct, userModel: ref.watch(userProvider).value!);
 
-        if (result) {
-          return [...previousState, cartProduct];
-        } else {
-          return previousState;
-        }
-      },
-    );
+      return [...previousState, cartProduct];
+    });
+
+    result = [
+      state.value?.firstWhereOrNull((element) => element.id == cartProduct.id)
+    ].isNotEmpty;
+
     return result;
   }
 
-  deleteProductFromShoppingCart({required CartProduct cartProduct}) async {
-    print('ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
-
-    var previousState = await future;
+  FutureOr<bool> deleteProductFromShoppingCart(
+      {required CartProduct cartProduct}) async {
+    debugPrint('WishlistNotifier | deleteProductFromShoppingCart() Executed');
+    bool result = false;
+    final previousState = await future;
     state = const AsyncLoading();
-    state = await AsyncValue.guard(
-      () async {
-        var result = await _dbManager.deleteProductFromShoppingCart(
-            cartProduct: cartProduct);
+    state = await AsyncValue.guard(() async {
+      await _shoppingCartManager.deleteProductFromShoppingCart(
+          cartProduct: cartProduct, userModel: ref.watch(userProvider).value!);
 
-        if (result) {
-          var listWithDeletedCartProduct = previousState
-              .where((element) => element.id != cartProduct.id)
-              .toList();
-          return listWithDeletedCartProduct;
-        } else {
-          return previousState;
-        }
-      },
-    );
+      return [...previousState.where((e) => (e.id != cartProduct.id))];
+    });
+
+    result = [
+      state.value?.firstWhereOrNull((element) => element.id == cartProduct.id)
+    ].isEmpty;
+
+    return result;
   }
 
   updateProductOnShoppingCart({required CartProduct cartProduct}) async {
-    print('ShoppingCartNotifier | updateProductOnShoppingCart() Executed');
+    debugPrint('ShoppingCartNotifier | updateProductOnShoppingCart() Executed');
 
-    var previousState = await future;
+    final previousState = await future;
     state = const AsyncLoading();
-    state = await AsyncValue.guard(
-      () async {
-        var result = await _dbManager.updateProductOnShoppingCart(
-            cartProduct: cartProduct);
+    state = await AsyncValue.guard(() async {
+      await _shoppingCartManager.updateProductOnShoppingCart(
+          cartProduct: cartProduct, userModel: ref.watch(userProvider).value!);
 
-        if (result) {
-          var updatedIndex = previousState
-              .indexWhere((element) => element.id == cartProduct.id);
+      int updatedIndex =
+          previousState.indexWhere((element) => element.id == cartProduct.id);
 
-          var latestList = previousState
-              .where((element) => element.id != cartProduct.id)
-              .toList();
+      List<CartProduct> latestList = previousState
+          .where((element) => element.id != cartProduct.id)
+          .toList();
 
-          latestList.insert(updatedIndex, cartProduct);
+      latestList.insert(updatedIndex, cartProduct);
 
-          return latestList;
-        } else {
-          return previousState;
-        }
-      },
-    );
+      return latestList;
+    });
   }
 
-  getShoppingCartCount() {
-    int productCount = 0;
-    if ((state.value != null)) productCount = state.value!.length;
-    return productCount;
+  int getShoppingCartCount() {
+    return ((state.value != null || state.value!.isNotEmpty))
+        ? state.value!.length
+        : 0;
   }
 
-  getTotalAmount() {
+  double getTotalAmount() {
     double totalAmount = 0;
-
-    if ((state.value != null)) {
+    if ((state.value != null || state.value!.isNotEmpty)) {
       for (var element in state.value!) {
         totalAmount = totalAmount + element.selectedProduct.price;
       }
@@ -122,10 +112,9 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
     return totalAmount;
   }
 
-  getShippingFee() {
+  double getShippingFee() {
     double totalShippingFee = 0;
-
-    if ((state.value != null)) {
+    if ((state.value != null || state.value!.isNotEmpty)) {
       for (var e in state.value!) {
         totalShippingFee = totalShippingFee + e.selectedProduct.shippingFee;
       }
@@ -134,41 +123,21 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
   }
 
   increaseItemCounter({required CartProduct cartProduct}) async {
-    print('ShoppingCartNotifier | increaseItemCounter() Executed');
-
-    /// TODO: CartProduct copyWith method!
-    ///
     int newItemCount = cartProduct.itemCount + 1;
-
-    CartProduct newCartProduct = CartProduct(
-      id: cartProduct.id,
-      selectedProduct: cartProduct.selectedProduct,
-      selectedColor: cartProduct.selectedColor,
-      selectedSize: cartProduct.selectedSize,
-      itemCount: newItemCount,
-    );
-    updateProductOnShoppingCart(cartProduct: newCartProduct);
+    CartProduct newCartProduct = cartProduct.copyWith(itemCount: newItemCount);
+    await updateProductOnShoppingCart(cartProduct: newCartProduct);
   }
 
   decreaseItemCounter({required CartProduct cartProduct}) async {
-    /// TODO: CartProduct copyWith method!
-    ///
     if (cartProduct.itemCount > 1) {
-      print('ShoppingCartNotifier | decreaseItemCounter() Executed');
       int newItemCount = cartProduct.itemCount - 1;
-
-      CartProduct newCartProduct = CartProduct(
-        id: cartProduct.id,
-        selectedProduct: cartProduct.selectedProduct,
-        selectedColor: cartProduct.selectedColor,
-        selectedSize: cartProduct.selectedSize,
-        itemCount: newItemCount,
-      );
-      updateProductOnShoppingCart(cartProduct: newCartProduct);
+      CartProduct newCartProduct =
+          cartProduct.copyWith(itemCount: newItemCount);
+      await updateProductOnShoppingCart(cartProduct: newCartProduct);
     }
   }
 
-  continueToPaymentButton({required BuildContext context}) {
+  continueToPayment({required BuildContext context}) {
     if (state.value != null && state.value!.isNotEmpty) {
       context.push(Routes.paymentStepShipping);
     }

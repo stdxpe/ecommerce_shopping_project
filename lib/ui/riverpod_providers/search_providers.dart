@@ -1,8 +1,8 @@
 import 'dart:async';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/business/i_db_repository.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
@@ -19,7 +19,7 @@ class SearchNotifier extends AutoDisposeAsyncNotifier<List<Product>> {
     return [];
   }
 
-  final _dbManager = locator<IDBRepository>();
+  final _collectionManager = locator<ICollectionRepository>();
 
   getProductsByFilter() async {
     print('SearchNotifier | getProductsByFilter() Executed');
@@ -27,10 +27,10 @@ class SearchNotifier extends AutoDisposeAsyncNotifier<List<Product>> {
 
     state = const AsyncLoading();
     state = await AsyncValue.guard(
-        () => _dbManager.getProductsByFilter(filter: filter));
+        () => _collectionManager.getCollectionByFilter(filter: filter));
   }
 
-  getFoundProductCount() {
+  getFoundProductsCount() {
     int productCount = 0;
     if ((state.value != null)) productCount = state.value!.length;
     return productCount;

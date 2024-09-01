@@ -31,10 +31,10 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   final _userManager = locator<IUserRepository>();
 
   getUserModel() async {
-    print('FirebaseAuthNotifier | getUserModel() Executed');
+    print('UserNotifier | getUserModel() Executed');
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
-      /// Getting the Current Logged-in User's Id from Firebase Auth Service
+      /// Getting the Current Logged-in User's Id from Auth Service
       /// and Fetching the User's Data from DB
       UserModel? userModel = await _userManager.getUserModel();
 
@@ -45,7 +45,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   }
 
   signOut() async {
-    print('FirebaseAuthNotifier | signOut() Executed');
+    print('UserNotifier | signOut() Executed');
     await _userManager.signOut();
     state = const AsyncData(null);
   }
@@ -54,7 +54,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
       {required String email,
       required String password,
       required BuildContext context}) async {
-    print('FirebaseAuthNotifier | createUserWithEmailAndPassword() Executed');
+    print('UserNotifier | createUserWithEmailAndPassword() Executed');
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
@@ -68,7 +68,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
         /// and Fetching the User's Data from DB
         UserModel? userModel = await _userManager.getUserModel();
 
-        print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
+        print('UserNotifier userModel: ${userModel.toString()}');
 
         /// Setting the State of this Provider into Fetched User's Data
         /// In case it is null, go_router will redirect
@@ -99,7 +99,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
 
   signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    print('FirebaseAuthNotifier | signInWithEmailAndPassword() Executed');
+    print('UserNotifier | signInWithEmailAndPassword() Executed');
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
@@ -109,7 +109,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
             email: email, password: password);
 
         UserModel? userModel = await _userManager.getUserModel();
-        print('FirebaseAuthNotifier userModel: ${userModel.toString()}');
+        print('UserNotifier userModel: ${userModel.toString()}');
         return userModel;
       },
       (error) {
@@ -136,7 +136,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   }
 
   signInWithGoogle(BuildContext context) async {
-    print('FirebaseAuthNotifier | signInWithGoogle() Executed');
+    print('UserNotifier | signInWithGoogle() Executed');
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {

@@ -6,29 +6,29 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 import 'package:ecommerce_shopping_project/ui/widgets/exceptions/google_signin_exception.dart';
 
 class FirebaseAuthService extends IAuthService {
-  final _firebaseAuthService = locator<FirebaseAuth>();
+  final _authService = locator<FirebaseAuth>();
 
   @override
   Future<User?> getCurrentUser() async {
-    return _firebaseAuthService.currentUser;
+    return _authService.currentUser;
   }
 
   @override
   Future<void> signOut() {
-    return _firebaseAuthService.signOut();
+    return _authService.signOut();
   }
 
   @override
   Future<UserCredential> signInWithEmailAndPassword(
       {required String email, required String password}) {
-    return _firebaseAuthService.signInWithEmailAndPassword(
+    return _authService.signInWithEmailAndPassword(
         email: email, password: password);
   }
 
   @override
   Future<UserCredential> createUserWithEmailAndPassword(
       {required String email, required String password}) {
-    return _firebaseAuthService.createUserWithEmailAndPassword(
+    return _authService.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 
@@ -42,7 +42,7 @@ class FirebaseAuthService extends IAuthService {
     if (googleUser != null) {
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-      return _firebaseAuthService.signInWithCredential(credential);
+      return _authService.signInWithCredential(credential);
     } else {
       throw ExceptionGoogleSignInAborted('Google Sign In Popup Aborted');
     }

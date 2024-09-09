@@ -9,55 +9,52 @@ import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_error_ve
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_vertical.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class GridviewProductCardVertical extends ConsumerWidget {
-  const GridviewProductCardVertical({
+class ListviewProductCardVertical extends ConsumerWidget {
+  const ListviewProductCardVertical({
     super.key,
     required this.provider,
     required this.collection,
-    this.itemCountOnRow = 3,
-    this.isCardElevated = true,
+    this.cardWidth = 400,
+    this.itemCountOnRow,
   });
 
   final AsyncNotifierProvider provider;
   final Collections collection;
-  final int itemCountOnRow;
-  final bool? isCardElevated;
+  final double? cardWidth;
+  final int? itemCountOnRow;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var card = ref.watch(verticalCard(
-        (cardWidth: 200, itemCountOnRow: itemCountOnRow, ctx: context)));
+        (cardWidth: cardWidth!, itemCountOnRow: itemCountOnRow, ctx: context)));
     var collectionIndex = ref.watch(selectedCollection(collection));
 
     return SizedBox(
       width: context.mediaQuery.size.width,
-      child: GridView.builder(
+      height: card.totalHeight,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        physics: const ClampingScrollPhysics(),
+        clipBehavior: Clip.none,
         padding: EdgeInsets.symmetric(
-          horizontal: Constants.kMainPaddingHorizontal.w,
-        ),
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          childAspectRatio: card.totalHeight / card.totalWidth,
-          mainAxisExtent: card.totalHeight,
-          maxCrossAxisExtent: card.totalWidth,
-          mainAxisSpacing: card.spacingBTWCardsHorizontal,
-          crossAxisSpacing: card.spacingBTWCardsVertical,
-        ),
-        physics: const NeverScrollableScrollPhysics(),
+            horizontal: Constants.kMainPaddingHorizontal.w),
         itemCount:
             ref.watch(provider).value?[collectionIndex].products.length ?? 3,
         itemBuilder: (context, index) {
-          return ref.watch(provider).when(
-                error: (error, stackTrace) => CardErrorVertical(card: card),
-                loading: () => CardPlaceholderVertical(card: card),
-                data: (data) {
-                  return ProductCardVertical(
-                    product: data[collectionIndex].products[index],
-                    card: card,
-                    isCardElevated: isCardElevated,
-                  );
-                },
-              );
+          return Padding(
+            padding: EdgeInsets.only(right: card.spacingBTWCardsHorizontal),
+            child: ref.watch(provider).when(
+                  error: (error, stackTrace) => CardErrorVertical(card: card),
+                  loading: () => CardPlaceholderVertical(card: card),
+                  data: (data) {
+                    return ProductCardVertical(
+                      product: data[collectionIndex].products[index],
+                      card: card,
+                      isCardElevated: true,
+                    );
+                  },
+                ),
+          );
         },
       ),
     );

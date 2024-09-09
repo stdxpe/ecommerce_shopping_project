@@ -26,23 +26,14 @@ Future<void> main() async {
 }
 
 
-// intl?
-// basic_utils: ^5.7.0
-// ColorUtils
 
-// Helper class for color operations.
 
-// int hexToInt(String hex);
-// String intToHex(int i);
-// String shadeColor(String hex, int percent);
-// String fillUpHex(String hex);
-///////////// bool isDark(String hex);
+
 
 /// Catching All Errors in Top Level
   // https://stackoverflow.com/questions/57879455/flutter-catching-all-unhandled-exceptions
 
-// Loading bars
-// https://pub.dev/packages/loading_animation_widget
+
 // https://pub.dev/packages/pinput
 
     /// flutter_dotenv: ^5.1.0
@@ -50,8 +41,9 @@ Future<void> main() async {
     ///   AVOID initializing providers in a widget
     ///   Providers should initialize themselves.
     ///   They should not be initialized by an external element such as a widget.
-    /// Eth will be in Collections. getCollection(id?)
+
     /// User Profile reviews section?
+    /// TODO: Create Reviews
     /// TODO: Video BG Splash Screen
-    /// TODO: Locally Cached Products will be in the Initial Data of Complex Providers or Dummys? Hive Boxes
+    /// TODO: Hive for saving theme.mode and notification.selection only no-more yet
  

@@ -30,3 +30,10 @@ extension StringExtension on String {
     return StringUtils.capitalize(this, allWords: true);
   }
 }
+
+extension PriceInUSDSignExtension on double {
+  String get inUSD {
+    // ignore: unnecessary_this
+    return '\$${this.toStringAsFixed(2)}';
+  }
+}

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_new_or_onsale_tag.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/ui_general_providers.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -12,135 +14,85 @@ class ProductCardVertical extends StatelessWidget {
   const ProductCardVertical({
     super.key,
     required this.product,
-    required this.cardWidth,
+    required this.card,
     this.isCardElevated = false,
-    this.maxLineCount = 1,
-    this.isNewProduct = false,
-    this.isOnSale = false,
   });
 
   final Product product;
-  final double cardWidth;
+  final VerticalCardOutputs card;
   final bool? isCardElevated;
-  final int? maxLineCount;
-  final bool? isNewProduct;
-  final bool? isOnSale;
 
   @override
   Widget build(BuildContext context) {
-    double fontSizePrimary = (context.textTheme.bodyLarge!.fontSize!.h *
-            context.textTheme.bodyLarge!.height!) *
-        maxLineCount!;
-    double fontSizeSecondary = (context.textTheme.bodyMedium!.fontSize!.h) *
-        context.textTheme.bodyMedium!.height!;
-    double paddingTextVertical = Constants.kVerticalCardPaddingVertical.h;
-    double paddingTextBetween =
-        Constants.kVerticalCardSpacingBTWItemsVertical.h;
-
-    double textSectionHeight = paddingTextVertical +
-        fontSizePrimary +
-        paddingTextBetween +
-        fontSizeSecondary +
-        paddingTextVertical;
-
-    double cardTotalWidth = cardWidth.w;
-
-    double cardTotalHeight = cardTotalWidth + textSectionHeight;
-
-    return Align(
-      alignment: Alignment.topCenter,
-      child: GestureDetector(
-        onTap: () {
-          context.push(Routes.productDetails, extra: product);
-        },
-        child: Container(
-          height: cardTotalHeight,
-          width: cardTotalWidth,
-          clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
-          decoration: BoxDecoration(
-            color: isCardElevated!
-                ? context.colorPalette.cardBackground
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(
-              isCardElevated! ? Constants.kRadiusCardPrimary.r : 0.r,
+    return GestureDetector(
+      onTap: () => context.push(Routes.productDetails, extra: product),
+      child: Container(
+        height: card.totalHeight,
+        width: card.totalWidth,
+        clipBehavior: isCardElevated! ? Clip.hardEdge : Clip.none,
+        decoration: BoxDecoration(
+          color: isCardElevated!
+              ? context.colorPalette.cardBackground
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(
+              isCardElevated! ? Constants.kRadiusCardPrimary.r : 0),
+          boxShadow: [
+            if (isCardElevated!)
+              BoxShadows.kBoxShadowProductCard(
+                  color: context.colorPalette.shadowPrimary),
+          ],
+        ),
+        child: Column(
+          children: [
+            /// CARD IMAGE
+            CardImage(
+              imageUrl: product.mainPhoto,
+              height: card.imageHeight,
+              width: card.imageWidth,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                color: context.colorPalette.scaffoldBackground,
+                borderRadius: BorderRadius.circular(
+                  isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
+                ),
+                boxShadow: [
+                  if (isCardElevated == false)
+                    BoxShadows.kBoxShadowProductCard(
+                        color: context.colorPalette.shadowPrimary),
+                ],
+              ),
             ),
-            boxShadow: [
-              if (isCardElevated!)
-                BoxShadows.kBoxShadowProductCard(
-                  color: context.colorPalette.shadowPrimary,
-                ),
-            ],
-          ),
-          child: Column(
-            children: [
-              /// CARD IMAGE
-              Container(
-                clipBehavior: Clip.hardEdge,
-                height: cardTotalWidth,
-                width: cardTotalWidth,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    image: NetworkImage(
-                      product.mainPhoto,
-                    ),
-                  ),
-                  borderRadius: BorderRadius.circular(
-                    isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r,
-                  ),
-                  boxShadow: [
-                    if (isCardElevated == false)
-                      BoxShadows.kBoxShadowImage(
-                        color: context.colorPalette.shadowPrimary,
-                      ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    if (isNewProduct!)
-                      const CardNewOrOnsaleTag(tagText: AppStrings.cardNewTag),
-                    if (isOnSale == true && isNewProduct == false)
-                      const CardNewOrOnsaleTag(
-                          tagText: AppStrings.cardOnSaleTag),
-                  ],
-                ),
-              ),
 
-              /// CARD TEXT SECTION
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: paddingTextVertical,
-                  horizontal: isCardElevated!
-                      ? Constants.kVerticalCardPaddingHorizontalIfElevated.w
-                      : Constants.kVerticalCardPaddingHorizontal.w,
-                ),
-                height: textSectionHeight,
-                width: cardTotalWidth,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    TextCustom(
-                      text: product.title,
-                      textStyle: context.textTheme.bodyLarge!,
-                      color: context.colorPalette.cardTextPrimary,
-                      maxLines: maxLineCount,
-                      isHeightConstraintRelated: false,
-                    ),
-                    SizedBox(height: paddingTextBetween),
-                    TextCustom(
-                      text: '\$${product.price.toStringAsFixed(2)}',
-                      textStyle: context.textTheme.bodyMedium!,
-                      color: context.colorPalette.cardTextSecondary,
-                    ),
-                  ],
-                ),
+            /// CARD TEXT SECTION
+            Padding(
+              padding: EdgeInsets.symmetric(
+                vertical: card.paddingTextVertical,
+                horizontal: isCardElevated!
+                    ? card.paddingCardHorizontalIfElevated
+                    : card.paddingCardHorizontal,
               ),
-            ],
-          ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  TextCustom(
+                    text: product.title,
+                    textStyle: context.textTheme.bodyLarge!,
+                    color: context.colorPalette.cardTextPrimary,
+                    maxLines: 2,
+                  ),
+                  SizedBox(height: card.paddingTextBetween),
+                  TextCustom(
+                    text: product.price.inUSD,
+                    textStyle: context.textTheme.bodyMedium!,
+                    color: context.colorPalette.cardTextSecondary,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-    );
+    ).animate(delay: 10.ms).fadeIn(duration: 300.ms);
   }
 }

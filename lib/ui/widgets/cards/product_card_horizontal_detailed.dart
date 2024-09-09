@@ -1,113 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/ui_general_providers.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProductCardHorizontalDetailed extends StatelessWidget {
   const ProductCardHorizontalDetailed({
     super.key,
-    required this.product,
-    required this.bottomInfo,
-    required this.cardHeight,
-    this.isCardElevated = false,
+    required this.cartProduct,
+    required this.card,
+    this.useItemCounter = false,
   });
 
-  final Product product;
-  final String bottomInfo;
-  final double cardHeight;
-  final bool? isCardElevated;
+  final CartProduct cartProduct;
+  final HorizontalDetailedCardOutputs card;
+  final bool? useItemCounter;
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topCenter,
       child: GestureDetector(
-        onTap: () {
-          context.push(Routes.productDetails, extra: product);
-        },
-        child: Container(
-          height: cardHeight.h,
-          decoration: BoxDecoration(
-            color: isCardElevated!
-                ? context.colorPalette.cardBackground
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(
-              Constants.kRadiusCardPrimary.r,
-            ),
-            boxShadow: [
-              if (isCardElevated == true)
-                BoxShadows.kBoxShadowProductCard(
-                  color: context.colorPalette.shadowPrimary,
-                ),
-            ],
-          ),
+        onTap: () => context.push(Routes.productDetails,
+            extra: cartProduct.selectedProduct),
+        child: SizedBox(
+          height: card.totalHeight,
+          width: card.totalWidth,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               /// CARD IMAGE
-              Container(
-                height: cardHeight.h,
-                width: cardHeight.h,
+              CardImage(
+                imageUrl: cartProduct.selectedProduct.mainPhoto,
+                height: card.imageHeight,
+                width: card.imageWidth,
+                clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      product.mainPhoto,
-                    ),
-                  ),
-                  borderRadius: BorderRadius.circular(
-                    Constants.kRadiusCardPrimary.r,
-                  ),
-                  boxShadow: [
-                    if (isCardElevated == false)
-                      BoxShadows.kBoxShadowImage(
-                        color: context.colorPalette.shadowPrimary,
-                      ),
-                  ],
-                ),
+                    color: context.colorPalette.scaffoldBackground,
+                    borderRadius:
+                        BorderRadius.circular(Constants.kRadiusCardPrimary.r),
+                    boxShadow: [
+                      BoxShadows.kBoxShadowProductCard(
+                          color: context.colorPalette.shadowPrimary),
+                    ]),
               ),
 
-              /// CARD TEXTS
+              /// CARD TEXT SECTION
               Expanded(
-                child: Container(
+                child: Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical:
-                        Constants.kHorizontalCardDetailedPaddingVertical.h,
-                    horizontal:
-                        Constants.kHorizontalCardDetailedPaddingHorizontal.w,
-                  ),
+                      horizontal: card.paddingCardHorizontal,
+                      vertical: card.paddingCardVertical),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextCustom(
-                            text: product.title,
+                            text: cartProduct.selectedProduct.title,
                             textStyle: context.textTheme.bodyLarge!,
                             color: context.colorPalette.cardTextPrimary,
                             maxLines: 2,
                             isHeightConstraintRelated: false,
+                            fontHeightCustom: 1.15,
                           ),
-                          SizedBox(
-                            height: Constants
-                                .kHorizontalCardDetailedSpacingBTWItemsVertical
-                                .h,
-                          ),
+                          SizedBox(height: card.spacingBTWTextsVertical),
                           TextCustom(
-                            text: '\$${product.price.toStringAsFixed(2)}',
+                            text: cartProduct.selectedProduct.price.inUSD,
                             textStyle: context.textTheme.bodyMedium!,
                             color: context.colorPalette.cardTextSecondary,
+                            textAlignCustom: TextAlign.end,
                           ),
                         ],
                       ),
                       TextCustom(
-                        text: bottomInfo,
+                        text: useItemCounter!
+                            ? 'Size: ${cartProduct.selectedSize}  |  Color: ${cartProduct.selectedColor}'
+                            : 'Size: ${cartProduct.selectedSize}  |  Color: ${cartProduct.selectedColor}  |  ${cartProduct.itemCount}x',
                         textStyle: context.textTheme.bodySmall!,
                         color: context.colorPalette.cardTextTertiary,
                         fontWeightCustom: FontWeight.w400,
@@ -120,7 +97,7 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ).animate(delay: 10.ms).fadeIn(duration: 300.ms),
     );
   }
 }

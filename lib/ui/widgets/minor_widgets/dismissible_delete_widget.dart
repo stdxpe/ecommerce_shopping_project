@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:flutter_slidable/flutter_slidable.dart";
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -10,9 +11,11 @@ class DismissibleDeleteWidget extends StatelessWidget {
     super.key,
     this.dismissibleEnabled = false,
     this.onDismissed,
+    this.height,
   });
 
   final bool? dismissibleEnabled;
+  final double? height;
   final Widget child;
   final String uniqueKey;
   final Function()? onDismissed;
@@ -30,14 +33,23 @@ class DismissibleDeleteWidget extends StatelessWidget {
         motion: const ScrollMotion(),
         dragDismissible: false,
         dismissible: DismissiblePane(
+          // motion: DrawerMotion(),
+          key: ValueKey(uniqueKey),
           onDismissed: () {},
         ),
         children: [
-          SlidableAction(
-            backgroundColor: ColorPalette.dismissibleBg,
+          CustomSlidableAction(
+            key: ValueKey(uniqueKey),
+            padding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
             foregroundColor: ColorPalette.dismissibleFg,
-            icon: Icons.delete,
             autoClose: false,
+            child: Container(
+                height: height ?? 200.w,
+                width: double.infinity,
+                padding: EdgeInsets.zero,
+                color: ColorPalette.dismissibleBg,
+                child: const Icon(Icons.delete)),
             onPressed: (context) {
               final controller = Slidable.of(context);
               controller!.dismiss(

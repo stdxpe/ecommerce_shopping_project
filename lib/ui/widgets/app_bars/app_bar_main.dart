@@ -18,9 +18,11 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
     this.useSearchButton = true,
     this.useTransparentBackground = false,
     this.appBarHeight = 120,
+    this.iconsColor,
   });
 
   final bool? automaticallyImplyLeading;
+  final Color? iconsColor;
   final bool? useShadow;
   final bool? useTitle;
   final bool? useSearchButton;
@@ -37,7 +39,7 @@ class AppBarMain extends StatelessWidget implements PreferredSizeWidget {
       foregroundColor: context.colorPalette.appBarForeground,
       surfaceTintColor: context.colorPalette.appBarBackground,
       iconTheme: IconThemeData(
-        color: context.colorPalette.appBarForeground,
+        color: iconsColor ?? context.colorPalette.appBarForeground,
         size: 60.h,
       ),
       automaticallyImplyLeading: false,

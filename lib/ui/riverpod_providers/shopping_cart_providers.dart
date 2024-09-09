@@ -98,7 +98,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
 
   int getShoppingCartCount() {
     return ((state.value != null || state.value!.isNotEmpty))
-        ? state.value!.length
+        ? state.value?.length ?? 0
         : 0;
   }
 

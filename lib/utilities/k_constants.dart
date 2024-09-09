@@ -38,7 +38,7 @@ abstract class Constants {
   /// Horizontal Product Card
   static const double kHorizontalCardPaddingVertical = 40;
   static const double kHorizontalCardPaddingHorizontal = 40;
-  static const double kHorizontalCardSpacingBTWItemsVertical = 15;
+  static const double kHorizontalCardSpacingBTWItemsVertical = 12;
 
   /// Horizontal Product Card - Detailed
   static const double kHorizontalCardDetailedPaddingVertical = 10;

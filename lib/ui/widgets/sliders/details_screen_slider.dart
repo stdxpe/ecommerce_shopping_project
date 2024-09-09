@@ -20,20 +20,12 @@ class DetailsScreenSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: imageHeight ?? context.mediaQuery.size.width,
-      decoration: BoxDecoration(
-          // boxShadow: [
-          //   BoxShadows.kBoxShadowTopBanner(
-          //     color: context.theme.colorPalette.shadowSecondary,
-          //   ),
-          // ],
-          ),
       child: Swiper(
         fade: 0,
         index: 0,
         itemCount: imagesList.length,
-        // autoplay: true,
         autoplayDelay: 3000,
         viewportFraction: 1,
         scale: 1,

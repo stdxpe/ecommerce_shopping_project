@@ -1,10 +1,10 @@
+import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/listview_product_card_horizontal_detailed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_summary.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_order_product_card_horizontal.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -31,13 +31,9 @@ class PaymentScreenSummary extends ConsumerWidget {
                       title: AppStrings.paymentScreenTitleSummary,
                       stepNumber: 3,
                     ),
-                    VerticalListviewOrderProductCardHorizontal(
-                      cartProductsList: ref.watch(shoppingCartProvider).value!,
-                      dismissibleEnabled: false,
+                    ListviewProductCardHorizontalDetailed(
+                      provider: shoppingCartProvider,
                       cardHeight: 290,
-                      paddingMain: Constants.kMainPaddingHorizontal,
-                      paddingBetweenElements:
-                          Constants.kMainSpacingBTWCardsVertical,
                     ),
                   ],
                 ),

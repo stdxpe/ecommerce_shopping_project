@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/models/review.dart';
 
 class Product {
   final String id;
@@ -11,9 +10,7 @@ class Product {
   final String detailedDescription;
   final double price;
   final Timestamp createdAt;
-  final bool? isOnSale;
-  final double? salePrice;
-  final String? saleLastDate;
+  final int? discountPercent;
   final String mainPhoto;
   final List<String> photos;
   final List<String> colors;
@@ -28,7 +25,7 @@ class Product {
   final double shippingFee;
   final int estimatedShippingDurationInDays;
   final List<String> collections;
-  final List<Review> reviews;
+  final int totalReviewsCount;
 
   Product({
     required this.id,
@@ -38,9 +35,7 @@ class Product {
     required this.detailedDescription,
     required this.price,
     required this.createdAt,
-    this.isOnSale,
-    this.salePrice,
-    this.saleLastDate,
+    this.discountPercent,
     required this.mainPhoto,
     required this.photos,
     required this.colors,
@@ -55,7 +50,7 @@ class Product {
     required this.shippingFee,
     required this.estimatedShippingDurationInDays,
     required this.collections,
-    required this.reviews,
+    required this.totalReviewsCount,
   });
 
   Product copyWith({
@@ -66,9 +61,7 @@ class Product {
     String? detailedDescription,
     double? price,
     Timestamp? createdAt,
-    bool? isOnSale,
-    double? salePrice,
-    String? saleLastDate,
+    int? discountPercent,
     String? mainPhoto,
     List<String>? photos,
     List<String>? colors,
@@ -83,36 +76,35 @@ class Product {
     double? shippingFee,
     int? estimatedShippingDurationInDays,
     List<String>? collections,
-    List<Review>? reviews,
-  }) =>
-      Product(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        brand: brand ?? this.brand,
-        summary: summary ?? this.summary,
-        detailedDescription: detailedDescription ?? this.detailedDescription,
-        price: price ?? this.price,
-        createdAt: createdAt ?? this.createdAt,
-        isOnSale: isOnSale ?? this.isOnSale,
-        salePrice: salePrice ?? this.salePrice,
-        saleLastDate: saleLastDate ?? this.saleLastDate,
-        mainPhoto: mainPhoto ?? this.mainPhoto,
-        photos: photos ?? this.photos,
-        colors: colors ?? this.colors,
-        sizes: sizes ?? this.sizes,
-        keywords: keywords ?? this.keywords,
-        totalOrdersCount: totalOrdersCount ?? this.totalOrdersCount,
-        totalLikesCount: totalLikesCount ?? this.totalLikesCount,
-        totalRating: totalRating ?? this.totalRating,
-        storeId: storeId ?? this.storeId,
-        storeName: storeName ?? this.storeName,
-        stockCount: stockCount ?? this.stockCount,
-        shippingFee: shippingFee ?? this.shippingFee,
-        estimatedShippingDurationInDays: estimatedShippingDurationInDays ??
-            this.estimatedShippingDurationInDays,
-        collections: collections ?? this.collections,
-        reviews: reviews ?? this.reviews,
-      );
+    int? totalReviewsCount,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      brand: brand ?? this.brand,
+      summary: summary ?? this.summary,
+      detailedDescription: detailedDescription ?? this.detailedDescription,
+      price: price ?? this.price,
+      createdAt: createdAt ?? this.createdAt,
+      discountPercent: discountPercent ?? this.discountPercent,
+      mainPhoto: mainPhoto ?? this.mainPhoto,
+      photos: photos ?? this.photos,
+      colors: colors ?? this.colors,
+      sizes: sizes ?? this.sizes,
+      keywords: keywords ?? this.keywords,
+      totalOrdersCount: totalOrdersCount ?? this.totalOrdersCount,
+      totalLikesCount: totalLikesCount ?? this.totalLikesCount,
+      totalRating: totalRating ?? this.totalRating,
+      storeId: storeId ?? this.storeId,
+      storeName: storeName ?? this.storeName,
+      stockCount: stockCount ?? this.stockCount,
+      shippingFee: shippingFee ?? this.shippingFee,
+      estimatedShippingDurationInDays: estimatedShippingDurationInDays ??
+          this.estimatedShippingDurationInDays,
+      collections: collections ?? this.collections,
+      totalReviewsCount: totalReviewsCount ?? this.totalReviewsCount,
+    );
+  }
 
   factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
 
@@ -126,9 +118,7 @@ class Product {
         detailedDescription: json["detailedDescription"],
         price: json["price"]?.toDouble(),
         createdAt: json["createdAt"],
-        isOnSale: json["isOnSale"],
-        salePrice: json["salePrice"]?.toDouble(),
-        saleLastDate: json["saleLastDate"],
+        discountPercent: json["discountPercent"]?.toInt(),
         mainPhoto: json["mainPhoto"],
         photos: List<String>.from(json["photos"].map((x) => x)),
         colors: List<String>.from(json["colors"].map((x) => x)),
@@ -144,10 +134,7 @@ class Product {
         estimatedShippingDurationInDays:
             json["estimatedShippingDurationInDays"],
         collections: List<String>.from(json["collections"].map((x) => x)),
-        // collections: List<CollectionDto>.from(
-        //     json["collections"].map((x) => CollectionDto.fromMap(x))),
-        reviews:
-            List<Review>.from(json["reviews"].map((x) => Review.fromMap(x))),
+        totalReviewsCount: json["totalReviewsCount"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -158,9 +145,7 @@ class Product {
         "detailedDescription": detailedDescription,
         "price": price,
         "createdAt": createdAt,
-        "isOnSale": isOnSale,
-        "salePrice": salePrice,
-        "saleLastDate": saleLastDate,
+        "discountPercent": discountPercent,
         "mainPhoto": mainPhoto,
         "photos": List<dynamic>.from(photos.map((x) => x)),
         "colors": List<dynamic>.from(colors.map((x) => x)),
@@ -175,12 +160,11 @@ class Product {
         "shippingFee": shippingFee,
         "estimatedShippingDurationInDays": estimatedShippingDurationInDays,
         "collections": List<dynamic>.from(collections.map((x) => x)),
-        // "collections": List<dynamic>.from(collections.map((x) => x.toMap())),
-        "reviews": List<dynamic>.from(reviews.map((x) => x.toMap())),
+        "totalReviewsCount": totalReviewsCount,
       };
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, brand: $brand, summary: $summary, detailedDescription: $detailedDescription, price: $price, createdAt: $createdAt, isOnSale: $isOnSale, salePrice: $salePrice, saleLastDate: $saleLastDate, mainPhoto: $mainPhoto, photos: $photos, colors: $colors, sizes: $sizes, keywords: $keywords, totalOrdersCount: $totalOrdersCount, totalLikesCount: $totalLikesCount, totalRating: $totalRating, storeId: $storeId, storeName: $storeName, stockCount: $stockCount, shippingFee: $shippingFee, estimatedShippingDurationInDays: $estimatedShippingDurationInDays, collections: $collections, reviews: $reviews)';
+    return 'Product(id: $id, title: $title, brand: $brand, summary: $summary, detailedDescription: $detailedDescription, price: $price, createdAt: $createdAt, discountPercent: $discountPercent, mainPhoto: $mainPhoto, photos: $photos, colors: $colors, sizes: $sizes, keywords: $keywords, totalOrdersCount: $totalOrdersCount, totalLikesCount: $totalLikesCount, totalRating: $totalRating, storeId: $storeId, storeName: $storeName, stockCount: $stockCount, shippingFee: $shippingFee, estimatedShippingDurationInDays: $estimatedShippingDurationInDays, collections: $collections, totalReviewsCount: $totalReviewsCount)';
   }
 }

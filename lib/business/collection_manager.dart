@@ -25,17 +25,17 @@ class CollectionManager extends ICollectionRepository {
         List<Product> tempProductList = [];
 
         /// TODO: Change into All Products (removed due to Firebase Costs)
-        // // // for (String productId in collectionDto.products) {
-        // // //   Product? selectedProduct =
-        // // //       await _productService.getProductById(productId: productId);
-        // // //   if (selectedProduct != null) tempProductList.add(selectedProduct);
-        // // // }
-        for (int i = 0; i <= 2; i++) {
-          String tempProductId = collectionDto.products[i];
+        for (String productId in collectionDto.products) {
           Product? selectedProduct =
-              await _productService.getProductById(productId: tempProductId);
+              await _productService.getProductById(productId: productId);
           if (selectedProduct != null) tempProductList.add(selectedProduct);
         }
+        // for (int i = 0; i <= 2; i++) {
+        //   String tempProductId = collectionDto.products[i];
+        //   Product? selectedProduct =
+        //       await _productService.getProductById(productId: tempProductId);
+        //   if (selectedProduct != null) tempProductList.add(selectedProduct);
+        // }
 
         /// TODO: END Change into All Products (removed due to Firebase Costs)
 

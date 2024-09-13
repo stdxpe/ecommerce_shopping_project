@@ -7,15 +7,33 @@ import 'package:ecommerce_shopping_project/business/abstract_classes/i_collectio
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
-enum Collections { autumn, spring, winter, summer }
+enum Collections { autumn, spring, winter, summer, designer }
 
-final selectedCollection = Provider.family<int, Collections>((ref, collection) {
+final selectedCollectionIndex =
+    Provider.family<int, Collections>((ref, collection) {
   return switch (collection) {
-    Collections.autumn => 0,
-    Collections.spring => 1,
-    Collections.summer => 2,
-    Collections.winter => 3,
+    Collections.summer => 0,
+    Collections.winter => 1,
+    Collections.autumn => 2,
+    Collections.spring => 3,
+    Collections.designer => 4,
   };
+});
+
+final getCollectionEnum = Provider.family<Collections, String>((ref, title) {
+  if (title.contains('Summer')) {
+    return Collections.summer;
+  } else if (title.contains('Autumn')) {
+    return Collections.autumn;
+  } else if (title.contains('Spring')) {
+    return Collections.spring;
+  } else if (title.contains('Winter')) {
+    return Collections.winter;
+  } else if (title.contains('Designer')) {
+    return Collections.designer;
+  } else {
+    return Collections.summer;
+  }
 });
 
 final collectionsProvider =

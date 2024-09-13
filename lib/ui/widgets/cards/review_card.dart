@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/models/review.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_stars.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ReviewCard extends StatelessWidget {
-  const ReviewCard({
-    super.key,
-    required this.review,
-  });
+  const ReviewCard({super.key, required this.review});
 
   final Review review;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+          bottom: Constants.kReviewCardSpacingBTWCardsVertical.h),
       padding: EdgeInsets.symmetric(
         horizontal: Constants.kReviewCardPaddingHorizontal.w,
         vertical: Constants.kReviewCardPaddingVertical.h,
       ),
       decoration: BoxDecoration(
-        // color: Colors.red.withOpacity(0.5),
         color: context.colorPalette.sheetBackground,
         borderRadius: BorderRadius.circular(
           Constants.kRadiusCardSecondary.r,
@@ -35,19 +34,12 @@ class ReviewCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           /// IMAGE
-          Container(
+          CardImage(
+            imageUrl: review.senderPhoto,
             height: 150.h,
             width: 150.h,
-            padding: EdgeInsets.zero,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  review.senderPhoto,
-                ),
-              ),
+            clipBehavior: Clip.hardEdge,
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
           ),
@@ -55,7 +47,6 @@ class ReviewCard extends StatelessWidget {
           /// TEXTS
           Expanded(
             child: Container(
-              // color: Colors.green.withOpacity(0.5),
               padding: EdgeInsets.symmetric(
                 horizontal: Constants.kReviewCardPaddingHorizontal.w,
               ),
@@ -78,9 +69,8 @@ class ReviewCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Flexible(
-                            child: SwitchRatingStars(
-                              rating: review.productRating,
-                            ),
+                            child:
+                                SwitchRatingStars(rating: review.productRating),
                           ),
                           Flexible(
                             child: SizedBox(
@@ -89,7 +79,7 @@ class ReviewCard extends StatelessWidget {
                           ),
                           Flexible(
                             child: TextCustom(
-                              text: review.productRating.toString(),
+                              text: review.productRating.toStringAsFixed(1),
                               textStyle: context.textTheme.bodyMedium!,
                               color: context.colorPalette.cardTextSecondary,
                             ),
@@ -98,12 +88,12 @@ class ReviewCard extends StatelessWidget {
                       ),
                       Flexible(
                         child: TextCustom(
-                          /// TODO: review.createdAt
-                          text: 'review.createdAt',
+                          text: review.createdAt.formatDate,
                           textStyle: context.textTheme.bodyMedium!,
                           color: context.colorPalette.cardTextSecondary,
                           fontLetterSpacingCustom: 0,
-                          fontWeightCustom: FontWeight.w500,
+                          fontSizeCustom: 32,
+                          fontWeightCustom: FontWeight.w600,
                         ),
                       ),
                     ],

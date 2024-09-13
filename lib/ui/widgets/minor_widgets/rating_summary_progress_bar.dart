@@ -15,8 +15,8 @@ class RatingSummaryProgressBar extends StatelessWidget {
   });
 
   final String text;
-  final double ratingCount;
-  final double totalRatingCount;
+  final int ratingCount;
+  final int totalRatingCount;
   final double? paddingHorizontal;
   final double? height;
 

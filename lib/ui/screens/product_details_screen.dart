@@ -13,102 +13,116 @@ import 'package:ecommerce_shopping_project/ui/widgets/titles/title_product_detai
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({
-    super.key,
-    required this.product,
-  });
+  const ProductDetailsScreen({super.key, required this.product});
 
   final Product product;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppBarMain(
-        automaticallyImplyLeading: true,
-        useSearchButton: false,
-        useShadow: true,
-      ),
-      extendBodyBehindAppBar: true,
-      body: SafeArea(
+    return Container(
+      color: context.colorPalette.scaffoldBackground,
+      child: SafeArea(
         bottom: false,
-        child: SizedBox(
-          height: context.mediaQuery.size.height,
-          width: context.mediaQuery.size.width,
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    DetailsScreenSlider(
-                      // imageHeight: 1426.h,
-                      imageHeight: context.mediaQuery.size.height * 0.54,
-                      imagesList: [product.mainPhoto, ...product.photos],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: Constants.kDetailsScreenTitlePaddingTop.h,
-                        left: Constants.kDetailsScreenMainPaddingHorizontal.w,
-                        right: Constants.kDetailsScreenMainPaddingHorizontal.w,
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBarMain(
+            iconsColor: context.colorPalette.permaBlackColor,
+            useTransparentBackground: true,
+            automaticallyImplyLeading: true,
+            useSearchButton: false,
+          ),
+          body: SizedBox(
+            height: context.mediaQuery.size.height,
+            width: context.mediaQuery.size.width,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      DetailsScreenSlider(
+                        imageHeight: context.mediaQuery.size.height * 0.57,
+                        imagesList: [product.mainPhoto, ...product.photos],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TitleProductDetail(
-                            title: product.title,
-                            price: product.price,
-                            droppedPrice: 108.99,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              context.push(Routes.reviews, extra: product);
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: Constants
-                                    .kDetailsScreenSpacingBTWItemsVertical.h,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Flexible(
-                                    child: SwitchRatingStars(
-                                      rating: 3.5,
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: Constants.kDetailsScreenTitlePaddingTop.h,
+                          left: Constants.kDetailsScreenMainPaddingHorizontal.w,
+                          right:
+                              Constants.kDetailsScreenMainPaddingHorizontal.w,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TitleProductDetail(
+                                title: product.title,
+                                price: product.price,
+                                droppedPrice: product.price +
+                                    product.price *
+                                        product.discountPercent! *
+                                        .01),
+                            InkWell(
+                              onTap: () {
+                                context.push(Routes.reviews, extra: product);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: Constants
+                                      .kDetailsScreenSpacingBTWItemsVertical.h,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: SwitchRatingStars(
+                                        rating: product.totalRating,
+                                      ),
                                     ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    child: TextCustom(
-                                      text:
-                                          '  ${product.reviews.length.toString()} ${AppStrings.productDetailsScreenReviews}',
-                                      textStyle:
-                                          context.textTheme.displayMedium!,
-                                      color: context.colorPalette.text,
+                                    Flexible(
+                                      flex: 1,
+                                      child: TextCustom(
+                                        text:
+                                            '  ${product.totalRating.toStringAsFixed(1)}   | ',
+                                        textStyle:
+                                            context.textTheme.displayMedium!,
+                                        color: context.colorPalette.text,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Flexible(
+                                      flex: 1,
+                                      child: TextCustom(
+                                        text:
+                                            '  ${product.totalReviewsCount.toString()} ${AppStrings.productDetailsScreenReviews}',
+                                        textStyle:
+                                            context.textTheme.displayMedium!,
+                                        color: context.colorPalette.text,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          TextCustom(
-                            text: product.detailedDescription,
-                            textStyle: context.textTheme.displayMedium!,
-                            color: context.colorPalette.text,
-                            maxLines: 4,
-                            isHeightConstraintRelated: false,
-                          ),
-                        ],
+                            TextCustom(
+                              text:
+                                  '${product.summary}\n\n${product.detailedDescription}',
+                              textStyle: context.textTheme.displayMedium!,
+                              color: context.colorPalette.text,
+                              maxLines: 4,
+                              isHeightConstraintRelated: false,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: DoubleButtonAddOrFav(product: product),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: DoubleButtonAddOrFav(product: product),
+                ),
+              ],
+            ),
           ),
         ),
       ),

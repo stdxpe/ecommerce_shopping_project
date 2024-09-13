@@ -66,6 +66,6 @@ class Review {
 
   @override
   String toString() {
-    return 'Review(id: $id, productId: $productId, senderName: $senderName, senderPhoto: $senderPhoto, productRating: $productRating, createdAt: $createdAt, text: $text)';
+    return 'Review: \nid: $id, \nproductId: $productId, \nsenderName: $senderName, \nsenderPhoto: $senderPhoto, \nproductRating: $productRating, \ncreatedAt: $createdAt, \ntext: $text \n';
   }
 }

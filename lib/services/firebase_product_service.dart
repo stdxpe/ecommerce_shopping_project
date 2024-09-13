@@ -1,11 +1,13 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/models/review.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class FirebaseProductService extends IProductService {
   final _db = locator<FirebaseFirestore>();
@@ -90,6 +92,28 @@ class FirebaseProductService extends IProductService {
     } else {
       debugPrint(
           'FirebaseProductService getProductsByFilter else block exec. List is empty');
+    }
+    return tempList;
+  }
+
+  @override
+  Future<List<Review>> getProductReviews({required String productId}) async {
+    var returnedCollectionSnapshot = await _db
+        .collection('products/$productId/reviews')
+        .orderBy('createdAt', descending: true)
+        .get();
+    var returnedList = returnedCollectionSnapshot.docs;
+
+    List<Review> tempList = [];
+
+    if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+      debugPrint(
+          'FirebaseCollectionService getProductReviews if block exec. List is NOT empty');
+
+      for (var doc in returnedList) {
+        var returnedMap = doc.data();
+        tempList.add(Review.fromMap(returnedMap));
+      }
     }
     return tempList;
   }

@@ -16,7 +16,9 @@ class GoogleLogo extends StatelessWidget {
 
 class GoogleLogoPainter extends CustomPainter {
   @override
-  bool shouldRepaint(_) => true;
+  // bool shouldRepaint(_) => true;
+  /// TODO: Changed here
+  bool shouldRepaint(oldDelegate) => true;
 
   @override
   void paint(Canvas canvas, Size size) {

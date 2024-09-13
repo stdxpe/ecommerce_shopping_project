@@ -94,12 +94,13 @@ abstract class BoxShadows {
     );
   }
 
-  static BoxShadow kBoxShadowProductCardText({required Color color}) {
+  static BoxShadow kBoxShadowCollectionCardText({required Color color}) {
     return BoxShadow(
       color: color,
       offset: const Offset(0, 0.5),
-      spreadRadius: 0,
-      blurRadius: 0,
+      spreadRadius: 200,
+      blurRadius: 15,
+      blurStyle: BlurStyle.outer,
     );
   }
 

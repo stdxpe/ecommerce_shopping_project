@@ -11,6 +11,8 @@ class CardImage extends StatelessWidget {
     this.useFadeInAnimation = true,
     this.clipBehavior = Clip.none,
     this.decoration,
+    this.boxfit = BoxFit.cover,
+    this.alignment = Alignment.topCenter,
   });
   final String imageUrl;
   final double height;
@@ -18,6 +20,8 @@ class CardImage extends StatelessWidget {
   final bool? useFadeInAnimation;
   final Clip? clipBehavior;
   final BoxDecoration? decoration;
+  final BoxFit? boxfit;
+  final Alignment? alignment;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +32,8 @@ class CardImage extends StatelessWidget {
       decoration: decoration,
       child: CachedNetworkImage(
         imageUrl: imageUrl,
-        fit: BoxFit.cover,
-        alignment: Alignment.topCenter,
+        fit: boxfit,
+        alignment: alignment!,
         fadeInDuration: Duration(milliseconds: useFadeInAnimation! ? 250 : 0),
         errorWidget: (context, url, error) => const Icon(Icons.error),
       ),

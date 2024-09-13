@@ -24,7 +24,7 @@ extension DateTimeExtensions on Timestamp {
 }
 
 extension StringExtension on String {
-  String? get capitalize {
+  String get capitalize {
     // ignore: unnecessary_this, unnecessary_null_comparison
     if (this == null || this.isEmpty) return this;
     return StringUtils.capitalize(this, allWords: true);

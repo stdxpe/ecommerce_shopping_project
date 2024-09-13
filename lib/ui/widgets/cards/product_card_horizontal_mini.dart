@@ -16,16 +16,25 @@ class ProductCardHorizontalMini extends StatelessWidget {
     required this.product,
     required this.card,
     this.useSoftShadow = true,
+    this.onPressed,
   });
 
   final Product product;
   final HorizontalCardOutputs card;
   final bool? useSoftShadow;
+  final Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return Align(
       child: GestureDetector(
-        onTap: () => context.push(Routes.productDetails, extra: product),
+        onTap: () {
+          if (onPressed != null) {
+            onPressed!();
+            return;
+          }
+          context.push(Routes.productDetails, extra: product);
+        },
         child: Container(
           height: card.totalHeight,
           width: card.totalWidth,

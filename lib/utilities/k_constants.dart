@@ -34,6 +34,7 @@ abstract class Constants {
   static const double kVerticalCardPaddingHorizontal = 5;
   static const double kVerticalCardPaddingHorizontalIfElevated = 30;
   static const double kVerticalCardSpacingBTWItemsVertical = 12;
+  static const double kVerticalCardSpacingBTWCardsVertical = 45;
 
   /// Horizontal Product Card
   static const double kHorizontalCardPaddingVertical = 40;
@@ -67,11 +68,12 @@ abstract class Constants {
   static const double kProfileButtonTextsPaddingHorizontal = 40;
 
   /// Reviews Screen Related
-  static const double kReviewCardPaddingVertical = 25;
+  static const double kReviewCardPaddingVertical = 28;
   static const double kReviewCardPaddingHorizontal = 30;
   static const double kReviewCardSpacingBTWItemsVertical = 20;
+  static const double kReviewCardSpacingBTWCardsVertical = 30;
   static const double kReviewProfileCardTextsHorizontal = 30;
-  static const double kReviewProfileCardTextsBetween = 10;
+  static const double kReviewProfileCardSpacingBTWTexts = 10;
 
   /// Filters Screen Related
   static const double kFilterSpacingBTWTitlesVertical = 30;

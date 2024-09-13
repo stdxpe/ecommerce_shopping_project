@@ -51,6 +51,8 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
                     ]),
               ),
 
+              SizedBox(width: 12.5.w),
+
               /// CARD TEXT SECTION
               Expanded(
                 child: Padding(

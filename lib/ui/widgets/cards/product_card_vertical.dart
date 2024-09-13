@@ -80,6 +80,7 @@ class ProductCardVertical extends StatelessWidget {
                     textStyle: context.textTheme.bodyLarge!,
                     color: context.colorPalette.cardTextPrimary,
                     maxLines: 2,
+                    isHeightConstraintRelated: false,
                   ),
                   SizedBox(height: card.paddingTextBetween),
                   TextCustom(

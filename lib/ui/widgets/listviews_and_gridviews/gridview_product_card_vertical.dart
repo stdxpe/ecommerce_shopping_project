@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +28,7 @@ class GridviewProductCardVertical extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var card = ref.watch(verticalCard(
         (cardWidth: 200, itemCountOnRow: itemCountOnRow, ctx: context)));
-    var collectionIndex = ref.watch(selectedCollection(collection));
+    var collectionIndex = ref.watch(selectedCollectionIndex(collection));
 
     return SizedBox(
       width: context.mediaQuery.size.width,
@@ -40,17 +41,21 @@ class GridviewProductCardVertical extends ConsumerWidget {
           childAspectRatio: card.totalHeight / card.totalWidth,
           mainAxisExtent: card.totalHeight,
           maxCrossAxisExtent: card.totalWidth,
-          mainAxisSpacing: card.spacingBTWCardsHorizontal,
-          crossAxisSpacing: card.spacingBTWCardsVertical,
+          mainAxisSpacing: card.spacingBTWCardsVertical,
+          crossAxisSpacing: card.spacingBTWCardsHorizontal,
+          // mainAxisSpacing: card.spacingBTWCardsHorizontal,
+          // crossAxisSpacing: card.spacingBTWCardsVertical,
         ),
         physics: const NeverScrollableScrollPhysics(),
         itemCount:
-            ref.watch(provider).value?[collectionIndex].products.length ?? 3,
+            ref.watch(provider).value?[collectionIndex].products.length ?? 6,
         itemBuilder: (context, index) {
           return ref.watch(provider).when(
                 error: (error, stackTrace) => CardErrorVertical(card: card),
                 loading: () => CardPlaceholderVertical(card: card),
                 data: (data) {
+                  // return CardPlaceholderVertical(card: card);
+                  // return CardErrorVertical(card: card),
                   return ProductCardVertical(
                     product: data[collectionIndex].products[index],
                     card: card,

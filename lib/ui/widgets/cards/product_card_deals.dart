@@ -82,7 +82,8 @@ class ProductCardDeals extends StatelessWidget {
                     TextCustom(
                       text: '\$${product.price.toStringAsFixed(2)}',
                       textStyle: context.textTheme.bodyMedium!,
-                      color: context.colorPalette.cardTextSecondary,
+                      color:
+                          context.colorPalette.permaBlackColor.withOpacity(0.7),
                       fontSizeCustom: 45,
                       fontWeightCustom: FontWeight.w600,
                     ),
@@ -90,7 +91,7 @@ class ProductCardDeals extends StatelessWidget {
                     TextCustom(
                       text: product.title,
                       textStyle: context.textTheme.bodyLarge!,
-                      color: context.colorPalette.cardTextPrimary,
+                      color: context.colorPalette.permaBlackColor,
                       maxLines: 2,
                       fontHeightCustom: 1.1,
                       fontSizeCustom: 65,
@@ -101,7 +102,8 @@ class ProductCardDeals extends StatelessWidget {
                     TextCustom(
                       text: descriptionPrimary,
                       textStyle: context.textTheme.bodySmall!,
-                      color: context.colorPalette.cardTextTertiary,
+                      color:
+                          context.colorPalette.permaBlackColor.withOpacity(0.7),
                       fontSizeCustom: 40,
                       fontWeightCustom: FontWeight.w500,
                     ),

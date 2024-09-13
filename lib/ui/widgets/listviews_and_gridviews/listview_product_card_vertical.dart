@@ -29,7 +29,7 @@ class ListviewProductCardVertical extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var card = ref.watch(verticalCard(
         (cardWidth: cardWidth!, itemCountOnRow: itemCountOnRow, ctx: context)));
-    var collectionIndex = ref.watch(selectedCollection(collection));
+    var collectionIndex = ref.watch(selectedCollectionIndex(collection));
 
     return SizedBox(
       width: context.mediaQuery.size.width,

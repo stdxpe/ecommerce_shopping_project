@@ -76,7 +76,7 @@ final verticalCard =
         Constants.kVerticalCardPaddingHorizontalIfElevated.w,
     spacingBTWItemsVertical: Constants.kVerticalCardSpacingBTWItemsVertical.h,
     spacingBTWCardsHorizontal: Constants.kMainSpacingBTWCardsHorizontal.w,
-    spacingBTWCardsVertical: Constants.kMainSpacingBTWCardsVertical.w,
+    spacingBTWCardsVertical: Constants.kVerticalCardSpacingBTWCardsVertical.w,
     fontSizePrimary: params.ctx.textTheme.bodyLarge!.fontSize!.h,
     fontSizeSecondary: params.ctx.textTheme.bodyMedium!.fontSize!.h,
     fontHeightPrimary: fontHeightPrimary,

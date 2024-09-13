@@ -42,6 +42,7 @@ Future<void> main() async {
     ///   Providers should initialize themselves.
     ///   They should not be initialized by an external element such as a widget.
 
+    /// Banners on Home & DB
     /// User Profile reviews section?
     /// TODO: Create Reviews
     /// TODO: Video BG Splash Screen

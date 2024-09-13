@@ -28,7 +28,7 @@ class ListviewProductCardHorizontal extends ConsumerWidget {
     var card = ref.watch(
         horizontalCard((cardHeight: cardHeight, cardWidth: 700, ctx: context)));
 
-    var collectionIndex = ref.watch(selectedCollection(collection));
+    var collectionIndex = ref.watch(selectedCollectionIndex(collection));
 
     return SizedBox(
       width: context.mediaQuery.size.width,

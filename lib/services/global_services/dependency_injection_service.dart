@@ -6,12 +6,14 @@ import 'package:get_it/get_it.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_order_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_review_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_shopping_cart_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_user_repository.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_wishlist_repository.dart';
 import 'package:ecommerce_shopping_project/business/collection_manager.dart';
 import 'package:ecommerce_shopping_project/business/order_manager.dart';
 import 'package:ecommerce_shopping_project/business/profile_manager.dart';
+import 'package:ecommerce_shopping_project/business/review_manager.dart';
 import 'package:ecommerce_shopping_project/business/shopping_cart_manager.dart';
 import 'package:ecommerce_shopping_project/business/user_manager.dart';
 import 'package:ecommerce_shopping_project/business/wishlist_manager.dart';
@@ -69,6 +71,9 @@ void registerDependencyInjectionService() {
   /// Collection Manager (Business Layer)
   locator
       .registerLazySingleton<ICollectionRepository>(() => CollectionManager());
+
+  /// Review Manager (Business Layer)
+  locator.registerLazySingleton<IReviewRepository>(() => ReviewManager());
 
   /// TODO: Probably unnecessary
   /// Profile Manager (Business Layer)

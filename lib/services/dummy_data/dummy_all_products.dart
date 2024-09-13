@@ -20,9 +20,6 @@ List<Product> dummyAllProducts = [
       AppImages.productImage4,
     ],
     collections: [],
-    isOnSale: true,
-    saleLastDate: '19.03.2024',
-    salePrice: 179.99,
     createdAt: Timestamp.fromDate(DateTime(2024, 2, 3)),
     colors: [
       'FF0000',
@@ -39,18 +36,15 @@ List<Product> dummyAllProducts = [
       'XL',
     ],
     keywords: [],
-
     totalOrdersCount: 32,
     totalLikesCount: 152,
     totalRating: 3.45,
-    // storeId: dummyStores[0].id,
-    // storeName: dummyStores[0].name,
     storeId: 'dummyStores[0].id',
     storeName: 'dummyStores[0].name',
     stockCount: 432,
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
-    reviews: [],
+    totalReviewsCount: 4,
   ),
   Product(
     id: '000002',
@@ -92,7 +86,7 @@ List<Product> dummyAllProducts = [
     shippingFee: 0,
     estimatedShippingDurationInDays: 7,
     collections: [],
-    reviews: [],
+    totalReviewsCount: 4,
   ),
   Product(
     id: '000003',
@@ -133,7 +127,7 @@ List<Product> dummyAllProducts = [
     shippingFee: 4.99,
     estimatedShippingDurationInDays: 7,
     collections: [],
-    reviews: [],
+    totalReviewsCount: 4,
   ),
   Product(
     id: '000004',
@@ -174,7 +168,7 @@ List<Product> dummyAllProducts = [
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     collections: [],
-    reviews: [],
+    totalReviewsCount: 4,
   ),
   Product(
     id: '000005',
@@ -216,7 +210,7 @@ List<Product> dummyAllProducts = [
     shippingFee: 1.99,
     estimatedShippingDurationInDays: 3,
     collections: [],
-    reviews: [],
+    totalReviewsCount: 4,
   ),
   Product(
     id: '000006',
@@ -257,6 +251,6 @@ List<Product> dummyAllProducts = [
     shippingFee: 0,
     estimatedShippingDurationInDays: 3,
     collections: [],
-    reviews: [],
+    totalReviewsCount: 4,
   ),
 ];

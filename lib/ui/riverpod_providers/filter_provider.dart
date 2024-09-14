@@ -3,6 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
+final disposeFilters = Provider.autoDispose<void>((ref) {
+  ref.onDispose(() {
+    ref.read(filterProvider.notifier).resetAllFilters();
+    print('All Filters RESETTED & DISPOSED');
+  });
+});
+
 final filterProvider = StateNotifierProvider<FilterNotifier, Filter>((ref) {
   return FilterNotifier(ref);
 });
@@ -11,25 +18,27 @@ class FilterNotifier extends StateNotifier<Filter> {
   FilterNotifier(Ref ref)
       : super(
           Filter(
-            id: 'sdasdfa',
+            id: '',
             query: '',
-            // query: ref.watch(searchQueryProvider).query.text,
             priceMin: 0,
             priceMax: 1000,
             sortBy: AppStrings.filterSortByRating,
-            sizes: AppStrings.filterSizeList,
+            // sizes: AppStrings.filterSizeList,
+            sizes: [],
             collections: [AppStrings.filterCollectionAll],
           ),
         );
 
   resetAllFilters() {
     state = Filter(
-      id: '3452ds',
+      id: '',
       query: '',
       priceMin: 0,
       priceMax: 1000,
       sortBy: AppStrings.filterSortByRating,
-      sizes: AppStrings.filterSizeList,
+      // sizes: AppStrings.filterSizeList,
+      sizes: [],
+
       collections: [AppStrings.filterCollectionAll],
     );
   }

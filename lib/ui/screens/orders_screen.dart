@@ -19,13 +19,12 @@ class OrdersScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),
-          children: [
-            const TitleMain(
+          children: const [
+            TitleMain(
               title: AppStrings.ordersScreenTitle,
               itemCount: 2,
             ),
             VerticalListviewOrderCardHorizontal(
-              // ordersList: dummyOrders,
               ordersList: [],
               cardHeight: 200,
               paddingMain: Constants.kMainPaddingHorizontal,

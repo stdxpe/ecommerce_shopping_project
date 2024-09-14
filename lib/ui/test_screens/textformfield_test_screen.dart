@@ -46,8 +46,9 @@ class TextformfieldTestScreen extends ConsumerWidget {
               ref.watch(signInProvider.notifier).getStatus();
               print('status: ${ref.watch(signInProvider).status}');
 
-              if (ref.watch(signInProvider).status!)
+              if (ref.watch(signInProvider).status!) {
                 context.push(Routes.shoppingCart);
+              }
             },
             paddingHorizontal: 0,
             text: AppStrings.signIn,

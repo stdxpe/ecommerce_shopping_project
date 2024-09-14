@@ -39,15 +39,12 @@ class CustomNavBarItem extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Container(
-                    // color: Colors.green.withOpacity(0.5),
-                    child: Icon(
-                      icon,
-                      size: 75.h,
-                      color: currentIndex == buttonIndex
-                          ? context.colorPalette.navigationBarActive
-                          : context.colorPalette.navigationBarPassive,
-                    ),
+                  Icon(
+                    icon,
+                    size: 75.h,
+                    color: currentIndex == buttonIndex
+                        ? context.colorPalette.navigationBarActive
+                        : context.colorPalette.navigationBarPassive,
                   ),
                   if (useIconNotification!)
                     Consumer(

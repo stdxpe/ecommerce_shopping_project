@@ -54,7 +54,7 @@ class FirebaseProductService extends IProductService {
   @override
   Future<List<Product>> getProductsByFilter(
       {required filter, int maxResultCount = 10}) async {
-    debugPrint('FirebaseProductService getProductsByFilter exec');
+    debugPrint('FirebaseProductService getProductsByFilter() exec');
 
     var collectionRef = _db
         .collection('products')
@@ -79,6 +79,7 @@ class FirebaseProductService extends IProductService {
         await collectionRef.limit(maxResultCount).get();
 
     List<Product> tempList = [];
+
     var returnedList = returnedCollectionSnapshot.docs;
 
     if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {

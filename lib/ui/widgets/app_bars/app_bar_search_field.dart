@@ -33,8 +33,9 @@ class AppBarSearchField extends StatelessWidget implements PreferredSizeWidget {
               CupertinoIcons.back,
             ),
           ),
-          const Expanded(
+          Expanded(
             child: TextformfieldSearchBox(
+              onFieldSubmitted: () => searchOnPressed(),
               text: AppStrings.searchScreenSearchBoxTextfieldHintText,
               autoFocus: true,
               lineColor: Colors.transparent,

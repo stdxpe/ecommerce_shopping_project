@@ -16,6 +16,7 @@ class TextformfieldSearchBox extends ConsumerWidget {
     this.textInputType = TextInputType.text,
     this.obscureText = false,
     this.autoFocus = false,
+    required this.onFieldSubmitted,
   });
 
   final String text;
@@ -25,6 +26,7 @@ class TextformfieldSearchBox extends ConsumerWidget {
   final TextInputType? textInputType;
   final bool? obscureText;
   final bool? autoFocus;
+  final Function() onFieldSubmitted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,6 +49,10 @@ class TextformfieldSearchBox extends ConsumerWidget {
           cursorColor: textColor ?? context.colorPalette.permaBlackColor,
           obscureText: obscureText!,
           keyboardType: textInputType,
+          textInputAction: TextInputAction.search,
+          onFieldSubmitted: (value) {
+            onFieldSubmitted();
+          },
           style: context.textTheme.labelMedium!.copyWith(
             color: textColor ?? context.colorPalette.text,
             fontSize: context.textTheme.labelMedium!.fontSize!.h,

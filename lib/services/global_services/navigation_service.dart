@@ -38,6 +38,7 @@ import 'package:ecommerce_shopping_project/ui/test_screens/product_review_crud_s
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_image_gallery.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_error.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_new_deals.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_payment_result.dart';
@@ -87,6 +88,7 @@ class Routes {
 
   /// Dialog Popups and Bottom Sheets
   static const String dialogError = '/dialogError';
+  static const String dialogImageGallery = '/dialogImageGallery';
   static const String dialogNewDeals = '/dialogNewDeals';
   static const String dialogAddedToCart = '/dialogAddedToCart';
   static const String dialogPaymentResult = '/dialogPaymentResult';
@@ -143,6 +145,15 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           path: Routes.dialogError,
           pageBuilder: (context, state) =>
               const DialogScreen(dialogPopup: DialogPopupError())),
+
+      GoRoute(
+          path: Routes.dialogImageGallery,
+          pageBuilder: (context, state) {
+            return DialogScreen(
+                barrierColor: Colors.black87,
+                dialogPopup:
+                    DialogImageGallery(args: state.extra! as ImageGalleryArgs));
+          }),
       GoRoute(
           path: Routes.dialogPaymentResult,
           pageBuilder: (context, state) => const DialogScreen(

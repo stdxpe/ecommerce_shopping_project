@@ -8,6 +8,7 @@ import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.d
 class DialogScreen<T> extends Page<T> {
   final Widget dialogPopup;
   final bool barrierDismissible;
+  final Color? barrierColor;
 
   const DialogScreen({
     required this.dialogPopup,
@@ -16,6 +17,7 @@ class DialogScreen<T> extends Page<T> {
     super.name,
     super.arguments,
     super.restorationId,
+    this.barrierColor = Colors.black54,
   });
 
   @override
@@ -24,6 +26,7 @@ class DialogScreen<T> extends Page<T> {
         settings: this,
         barrierDismissible: barrierDismissible,
         useSafeArea: false,
+        barrierColor: barrierColor,
         builder: (context) {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7.5, sigmaY: 7.5),

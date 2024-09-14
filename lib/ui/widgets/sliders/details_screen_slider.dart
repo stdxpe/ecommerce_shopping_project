@@ -1,77 +1,104 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/ui_general_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class DetailsScreenSlider extends StatelessWidget {
+class DetailsScreenSlider extends ConsumerWidget {
   const DetailsScreenSlider({
     super.key,
     required this.imagesList,
     this.imageHeight,
+    this.boxfit = BoxFit.cover,
+    this.dotColor,
+    this.activeDotColor,
+    this.zoomedImageGalleryEnabled = true,
+    this.initIndex = 0,
   });
 
-  final List imagesList;
+  final List<String> imagesList;
   final double? imageHeight;
+  final BoxFit? boxfit;
+  final Color? dotColor;
+  final Color? activeDotColor;
+  final bool? zoomedImageGalleryEnabled;
+  final int? initIndex;
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: imageHeight ?? context.mediaQuery.size.width,
-      child: Swiper(
-        fade: 0,
-        index: 0,
-        itemCount: imagesList.length,
-        autoplayDelay: 3000,
-        viewportFraction: 1,
-        scale: 1,
-        duration: 750,
-        onIndexChanged: (index) {},
-        itemBuilder: (BuildContext context, int index) {
-          return ZoomOverlay(
-            modalBarrierColor: Colors.black12,
-            minScale: 0.5,
-            maxScale: 3.0,
-            animationCurve: Curves.fastOutSlowIn,
-            animationDuration: const Duration(
-              milliseconds: 300,
-            ),
-            twoTouchOnly: true,
-            onScaleStart: () {},
-            onScaleStop: () {},
-            child: Consumer(
-              builder: (context, ref, child) => CardImage(
-                imageUrl: imagesList[index],
-                useFadeInAnimation: false,
-                height: imageHeight ?? context.mediaQuery.size.width,
-                width: context.mediaQuery.size.width,
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+      onTap: () {
+        if (zoomedImageGalleryEnabled!) {
+          context.push(Routes.dialogImageGallery, extra: (
+            imagesList: imagesList,
+            index: ref.read(imageGalleryIndex(imagesList)),
+          ));
+        }
+      },
+      child: SizedBox(
+        height: imageHeight ?? context.mediaQuery.size.width,
+        child: Swiper(
+          fade: 0,
+          index: initIndex,
+          itemCount: imagesList.length,
+          autoplayDelay: 3000,
+          viewportFraction: 1,
+          scale: 1,
+          duration: 750,
+          onIndexChanged: (index) =>
+              ref.read(imageGalleryIndex(imagesList).notifier).state = index,
+          itemBuilder: (BuildContext context, int index) {
+            return ZoomOverlay(
+              modalBarrierColor: Colors.black12,
+              minScale: 0.5,
+              maxScale: 3.0,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: const Duration(
+                milliseconds: 300,
               ),
-            ),
-          );
-        },
-        pagination: SwiperPagination(
-          alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.all(30.w),
-          builder: SwiperCustomPagination(
-            builder: (context, config) {
-              return AnimatedSmoothIndicator(
-                duration: const Duration(milliseconds: 500),
-                activeIndex: config.activeIndex,
-                count: config.itemCount,
-                effect: ScrollingDotsEffect(
-                  dotWidth: 20.w,
-                  dotHeight: 20.w,
-                  spacing: 34.w,
-                  activeDotColor: context.theme.colorPalette.permaWhiteColor,
-                  dotColor: context.theme.colorPalette.permaWhiteColor
-                      .withOpacity(0.5),
+              twoTouchOnly: true,
+              onScaleStart: () {},
+              onScaleStop: () {},
+              child: Consumer(
+                builder: (context, ref, child) => CardImage(
+                  boxfit: boxfit,
+                  imageUrl: imagesList[index],
+                  useFadeInAnimation: false,
+                  height: imageHeight ?? context.mediaQuery.size.width,
+                  width: context.mediaQuery.size.width,
                 ),
-              );
-            },
+              ),
+            );
+          },
+          pagination: SwiperPagination(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.all(30.w),
+            builder: SwiperCustomPagination(
+              builder: (context, config) {
+                return AnimatedSmoothIndicator(
+                  duration: const Duration(milliseconds: 500),
+                  activeIndex: config.activeIndex,
+                  count: config.itemCount,
+                  effect: ScrollingDotsEffect(
+                    dotWidth: 20.w,
+                    dotHeight: 20.w,
+                    spacing: 34.w,
+                    activeDotColor: activeDotColor ??
+                        context.theme.colorPalette.permaWhiteColor,
+                    dotColor: dotColor ??
+                        context.theme.colorPalette.permaWhiteColor
+                            .withOpacity(0.5),
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

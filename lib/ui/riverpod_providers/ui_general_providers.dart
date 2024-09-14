@@ -184,3 +184,7 @@ final horizontalDetailedCard = Provider.family<HorizontalDetailedCardOutputs,
         Constants.kHorizontalCardDetailedSpacingBTWItemsVertical.w,
   );
 });
+
+final imageGalleryIndex = StateProvider.family<int, List<String>>((ref, list) {
+  return 0;
+});

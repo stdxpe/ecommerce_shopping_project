@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +12,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_sta
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_product_detail.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:unicons/unicons.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key, required this.product});
@@ -62,47 +64,149 @@ class ProductDetailsScreen extends StatelessWidget {
                                     product.price *
                                         product.discountPercent! *
                                         .01),
+                            // SizedBox(height: 40.h),
+                            // Row(
+                            //   children: [
+                            //     Icon(UniconsLine.shopping_bag, size: 50.h),
+                            //     TextCustom(
+                            //       text: ' ${product.totalOrdersCount}   ',
+                            //       textStyle: context.textTheme.displayMedium!,
+                            //       color: context.colorPalette.text,
+                            //     ),
+                            //     Icon(UniconsLine.heart, size: 50.h),
+                            //     TextCustom(
+                            //       text: ' ${product.totalLikesCount}',
+                            //       textStyle: context.textTheme.displayMedium!,
+                            //       color: context.colorPalette.text,
+                            //     ),
+                            //   ],
+                            // ),
                             InkWell(
                               onTap: () {
                                 context.push(Routes.reviews, extra: product);
                               },
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: Constants
-                                      .kDetailsScreenSpacingBTWItemsVertical.h,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
+                                padding: EdgeInsets.only(top: 50.h, bottom: 50.h
+                                    // top: Constants
+                                    //     .kDetailsScreenSpacingBTWItemsVertical.h,
+                                    ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Flexible(
-                                      child: SwitchRatingStars(
-                                        rating: product.totalRating,
-                                      ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Flexible(
+                                          flex: 2,
+                                          child: SwitchRatingStars(
+                                            rating: product.totalRating,
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 1,
+                                          child: TextCustom(
+                                            text:
+                                                '  ${product.totalRating.toStringAsFixed(1)}   | ',
+                                            textStyle: context
+                                                .textTheme.displayMedium!,
+                                            color: context.colorPalette.text,
+                                          ),
+                                        ),
+                                        Flexible(
+                                          flex: 2,
+                                          child: TextCustom(
+                                            text:
+                                                '  ${product.totalReviewsCount.toString()} ${AppStrings.productDetailsScreenReviews}',
+                                            textStyle: context
+                                                .textTheme.displayMedium!,
+                                            color: context.colorPalette.text,
+                                          ),
+                                        ),
+
+                                        // Spacer(),
+                                        // TextCustom(
+                                        //   text:
+                                        //       ' ${product.totalLikesCount} Likes  |  ${product.totalOrdersCount} Orders',
+                                        //   textStyle:
+                                        //       context.textTheme.displayMedium!,
+                                        //   color: context.colorPalette.text,
+                                        // ),
+                                        // Icon(UniconsLine.shopping_bag, size: 50.h),
+                                        // TextCustom(
+                                        //   text:
+                                        //       ' ${product.totalOrdersCount}   |  ',
+                                        //   textStyle:
+                                        //       context.textTheme.displayMedium!,
+                                        //   color: context.colorPalette.text,
+                                        // ),
+                                        // Icon(UniconsLine.heart, size: 50.h),
+                                        // TextCustom(
+                                        //   text: ' ${product.totalLikesCount}',
+                                        //   textStyle:
+                                        //       context.textTheme.displayMedium!,
+                                        //   color: context.colorPalette.text,
+                                        // ),
+
+                                        // Icon(CupertinoIcons.heart_fill),
+                                      ],
                                     ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: TextCustom(
-                                        text:
-                                            '  ${product.totalRating.toStringAsFixed(1)}   | ',
-                                        textStyle:
-                                            context.textTheme.displayMedium!,
-                                        color: context.colorPalette.text,
-                                      ),
+                                    SizedBox(height: 20.h),
+                                    Row(
+                                      children: [
+                                        Icon(UniconsLine.shopping_bag,
+                                            size: 50.h),
+                                        TextCustom(
+                                          text:
+                                              ' ${product.totalOrdersCount} Orders    ',
+                                          textStyle:
+                                              context.textTheme.displayMedium!,
+                                          color: context.colorPalette.text,
+                                        ),
+                                        Icon(UniconsLine.heart, size: 50.h),
+                                        TextCustom(
+                                          text:
+                                              ' ${product.totalLikesCount} Likes',
+                                          textStyle:
+                                              context.textTheme.displayMedium!,
+                                          color: context.colorPalette.text,
+                                        ),
+                                      ],
                                     ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: TextCustom(
-                                        text:
-                                            '  ${product.totalReviewsCount.toString()} ${AppStrings.productDetailsScreenReviews}',
-                                        textStyle:
-                                            context.textTheme.displayMedium!,
-                                        color: context.colorPalette.text,
-                                      ),
-                                    ),
+                                    // SizedBox(height: 50.h),
                                   ],
                                 ),
                               ),
                             ),
+
+                            // SizedBox(height: 25.h),
+                            // Row(
+                            //   children: [
+                            //     Icon(UniconsLine.shopping_bag, size: 50.h),
+                            //     TextCustom(
+                            //       text:
+                            //           ' ${product.totalOrdersCount} Orders    ',
+                            //       textStyle: context.textTheme.displayMedium!,
+                            //       color: context.colorPalette.text,
+                            //     ),
+                            //     Icon(UniconsLine.heart, size: 50.h),
+                            //     TextCustom(
+                            //       text: ' ${product.totalLikesCount} Likes',
+                            //       textStyle: context.textTheme.displayMedium!,
+                            //       color: context.colorPalette.text,
+                            //     ),
+                            //   ],
+                            // ),
+                            // SizedBox(height: 50.h),
+
+                            // TextCustom(
+                            //   text:
+                            //       '${product.totalOrdersCount} Orders  |  ${product.totalLikesCount} Likes',
+                            //   textStyle: context.textTheme.displayMedium!,
+                            //   color: context.colorPalette.text,
+                            // ),
+
                             TextCustom(
                               text:
                                   '${product.summary}\n\n${product.detailedDescription}',

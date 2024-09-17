@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/ve
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_rating_summary.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:go_router/go_router.dart';
+import 'package:unicons/unicons.dart';
 
 class ReviewsScreen extends ConsumerWidget {
   const ReviewsScreen({super.key, required this.product});
@@ -38,6 +40,24 @@ class ReviewsScreen extends ConsumerWidget {
             SizedBox(height: 100.h),
             SwitchRatingSummary(product: product),
             SizedBox(height: 100.h),
+            Row(
+              children: [
+                SizedBox(width: 30.w),
+                Icon(UniconsLine.shopping_bag, size: 50.h),
+                TextCustom(
+                  text: ' ${product.totalOrdersCount} Orders    ',
+                  textStyle: context.textTheme.displayMedium!,
+                  color: context.colorPalette.text,
+                ),
+                Icon(UniconsLine.heart, size: 50.h),
+                TextCustom(
+                  text: ' ${product.totalLikesCount} Likes',
+                  textStyle: context.textTheme.displayMedium!,
+                  color: context.colorPalette.text,
+                ),
+              ],
+            ),
+            SizedBox(height: 35.h),
             VerticalListviewReviewCard(productId: product.id),
             SizedBox(height: 50.h),
           ],

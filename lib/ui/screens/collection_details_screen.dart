@@ -62,8 +62,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
               TitleMain(
                 title: collection.title,
                 // itemCount: collection.products.length,
-                icon: Icons.tune,
-                onPressed: () => context.push(Routes.bottomSheetFilters),
+
                 paddingTop: 55.h,
                 // paddingBottom: 77.h,
                 paddingBottom: 10.h,

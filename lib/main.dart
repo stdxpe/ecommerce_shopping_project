@@ -42,9 +42,15 @@ Future<void> main() async {
     ///   Providers should initialize themselves.
     ///   They should not be initialized by an external element such as a widget.
 
-    /// Banners on Home & DB
-    /// User Profile reviews section?
-    /// TODO: Create Reviews
-    /// TODO: Video BG Splash Screen
+    /// TODO: Banners on Home & DB
+    /// TODO: Discover Screen
+    /// TODO: Divided Provider States
+    /// TODO: Addresses
+    /// TODO: Credit Cards??
+    /// TODO: Payment&Cart Mechanics
+    /// TODO: Orders
+    /// TODO: Stripe
     /// TODO: Hive for saving theme.mode and notification.selection only no-more yet
+    /// TODO: Video BG Splash Screen
+    /// SMS or Email Verification
  

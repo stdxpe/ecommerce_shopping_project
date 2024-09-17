@@ -1,12 +1,11 @@
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-
-import 'package:ecommerce_shopping_project/models/product.dart';
+import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
-import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
+import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 class CollectionManager extends ICollectionRepository {
   final _productService = locator<IProductService>();

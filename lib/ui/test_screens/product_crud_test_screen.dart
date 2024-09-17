@@ -12,7 +12,6 @@ import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_serv
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/collections_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_with_text_button.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -165,7 +164,7 @@ class _ProductCrudTestScreenState extends ConsumerState<ProductCrudTestScreen> {
           ]),
 
           ref.watch(collectionsProvider).when(
-                loading: () => Text('Loading'),
+                loading: () => const Text('Loading'),
                 error: (error, stackTrace) => Text('Error $error $stackTrace '),
                 data: (data) {
                   var list = data[0].products;
@@ -191,7 +190,7 @@ class _ProductCrudTestScreenState extends ConsumerState<ProductCrudTestScreen> {
                 },
               ),
           ref.watch(collectionsProvider).when(
-                loading: () => Text('Loading'),
+                loading: () => const Text('Loading'),
                 error: (error, stackTrace) => Text('Error $error $stackTrace '),
                 data: (data) {
                   var list = data[1].products;
@@ -220,7 +219,7 @@ class _ProductCrudTestScreenState extends ConsumerState<ProductCrudTestScreen> {
                 },
               ),
           ref.watch(collectionsProvider).when(
-                loading: () => Text('Loading'),
+                loading: () => const Text('Loading'),
                 error: (error, stackTrace) => Text('Error $error $stackTrace '),
                 data: (data) {
                   var list = data[2].products;
@@ -249,7 +248,7 @@ class _ProductCrudTestScreenState extends ConsumerState<ProductCrudTestScreen> {
                 },
               ),
           ref.watch(collectionsProvider).when(
-                loading: () => Text('Loading'),
+                loading: () => const Text('Loading'),
                 error: (error, stackTrace) => Text('Error $error $stackTrace '),
                 data: (data) {
                   var list = data[3].products;
@@ -283,10 +282,10 @@ class _ProductCrudTestScreenState extends ConsumerState<ProductCrudTestScreen> {
               text: 'Create Product',
               onPressed: () async {
                 // final _productService = locator<IProductService>();
-                final _collectionService = locator<ICollectionService>();
-                final _userService = locator<IUserService>();
+                final collectionService = locator<ICollectionService>();
+                final userService = locator<IUserService>();
 
-                final _db = locator<FirebaseFirestore>();
+                final db = locator<FirebaseFirestore>();
                 // final _storage = locator<FirebaseStorage>();
 
                 // debugPrint('debugPrint');

@@ -23,16 +23,21 @@ class TitleProductDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
-          flex: 4,
+          flex: 6,
           child: TextCustom(
             text: title,
             textStyle: context.textTheme.displayLarge!,
+            // fontSizeCustom: 64,
+            fontLetterSpacingCustom: -0.35,
             color: context.colorPalette.text,
+            fontHeightCustom: 1,
             maxLines: 2,
             isHeightConstraintRelated: false,
           ),
         ),
-        Flexible(flex: 1, child: SizedBox(width: 10.w)),
+        // Flexible(flex: 1, child: SizedBox(width: 10.w)),
+        SizedBox(width: 10.w),
+
         Flexible(
           flex: 2,
           child: Column(
@@ -40,7 +45,7 @@ class TitleProductDetail extends StatelessWidget {
             children: [
               if (droppedPrice != null)
                 TextCustom(
-                  text: '\$${droppedPrice!.toStringAsFixed(2)}',
+                  text: droppedPrice!.inUSD,
                   textStyle: context.textTheme.displayLarge!,
                   color: context.colorPalette.textFaded,
                   fontSizeCustom: 46,
@@ -48,11 +53,10 @@ class TitleProductDetail extends StatelessWidget {
                   fontHeightCustom: 1.4,
                 ),
               TextCustom(
-                text: '\$${price.toStringAsFixed(2)}',
+                text: price.inUSD,
                 textStyle: context.textTheme.displayLarge!,
                 color: context.colorPalette.text,
                 fontSizeCustom: 60,
-                // fontHeightCustom: 1.5,
               ),
             ],
           ),

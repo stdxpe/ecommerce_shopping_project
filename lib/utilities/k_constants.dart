@@ -52,7 +52,7 @@ abstract class Constants {
   static const double kStackCardSpacingBTWItemsVertical = 11;
 
   /// Details Screen Related
-  static const double kDetailsScreenTitlePaddingTop = 100;
+  static const double kDetailsScreenTitlePaddingTop = 70;
   static const double kDetailsScreenSpacingBTWItemsVertical = 65;
   static const double kDetailsScreenMainPaddingHorizontal = 30;
   static const double kCollectionDetailsScreenSpacingBTWItemsVertical = 50;

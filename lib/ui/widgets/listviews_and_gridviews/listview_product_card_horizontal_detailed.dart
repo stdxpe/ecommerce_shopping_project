@@ -20,12 +20,14 @@ class ListviewProductCardHorizontalDetailed extends ConsumerWidget {
     this.cardHeight = 300,
     this.dismissibleEnabled = false,
     this.useItemCounter = false,
+    this.enableNavigation = true,
   });
 
   final AsyncNotifierProvider provider;
   final double cardHeight;
   final bool? dismissibleEnabled;
   final bool? useItemCounter;
+  final bool? enableNavigation;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -74,6 +76,7 @@ class ListviewProductCardHorizontalDetailed extends ConsumerWidget {
                                       cartProduct: data[index],
                                       card: cardHorizontalDetailed,
                                       useItemCounter: useItemCounter,
+                                      enableNavigation: enableNavigation,
                                     ),
                                     if (useItemCounter!)
                                       Positioned.fill(

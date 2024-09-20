@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -15,9 +16,11 @@ class TitleMain extends StatelessWidget {
     this.paddingHorizontal,
     this.paddingTop,
     this.paddingBottom,
+    this.enableTitleAsBackButton = false,
   });
 
   final Function()? onPressed;
+  final bool? enableTitleAsBackButton;
   final String title;
   final int? itemCount;
   final int? stepNumber;
@@ -55,10 +58,15 @@ class TitleMain extends StatelessWidget {
             children: [
               Flexible(
                 flex: 10,
-                child: TextCustom(
-                  text: title,
-                  textStyle: context.textTheme.titleLarge!,
-                  color: context.colorPalette.title,
+                child: GestureDetector(
+                  onTap: () {
+                    if (enableTitleAsBackButton!) context.pop();
+                  },
+                  child: TextCustom(
+                    text: title,
+                    textStyle: context.textTheme.titleLarge!,
+                    color: context.colorPalette.title,
+                  ),
                 ),
               ),
               if (icon != null) Flexible(flex: 1, child: SizedBox(width: 0.w)),

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 class CreditCard {
   final String id;
-  final String? cardTitle;
   final String cardHolder;
   final String cardNumber;
   final String validThru;
@@ -10,7 +9,6 @@ class CreditCard {
 
   CreditCard({
     required this.id,
-    this.cardTitle,
     required this.cardHolder,
     required this.cardNumber,
     required this.validThru,
@@ -19,7 +17,6 @@ class CreditCard {
 
   CreditCard copyWith({
     String? id,
-    String? cardTitle,
     String? cardHolder,
     String? cardNumber,
     String? validThru,
@@ -27,7 +24,6 @@ class CreditCard {
   }) =>
       CreditCard(
         id: id ?? this.id,
-        cardTitle: cardTitle ?? this.cardTitle,
         cardHolder: cardHolder ?? this.cardHolder,
         cardNumber: cardNumber ?? this.cardNumber,
         validThru: validThru ?? this.validThru,
@@ -41,7 +37,6 @@ class CreditCard {
 
   factory CreditCard.fromMap(Map<String, dynamic> json) => CreditCard(
         id: json["id"],
-        cardTitle: json["cardTitle"],
         cardHolder: json["cardHolder"],
         cardNumber: json["cardNumber"],
         validThru: json["validThru"],
@@ -50,7 +45,6 @@ class CreditCard {
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "cardTitle": cardTitle,
         "cardHolder": cardHolder,
         "cardNumber": cardNumber,
         "validThru": validThru,
@@ -59,6 +53,6 @@ class CreditCard {
 
   @override
   String toString() {
-    return 'CreditCard(id: $id, cardTitle: $cardTitle, cardHolder: $cardHolder, cardNumber: $cardNumber, validThru: $validThru, cvv: $cvv)';
+    return 'CreditCard(id: $id, cardHolder: $cardHolder, cardNumber: $cardNumber, validThru: $validThru, cvv: $cvv)';
   }
 }

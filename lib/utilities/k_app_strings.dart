@@ -129,6 +129,7 @@ abstract class AppStrings {
 
   static const String addressesScreenTitle = 'Addresses';
   static const String addressesScreenSectionEditButton = 'Edit';
+  static const String addressesScreenCreateButton = 'Create';
   static const String addressesScreenSaveButton = 'Save';
   static const String addressesScreenDeleteButton = 'Delete';
   static const String addressesScreenEmptyMessage =
@@ -271,7 +272,8 @@ abstract class AppStrings {
 
   static const String paymentScreenResultMessageButton = 'Continue';
 
-  static const String paymentScreenShippingTextField1 = 'Full Name';
+  static const String paymentScreenShippingTextField0 = 'Full Name';
+  static const String paymentScreenShippingTextField1 = 'Address Title';
   static const String paymentScreenShippingTextField2 = 'Address';
   static const String paymentScreenShippingTextField3 = 'City';
   static const String paymentScreenShippingTextField4 = 'Zip Code';
@@ -280,7 +282,7 @@ abstract class AppStrings {
 
   static const String paymentScreenCreditCardTextField1 = 'Card Holder';
   static const String paymentScreenCreditCardTextField2 = 'Card Number';
-  static const String paymentScreenCreditCardTextField3 = 'Exp.Date';
+  static const String paymentScreenCreditCardTextField3 = 'Valid Thru';
   static const String paymentScreenCreditCardTextField4 = 'CVV';
   static const String paymentScreenCreditCardCheckBox = 'Save this credit card';
 

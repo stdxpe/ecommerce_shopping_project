@@ -104,9 +104,10 @@ class UserModel {
         id: uid,
         email: email,
         username: email.split('@').first,
-        notificationId: '000000',
-        phone: '000000',
-        photo: 'defaultPhotoUrl',
+        notificationId: '0000000000',
+        phone: '0000000000',
+        photo:
+            'https://firebasestorage.googleapis.com/v0/b/ecommerce-shopping-project.appspot.com/o/default_profile_photo.jpg?alt=media&token=4fab51e6-c0d3-4104-838b-7e8c0acd50ac',
         birthday: '01.01.2000',
         wishlist: [],
         shoppingCart: [],

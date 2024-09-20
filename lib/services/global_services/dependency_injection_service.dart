@@ -75,7 +75,6 @@ void registerDependencyInjectionService() {
   /// Review Manager (Business Layer)
   locator.registerLazySingleton<IReviewRepository>(() => ReviewManager());
 
-  /// TODO: Probably unnecessary
   /// Profile Manager (Business Layer)
   locator.registerLazySingleton<IProfileRepository>(() => ProfileManager());
 

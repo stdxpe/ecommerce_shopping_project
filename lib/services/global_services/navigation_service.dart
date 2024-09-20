@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/models/address.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/credit_card.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_redirect_service.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
@@ -132,8 +134,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
           path: Routes.test,
-          // builder: (context, state) => ProductCrudTestScreen()),
-          // builder: (context, state) => const UiCardsTestScreen()),
           builder: (context, state) => const ProductReviewCrudScreen()),
 
       GoRoute(
@@ -184,13 +184,20 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   product: state.extra! as Product))),
       GoRoute(
           path: Routes.bottomSheetAddresses,
-          pageBuilder: (context, state) => const ModalBottomSheetScreen(
-              bottomSheet:
-                  PaymentScreenShipping(isCreateNewAddressMode: true))),
+          pageBuilder: (context, state) => ModalBottomSheetScreen(
+                  bottomSheet: PaymentScreenShipping(
+                isCreateNewAddressMode: true,
+                initialAddress:
+                    state.extra != null ? state.extra! as Address : null,
+              ))),
       GoRoute(
           path: Routes.bottomSheetCreditCards,
-          pageBuilder: (context, state) => const ModalBottomSheetScreen(
-              bottomSheet: PaymentScreenPayment(isCreateNewCardMode: true))),
+          pageBuilder: (context, state) => ModalBottomSheetScreen(
+                  bottomSheet: PaymentScreenPayment(
+                isCreateNewCardMode: true,
+                initialCreditCard:
+                    state.extra != null ? state.extra! as CreditCard : null,
+              ))),
       GoRoute(
           path: Routes.bottomSheetProfileEdit,
           pageBuilder: (context, state) => const ModalBottomSheetScreen(

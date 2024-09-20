@@ -159,6 +159,6 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
       },
     );
 
-    print('state: ${state.value.toString()}');
+    if (state.value != null) print('state: ${state.value?.toString()}');
   }
 }

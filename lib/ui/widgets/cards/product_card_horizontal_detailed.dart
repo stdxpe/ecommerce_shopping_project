@@ -16,18 +16,24 @@ class ProductCardHorizontalDetailed extends StatelessWidget {
     required this.cartProduct,
     required this.card,
     this.useItemCounter = false,
+    this.enableNavigation = true,
   });
 
   final CartProduct cartProduct;
   final HorizontalDetailedCardOutputs card;
   final bool? useItemCounter;
+  final bool? enableNavigation;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       child: GestureDetector(
-        onTap: () => context.push(Routes.productDetails,
-            extra: cartProduct.selectedProduct),
+        onTap: () {
+          if (enableNavigation!) {
+            context.push(Routes.productDetails,
+                extra: cartProduct.selectedProduct);
+          }
+        },
         child: SizedBox(
           height: card.totalHeight,
           width: card.totalWidth,

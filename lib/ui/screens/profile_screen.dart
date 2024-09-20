@@ -1,4 +1,4 @@
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +9,7 @@ import 'package:unicons/unicons.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/notification_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_button.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/profile_card_user_info.dart';
@@ -27,6 +28,8 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    UserModel userModel = ref.watch(userProvider).value!;
+
     return Scaffold(
       appBar: const AppBarMain(
         automaticallyImplyLeading: false,
@@ -40,12 +43,12 @@ class ProfileScreen extends ConsumerWidget {
           physics: const ClampingScrollPhysics(),
           children: [
             ProfileCardUserInfo(
-              username: 'Jane Doe',
-              email: 'verified@gmail.com',
-              phoneNumber: '555 545342',
-              profilePhoto: AppImages.productImage10,
+              onPressed: () => context.push(Routes.bottomSheetProfileEdit),
+              username: userModel.username,
+              email: userModel.email,
+              phoneNumber: userModel.phone,
+              profilePhoto: userModel.photo,
               cardHeight: 225,
-              onPressedEdit: () => context.push(Routes.bottomSheetProfileEdit),
             ),
             SizedBox(height: 30.h),
             ProfileCardButton(

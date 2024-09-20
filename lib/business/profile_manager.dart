@@ -73,6 +73,34 @@ class ProfileManager extends IProfileRepository {
   }
 
   @override
+  Future<void> updateAddress(
+      {required Address address, required UserModel userModel}) async {
+    try {
+      debugPrint('ProfileManager updateAddress try block exec');
+
+      List<Address> tempAddresses = userModel.addresses;
+
+      int updatedIndex =
+          tempAddresses.indexWhere((element) => element.id == address.id);
+
+      tempAddresses.removeAt(updatedIndex);
+
+      tempAddresses.insert(updatedIndex, address);
+
+      await _userService.updateUserModel(
+          userModel: userModel.copyWith(addresses: tempAddresses));
+    } on Exception catch (_) {
+      debugPrint(
+          'ProfileManager updateAddress catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      debugPrint(
+          'ProfileManager updateAddress catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
   Future<List<CreditCard>> getCreditCards(
       {required UserModel userModel}) async {
     try {
@@ -131,6 +159,34 @@ class ProfileManager extends IProfileRepository {
     } on Error catch (_) {
       debugPrint(
           'ProfileManager deleteCreditCard catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> updateCreditCard(
+      {required CreditCard creditCard, required UserModel userModel}) async {
+    try {
+      debugPrint('ProfileManager updateCreditCard try block exec');
+
+      List<CreditCard> tempCreditCards = userModel.creditCards;
+
+      int updatedIndex =
+          tempCreditCards.indexWhere((element) => element.id == creditCard.id);
+
+      tempCreditCards.removeAt(updatedIndex);
+
+      tempCreditCards.insert(updatedIndex, creditCard);
+
+      await _userService.updateUserModel(
+          userModel: userModel.copyWith(creditCards: tempCreditCards));
+    } on Exception catch (_) {
+      debugPrint(
+          'ProfileManager updateCreditCard catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      debugPrint(
+          'ProfileManager updateCreditCard catch error block exec, rethrowing');
       rethrow;
     }
   }

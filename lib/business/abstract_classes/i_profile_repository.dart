@@ -17,6 +17,11 @@ abstract class IProfileRepository {
     required UserModel userModel,
   });
 
+  Future<void> updateAddress({
+    required Address address,
+    required UserModel userModel,
+  });
+
   Future<List<CreditCard>> getCreditCards({
     required UserModel userModel,
   });
@@ -27,6 +32,11 @@ abstract class IProfileRepository {
   });
 
   Future<void> deleteCreditCard({
+    required CreditCard creditCard,
+    required UserModel userModel,
+  });
+
+  Future<void> updateCreditCard({
     required CreditCard creditCard,
     required UserModel userModel,
   });

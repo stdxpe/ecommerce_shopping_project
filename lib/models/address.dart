@@ -3,16 +3,16 @@ import 'dart:convert';
 class Address {
   final String id;
   final String fullName;
-  final String? addressTitle;
+  final String addressTitle;
   final String addressText;
   final String city;
   final String country;
-  final int zipCode;
+  final String zipCode;
 
   Address({
     required this.id,
     required this.fullName,
-    this.addressTitle,
+    required this.addressTitle,
     required this.addressText,
     required this.city,
     required this.country,
@@ -26,7 +26,7 @@ class Address {
     String? addressText,
     String? city,
     String? country,
-    int? zipCode,
+    String? zipCode,
   }) =>
       Address(
         id: id ?? this.id,

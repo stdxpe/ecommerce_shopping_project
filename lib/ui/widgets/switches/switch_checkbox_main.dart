@@ -24,7 +24,9 @@ class SwitchCheckboxMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onChanged(),
+      onTap: () {
+        onChanged();
+      },
       child: Container(
         color: Colors.transparent,
         child: Row(

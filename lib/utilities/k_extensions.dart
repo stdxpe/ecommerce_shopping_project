@@ -37,3 +37,9 @@ extension PriceInUSDSignExtension on double {
     return '\$${this.toStringAsFixed(2)}';
   }
 }
+
+extension IsKeyboardOpen on BuildContext {
+  bool get isKeyboardOpen {
+    return MediaQuery.of(this).viewInsets.bottom == 0;
+  }
+}

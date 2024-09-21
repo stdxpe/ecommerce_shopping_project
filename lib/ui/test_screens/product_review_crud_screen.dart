@@ -10,7 +10,6 @@ import 'package:ecommerce_shopping_project/models/review.dart';
 import 'package:ecommerce_shopping_project/services/firebase_product_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_review_card.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProductReviewCrudScreen extends StatefulWidget {

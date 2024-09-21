@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetButtonsProfileSaveOrDelete extends StatelessWidget {
-  const BottomSheetButtonsProfileSaveOrDelete({
+class BottomSheetButtonsProfileUpdateOrDelete extends StatelessWidget {
+  const BottomSheetButtonsProfileUpdateOrDelete({
     super.key,
     this.onPressedCreate,
-    this.onPressedSave,
+    this.onPressedUpdate,
     this.onPressedDelete,
     this.paddingHorizontal,
     this.isInCreateMode = false,
@@ -16,7 +16,7 @@ class BottomSheetButtonsProfileSaveOrDelete extends StatelessWidget {
 
   final bool? isInCreateMode;
   final Function()? onPressedCreate;
-  final Function()? onPressedSave;
+  final Function()? onPressedUpdate;
   final Function()? onPressedDelete;
   final double? paddingHorizontal;
 
@@ -62,9 +62,9 @@ class BottomSheetButtonsProfileSaveOrDelete extends StatelessWidget {
                     Expanded(
                       child: ButtonMain(
                         onPressed: () {
-                          if (onPressedSave != null) onPressedSave!();
+                          if (onPressedUpdate != null) onPressedUpdate!();
                         },
-                        text: AppStrings.addressesScreenSaveButton,
+                        text: AppStrings.addressesScreenUpdateButton,
                         backgroundColor:
                             context.colorPalette.buttonMainBackgroundPrimary,
                         foregroundColor:

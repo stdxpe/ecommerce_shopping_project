@@ -1,43 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 
-class CreditCardVisualModel extends StatelessWidget {
+class CreditCardVisualModel extends ConsumerWidget {
   const CreditCardVisualModel({
     super.key,
-    this.paddingMain = Constants.kButtonPaddingHorizontal,
-    this.aspectRatioHorizontalToVertical = 1.5846394984,
-    this.aspectRatioVerticalToHorizontal = 0.6310583581,
     required this.index,
+    required this.cardNumber,
+    required this.cardHolder,
+    required this.validThru,
+    required this.cvv,
+    this.isCvvFocused = false,
   });
 
   final int index;
-  final double? paddingMain;
-  final double? aspectRatioVerticalToHorizontal;
-  final double? aspectRatioHorizontalToVertical;
+  final String cardNumber;
+  final String cardHolder;
+  final String validThru;
+  final String cvv;
+  final bool? isCvvFocused;
+
   @override
-  Widget build(BuildContext context) {
-    Size size = context.mediaQuery.size;
-    double creditCardWidth = (size.width - paddingMain! * 2.w);
-    double creditCardHeight =
-        creditCardWidth * aspectRatioVerticalToHorizontal!;
+  Widget build(BuildContext context, WidgetRef ref) {
+    CreditCardUIOutputs ui = ref.watch(creditCardUILayouts(context));
+
     return Container(
       clipBehavior: Clip.none,
-      // color: Colors.green.withOpacity(0.5),
       child: CreditCardWidget(
-        // backgroundImage: AppImages.creditCardBackground2,
-        backgroundImage: 'assets/images/digital_wallet/wallet-$index.jpg',
-        // backgroundImage: 'assets/images/credit_card_bg.jpg',
-        // backgroundImage: 'assets/images/credit_card_bg.png',
-
-        // backgroundImage: AppImages.blackBg,
-        // cardBgColor: Colors.black,
-        // cardBgColor: Colors.red,
-        // frontCardBorder: Border.all(width: 0, color: Colors.transparent),
-
-        //  GLASSMORPH
         glassmorphismConfig: Glassmorphism(
           blurX: 1.0,
           blurY: 1.0,
@@ -55,19 +46,23 @@ class CreditCardVisualModel extends StatelessWidget {
           ),
         ),
         padding: 0,
-        height: creditCardHeight,
-        width: (size.width - paddingMain! * 2.w),
+        height: ui.creditCardHeight,
+        width: ui.creditCardWidth,
         bankName: ' ',
-        cardNumber: "5555 5555 5555 6656",
-        expiryDate: "12/23",
-        cardHolderName: "JANE DOE",
+        cardNumber: cardNumber,
+        cardHolderName: cardHolder,
+        expiryDate: validThru,
+        cvvCode: cvv,
         isHolderNameVisible: true,
-        // cardBgColor: Colors.red,
-        cvvCode: '321',
         obscureCardNumber: false,
         obscureCardCvv: false,
-        showBackView: false,
+        showBackView:
+            ref.watch(selectedCreditCardIndex) == index ? isCvvFocused! : false,
         onCreditCardWidgetChange: (CreditCardBrand brand) {},
+        backgroundImage: 'assets/images/digital_wallet/wallet-${index % 5}.jpg',
+
+        /// Leave NULL for Auto Detection
+        // cardType: CardType.mastercard,
       ),
     );
   }

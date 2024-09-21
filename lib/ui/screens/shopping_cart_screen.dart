@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -47,9 +48,15 @@ class ShoppingCartScreen extends ConsumerWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButtonsShoppingCart(
-                  onPressed: () => ref
-                      .read(shoppingCartProvider.notifier)
-                      .continueToPayment(context: context),
+                  onPressed: () {
+                    ref
+                        .read(shoppingCartProvider.notifier)
+                        .continueToPayment(context: context);
+
+                    /// Resetting the Credit Cards
+                    ref.read(selectedCreditCardIndex.notifier).state =
+                        ref.read(creditCardsRawList).length - 1;
+                  },
                   totalAmount:
                       ref.watch(shoppingCartProvider.notifier).getTotalAmount(),
                   shippingFee:

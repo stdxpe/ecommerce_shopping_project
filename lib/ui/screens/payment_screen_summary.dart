@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/listview_product_card_horizontal_detailed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,9 @@ class PaymentScreenSummary extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var creditCard = ref.watch(selectedCreditCard);
+    print('selectedCreditCard to Order: ${creditCard.toString()}');
+
     return Scaffold(
       body: SafeArea(
         bottom: false,
@@ -33,6 +37,7 @@ class PaymentScreenSummary extends ConsumerWidget {
                     ),
                     ListviewProductCardHorizontalDetailed(
                       provider: shoppingCartProvider,
+                      enableNavigation: false,
                       cardHeight: 290,
                     ),
                   ],

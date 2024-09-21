@@ -52,7 +52,7 @@ class ForgotPasswordScreen extends ConsumerWidget {
               autoFocus: true,
               hintText: AppStrings.forgotPasswordScreenTextField,
               textInputType: TextInputType.number,
-              textInputFormatter: FilteringTextInputFormatter.digitsOnly,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             ),
             SizedBox(height: 125.h),
             ButtonMain(

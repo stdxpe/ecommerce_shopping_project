@@ -51,6 +51,8 @@ Future<void> main() async {
     /// TODO: Orders
     /// TODO: Stripe
     /// TODO: Hive for saving theme.mode and notification.selection only no-more yet
+    /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen
     /// SMS or Email Verification
+    /// FINAL REFACTOR
  

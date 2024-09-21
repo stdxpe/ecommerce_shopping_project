@@ -130,7 +130,7 @@ abstract class AppStrings {
   static const String addressesScreenTitle = 'Addresses';
   static const String addressesScreenSectionEditButton = 'Edit';
   static const String addressesScreenCreateButton = 'Create';
-  static const String addressesScreenSaveButton = 'Save';
+  static const String addressesScreenUpdateButton = 'Update';
   static const String addressesScreenDeleteButton = 'Delete';
   static const String addressesScreenEmptyMessage =
       'You haven\t added any addresses yet';
@@ -280,11 +280,11 @@ abstract class AppStrings {
   static const String paymentScreenShippingTextField5 = 'Country';
   static const String paymentScreenShippingCheckBox = 'Save this address';
 
-  static const String paymentScreenCreditCardTextField1 = 'Card Holder';
-  static const String paymentScreenCreditCardTextField2 = 'Card Number';
-  static const String paymentScreenCreditCardTextField3 = 'Valid Thru';
-  static const String paymentScreenCreditCardTextField4 = 'CVV';
-  static const String paymentScreenCreditCardCheckBox = 'Save this credit card';
+  static const String hintCreditCardHolder = 'Card Holder';
+  static const String hintCreditCardNumber = 'Card Number';
+  static const String hintCreditCardValidThru = 'Valid Thru';
+  static const String hintCreditCardCvv = 'CVV';
+  static const String saveCreditCardCheckBox = 'Save this credit card';
 
   /// Bottom Navigation Bar Related
   static const String bottomNavBarHome = 'Home';

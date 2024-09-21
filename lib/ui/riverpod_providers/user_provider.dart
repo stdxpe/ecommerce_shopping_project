@@ -23,6 +23,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   FutureOr<UserModel?> build() async {
     /// Initial State Setting Operation
     getUserModel();
+    print('UserNotifier | BUILD() Executed');
 
     /// Waiting for above method to be completed
     return await future;

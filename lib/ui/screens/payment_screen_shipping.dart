@@ -7,7 +7,7 @@ import 'package:ecommerce_shopping_project/models/address.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shipping_addresses_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_profile_save_or_delete.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_profile_update_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
@@ -112,7 +112,7 @@ class PaymentScreenShipping extends ConsumerWidget {
             if (isCreateNewAddressMode == true && initialAddress != null)
               Visibility(
                 visible: context.isKeyboardOpen,
-                child: BottomSheetButtonsProfileSaveOrDelete(
+                child: BottomSheetButtonsProfileUpdateOrDelete(
                   onPressedDelete: () {
                     if (initialAddress != null) {
                       ref
@@ -122,7 +122,7 @@ class PaymentScreenShipping extends ConsumerWidget {
                       ref.read(addressesProvider.notifier).disposeControllers();
                     }
                   },
-                  onPressedSave: () {
+                  onPressedUpdate: () {
                     ref
                         .read(addressesProvider.notifier)
                         .updateAddress(initialAddress: initialAddress!);
@@ -134,7 +134,7 @@ class PaymentScreenShipping extends ConsumerWidget {
             if (isCreateNewAddressMode == true && initialAddress == null)
               Visibility(
                 visible: context.isKeyboardOpen,
-                child: BottomSheetButtonsProfileSaveOrDelete(
+                child: BottomSheetButtonsProfileUpdateOrDelete(
                   isInCreateMode: true,
                   onPressedCreate: () {
                     ref.read(addressesProvider.notifier).createAddress();

@@ -19,8 +19,9 @@ class TextformfieldMain extends StatelessWidget {
     this.focusNode,
     this.onFocusTap,
     this.textInputAction,
-    this.textInputFormatter,
+    this.inputFormatters,
     this.onChanged,
+    this.initialValue,
   });
 
   final TextEditingController? controller;
@@ -28,8 +29,8 @@ class TextformfieldMain extends StatelessWidget {
   final FocusNode? focusNode;
   final Function()? onFocusTap;
   final Function(String value)? onChanged;
-
-  final TextInputFormatter? textInputFormatter;
+  final String? initialValue;
+  final List<TextInputFormatter>? inputFormatters;
   final TextInputAction? textInputAction;
   final String hintText;
   final Color? textColor;
@@ -46,10 +47,13 @@ class TextformfieldMain extends StatelessWidget {
         horizontal: paddingHorizontal!,
       ),
       child: TextFormField(
+        initialValue: initialValue,
         onChanged: onChanged,
         validator: validator,
         controller: controller,
+        inputFormatters: inputFormatters,
         focusNode: focusNode,
+        autocorrect: false,
         autovalidateMode: AutovalidateMode.always,
         textInputAction: textInputAction,
         autofocus: autoFocus!,
@@ -71,7 +75,6 @@ class TextformfieldMain extends StatelessWidget {
           errorStyle: context.textTheme.labelMedium!.copyWith(
             color: ColorPalette.favoriteRed,
             height: 1.1,
-            // fontSize: context.textTheme.labelMedium!.fontSize!.h,
             fontSize: 35.h,
             fontWeight: FontWeight.w500,
           ),

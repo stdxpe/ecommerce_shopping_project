@@ -7,7 +7,4 @@ abstract class ICollectionRepository {
   Future<Collection> getCollectionById({required String collectionId});
   Future<void> createCollection({required Collection collection});
   Future<List<Product>> getCollectionByFilter({required Filter filter});
-
-// TODO: Personal Collections, 'Recommended For You' Section to-be-created
-// Depends on the Liked, Ordered or Searched Collections/Products
 }

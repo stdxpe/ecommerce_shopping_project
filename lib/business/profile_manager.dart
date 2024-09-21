@@ -106,7 +106,12 @@ class ProfileManager extends IProfileRepository {
     try {
       debugPrint('ProfileManager getCreditCards try block exec');
 
-      return userModel.creditCards;
+      List<CreditCard> tempCreditCards = [];
+
+      for (var card in userModel.creditCards) {
+        tempCreditCards.add(card);
+      }
+      return tempCreditCards;
     } on Exception catch (_) {
       debugPrint(
           'ProfileManager getCreditCards catch exception block exec, rethrowing');
@@ -125,7 +130,10 @@ class ProfileManager extends IProfileRepository {
       debugPrint('ProfileManager createCreditCard try block exec');
 
       List<CreditCard> tempCreditCards = userModel.creditCards;
+      debugPrint('ProfileManager tempCreditCards: $tempCreditCards');
+
       tempCreditCards.add(creditCard);
+      debugPrint('ProfileManager tempCreditCards2: $tempCreditCards');
 
       await _userService.updateUserModel(
           userModel: userModel.copyWith(creditCards: tempCreditCards));

@@ -43,3 +43,17 @@ extension IsKeyboardOpen on BuildContext {
     return MediaQuery.of(this).viewInsets.bottom == 0;
   }
 }
+
+extension HideCreditCardNumber on String? {
+  String get hideCreditCardNumber {
+    if (this != null && this!.isNotEmpty && this!.length >= 19) {
+      int length = this!.length;
+      // ignore: unnecessary_this
+      String temp = this!.substring(length - 4, length);
+      return '**** **** **** $temp';
+      // return RegExp(r'^[0-9.](?=.*.{4})$').stringMatch(this)!;
+    } else {
+      return '';
+    }
+  }
+}

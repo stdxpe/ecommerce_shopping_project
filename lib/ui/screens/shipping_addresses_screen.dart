@@ -7,6 +7,7 @@ import 'package:ecommerce_shopping_project/services/global_services/navigation_s
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shipping_addresses_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/vertical_listview_profile_addresses.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occured_widget.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/no_items_found_widget.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -27,15 +28,25 @@ class ShippingAddressesScreen extends ConsumerWidget {
               icon: Icons.add,
               paddingTop: 85.h,
               paddingHorizontal: Constants.kMainPaddingHorizontal.w,
-              onPressed: () => context.push(Routes.bottomSheetAddresses),
+              onPressed: () {
+                ref.read(disposeAddressControllers);
+                ref.read(selectedAddressIndex.notifier).state =
+                    ref.read(addressesRawList).length - 1;
+                context.push(Routes.bottomSheetAddresses);
+              },
             ),
-            ref.watch(addressesProvider).when(
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
-                  error: (error, stackTrace) => const ErrorOccuredWidget(),
-                  data: (data) =>
-                      VerticalListviewProfileAddresses(addresses: data),
-                ),
+            ref.watch(addressesProvider).hasError
+                ? const ErrorOccuredWidget()
+                : (ref.watch(addressesProvider).value != null &&
+                        ref.watch(addressesProvider).value!.isNotEmpty)
+                    ? ref.watch(addressesProvider).when(
+                        loading: () => const Center(
+                            child: Center(child: CircularProgressIndicator())),
+                        error: (error, stackTrace) =>
+                            const ErrorOccuredWidget(),
+                        data: (data) =>
+                            VerticalListviewProfileAddresses(addresses: data))
+                    : const NoItemsFoundWidget(),
             SizedBox(height: 100.h),
           ],
         ),

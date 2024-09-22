@@ -272,13 +272,14 @@ abstract class AppStrings {
 
   static const String paymentScreenResultMessageButton = 'Continue';
 
-  static const String paymentScreenShippingTextField0 = 'Full Name';
-  static const String paymentScreenShippingTextField1 = 'Address Title';
-  static const String paymentScreenShippingTextField2 = 'Address';
-  static const String paymentScreenShippingTextField3 = 'City';
-  static const String paymentScreenShippingTextField4 = 'Zip Code';
-  static const String paymentScreenShippingTextField5 = 'Country';
-  static const String paymentScreenShippingCheckBox = 'Save this address';
+  static const String hintAddressFullName = 'Full Name';
+  static const String hintAddressTitle = 'Address Title';
+  static const String hintAddressText = 'Address';
+  static const String hintAddressCity = 'City';
+  static const String hintAddressZipCode = 'Zip Code';
+  static const String hintAddressCountry = 'Country';
+  static const String saveAddressCheckbox = 'Save this address';
+  static const String newAddressChip = 'New';
 
   static const String hintCreditCardHolder = 'Card Holder';
   static const String hintCreditCardNumber = 'Card Number';

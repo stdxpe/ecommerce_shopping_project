@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/models/address.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_redirect_service.dart';
@@ -182,12 +181,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   product: state.extra! as Product))),
       GoRoute(
           path: Routes.bottomSheetAddresses,
-          pageBuilder: (context, state) => ModalBottomSheetScreen(
-                  bottomSheet: PaymentScreenShipping(
-                isCreateNewAddressMode: true,
-                initialAddress:
-                    state.extra != null ? state.extra! as Address : null,
-              ))),
+          pageBuilder: (context, state) => const ModalBottomSheetScreen(
+              bottomSheet: PaymentScreenShipping(isEditingMode: true))),
       GoRoute(
           path: Routes.bottomSheetCreditCards,
           pageBuilder: (context, state) => const ModalBottomSheetScreen(

@@ -146,7 +146,7 @@ class _PaymentScreenPaymentState extends ConsumerState<PaymentScreenPayment> {
                           ],
                         ),
                         SizedBox(height: 80.h),
-                        if (widget.isEditingMode == false)
+                        if (widget.isEditingMode == false && card == null)
                           SwitchCheckboxMain(
                             onChanged: () {
                               ref.read(creditCardCheckBox.notifier).state =

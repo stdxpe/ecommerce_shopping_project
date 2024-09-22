@@ -67,7 +67,7 @@ class SignUpNotifier extends StateNotifier<SignUpFormState> {
                 textfieldModel: state.confirmPassword,
                 textFieldModelText: state.confirmPassword.text,
                 isValidCheckExtension: state.confirmPassword.text
-                    ?.isPasswordsMatch(state.password.text!),
+                    ?.isMatchingPasswords(state.password.text!),
                 errorText: AppStrings.textfieldConfirmPasswordErrorMessage,
               ));
 

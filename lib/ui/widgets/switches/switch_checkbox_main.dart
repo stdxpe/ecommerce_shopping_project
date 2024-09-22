@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
 
@@ -58,7 +59,7 @@ class SwitchCheckboxMain extends StatelessWidget {
             Flexible(child: text),
           ],
         ),
-      ),
+      ).animate().fade(duration: 300.milliseconds),
     );
   }
 }

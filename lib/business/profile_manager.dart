@@ -15,7 +15,12 @@ class ProfileManager extends IProfileRepository {
     try {
       debugPrint('ProfileManager getAddresses try block exec');
 
-      return userModel.addresses;
+      List<Address> tempAddresses = [];
+
+      for (var address in userModel.addresses) {
+        tempAddresses.add(address);
+      }
+      return tempAddresses;
     } on Exception catch (_) {
       debugPrint(
           'ProfileManager getAddresses catch exception block exec, rethrowing');

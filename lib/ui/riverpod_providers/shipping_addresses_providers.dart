@@ -16,35 +16,63 @@ final addressesProvider =
 class AddressesNotifier extends AsyncNotifier<List<Address>> {
   @override
   FutureOr<List<Address>> build() async {
-    List<Address> addresses = ref.watch(userProvider).value!.addresses;
-    return addresses;
+    // List<Address> addresses = ref.watch(userProvider).value!.addresses;
+    // return addresses;
+
+    /// Initial State Setting Operation
+    getAddresses();
+
+    /// Waiting for the inner method to be completed
+    return await future;
   }
 
   final _profileManager = locator<IProfileRepository>();
 
-  createAddress() async {
+  getAddresses() async {
+    debugPrint('AddressesNotifier | getAddresses() Executed');
+
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      return await _profileManager.getAddresses(
+          userModel: ref.watch(userProvider).value!);
+    });
+  }
+
+  createAddress({
+    required String fullName,
+    required String addressTitle,
+    required String addressText,
+    required String city,
+    required String country,
+    required String zipCode,
+  }) async {
     debugPrint('AddressesNotifier | createAddress() Executed');
+
+    Address newAddress = Address(
+      id: const Uuid().v4(),
+      fullName: fullName,
+      addressTitle: addressTitle,
+      addressText: addressText,
+      city: city,
+      country: country,
+      zipCode: zipCode,
+    );
 
     final previousState = await future;
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        Address address = Address(
-          id: const Uuid().v4(),
-          fullName: ref.watch(textControllerAddressFullName(null)).text,
-          addressTitle: ref.watch(textControllerAddressTitle(null)).text,
-          addressText: ref.watch(textControllerAddress(null)).text,
-          city: ref.watch(textControllerAddressCity(null)).text,
-          zipCode: ref.watch(textControllerAddressZipCode(null)).text,
-          country: ref.watch(textControllerAddressCountry(null)).text,
-        );
-
         await _profileManager.createAddress(
-          address: address,
+          address: newAddress,
           userModel: ref.watch(userProvider).value!,
         );
 
-        return [...previousState, address];
+        return [...previousState, newAddress];
+      },
+      (error) {
+        debugPrint(
+            'AddressesNotifier error block exec | ${error.runtimeType} | ${error.toString()} | $error');
+        return true;
       },
     );
   }
@@ -66,116 +94,128 @@ class AddressesNotifier extends AsyncNotifier<List<Address>> {
     );
   }
 
-  updateAddress({required Address initialAddress}) async {
+  updateAddress({
+    required Address? selectedAddress,
+    required String fullName,
+    required String addressTitle,
+    required String addressText,
+    required String city,
+    required String country,
+    required String zipCode,
+  }) async {
     debugPrint('AddressesNotifier | updateAddress() Executed');
 
     final previousState = await future;
     state = const AsyncLoading();
     state = await AsyncValue.guard(
       () async {
-        Address address = Address(
-          id: initialAddress.id,
-          fullName: ref
-              .watch(textControllerAddressFullName(initialAddress.fullName))
-              .text,
-          addressTitle: ref
-              .watch(textControllerAddressTitle(initialAddress.addressTitle))
-              .text,
-          addressText:
-              ref.watch(textControllerAddress(initialAddress.addressText)).text,
-          city: ref.watch(textControllerAddressCity(initialAddress.city)).text,
-          zipCode: ref
-              .watch(textControllerAddressZipCode(initialAddress.zipCode))
-              .text,
-          country: ref
-              .watch(textControllerAddressCountry(initialAddress.country))
-              .text,
-        );
+        if (selectedAddress != null) {
+          Address updatedAddress = Address(
+            id: selectedAddress.id,
+            fullName: fullName,
+            addressTitle: addressTitle,
+            addressText: addressText,
+            city: city,
+            country: country,
+            zipCode: zipCode,
+          );
 
-        int updatedIndex =
-            previousState.indexWhere((element) => element.id == address.id);
+          int updatedIndex = previousState
+              .indexWhere((element) => element.id == updatedAddress.id);
 
-        List<Address> latestList =
-            previousState.where((element) => element.id != address.id).toList();
+          List<Address> latestList = previousState
+              .where((element) => element.id != updatedAddress.id)
+              .toList();
 
-        latestList.insert(updatedIndex, address);
+          latestList.insert(updatedIndex, updatedAddress);
 
-        await _profileManager.updateAddress(
-          address: address,
-          userModel: ref.watch(userProvider).value!,
-        );
+          await _profileManager.updateAddress(
+            address: updatedAddress,
+            userModel: ref.watch(userProvider).value!,
+          );
 
-        return latestList;
+          return latestList;
+        } else {
+          return [...previousState];
+        }
       },
       (error) {
-        print(
-            'AddressesNotifier error block exec | ${error.runtimeType} | $error');
+        debugPrint(
+            'AddressesNotifier error block exec | ${error.runtimeType} | ${error.toString()}');
         return true;
       },
     );
   }
-
-  disposeControllers() async {
-    debugPrint('Address DisposeControllers waiting..');
-    await Future.delayed(const Duration(seconds: 1));
-    debugPrint('Address DisposeControllers waited 1 sec');
-
-    ref.watch(textControllerAddressFullName(null)).clear();
-    ref.watch(textControllerAddressTitle(null)).clear();
-    ref.watch(textControllerAddress(null)).clear();
-    ref.watch(textControllerAddressCity(null)).clear();
-    ref.watch(textControllerAddressZipCode(null)).clear();
-    ref.watch(textControllerAddressCountry(null)).clear();
-  }
 }
 
-/// CREATING ADDRESS TEXTFORMFIELD CONTROLLERS
+final disposeAddressControllers = Provider<void>((ref) async {
+  await Future.delayed(const Duration(seconds: 2));
 
-final textControllerAddressFullName =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() {
-    controller.dispose();
-    debugPrint('textControllerAddressFullName disposed');
-  });
-
-  return controller;
+  ref.read(selectedAddressIndex.notifier).state = 0;
+  var controllers = ref.read(addressTextControllers);
+  controllers.fullName.clear();
+  controllers.addressTitle.clear();
+  controllers.addressText.clear();
+  controllers.city.clear();
+  controllers.zipCode.clear();
+  controllers.country.clear();
 });
 
-final textControllerAddressTitle =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() => controller.dispose());
-  return controller;
+final addressesRawList = StateProvider<List<Address?>>((ref) {
+  List<Address?> addressesList = [null];
+
+  if (ref.watch(addressesProvider).value != null) {
+    addressesList = ref.watch(addressesProvider).value!;
+    addressesList = [...addressesList, null];
+  }
+  return addressesList;
 });
 
-final textControllerAddress =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() => controller.dispose());
-  return controller;
+final selectedAddressIndex = StateProvider<int>((ref) {
+  return ref.watch(addressesRawList).length - 1;
 });
 
-final textControllerAddressCity =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() => controller.dispose());
-  return controller;
+final selectedAddress = StateProvider<Address?>((ref) {
+  List<Address?> addresses = ref.watch(addressesRawList);
+  int selectedIndex = ref.watch(selectedAddressIndex);
+  return addresses[selectedIndex];
 });
 
-final textControllerAddressZipCode =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() => controller.dispose());
-  return controller;
+/// ADDRESSES TEXTFORMFIELD CONTROLLERS
+typedef AddressesTextControllerOutputs = ({
+  TextEditingController fullName,
+  TextEditingController addressTitle,
+  TextEditingController addressText,
+  TextEditingController city,
+  TextEditingController zipCode,
+  TextEditingController country,
 });
 
-final textControllerAddressCountry =
-    Provider.family<TextEditingController, String?>((ref, initialText) {
-  TextEditingController controller = TextEditingController(text: initialText);
-  ref.onDispose(() => controller.dispose());
+final addressTextControllers =
+    StateProvider<AddressesTextControllerOutputs>((ref) {
+  final Address? selected = ref.watch(selectedAddress);
 
-  return controller;
+  final TextEditingController controllerFullName =
+      TextEditingController(text: selected?.fullName);
+  final TextEditingController controllerAddressTitle =
+      TextEditingController(text: selected?.addressTitle);
+  final TextEditingController controllerAddressText =
+      TextEditingController(text: selected?.addressText);
+  final TextEditingController controllerCity =
+      TextEditingController(text: selected?.city);
+  final TextEditingController controllerZipCode =
+      TextEditingController(text: selected?.zipCode);
+  final TextEditingController controllerCountry =
+      TextEditingController(text: selected?.country);
+
+  return (
+    fullName: controllerFullName,
+    addressTitle: controllerAddressTitle,
+    addressText: controllerAddressText,
+    city: controllerCity,
+    zipCode: controllerZipCode,
+    country: controllerCountry,
+  );
 });
 
 final addressCheckBox = StateProvider<bool>((ref) => true);

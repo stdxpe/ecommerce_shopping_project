@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/models/order.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_redirect_service.dart';
 import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.dart';
@@ -289,8 +290,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                           GoRoute(
                               parentNavigatorKey: profileNavigatorKey,
                               path: 'trackingOrder',
-                              builder: (context, state) =>
-                                  const TrackingOrderScreen()),
+                              builder: (context, state) => TrackingOrderScreen(
+                                    order: state.extra! as Order,
+                                  )),
                         ]),
                     GoRoute(
                         parentNavigatorKey: profileNavigatorKey,

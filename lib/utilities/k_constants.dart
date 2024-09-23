@@ -14,6 +14,7 @@ abstract class Constants {
 
   /// Main Title
   static const double kMainTitlePaddingTop = 20;
+  static const double kMainTitlePaddingTopWithoutAppBar = 85;
   static const double kMainTitlePaddingTopForHomeScreen = 77;
   static const double kMainTitlePaddingBottom = 60;
   static const double kMainTitleSpacingBTWItemsFoundBTWStepsVertical = 10;

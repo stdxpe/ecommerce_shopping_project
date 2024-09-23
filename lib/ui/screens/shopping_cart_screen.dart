@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_shopping_cart.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/listview_product_card_horizontal_detailed.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
@@ -16,8 +15,6 @@ class ShoppingCartScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: const AppBarMain(
-          automaticallyImplyLeading: true, useSearchButton: false),
       body: SafeArea(
         bottom: false,
         child: SizedBox(
@@ -32,6 +29,9 @@ class ShoppingCartScreen extends ConsumerWidget {
                   children: [
                     TitleMain(
                       title: AppStrings.shoppingCartScreenTitle,
+                      enableTitleAsBackButton: true,
+                      paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
+                      paddingHorizontal: Constants.kMainPaddingHorizontal.w,
                       itemCount:
                           ref.watch(shoppingCartProvider).value?.length ?? 0,
                     ),

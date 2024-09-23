@@ -160,12 +160,42 @@ final creditCardsRawList = StateProvider<List<CreditCard?>>((ref) {
   return cardsList;
 });
 
-final selectedCreditCardIndex = StateProvider<int>((ref) => 0);
+// final selectedCreditCardIndex = StateProvider<int>((ref) => 0);
+final selectedCreditCardIndex = StateProvider<int>((ref) {
+  return ref.watch(creditCardsRawList).length - 1;
+});
 
 final selectedCreditCard = StateProvider<CreditCard?>((ref) {
   List<CreditCard?> creditCards = ref.watch(creditCardsRawList);
   int selectedIndex = ref.watch(selectedCreditCardIndex);
   return creditCards[selectedIndex];
+});
+
+final creditCardProviderForSummary = StateProvider<CreditCard?>((ref) {
+  var creditCard = ref.watch(selectedCreditCard);
+  var controllers = ref.watch(creditCardTextControllers);
+
+  if (creditCard != null &&
+      controllers.cardHolder.text.isNotEmpty &&
+      controllers.cardNumber.text.isNotEmpty &&
+      controllers.validThru.text.isNotEmpty &&
+      controllers.cvv.text.isNotEmpty) {
+    return creditCard;
+  } else if (creditCard == null &&
+      controllers.cardHolder.text.isNotEmpty &&
+      controllers.cardNumber.text.isNotEmpty &&
+      controllers.validThru.text.isNotEmpty &&
+      controllers.cvv.text.isNotEmpty) {
+    return CreditCard(
+      id: 'tempId',
+      cardHolder: controllers.cardHolder.text,
+      cardNumber: controllers.cardNumber.text,
+      validThru: controllers.validThru.text,
+      cvv: controllers.cvv.text,
+    );
+  } else {
+    return null;
+  }
 });
 
 /// CREDITCARD TEXTFORMFIELD CONTROLLERS
@@ -197,6 +227,21 @@ final creditCardTextControllers =
 });
 
 final creditCardCheckBox = StateProvider<bool>((ref) => true);
+
+final saveCreditCardIfCheckboxSelected = Provider<void>((ref) {
+  bool selection = ref.read(creditCardCheckBox);
+  CreditCard? newCreditCard = ref.read(creditCardProviderForSummary);
+  CreditCard? existingCard = ref.read(selectedCreditCard);
+
+  if (selection == true && newCreditCard != null && existingCard == null) {
+    ref.read(creditCardsProvider.notifier).createCreditCard(
+          cardHolder: newCreditCard.cardHolder,
+          cardNumber: newCreditCard.cardNumber,
+          validThru: newCreditCard.validThru,
+          cvv: newCreditCard.cvv,
+        );
+  }
+});
 
 /// CREDITCARD UI LAYOUTS and DIMENSIONS
 typedef CreditCardUIOutputs = ({

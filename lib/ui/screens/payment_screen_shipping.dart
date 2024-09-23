@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/address.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shipping_addresses_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_profile_update_or_delete.dart';
@@ -212,10 +212,10 @@ class _PaymentScreenShippingState extends ConsumerState<PaymentScreenShipping> {
                 visible: context.isKeyboardOpen,
                 child: BottomSheetButtonsPaymentShipping(
                   onPressed: () {
-                    /// TODO: Enable/Disable Buttons
+                    /// Directing to the Credit Card Screen
                     ref
-                        .read(paymentScreenNavigationProvider.notifier)
-                        .goNextStep(context, ref);
+                        .read(paymentStepsNavigation.notifier)
+                        .goSpecificIndex(targetIndex: 1);
                   },
                 ),
               ),

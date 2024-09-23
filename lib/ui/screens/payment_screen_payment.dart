@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/credit_card.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_screen_steps_navigation_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_steps_navigation_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_method.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_profile_update_or_delete.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/sliders/credit_cards_slider.dart';
@@ -211,9 +211,12 @@ class _PaymentScreenPaymentState extends ConsumerState<PaymentScreenPayment> {
               Visibility(
                 visible: context.isKeyboardOpen,
                 child: BottomSheetButtonsPaymentMethod(
-                  onPressed: () => ref
-                      .read(paymentScreenNavigationProvider.notifier)
-                      .goNextStep(context, ref),
+                  onPressed: () {
+                    /// Directing to the Summary Screen
+                    ref
+                        .read(paymentStepsNavigation.notifier)
+                        .goSpecificIndex(targetIndex: 2);
+                  },
                 ),
               ),
           ],

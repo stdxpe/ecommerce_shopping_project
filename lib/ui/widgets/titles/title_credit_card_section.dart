@@ -43,18 +43,19 @@ class TitleCreditCardSection extends StatelessWidget {
                 children: [
                   SizedBox(height: 50.h),
                   TextCustom(
-                    text: cardNumber,
+                    text: cardNumber.hideCreditCardNumber,
                     textStyle: context.textTheme.bodyLarge!,
                     color: context.colorPalette.cardTextPrimary,
-                    fontSizeCustom: 42,
+                    fontSizeCustom: 40,
+                    fontLetterSpacingCustom: 0.1,
                   ),
                   SizedBox(height: 25.h),
                   TextCustom(
-                    /// TODO: Obscure number
                     text: cardHolder,
                     textStyle: context.textTheme.bodySmall!,
                     color: context.colorPalette.cardTextSecondary,
                     fontHeightCustom: 1.3,
+                    fontSizeCustom: 35,
                     fontWeightCustom: FontWeight.w400,
                     isHeightConstraintRelated: false,
                   ),
@@ -63,6 +64,7 @@ class TitleCreditCardSection extends StatelessWidget {
                     textStyle: context.textTheme.bodySmall!,
                     color: context.colorPalette.cardTextSecondary,
                     fontHeightCustom: 1.3,
+                    fontSizeCustom: 35,
                     fontWeightCustom: FontWeight.w400,
                     isHeightConstraintRelated: false,
                   ),

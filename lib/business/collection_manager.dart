@@ -61,7 +61,6 @@ class CollectionManager extends ICollectionRepository {
     }
   }
 
-  /// TODO: Remove later?
   @override
   Future<Collection> getCollectionById({required String collectionId}) async {
     try {
@@ -105,7 +104,6 @@ class CollectionManager extends ICollectionRepository {
     }
   }
 
-  /// TODO: Remove later
   @override
   Future<void> createCollection({required Collection collection}) async {
     try {

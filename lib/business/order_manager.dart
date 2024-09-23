@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:ecommerce_shopping_project/models/order.dart' as model;
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_order_repository.dart';
+import 'package:ecommerce_shopping_project/models/address.dart';
+import 'package:ecommerce_shopping_project/models/cart_product.dart';
+import 'package:ecommerce_shopping_project/models/order.dart' as model;
 import 'package:ecommerce_shopping_project/models/order_product.dart';
 import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class OrderManager extends IOrderRepository {
   final _userService = locator<IUserService>();
@@ -15,7 +20,12 @@ class OrderManager extends IOrderRepository {
   Future<List<model.Order>> getOrders({required UserModel userModel}) async {
     try {
       print('OrderManager getOrders try block exec');
-      return userModel.orders;
+      List<model.Order> tempOrders = [];
+
+      for (var order in userModel.orders) {
+        tempOrders.add(order);
+      }
+      return tempOrders;
     } on Exception catch (_) {
       print('OrderManager getOrders catch exception block exec, rethrowing');
       rethrow;
@@ -26,66 +36,64 @@ class OrderManager extends IOrderRepository {
   }
 
   @override
-  Future<void> createOrder({
-    required List<OrderProduct> products,
+  Future<model.Order> createOrder({
+    required List<CartProduct> shoppingCartProducts,
+    required Address shippingAddress,
+    required double totalPrice,
     required UserModel userModel,
   }) async {
     try {
-      print('OrderManager addOrder try block exec');
+      print('OrderManager createOrder try block exec');
 
       List<model.Order> tempOrders = userModel.orders;
-      double totalPrice = 0;
-      for (var product in products) {
-        totalPrice = totalPrice + product.price;
+
+      List<OrderProduct> tempOrderProductsList = [];
+
+      for (var cartProduct in shoppingCartProducts) {
+        OrderProduct tempOrderProduct = OrderProduct(
+          id: const Uuid().v4(),
+          selectedProductId: cartProduct.selectedProduct.id,
+          title: cartProduct.selectedProduct.title,
+          photo: cartProduct.selectedProduct.mainPhoto,
+          price: cartProduct.selectedProduct.price,
+          selectedColor: cartProduct.selectedColor,
+          selectedSize: cartProduct.selectedSize,
+          itemCount: cartProduct.itemCount,
+        );
+        tempOrderProductsList.add(tempOrderProduct);
       }
 
-      tempOrders.add(
-        model.Order(
-          id: const Uuid().v4(),
-          products: products,
-          totalPrice: totalPrice,
-          createdAt: Timestamp.now(),
-        ),
+      int tempTotalItemCount = 0;
+      for (var item in tempOrderProductsList) {
+        tempTotalItemCount = tempTotalItemCount + item.itemCount;
+      }
+
+      model.Order newOrder = model.Order(
+        id: const Uuid().v1(),
+        products: tempOrderProductsList,
+        totalPrice: totalPrice,
+        shippingAddress: shippingAddress,
+        createdAt: Timestamp.now(),
+        totalItemCount: tempTotalItemCount,
+        status: AppStrings.orderStatusStepReceived,
+        statusReceivedDate: Timestamp.now(),
+        statusPreparedDate: null,
+        statusOnTheWayDate: null,
+        statusDeliveredDate: null,
       );
+
+      tempOrders.add(newOrder);
 
       await _userService.updateUserModel(
           userModel: userModel.copyWith(orders: tempOrders));
+
+      return newOrder;
     } on Exception catch (_) {
-      print('OrderManager addOrder catch exception block exec, rethrowing');
+      print('OrderManager createOrder catch exception block exec, rethrowing');
       rethrow;
     } on Error catch (_) {
-      print('OrderManager addOrder catch error block exec, rethrowing');
+      print('OrderManager createOrder catch error block exec, rethrowing');
       rethrow;
     }
   }
-
-  /// TODO: Problematic?
-  // @override
-  // Future<OrderProduct> createOrderProduct(
-  //     {required Product product,
-  //     required String selectedColor,
-  //     required String selectedSize,
-  //     required int itemCount}) async {
-  //   try {
-  //     print('OrderManager createOrderProduct try block exec');
-  //     return OrderProduct(
-  //       id: const Uuid().v4(),
-  //       selectedProductId: product.id,
-  //       title: product.title,
-  //       photo: product.mainPhoto,
-  //       price: product.price,
-  //       selectedColor: selectedColor,
-  //       selectedSize: selectedSize,
-  //       itemCount: itemCount,
-  //     );
-  //   } on Exception catch (_) {
-  //     print(
-  //         'OrderManager createOrderProduct catch exception block exec, rethrowing');
-  //     rethrow;
-  //   } on Error catch (_) {
-  //     print(
-  //         'OrderManager createOrderProduct catch error block exec, rethrowing');
-  //     rethrow;
-  //   }
-  // }
 }

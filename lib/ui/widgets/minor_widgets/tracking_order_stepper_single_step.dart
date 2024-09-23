@@ -84,7 +84,6 @@ class TrackingOrderStepperSingleStep extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 50.h),
           width: double.infinity,
           decoration: BoxDecoration(
-            // color: Colors.red.withOpacity(0.5),
             border: Border(
               left: BorderSide(
                 color: isLastStep!

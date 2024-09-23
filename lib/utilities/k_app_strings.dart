@@ -122,10 +122,19 @@ abstract class AppStrings {
       'You haven\t added any orders yet';
 
   static const String trackingOrderScreenTitle = 'Tracking Order';
-  static const String trackingOrderScreenStepReceived = 'Received';
-  static const String trackingOrderScreenStepPrepared = 'Prepared';
-  static const String trackingOrderScreenStepOnTheWay = 'On the Way';
-  static const String trackingOrderScreenStepDelivered = 'Delivered';
+  static const String orderStatusStepReceived = 'Received';
+  static const String orderStatusStepPrepared = 'Prepared';
+  static const String orderStatusStepOnTheWay = 'On the Way';
+  static const String orderStatusStepDelivered = 'Delivered';
+
+  static const String orderStatusReceivedMessage =
+      'Store has received your order.';
+  static const String orderStatusPreparedMessage =
+      'Your order is being prepared for shipment.';
+  static const String orderStatusOnTheWayMessage =
+      'Your order is on the way!\nClick here to track shipment status';
+  static const String orderStatusDeliveredMessage =
+      'Your order has been delivered.';
 
   static const String addressesScreenTitle = 'Addresses';
   static const String addressesScreenSectionEditButton = 'Edit';

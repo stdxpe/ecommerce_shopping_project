@@ -181,6 +181,39 @@ final selectedAddress = StateProvider<Address?>((ref) {
   return addresses[selectedIndex];
 });
 
+final addressProviderForSummary = StateProvider<Address?>((ref) {
+  var address = ref.watch(selectedAddress);
+  var controllers = ref.watch(addressTextControllers);
+
+  if (address != null &&
+      controllers.fullName.text.isNotEmpty &&
+      controllers.addressTitle.text.isNotEmpty &&
+      controllers.addressText.text.isNotEmpty &&
+      controllers.city.text.isNotEmpty &&
+      controllers.zipCode.text.isNotEmpty &&
+      controllers.country.text.isNotEmpty) {
+    return address;
+  } else if (address == null &&
+      controllers.fullName.text.isNotEmpty &&
+      controllers.addressTitle.text.isNotEmpty &&
+      controllers.addressText.text.isNotEmpty &&
+      controllers.city.text.isNotEmpty &&
+      controllers.zipCode.text.isNotEmpty &&
+      controllers.country.text.isNotEmpty) {
+    return Address(
+      id: 'tempId',
+      fullName: controllers.fullName.text,
+      addressTitle: controllers.addressTitle.text,
+      addressText: controllers.addressText.text,
+      city: controllers.city.text,
+      country: controllers.country.text,
+      zipCode: controllers.zipCode.text,
+    );
+  } else {
+    return null;
+  }
+});
+
 /// ADDRESSES TEXTFORMFIELD CONTROLLERS
 typedef AddressesTextControllerOutputs = ({
   TextEditingController fullName,
@@ -219,3 +252,20 @@ final addressTextControllers =
 });
 
 final addressCheckBox = StateProvider<bool>((ref) => true);
+
+final saveAddressIfCheckboxSelected = Provider<void>((ref) {
+  bool selection = ref.read(addressCheckBox);
+  Address? newAddress = ref.read(addressProviderForSummary);
+  Address? existingAddress = ref.read(selectedAddress);
+
+  if (selection == true && newAddress != null && existingAddress == null) {
+    ref.read(addressesProvider.notifier).createAddress(
+          fullName: newAddress.fullName,
+          addressTitle: newAddress.addressTitle,
+          addressText: newAddress.addressText,
+          city: newAddress.city,
+          zipCode: newAddress.zipCode,
+          country: newAddress.country,
+        );
+  }
+});

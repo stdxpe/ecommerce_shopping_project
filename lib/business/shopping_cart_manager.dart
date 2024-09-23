@@ -137,4 +137,26 @@ class ShoppingCartManager extends IShoppingCartRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> resetShoppingCartAfterCheckout(
+      {required UserModel userModel}) async {
+    try {
+      debugPrint(
+          'ShoppingCartManager resetShoppingCartAfterCheckout try block exec');
+
+      List<CartProductDto> tempEmptyShoppingCart = [];
+
+      await _userService.updateUserModel(
+          userModel: userModel.copyWith(shoppingCart: tempEmptyShoppingCart));
+    } on Exception catch (_) {
+      debugPrint(
+          'ShoppingCartManager resetShoppingCartAfterCheckout catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      debugPrint(
+          'ShoppingCartManager resetShoppingCartAfterCheckout catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
 }

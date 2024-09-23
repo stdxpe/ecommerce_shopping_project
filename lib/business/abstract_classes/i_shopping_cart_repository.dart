@@ -20,4 +20,8 @@ abstract class IShoppingCartRepository {
     required CartProduct cartProduct,
     required UserModel userModel,
   });
+
+  Future<void> resetShoppingCartAfterCheckout({
+    required UserModel userModel,
+  });
 }

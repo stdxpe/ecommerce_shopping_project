@@ -36,7 +36,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
 
   FutureOr<bool> addProductToShoppingCart(
       {required CartProduct cartProduct}) async {
-    debugPrint('WishlistNotifier | addProductToWishlist() Executed');
+    debugPrint('ShoppingCartNotifier | addProductToShoppingCart() Executed');
     bool result = false;
     final previousState = await future;
     state = const AsyncLoading();
@@ -56,7 +56,8 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
 
   FutureOr<bool> deleteProductFromShoppingCart(
       {required CartProduct cartProduct}) async {
-    debugPrint('WishlistNotifier | deleteProductFromShoppingCart() Executed');
+    debugPrint(
+        'ShoppingCartNotifier | deleteProductFromShoppingCart() Executed');
     bool result = false;
     final previousState = await future;
     state = const AsyncLoading();
@@ -94,6 +95,21 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
 
       return latestList;
     });
+  }
+
+  resetShoppingCartAfterCheckout() async {
+    debugPrint(
+        'ShoppingCartNotifier | resetShoppingCartAfterCheckout() Executed');
+
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+      () async {
+        await _shoppingCartManager.resetShoppingCartAfterCheckout(
+            userModel: ref.watch(userProvider).value!);
+
+        return [];
+      },
+    );
   }
 
   int getShoppingCartCount() {

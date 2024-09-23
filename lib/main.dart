@@ -45,11 +45,9 @@ Future<void> main() async {
     /// TODO: Banners on Home & DB
     /// TODO: Discover Screen
     /// TODO: Divided Provider States
-    /// TODO: Addresses
-    /// TODO: Credit Cards??
-    /// TODO: Payment&Cart Mechanics
-    /// TODO: Orders
+
     /// TODO: Stripe
+
     /// TODO: Hive for saving theme.mode and notification.selection only no-more yet
     /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen

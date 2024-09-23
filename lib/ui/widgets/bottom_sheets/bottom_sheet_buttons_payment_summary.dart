@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/payment_steps_navigation_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shipping_addresses_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/shopping_cart_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/buttons/button_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_payment_summary_section.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetButtonsPaymentSummary extends StatelessWidget {
-  const BottomSheetButtonsPaymentSummary({
-    super.key,
-    required this.onPressed,
-    this.paddingHorizontal,
-  });
-
-  final Function() onPressed;
-  final double? paddingHorizontal;
+class BottomSheetButtonsPaymentSummary extends ConsumerWidget {
+  const BottomSheetButtonsPaymentSummary({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var address = ref.watch(addressProviderForSummary);
+    var creditCard = ref.watch(creditCardProviderForSummary);
+
     return Container(
       decoration: BoxDecoration(
         color: context.colorPalette.sheetBackground,
@@ -27,8 +28,8 @@ class BottomSheetButtonsPaymentSummary extends StatelessWidget {
         ],
       ),
       padding: EdgeInsets.only(
-        left: paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w,
-        right: paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w,
+        left: Constants.kButtonPaddingHorizontal.w,
+        right: Constants.kButtonPaddingHorizontal.w,
         bottom: Constants.kButtonPaddingBottom.h,
         top: 60.h,
       ),
@@ -37,50 +38,45 @@ class BottomSheetButtonsPaymentSummary extends StatelessWidget {
         children: [
           SizedBox(height: 30.h),
           TitlePaymentSummarySection(
-            onPressed: () {},
+            onPressed: () {
+              ref
+                  .read(paymentStepsNavigation.notifier)
+                  .goSpecificIndex(targetIndex: 0);
+            },
             title: AppStrings.paymentScreenSummarySheetSectionAddress,
-            subtext:
-
-                /// TODO: Address and Credit Card gotta come from User Profile.
-                '21st Greenday Street 10021\nNew York Manhattan\nUnited States',
+            subtext: address != null
+                ? '${address.addressText}\n${address.city}, ${address.zipCode}, ${address.country}'
+                : '???',
           ),
           SizedBox(height: 60.h),
           TitlePaymentSummarySection(
-            onPressed: () {},
-            title: AppStrings.paymentScreenSummarySheetSectionPayment,
-            subtext: '**** **** **** 4871',
-          ),
-          SizedBox(height: 60.h),
-          SizedBox(height: 30.h),
-
+              onPressed: () {
+                ref
+                    .read(paymentStepsNavigation.notifier)
+                    .goSpecificIndex(targetIndex: 1);
+              },
+              title: AppStrings.paymentScreenSummarySheetSectionPayment,
+              subtext: creditCard != null
+                  ? creditCard.cardNumber.hideCreditCardNumber
+                  : '???'),
+          SizedBox(height: 80.h),
           Row(
             children: [
-              // Expanded(
-              //   child: ButtonMain(
-              //     onPressed: () {
-              //       onPressed();
-              //     },
-              //     text: '${AppStrings.paymentScreenButtonPay}\$147.99',
-              //     backgroundColor:
-              //         // context.colorPalette.buttonMainBackgroundPrimary,
-              //         // context.colorPalette.buttonMainBackgroundSecondary,
-              //         context.colorPalette.sheetBackground,
-              //     foregroundColor:
-              //         // context.colorPalette.buttonMainForegroundPrimary,
-              //         context.colorPalette.buttonMainForegroundSecondary,
-              //     paddingHorizontal: 0,
-              //     borderWidth: 2.5,
-              //     useShadow: false,
-              //   ),
-              // ),
-              // SizedBox(width: Constants.kButtonSpacingBTWButtonsHorizontal.w),
               Expanded(
                 child: ButtonMain(
-                  // fontSize: 40,
                   onPressed: () {
-                    onPressed();
+                    ref.read(saveAddressIfCheckboxSelected);
+                    ref.read(saveCreditCardIfCheckboxSelected);
+
+                    /// TODO: Stripe Payment Here
+
+                    /// Directing to the Result Screen
+                    ref
+                        .read(paymentStepsNavigation.notifier)
+                        .goSpecificIndex(targetIndex: 3);
                   },
-                  text: '${AppStrings.paymentScreenSummarySheetButton}\$147.99',
+                  text:
+                      '${AppStrings.paymentScreenSummarySheetButton}${ref.watch(shoppingCartProvider.notifier).getTotalAmount().inUSD}',
                   backgroundColor:
                       context.colorPalette.buttonMainBackgroundPrimary,
                   foregroundColor:
@@ -90,24 +86,6 @@ class BottomSheetButtonsPaymentSummary extends StatelessWidget {
               ),
             ],
           ),
-          // SizedBox(height: 30.h),
-
-          // ButtonMain(
-          //   onPressed: () {
-          //     onPressed();
-          //   },
-          //   text: '${AppStrings.paymentScreenButtonPay}\$147.99',
-          //   backgroundColor:
-          //       // context.colorPalette.buttonMainBackgroundPrimary,
-          //       // context.colorPalette.buttonMainBackgroundSecondary,
-          //       context.colorPalette.sheetBackground,
-          //   foregroundColor:
-          //       // context.colorPalette.buttonMainForegroundPrimary,
-          //       context.colorPalette.buttonMainForegroundSecondary,
-          //   paddingHorizontal: 0,
-          //   borderWidth: 2.5,
-          //   useShadow: false,
-          // ),
         ],
       ),
     );

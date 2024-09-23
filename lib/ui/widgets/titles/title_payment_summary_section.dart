@@ -9,23 +9,21 @@ class TitlePaymentSummarySection extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.title,
-    required this.subtext,
+    this.subtext,
     this.textButtonText,
     this.useTopDivider = false,
   });
 
   final Function onPressed;
   final String title;
-  final String subtext;
+  final String? subtext;
   final String? textButtonText;
   final bool? useTopDivider;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        onPressed();
-      },
+      onTap: () => onPressed(),
       child: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: Constants.kMainPaddingHorizontal.w),
@@ -52,7 +50,7 @@ class TitlePaymentSummarySection extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   TextCustom(
-                    text: subtext,
+                    text: subtext ?? '',
                     textStyle: context.textTheme.bodySmall!,
                     color: context.colorPalette.cardTextSecondary,
                     maxLines: 3,

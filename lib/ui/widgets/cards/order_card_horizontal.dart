@@ -1,10 +1,10 @@
-import 'package:ecommerce_shopping_project/services/dummy_data/dummy_all_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/models/order.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
@@ -13,7 +13,7 @@ class OrderCardHorizontal extends StatelessWidget {
     super.key,
     required this.order,
     required this.cardHeight,
-    this.isCardElevated = false,
+    this.isCardElevated = true,
   });
 
   final Order order;
@@ -25,17 +25,13 @@ class OrderCardHorizontal extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: GestureDetector(
-        onTap: () {
-          context.push(Routes.trackingOrder);
-        },
+        onTap: () => context.push(Routes.trackingOrder, extra: order),
         child: Container(
           decoration: BoxDecoration(
             color: isCardElevated!
                 ? context.colorPalette.cardBackground
                 : Colors.transparent,
-            borderRadius: BorderRadius.circular(
-              Constants.kRadiusCardPrimary.r,
-            ),
+            borderRadius: BorderRadius.circular(Constants.kRadiusCardPrimary.r),
             boxShadow: [
               if (isCardElevated == true)
                 BoxShadows.kBoxShadowProductCard(
@@ -48,34 +44,34 @@ class OrderCardHorizontal extends StatelessWidget {
             child: Row(
               children: [
                 /// CARD IMAGE
-                Container(
-                  height: cardHeight.h,
-                  width: cardHeight.h,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(
-                        // order.products[0].mainPhoto,
-                        dummyAllProducts[0].mainPhoto,
+                CardImage(
+                    useFadeInAnimation: true,
+                    imageUrl: order.products.first.photo,
+                    height: cardHeight.h,
+                    width: cardHeight.h,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      color: context.colorPalette.scaffoldBackground,
+                      borderRadius: BorderRadius.only(
+                        topLeft:
+                            Radius.circular(Constants.kRadiusCardPrimary.r),
+                        bottomLeft:
+                            Radius.circular(Constants.kRadiusCardPrimary.r),
+                        topRight: Radius.circular(isCardElevated!
+                            ? 0
+                            : Constants.kRadiusCardPrimary.r),
+                        bottomRight: Radius.circular(isCardElevated!
+                            ? 0
+                            : Constants.kRadiusCardPrimary.r),
                       ),
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(Constants.kRadiusCardPrimary.r),
-                      bottomLeft:
-                          Radius.circular(Constants.kRadiusCardPrimary.r),
-                      topRight: Radius.circular(
-                          isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r),
-                      bottomRight: Radius.circular(
-                          isCardElevated! ? 0 : Constants.kRadiusCardPrimary.r),
-                    ),
-                    boxShadow: [
-                      if (isCardElevated == false)
-                        BoxShadows.kBoxShadowImage(
-                          color: context.colorPalette.shadowPrimary,
-                        ),
-                    ],
-                  ),
-                ),
+                      boxShadow: [
+                        if (isCardElevated == false)
+                          BoxShadows.kBoxShadowImage(
+                            color: context.colorPalette.shadowPrimary,
+                          ),
+                      ],
+                    )),
+
                 Expanded(
                   child: Container(
                     color: Colors.transparent,
@@ -95,16 +91,19 @@ class OrderCardHorizontal extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextCustom(
-                                text: '#${order.id}',
+                                text:
+                                    'Order ID: #${order.id.toUpperCase().split('-').first}',
                                 textStyle: context.textTheme.bodyLarge!,
                                 color: context.colorPalette.cardTextPrimary,
                               ),
+                              Flexible(flex: 1, child: SizedBox(height: 15.h)),
                               TextCustom(
                                 text:
-                                    '${order.createdAt}    |    ${order.products.length.toString()} Product',
+                                    '${order.createdAt.formatDate},  ${order.totalItemCount.toString()} Product',
                                 textStyle: context.textTheme.bodySmall!,
                                 color: context.colorPalette.cardTextPrimary,
                                 fontHeightCustom: 1.2,
+                                fontSizeCustom: 34,
                               ),
                             ],
                           ),

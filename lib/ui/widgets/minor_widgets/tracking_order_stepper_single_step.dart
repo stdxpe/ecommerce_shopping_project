@@ -40,8 +40,9 @@ class TrackingOrderStepperSingleStep extends StatelessWidget {
                   width: iconSize!.h,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color:
-                        isActive ? Colors.red : Colors.black.withOpacity(0.12),
+                    color: isActive
+                        ? Colors.red
+                        : context.colorPalette.text.withOpacity(0.12),
                   ),
                   child: Center(
                     child: Icon(
@@ -49,7 +50,7 @@ class TrackingOrderStepperSingleStep extends StatelessWidget {
                       size: iconSize!.h - 30.h,
                       color: isActive
                           ? Colors.white
-                          : Colors.black.withOpacity(0.3),
+                          : context.colorPalette.text.withOpacity(0.3),
                     ),
                   ),
                 ),
@@ -88,7 +89,7 @@ class TrackingOrderStepperSingleStep extends StatelessWidget {
               left: BorderSide(
                 color: isLastStep!
                     ? Colors.transparent
-                    : Colors.black.withOpacity(0.1),
+                    : context.colorPalette.text.withOpacity(0.15),
                 width: 1.5,
               ),
             ),

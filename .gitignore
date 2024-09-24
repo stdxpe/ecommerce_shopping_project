@@ -1,3 +1,7 @@
+# Environment Variables / Secrets
+*.env
+/lib/utilities/k_app_secrets.dart
+
 # Miscellaneous
 *.class
 *.log

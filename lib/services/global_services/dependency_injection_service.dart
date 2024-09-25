@@ -19,6 +19,7 @@ import 'package:ecommerce_shopping_project/business/user_manager.dart';
 import 'package:ecommerce_shopping_project/business/wishlist_manager.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_payment_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_product_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_storage_service.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_user_service.dart';
@@ -27,6 +28,7 @@ import 'package:ecommerce_shopping_project/services/firebase_collection_service.
 import 'package:ecommerce_shopping_project/services/firebase_product_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_storage_service.dart';
 import 'package:ecommerce_shopping_project/services/firebase_user_service.dart';
+import 'package:ecommerce_shopping_project/services/stripe_payment_service.dart';
 
 final locator = GetIt.instance;
 
@@ -51,6 +53,9 @@ void registerDependencyInjectionService() {
   /// Storage Service (Data Access Layer)
   locator
       .registerLazySingleton<IStorageService>(() => FirebaseStorageService());
+
+  /// Payment Service (Data Access Layer)
+  locator.registerLazySingleton<IPaymentService>(() => StripePaymentService());
 
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////

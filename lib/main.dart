@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'package:ecommerce_shopping_project/app_configuration.dart';
 import 'package:ecommerce_shopping_project/firebase_options.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:ecommerce_shopping_project/utilities/k_app_secrets.dart';
 import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // TODO: Remove Print Ignore in analysis_options.yaml
+
   setDeviceOrientationToPortraitModeOnly();
+
+  /// GetIt Implemented as Dependency Injection Solution
   registerDependencyInjectionService();
+
+  /// DotEnv Implemented as ENV_VAR/Secret Solution
+  await dotenv.load(fileName: ".env");
 
   /// Firebase Implemented as Cloud Solution
   initializeFirebase();
   await Firebase.initializeApp();
+
+  /// Stripe Implemented as Payment Service
+  Stripe.publishableKey = ENV.STRIPE_PUBLISHABLE_KEY;
+
   runApp(
     /// Riverpod Implemented as State Management Solution
     const ProviderScope(
       child: RootApp(),
     ),
-    // TODO: Remove Print Ignore in analysis_options.yaml
   );
 }
 

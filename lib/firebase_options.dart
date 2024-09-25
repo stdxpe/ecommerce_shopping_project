@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/utilities/k_app_secrets.dart';
 import 'package:firebase_core/firebase_core.dart'
     show Firebase, FirebaseOptions;
 import 'package:flutter/foundation.dart'
@@ -43,8 +44,8 @@ class DefaultFirebaseOptions {
   ///
   /// Therefore, this firebase_options.dart file has not registered into the .gitignore file
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyALyqtamzCaooPQbnl7raYtruL-Yl1usrA',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: ENV.FIREBASE_WEB_API_KEY,
     appId: '1:970016209623:web:07e10e452f7f830f854e92',
     messagingSenderId: '970016209623',
     projectId: 'ecommerce-shopping-project',
@@ -53,16 +54,16 @@ class DefaultFirebaseOptions {
     measurementId: 'G-GR1LBV75N8',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB1LAW063QjVAOfTaLWVroN6M5yPfdUr9I',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: ENV.FIREBASE_ANDROID_API_KEY,
     appId: '1:970016209623:android:f20cb45e22eb8206854e92',
     messagingSenderId: '970016209623',
     projectId: 'ecommerce-shopping-project',
     storageBucket: 'ecommerce-shopping-project.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCmjZdRVb4pw_UiFjd0zlrZgWCKMYF2884',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: ENV.FIREBASE_IOS_API_KEY,
     appId: '1:970016209623:ios:fb8a66257886188d854e92',
     messagingSenderId: '970016209623',
     projectId: 'ecommerce-shopping-project',

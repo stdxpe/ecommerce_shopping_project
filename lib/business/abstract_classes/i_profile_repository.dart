@@ -3,6 +3,13 @@ import 'package:ecommerce_shopping_project/models/credit_card.dart';
 import 'package:ecommerce_shopping_project/models/user_model.dart';
 
 abstract class IProfileRepository {
+  Future<void> updateProfile({
+    required String username,
+    required String phoneNumber,
+    required String birthday,
+    required UserModel userModel,
+  });
+
   Future<List<Address>> getAddresses({
     required UserModel userModel,
   });

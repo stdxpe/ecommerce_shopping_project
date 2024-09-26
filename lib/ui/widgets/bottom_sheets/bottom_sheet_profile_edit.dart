@@ -1,16 +1,30 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/profile_edit_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
+import 'package:ecommerce_shopping_project/utilities/k_text_input_formatters.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BottomSheetProfileEdit extends StatelessWidget {
+class BottomSheetProfileEdit extends ConsumerStatefulWidget {
   const BottomSheetProfileEdit({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _BottomSheetProfileEditState();
+}
+
+class _BottomSheetProfileEditState
+    extends ConsumerState<BottomSheetProfileEdit> {
+  @override
   Widget build(BuildContext context) {
+    var controllers = ref.watch(profileEditTextControllers);
+
     return Scaffold(
       body: Column(
         children: [
@@ -76,23 +90,51 @@ class BottomSheetProfileEdit extends StatelessWidget {
                     ),
                   ],
                 ),
-                const TextformfieldMain(
-                  hintText: AppStrings.profileEditScreenTextfieldName,
+                SizedBox(height: 50.h),
+                TextformfieldMain(
+                  hintText: AppStrings.hintProfileUsername,
+                  controller: controllers.username,
+                  onChanged: (value) {
+                    controllers.username.text = value;
+                    setState(() {});
+                  },
+                  textInputAction: TextInputAction.done,
+                  inputFormatters: [LengthLimitingTextInputFormatter(30)],
                 ),
                 SizedBox(height: 50.h),
-                const TextformfieldMain(
-                  hintText: AppStrings.profileEditScreenTextfieldEmail,
-                  textInputType: TextInputType.emailAddress,
+                TextformfieldMain(
+                  enabled: false,
+                  hintText: AppStrings.hintProfileEmail,
+                  controller: controllers.email,
+                  textInputAction: TextInputAction.done,
                 ),
                 SizedBox(height: 50.h),
-                const TextformfieldMain(
-                  hintText: AppStrings.profileEditScreenTextfieldPhone,
+                TextformfieldMain(
+                  hintText: AppStrings.hintProfilePhoneNumber,
+                  controller: controllers.phoneNumber,
+                  onChanged: (value) {
+                    controllers.phoneNumber.text = value;
+                    setState(() {});
+                  },
                   textInputType: TextInputType.number,
+                  textInputAction: TextInputAction.done,
                 ),
                 SizedBox(height: 50.h),
-                const TextformfieldMain(
-                  hintText: AppStrings.profileEditScreenTextfieldBirthday,
+                TextformfieldMain(
+                  hintText: AppStrings.hintProfileBirthday,
+                  controller: controllers.birthday,
                   textInputType: TextInputType.datetime,
+                  onChanged: (value) {
+                    controllers.birthday.text = value;
+                    setState(() {});
+                  },
+                  textInputAction: TextInputAction.done,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    DateTextInputFormatter(),
+                    LengthLimitingTextInputFormatter(10),
+                    FilteringTextInputFormatter.allow(RegExp("[0-9/ ]")),
+                  ],
                 ),
                 SizedBox(height: 100.h),
               ],
@@ -101,11 +143,13 @@ class BottomSheetProfileEdit extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Visibility(
-              /// isKeyboardOpen
-              visible: context.mediaQuery.viewInsets.bottom == 0,
+              visible: context.isKeyboardOpen,
               child: BottomSheetButtonsPaymentShipping(
                 buttonText: AppStrings.profileScreenButtonSaveProfile,
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(updateProfile);
+                  context.pop();
+                },
               ),
             ),
           ),

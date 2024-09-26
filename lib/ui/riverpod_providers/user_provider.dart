@@ -45,6 +45,24 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
     });
   }
 
+  updateUserModelOnSurface({
+    required String username,
+    required String phoneNumber,
+    required String birthday,
+  }) async {
+    print('UserNotifier | updateUserModelOnSurface() Executed');
+    var previousState = await future;
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      if (previousState != null) {
+        UserModel? tempUserModel = previousState.copyWith(
+            username: username, phone: phoneNumber, birthday: birthday);
+
+        return tempUserModel;
+      }
+    });
+  }
+
   signOut() async {
     print('UserNotifier | signOut() Executed');
     await _userManager.signOut();

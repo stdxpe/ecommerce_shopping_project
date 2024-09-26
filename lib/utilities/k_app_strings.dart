@@ -101,10 +101,10 @@ abstract class AppStrings {
   static const String profileScreenButtonSaveProfile = 'Save Profile';
   static const String profileScreenButtonDelete = 'Delete';
 
-  static const String profileEditScreenTextfieldName = 'Name';
-  static const String profileEditScreenTextfieldEmail = 'Email';
-  static const String profileEditScreenTextfieldPhone = 'Phone Number';
-  static const String profileEditScreenTextfieldBirthday = 'Birthday';
+  static const String hintProfileUsername = 'Name';
+  static const String hintProfileEmail = 'Email';
+  static const String hintProfilePhoneNumber = 'Phone Number';
+  static const String hintProfileBirthday = 'Birthday';
 
   static const String profileScreenButtonsListItemOrders = 'Orders';
   static const String profileScreenButtonsListItemAddresses =

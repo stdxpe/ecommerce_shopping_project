@@ -11,6 +11,17 @@ class ProfileManager extends IProfileRepository {
   final _userService = locator<IUserService>();
 
   @override
+  Future<void> updateProfile(
+      {required String username,
+      required String phoneNumber,
+      required String birthday,
+      required UserModel userModel}) async {
+    await _userService.updateUserModel(
+        userModel: userModel.copyWith(
+            username: username, phone: phoneNumber, birthday: birthday));
+  }
+
+  @override
   Future<List<Address>> getAddresses({required UserModel userModel}) async {
     try {
       debugPrint('ProfileManager getAddresses try block exec');

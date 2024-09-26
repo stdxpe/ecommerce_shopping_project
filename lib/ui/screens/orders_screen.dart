@@ -23,7 +23,6 @@ class OrdersScreen extends ConsumerWidget {
               itemCount: ref.watch(ordersProvider).value?.length ?? 0,
               enableTitleAsBackButton: true,
               paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
-              paddingHorizontal: Constants.kMainPaddingHorizontal.w,
             ),
             ListviewOrderCardHorizontal(provider: ordersProvider),
           ],

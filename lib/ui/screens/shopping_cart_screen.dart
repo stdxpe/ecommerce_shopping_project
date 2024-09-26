@@ -31,7 +31,6 @@ class ShoppingCartScreen extends ConsumerWidget {
                       title: AppStrings.shoppingCartScreenTitle,
                       enableTitleAsBackButton: true,
                       paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
-                      paddingHorizontal: Constants.kMainPaddingHorizontal.w,
                       itemCount:
                           ref.watch(shoppingCartProvider).value?.length ?? 0,
                     ),

@@ -1,11 +1,11 @@
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
-import 'package:go_router/go_router.dart';
 
 class StaggeredGridCardComponentLeft extends StatelessWidget {
   /// REQUIRES AT LEAST 6 ITEMS

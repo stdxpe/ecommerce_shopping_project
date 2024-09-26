@@ -27,7 +27,6 @@ class ShippingAddressesScreen extends ConsumerWidget {
               enableTitleAsBackButton: true,
               icon: Icons.add,
               paddingTop: 85.h,
-              paddingHorizontal: Constants.kMainPaddingHorizontal.w,
               onPressed: () {
                 ref.read(disposeAddressControllers);
                 ref.read(selectedAddressIndex.notifier).state =

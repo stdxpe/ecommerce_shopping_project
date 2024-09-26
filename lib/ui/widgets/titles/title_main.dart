@@ -13,7 +13,9 @@ class TitleMain extends StatelessWidget {
     this.itemCount,
     this.stepNumber,
     this.icon,
-    this.paddingHorizontal,
+    this.iconSize = 70,
+    this.paddingLeft,
+    this.paddingRight,
     this.paddingTop,
     this.paddingBottom,
     this.enableTitleAsBackButton = false,
@@ -25,7 +27,9 @@ class TitleMain extends StatelessWidget {
   final int? itemCount;
   final int? stepNumber;
   final IconData? icon;
-  final double? paddingHorizontal;
+  final double? iconSize;
+  final double? paddingLeft;
+  final double? paddingRight;
   final double? paddingTop;
   final double? paddingBottom;
 
@@ -35,8 +39,8 @@ class TitleMain extends StatelessWidget {
       padding: EdgeInsets.only(
         top: paddingTop ?? Constants.kMainTitlePaddingTop.h,
         bottom: paddingBottom ?? Constants.kMainTitlePaddingBottom.h,
-        left: paddingHorizontal ?? Constants.kMainPaddingHorizontal.w,
-        right: paddingHorizontal ?? Constants.kMainPaddingHorizontal.w,
+        left: paddingLeft ?? Constants.kMainPaddingHorizontal.w,
+        right: paddingRight ?? Constants.kMainPaddingHorizontal.w,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,11 +82,11 @@ class TitleMain extends StatelessWidget {
                       if (onPressed != null) onPressed!();
                     },
                     child: SizedBox(
-                      height: 70.w,
-                      width: 70.w,
+                      height: iconSize!.w,
+                      width: iconSize!.w,
                       child: Icon(
                         icon,
-                        size: 70.w,
+                        size: iconSize!.w,
                         color: context.colorPalette.title,
                       ),
                     ),

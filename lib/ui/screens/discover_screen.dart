@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:unicons/unicons.dart';
 
+import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/collections_provider.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_alternate.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_stack.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card_staggered.dart';
@@ -20,14 +22,21 @@ class DiscoverScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: const AppBarMain(),
+      // appBar: const AppBarMain(),
       body: SafeArea(
         bottom: false,
         child: ListView(
           padding: EdgeInsets.zero,
           physics: const ClampingScrollPhysics(),
           children: [
-            const TitleMain(title: AppStrings.discoverScreenTitle),
+            TitleMain(
+              title: AppStrings.discoverScreenTitle,
+              icon: UniconsLine.search,
+              iconSize: 60,
+              paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
+              paddingRight: 13,
+              onPressed: () => context.go(Routes.search),
+            ),
             CollectionCardAlternate(
               collection: ref.watch(collectionsProvider).value![4],
               cardHeight: context.mediaQuery.size.height * 0.59,

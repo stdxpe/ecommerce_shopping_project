@@ -39,7 +39,8 @@ class BottomSheetFilters extends StatelessWidget {
                       title: AppStrings.filtersScreenTitle,
                       icon: Icons.clear,
                       onPressed: () => context.pop(),
-                      paddingHorizontal: 0,
+                      paddingRight: 0,
+                      paddingLeft: 0,
                       paddingTop: Constants.kMainTitlePaddingTopForHomeScreen.h,
                     ),
                     const TitleFilterSection(

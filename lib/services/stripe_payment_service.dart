@@ -6,6 +6,8 @@ import 'package:ecommerce_shopping_project/services/abstract_classes/i_payment_s
 import 'package:ecommerce_shopping_project/utilities/k_app_secrets.dart';
 
 class StripePaymentService extends IPaymentService {
+  static initialize() => Stripe.publishableKey = ENV.STRIPE_PUBLISHABLE_KEY;
+
   @override
   Future<String?> createPaymentIntent() async {
     /// For Further Explanation:
@@ -17,7 +19,11 @@ class StripePaymentService extends IPaymentService {
 
       /// Amount statically set to $0.50 (50 cents) for security purposes during tests
       /// Instead of dynamically getting price parameters into payment methods
-      Map<String, dynamic> data = {"amount": 50, "currency": "usd"};
+      Map<String, dynamic> data = {
+        "amount": 50,
+        "currency": "usd",
+        "payment_method_types[]": "card"
+      };
 
       Map<String, dynamic> headers = {
         "Authorization": "Bearer ${ENV.STRIPE_SECRET_KEY}",

@@ -14,7 +14,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_checkbox_m
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
-import 'package:ecommerce_shopping_project/utilities/k_credit_card_input_formatters.dart';
+import 'package:ecommerce_shopping_project/utilities/k_text_input_formatters.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class PaymentScreenShipping extends ConsumerStatefulWidget {

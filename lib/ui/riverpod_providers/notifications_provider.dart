@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_local_db_service.dart';
@@ -31,12 +30,10 @@ class NotificationsNotifier extends StateNotifier<bool> {
     if (state == true) {
       _localDB.updateData(
           key: LocalDB.notificationMode, value: LocalDB.notificationsOFF);
-      debugPrint(_localDB.getAllData().toString());
       state = false;
     } else if (state == false) {
       _localDB.updateData(
           key: LocalDB.notificationMode, value: LocalDB.notificationsON);
-      debugPrint(_localDB.getAllData().toString());
       state = true;
     } else {
       state = true;

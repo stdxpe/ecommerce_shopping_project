@@ -22,6 +22,7 @@ class TextformfieldMain extends StatelessWidget {
     this.inputFormatters,
     this.onChanged,
     this.initialValue,
+    this.enabled = true,
   });
 
   final TextEditingController? controller;
@@ -39,6 +40,7 @@ class TextformfieldMain extends StatelessWidget {
   final TextInputType? textInputType;
   final bool? obscureText;
   final bool? autoFocus;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class TextformfieldMain extends StatelessWidget {
         horizontal: paddingHorizontal!,
       ),
       child: TextFormField(
+        enabled: enabled,
         initialValue: initialValue,
         onChanged: onChanged,
         validator: validator,

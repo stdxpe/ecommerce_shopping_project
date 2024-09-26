@@ -30,12 +30,10 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
   toggleTheme() {
     if (state == ThemeMode.light) {
       _localDB.updateData(key: LocalDB.themeMode, value: LocalDB.themeModeDark);
-      debugPrint(_localDB.getAllData().toString());
       state = ThemeMode.dark;
     } else if (state == ThemeMode.dark) {
       _localDB.updateData(
           key: LocalDB.themeMode, value: LocalDB.themeModeLight);
-      debugPrint(_localDB.getAllData().toString());
       state = ThemeMode.light;
     } else {
       state = ThemeMode.light;

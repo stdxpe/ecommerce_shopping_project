@@ -66,5 +66,8 @@ Future<void> main() async {
     /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen
     /// SMS or Email Verification
+    /// Firebase Rules: Write only users collection, non-other
     /// FINAL REFACTOR
+    /// Final Commit Message Adjustments
+    /// Push to Release Branch
  

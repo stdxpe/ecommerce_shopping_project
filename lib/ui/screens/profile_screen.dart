@@ -1,4 +1,3 @@
-import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,8 +5,9 @@ import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
-import 'package:ecommerce_shopping_project/ui/riverpod_providers/notification_provider.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/notifications_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/theme_mode_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
@@ -17,14 +17,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/switches/switch_cupertino_
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class ProfileScreen extends ConsumerWidget {
-  const ProfileScreen({
-    super.key,
-    this.isDarkModeEnabled = false,
-    this.onDarkModeEnabled,
-  });
-
-  final Function()? onDarkModeEnabled;
-  final bool? isDarkModeEnabled;
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -71,20 +64,17 @@ class ProfileScreen extends ConsumerWidget {
               buttonText: AppStrings.profileScreenButtonsListItemDarkMode,
               icon: UniconsLine.moon,
               widgetContent: SwitchCupertinoCustom(
-                  switchState: ref.watch(isDarkModeOnProvider),
-                  onChanged: () {
-                    /// Theme Mode local storage saving here
-                    ref.read(themeModeProvider.notifier).toggleTheme();
-                  }),
+                  switchState: ref.watch(isDarkModeOn),
+                  onChanged: () => ref.read(themeMode.notifier).toggleTheme()),
             ),
             ProfileCardButton(
               onPressed: () {},
               buttonText: AppStrings.profileScreenButtonsListItemNotifications,
               icon: TablerIcons.notification,
               widgetContent: SwitchCupertinoCustom(
-                  switchState: ref.watch(notificationsProvider),
+                  switchState: ref.watch(notifications),
                   onChanged: () {
-                    ref.read(notificationsProvider.notifier).toggleSwitch();
+                    ref.read(notifications.notifier).toggleSwitch();
                   }),
             ),
             ProfileCardButton(

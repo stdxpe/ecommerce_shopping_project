@@ -13,7 +13,6 @@ abstract class AppThemes {
       backgroundColor: _lightModeColorPalette.appBarBackground,
       foregroundColor: _lightModeColorPalette.appBarForeground,
     ),
-
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
@@ -21,34 +20,12 @@ abstract class AppThemes {
         TargetPlatform.fuchsia: CupertinoPageTransitionsBuilder(),
       },
     ),
-
-    // inputDecorationTheme:
-
     textTheme: AppTextThemes.textTheme,
     primaryTextTheme: AppTextThemes.textTheme,
-
     extensions: [
       _lightModeColorPalette,
     ],
   );
-  // theme: ThemeData.light().copyWith(
-  //   // useMaterial3: true,
-  //   // appBarTheme: kAppBarTheme,
-  //   // scaffoldBackgroundColor: ColorPalette.scaffoldBackground,
-  //   // scaffoldBackgroundColor: Theme.of(context).colorScheme.surface,
-  //   colorScheme: ColorScheme(
-  //     brightness: Brightness.light,
-  //     primary: ColorPalette.buttonMainBackgroundPrimary,
-  //     onPrimary: ColorPalette.buttonMainForegroundPrimary,
-  //     secondary: ColorPalette.buttonMainBackgroundSecondary,
-  //     onSecondary: ColorPalette.buttonMainForegroundSecondary,
-  //     error: Colors.red,
-  //     onError: Colors.white,
-  //     surface: Colors.red,
-  //     onSurface: Colors.blue,
-  //     shadow: ColorPalette.shadowColor,
-  //     onBackground: Colors.red,
-  //   ),
 
   /// [DARK THEME]
   static final dark = ThemeData.dark().copyWith(
@@ -65,20 +42,6 @@ abstract class AppThemes {
       _darkModeColorPalette,
     ],
   );
-  // darkTheme: ThemeData.dark().copyWith(
-  //   colorScheme: ColorScheme(
-  //     brightness: Brightness.dark,
-  //     primary: ColorPalette.buttonMainBackgroundPrimary,
-  //     onPrimary: ColorPalette.buttonMainForegroundPrimary,
-  //     secondary: ColorPalette.buttonMainBackgroundSecondary,
-  //     onSecondary: ColorPalette.buttonMainForegroundSecondary,
-  //     error: Colors.red,
-  //     onError: Colors.white,
-  //     surface: Colors.red,
-  //     onSurface: Colors.blue,
-  //     shadow: ColorPalette.shadowColor,
-  //   ),
-  // ),
 
   /// [LIGHT THEME and COLOR PALETTE MAPPING]
   static final _lightModeColorPalette = AppColorsExtension(

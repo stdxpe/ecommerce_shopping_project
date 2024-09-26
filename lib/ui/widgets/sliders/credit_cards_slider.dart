@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/credit_card_ui_widget.dart';

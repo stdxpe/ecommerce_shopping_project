@@ -39,7 +39,8 @@ class ListviewProductCardHorizontalMini extends ConsumerWidget {
       child: ref.watch(provider).hasError
           ? const ErrorOccuredWidget()
           : (ref.watch(provider).value != null &&
-                  ref.watch(provider).value?.isNotEmpty)
+                      ref.watch(provider).value?.isNotEmpty) ||
+                  (ref.watch(provider).isLoading == true)
               ? ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -48,7 +49,7 @@ class ListviewProductCardHorizontalMini extends ConsumerWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: Constants.kMainPaddingHorizontal.w,
                       vertical: 0),
-                  itemCount: ref.watch(provider).value?.length ?? 3,
+                  itemCount: ref.watch(provider).value?.length ?? 7,
                   itemBuilder: (context, index) {
                     return ref.watch(provider).when(
                           error: (error, stackTrace) =>

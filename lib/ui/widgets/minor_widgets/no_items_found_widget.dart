@@ -7,9 +7,14 @@ import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class NoItemsFoundWidget extends StatelessWidget {
-  const NoItemsFoundWidget({super.key, this.useText = true});
+  const NoItemsFoundWidget({
+    super.key,
+    this.useText = true,
+    this.fadeInDuration = 600,
+  });
 
   final bool? useText;
+  final int? fadeInDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +38,6 @@ class NoItemsFoundWidget extends StatelessWidget {
             textAlignCustom: TextAlign.center,
           ),
       ],
-    ).animate().fadeIn(
-          duration: 600.ms,
-        );
+    ).animate().fadeIn(duration: fadeInDuration!.ms);
   }
 }

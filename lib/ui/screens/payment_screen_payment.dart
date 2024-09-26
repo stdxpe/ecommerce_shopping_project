@@ -75,6 +75,7 @@ class _PaymentScreenPaymentState extends ConsumerState<PaymentScreenPayment> {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: Constants.kMainPaddingHorizontal.w * 2,
+                      vertical: Constants.kMainPaddingHorizontal.h * 3,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

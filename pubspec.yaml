@@ -37,6 +37,7 @@ dependencies:
   uuid: ^4.4.2                            # Random ID Generator
   intl: ^0.19.0                           # Date-Time Formatter
   basic_utils: ^5.7.0                     # String Formatter
+  image_picker: ^1.1.2                    # Upload from Device Gallery Functionality
   faker_dart: ^0.2.2                      # Random Fake Data Generator
   cached_network_image: ^3.4.0            # Network Image Cacher
   card_swiper: ^3.0.1                     # Carousel Image Slider

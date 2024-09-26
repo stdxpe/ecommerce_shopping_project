@@ -1,8 +1,7 @@
 import 'package:flutter/services.dart';
 
 /// Device Screen Orientation is Portrait Mode Only
-
-void setDeviceOrientationToPortraitModeOnly() {
+void setDeviceOrientation() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);

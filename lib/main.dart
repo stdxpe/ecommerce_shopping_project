@@ -1,40 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:ecommerce_shopping_project/app_configuration.dart';
 import 'package:ecommerce_shopping_project/firebase_options.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/utilities/k_app_secrets.dart';
+import 'package:ecommerce_shopping_project/services/stripe_payment_service.dart';
 import 'package:ecommerce_shopping_project/utilities/system_chrome_setup.dart';
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // TODO: Remove Print Ignore in analysis_options.yaml
 
-  setDeviceOrientationToPortraitModeOnly();
-
   /// GetIt Implemented as Dependency Injection Solution
-  registerDependencyInjectionService();
+  initializeDependencyInjectionService();
 
   /// DotEnv Implemented as ENV_VAR/Secret Solution
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: Constants.envPath);
+
+  /// Device Screen Orientation is Portrait Mode Only
+  setDeviceOrientation();
 
   /// Firebase Implemented as Cloud Solution
-  initializeFirebase();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  /// Hive Implemented as Local Storage Service
+  await Hive.initFlutter();
+  await Hive.openBox(LocalDB.name);
+  // await Hive.openBox("user_config");
 
   /// Stripe Implemented as Payment Service
-  Stripe.publishableKey = ENV.STRIPE_PUBLISHABLE_KEY;
+  StripePaymentService.initialize();
 
   runApp(
     /// Riverpod Implemented as State Management Solution
-    const ProviderScope(
-      child: RootApp(),
-    ),
+    const ProviderScope(child: RootApp()),
   );
 }
 
@@ -49,7 +53,6 @@ Future<void> main() async {
 
 // https://pub.dev/packages/pinput
 
-    /// flutter_dotenv: ^5.1.0
     /// All riverpod's starts at appstart while loading user??
     ///   AVOID initializing providers in a widget
     ///   Providers should initialize themselves.
@@ -58,10 +61,8 @@ Future<void> main() async {
     /// TODO: Banners on Home & DB
     /// TODO: Discover Screen
     /// TODO: Divided Provider States
-
-    /// TODO: Stripe
-
-    /// TODO: Hive for saving theme.mode and notification.selection only no-more yet
+    /// Internet Connection Check On Start
+    /// Profile Edit and Image Picker
     /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen
     /// SMS or Email Verification

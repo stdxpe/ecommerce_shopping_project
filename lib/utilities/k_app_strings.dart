@@ -7,6 +7,7 @@ abstract class AppStrings {
   static const String appTitle = 'fshx.';
   static const String appBarTitle = 'fshx.';
   static const String appSubtitle = 'Best Fashion Shopping App';
+  static const String projectName = 'ECommerce Shopping Project';
 
   static const String signUp = 'Sign Up';
   static const String signIn = 'Sign In';
@@ -302,4 +303,16 @@ abstract class AppStrings {
   static const String bottomNavBarCart = 'Cart';
   static const String bottomNavBarWishlist = 'Wishlist';
   static const String bottomNavBarProfile = 'Profile';
+}
+
+abstract class LocalDB {
+  static const String name = "user_config";
+
+  static const String themeMode = "themeMode";
+  static const String themeModeDark = "themeModeDark";
+  static const String themeModeLight = "themeModeLight";
+
+  static const String notificationMode = "notificationMode";
+  static const String notificationsON = "notificationsON";
+  static const String notificationsOFF = "notificationsOFF";
 }

@@ -101,4 +101,7 @@ abstract class Constants {
   /// RAW FIGMA DESIGN SIZE
   static const double kRawFigmaDesignWidth = 1179;
   static const double kRawFigmaDesignHeight = 2556;
+
+  /// DotEnv File Extension
+  static const String envPath = ".env";
 }

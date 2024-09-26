@@ -35,7 +35,7 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/test_payment_screen.dart';
+import 'package:ecommerce_shopping_project/ui/test_screens/product_crud_test_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
@@ -133,7 +133,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
           path: Routes.test,
-          builder: (context, state) => const TestPaymentScreen()),
+          builder: (context, state) => const ProductCrudTestScreen()),
 
       GoRoute(
           path: Routes.loading,

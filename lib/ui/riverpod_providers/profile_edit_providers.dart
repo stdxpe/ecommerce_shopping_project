@@ -17,11 +17,27 @@ final updateProfile = Provider<void>((ref) async {
     userModel: ref.watch(userProvider).value!,
   );
 
-  ref.read(userProvider.notifier).updateUserModelOnSurface(
+  ref.read(userProvider.notifier).updateUserDetailsOnSurface(
         username: controllers.username.text,
         phoneNumber: controllers.phoneNumber.text,
         birthday: controllers.birthday.text,
       );
+
+  ref.invalidateSelf();
+});
+
+final updateProfilePhoto = StateProvider<void>((ref) async {
+  final profileManager = locator<IProfileRepository>();
+
+  String? profilePhoto = await profileManager.updateProfilePhoto(
+    userModel: ref.watch(userProvider).value!,
+  );
+
+  if (profilePhoto != null) {
+    ref
+        .read(userProvider.notifier)
+        .updateUserDetailsOnSurface(profilePhoto: profilePhoto);
+  }
 
   ref.invalidateSelf();
 });

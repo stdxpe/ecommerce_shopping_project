@@ -5,8 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_shopping_project/models/user_model.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/profile_edit_providers.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/user_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_buttons_payment_shipping.dart';
+import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/textformfield_main.dart';
 import 'package:ecommerce_shopping_project/utilities/k_text_input_formatters.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -23,6 +26,7 @@ class _BottomSheetProfileEditState
     extends ConsumerState<BottomSheetProfileEdit> {
   @override
   Widget build(BuildContext context) {
+    UserModel userModel = ref.watch(userProvider).value!;
     var controllers = ref.watch(profileEditTextControllers);
 
     return Scaffold(
@@ -40,33 +44,26 @@ class _BottomSheetProfileEditState
                   children: [
                     Stack(
                       children: [
-                        Container(
-                          height: 300.h,
-                          width: 300.h,
-                          padding: EdgeInsets.zero,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                AppImages.productImage3,
-                              ),
-                            ),
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadows.kBoxShadowPrimary(
-                                color: context.colorPalette.shadowSecondary,
-                              ),
-                            ],
-                          ),
-                        ),
+                        CardImage(
+                            imageUrl: userModel.photo,
+                            height: 300.h,
+                            width: 300.h,
+                            clipBehavior: Clip.hardEdge,
+                            boxfit: BoxFit.cover,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadows.kBoxShadowPrimary(
+                                    color: context.colorPalette.shadowSecondary,
+                                  ),
+                                ])),
                         Positioned.fill(
                           child: Align(
                             alignment: Alignment.center,
                             child: GestureDetector(
                               onTap: () {
-                                /// TODO: ImagePicker Here
+                                ref.read(updateProfilePhoto);
+                                context.pop();
                               },
                               child: Container(
                                 height: 200.h,
@@ -75,7 +72,7 @@ class _BottomSheetProfileEditState
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                   color: context.colorPalette.permaWhiteColor
-                                      .withOpacity(0.20),
+                                      .withOpacity(0.1),
                                   shape: BoxShape.circle,
                                 ),
                                 child: Icon(

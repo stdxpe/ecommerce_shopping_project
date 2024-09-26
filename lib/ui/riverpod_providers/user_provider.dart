@@ -45,10 +45,11 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
     });
   }
 
-  updateUserModelOnSurface({
-    required String username,
-    required String phoneNumber,
-    required String birthday,
+  updateUserDetailsOnSurface({
+    String? username,
+    String? phoneNumber,
+    String? birthday,
+    String? profilePhoto,
   }) async {
     print('UserNotifier | updateUserModelOnSurface() Executed');
     var previousState = await future;
@@ -56,7 +57,11 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
     state = await AsyncValue.guard(() async {
       if (previousState != null) {
         UserModel? tempUserModel = previousState.copyWith(
-            username: username, phone: phoneNumber, birthday: birthday);
+          username: username ?? previousState.username,
+          phone: phoneNumber ?? previousState.phone,
+          birthday: birthday ?? previousState.birthday,
+          photo: profilePhoto ?? previousState.photo,
+        );
 
         return tempUserModel;
       }

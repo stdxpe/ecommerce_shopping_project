@@ -10,6 +10,10 @@ abstract class IProfileRepository {
     required UserModel userModel,
   });
 
+  Future<String?> updateProfilePhoto({
+    required UserModel userModel,
+  });
+
   Future<List<Address>> getAddresses({
     required UserModel userModel,
   });

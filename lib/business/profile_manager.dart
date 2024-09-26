@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:ecommerce_shopping_project/services/abstract_classes/i_storage_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_profile_repository.dart';
@@ -9,6 +12,7 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 
 class ProfileManager extends IProfileRepository {
   final _userService = locator<IUserService>();
+  final _storageService = locator<IStorageService>();
 
   @override
   Future<void> updateProfile(
@@ -16,9 +20,54 @@ class ProfileManager extends IProfileRepository {
       required String phoneNumber,
       required String birthday,
       required UserModel userModel}) async {
-    await _userService.updateUserModel(
-        userModel: userModel.copyWith(
-            username: username, phone: phoneNumber, birthday: birthday));
+    try {
+      debugPrint('ProfileManager updateProfile try block exec');
+
+      await _userService.updateUserModel(
+          userModel: userModel.copyWith(
+              username: username, phone: phoneNumber, birthday: birthday));
+    } on Exception catch (_) {
+      debugPrint(
+          'ProfileManager updateProfile catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      debugPrint(
+          'ProfileManager updateProfile catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<String?> updateProfilePhoto({required UserModel userModel}) async {
+    try {
+      debugPrint('ProfileManager updateProfilePhoto try block exec');
+
+      File? file = await _storageService.selectImageFromGallery();
+
+      if (file != null) {
+        debugPrint(file.toString());
+        String relativePath = await _storageService.uploadImage(
+            file: file, path: "/users/pp_${userModel.id}");
+
+        String url =
+            await _storageService.getImageUrl(imageRelativePath: relativePath);
+
+        await _userService.updateUserModel(
+            userModel: userModel.copyWith(photo: url));
+
+        return url;
+      } else {
+        return null;
+      }
+    } on Exception catch (_) {
+      debugPrint(
+          'ProfileManager updateProfilePhoto catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      debugPrint(
+          'ProfileManager updateProfilePhoto catch error block exec, rethrowing');
+      rethrow;
+    }
   }
 
   @override

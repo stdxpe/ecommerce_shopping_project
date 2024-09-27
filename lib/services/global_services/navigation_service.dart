@@ -35,7 +35,6 @@ import 'package:ecommerce_shopping_project/ui/screens/splash_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/tracking_order_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/verification_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/wishlist_screen.dart';
-import 'package:ecommerce_shopping_project/ui/test_screens/product_crud_test_screen.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_feature_selector.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_filters.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet_profile_edit.dart';
@@ -127,10 +126,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     errorBuilder: (context, state) => const ErrorScreen(),
     navigatorKey: rootNavigatorKey,
     routes: [
-      GoRoute(
-          path: Routes.test,
-          builder: (context, state) => const ProductCrudTestScreen()),
+      // GoRoute(
+      //     path: Routes.test,
+      //     builder: (context, state) => const LottieTestScreen()),
 
+      /// Default Loading Screen
       GoRoute(
           path: Routes.loading,
           builder: (context, state) => const LoadingScreen()),

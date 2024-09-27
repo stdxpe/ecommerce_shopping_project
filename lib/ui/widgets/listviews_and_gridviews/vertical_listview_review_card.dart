@@ -7,6 +7,7 @@ import 'package:ecommerce_shopping_project/ui/widgets/cards/review_card.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_error_horizontal.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_horizontal.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:lottie/lottie.dart';
 
 class VerticalListviewReviewCard extends ConsumerWidget {
   const VerticalListviewReviewCard({super.key, required this.productId});
@@ -29,11 +30,18 @@ class VerticalListviewReviewCard extends ConsumerWidget {
         scrollDirection: Axis.vertical,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
-        itemCount: ref.watch(reviewsProvider(productId)).value?.length ?? 8,
+        itemCount: ref.watch(reviewsProvider(productId)).value?.length ?? 1,
         itemBuilder: (context, index) {
           return ref.watch(reviewsProvider(productId)).when(
                 error: (error, stackTrace) => CardErrorHorizontal(card: card),
-                loading: () => CardPlaceholderHorizontal(card: card),
+                // loading: () => CardPlaceholderHorizontal(card: card),
+                loading: () => Center(
+                  child: Lottie.asset(
+                    AppImages.lottieLoadingShimmer,
+                    height: context.mediaQuery.size.width * 0.7,
+                    width: context.mediaQuery.size.width * 0.7,
+                  ),
+                ),
                 data: (data) => ReviewCard(review: data[index]),
               );
         },

@@ -173,6 +173,9 @@ abstract class AppStrings {
 
   /// DETAILS SCREEN
   static const String productDetailsScreenReviews = 'Reviews';
+  static const String productDetailsScreenLikes = 'Likes';
+  static const String productDetailsScreenOrders = 'Orders';
+
   static const String detailsScreenButtonAddToShoppingCart =
       'Add to Shopping Cart';
   static const String productDetailsScreenDialogPopupAddedToWishlistMessage =
@@ -188,6 +191,9 @@ abstract class AppStrings {
   /// REVIEWS SCREEN
   static const String reviewsScreenButtonAddToShoppingCart =
       'Add to Shopping Cart';
+
+  static const String reviewsScreenRatingOutOf = 'out of 5';
+  static const String reviewsScreenReviews = 'reviews';
 
   /// DISCOVER SCREEN
   static const String discoverScreenTitle = 'Discover';

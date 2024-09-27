@@ -54,7 +54,7 @@ abstract class Constants {
 
   /// Details Screen Related
   static const double kDetailsScreenTitlePaddingTop = 70;
-  static const double kDetailsScreenSpacingBTWItemsVertical = 65;
+  static const double kDetailsScreenSpacingBTWItemsVertical = 50;
   static const double kDetailsScreenMainPaddingHorizontal = 30;
   static const double kCollectionDetailsScreenSpacingBTWItemsVertical = 50;
 

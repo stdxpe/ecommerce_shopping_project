@@ -41,7 +41,7 @@ class SwitchRatingSummary extends ConsumerWidget {
                     ),
                     Flexible(
                       child: TextCustom(
-                        text: '  out of 5',
+                        text: '  ${AppStrings.reviewsScreenRatingOutOf}',
                         textStyle: context.textTheme.bodyMedium!,
                         color: context.colorPalette.cardTextSecondary,
                         fontSizeCustom: 50,
@@ -62,10 +62,11 @@ class SwitchRatingSummary extends ConsumerWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextCustom(
-              text: '${product.totalReviewsCount} reviews  ',
+              text:
+                  '${product.totalReviewsCount} ${AppStrings.reviewsScreenReviews} ',
               textStyle: context.textTheme.bodySmall!,
               color: context.colorPalette.cardTextSecondary,
-              fontHeightCustom: 1.6,
+              fontHeightCustom: 2.5,
               fontWeightCustom: FontWeight.w500,
             ),
           ),
@@ -75,7 +76,7 @@ class SwitchRatingSummary extends ConsumerWidget {
                 loading: () => const SizedBox(),
                 data: (data) {
                   var summary = ref.watch(reviewSummaryProvider(data));
-                  print('summary: $summary');
+
                   return Column(
                     children: [
                       RatingSummaryProgressBar(

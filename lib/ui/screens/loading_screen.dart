@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
+import 'package:lottie/lottie.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
@@ -11,8 +11,11 @@ class LoadingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.colorPalette.scaffoldBackground,
       body: Center(
-        child: LoadingAnimationWidget.fourRotatingDots(
-            color: ColorPalette.favoriteRed, size: 50),
+        child: Lottie.asset(
+          AppImages.lottieLoading,
+          height: context.mediaQuery.size.width * 0.7,
+          width: context.mediaQuery.size.width * 0.7,
+        ),
       ),
     );
   }

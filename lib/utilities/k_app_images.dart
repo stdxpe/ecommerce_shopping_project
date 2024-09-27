@@ -4,6 +4,13 @@ abstract class AppImages {
   /// [APP WIDE GLOBAL VARIABLE]
   /// LOCAL PATHS OF IMAGES
 
+  static const String lottieSuccessCheck = "assets/lottie/success_check.json";
+  static const String lottieError = "assets/lottie/error.json";
+  static const String lottieLike = "assets/lottie/like.json";
+  static const String lottieLoading = "assets/lottie/loading.json";
+  static const String lottieLoadingShimmer =
+      "assets/lottie/loading_shimmer.json";
+
   static const String productImage0 = "assets/images/pose0.jpg";
   static const String productImage1 = "assets/images/pose1.jpg";
   static const String productImage2 = "assets/images/pose2.jpg";

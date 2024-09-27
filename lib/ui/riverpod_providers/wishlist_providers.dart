@@ -94,3 +94,5 @@ final toggleWishlistButton = Provider.family<void, Product>((ref, product) {
           .read(wishlistProvider.notifier)
           .addProductToWishlist(product: product);
 });
+
+final wishlistAnimationVisibility = StateProvider<bool>((ref) => false);

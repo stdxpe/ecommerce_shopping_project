@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -12,14 +13,9 @@ import 'package:ecommerce_shopping_project/ui/widgets/buttons/icon_button_like.d
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class DoubleButtonAddOrFav extends ConsumerWidget {
-  const DoubleButtonAddOrFav({
-    super.key,
-    required this.product,
-    this.paddingHorizontal,
-  });
+  const DoubleButtonAddOrFav({super.key, required this.product});
 
   final Product product;
-  final double? paddingHorizontal;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,12 +24,8 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
       padding: EdgeInsets.only(
         top: Constants.kButtonPaddingTop.h,
         bottom: Constants.kButtonPaddingBottom.h,
-        left: paddingHorizontal ??
-            Constants.kDetailsScreenMainPaddingHorizontal.w,
-        // Constants.kButtonPaddingHorizontal.w,
-        right: paddingHorizontal ??
-            Constants.kDetailsScreenMainPaddingHorizontal.w,
-        // Constants.kButtonPaddingHorizontal.w,
+        left: Constants.kDetailsScreenMainPaddingHorizontal.w,
+        right: Constants.kDetailsScreenMainPaddingHorizontal.w,
       ),
       child: Row(
         children: [
@@ -47,20 +39,18 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
                   context.colorPalette.buttonMainBackgroundSecondary,
               foregroundColor:
                   context.colorPalette.buttonMainForegroundSecondary,
-              // backgroundColor: context.colorPalette.buttonMainBackgroundPrimary,
-              // foregroundColor: context.colorPalette.buttonMainForegroundPrimary,
-              // borderWidth: 2,
-              // useShadow: false,
               paddingHorizontal: 0,
             ),
           ),
           SizedBox(width: 50.w),
           IconButtonLike(
             isProductOnWishlist: ref.watch(isProductOnWishlist(product)),
-            // isProductOnWishlist: ref
-            //     .watch(wishlistProvider.notifier)
-            //     .isProductOnWishlist(product: product),
-            onPressed: () => ref.read(toggleWishlistButton(product)),
+            onPressed: () async {
+              ref.read(wishlistAnimationVisibility.notifier).state = true;
+              ref.read(toggleWishlistButton(product));
+              await Future.delayed(1000.milliseconds + 250.milliseconds);
+              ref.read(wishlistAnimationVisibility.notifier).state = false;
+            },
           ),
         ],
       ),

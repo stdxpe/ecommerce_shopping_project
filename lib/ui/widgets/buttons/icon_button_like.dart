@@ -10,8 +10,6 @@ class IconButtonLike extends StatelessWidget {
   final Function onPressed;
   final bool isProductOnWishlist;
 
-  /// TODO: Lottie Like animation here
-
   @override
   Widget build(BuildContext context) {
     return IconButtonMain(

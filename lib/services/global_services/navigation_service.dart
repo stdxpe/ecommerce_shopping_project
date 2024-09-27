@@ -42,7 +42,6 @@ import 'package:ecommerce_shopping_project/ui/widgets/bottom_sheets/bottom_sheet
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_image_gallery.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_error.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_new_deals.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_payment_result.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/dialog_popups/dialog_popup_product_added_to_cart.dart';
 
 class Routes {
@@ -73,7 +72,7 @@ class Routes {
   static const String paymentStepShipping = '/paymentStepShipping';
   static const String paymentStepPayment = '/paymentStepPayment';
   static const String paymentStepSummary = '/paymentStepSummary';
-  static const String paymentStepResult = '/paymentStepResult';
+  static const String paymentResultScreen = '/paymentResultScreen';
 
   /// Profile Tab Nested Navigation Stack
   static const String profileEdit = '/profileEdit';
@@ -92,7 +91,6 @@ class Routes {
   static const String dialogImageGallery = '/dialogImageGallery';
   static const String dialogNewDeals = '/dialogNewDeals';
   static const String dialogAddedToCart = '/dialogAddedToCart';
-  static const String dialogPaymentResult = '/dialogPaymentResult';
   static const String bottomSheetFilters = '/bottomSheetFilters';
   static const String bottomSheetAddresses = '/bottomSheetAddresses';
   static const String bottomSheetCreditCards = '/bottomSheetCreditCards';
@@ -120,8 +118,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GlobalKey<NavigatorState>(debugLabel: 'paymentPaymentNavigatorKey');
   final paymentSummaryNavigatorKey =
       GlobalKey<NavigatorState>(debugLabel: 'paymentSummaryNavigatorKey');
-  final paymentResultNavigatorKey =
-      GlobalKey<NavigatorState>(debugLabel: 'paymentResultNavigatorKey');
 
   /// TODO: OnWillPop behaviors test physical android button
   return GoRouter(
@@ -153,11 +149,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 dialogPopup:
                     DialogImageGallery(args: state.extra! as ImageGalleryArgs));
           }),
-      GoRoute(
-          path: Routes.dialogPaymentResult,
-          pageBuilder: (context, state) => const DialogScreen(
-              dialogPopup: DialogPopupPaymentResult(),
-              barrierDismissible: false)),
+
       GoRoute(
           path: Routes.dialogAddedToCart,
           pageBuilder: (context, state) => DialogScreen(
@@ -374,17 +366,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   builder: (context, state) => const PaymentScreenSummary()),
             ],
           ),
-          StatefulShellBranch(
-            navigatorKey: paymentResultNavigatorKey,
-            routes: <RouteBase>[
-              GoRoute(
-                  parentNavigatorKey: paymentResultNavigatorKey,
-                  path: Routes.paymentStepResult,
-                  builder: (context, state) => const PaymentScreenResult()),
-            ],
-          ),
         ],
       ),
+      GoRoute(
+          path: Routes.paymentResultScreen,
+          builder: (context, state) => const PaymentScreenResult()),
     ],
   );
 });

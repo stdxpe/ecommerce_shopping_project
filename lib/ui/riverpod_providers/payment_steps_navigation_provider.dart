@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/credit_card_providers.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/shipping_addresses_providers.dart';
-import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 
 final paymentStepsNavigation =
     StateNotifierProvider<PaymentStepsNavigationNotifier, int>(
@@ -44,12 +43,6 @@ class PaymentStepsNavigationNotifier extends StateNotifier<int> {
       if (address != null) _navigationShell.goBranch(1);
     } else if (targetIndex == 2 && currentIndex != 2) {
       if (address != null && creditCard != null) _navigationShell.goBranch(2);
-    } else if (targetIndex == 3 && currentIndex != 3) {
-      if (address != null && creditCard != null) _navigationShell.goBranch(3);
-    } else if (targetIndex == 4 && currentIndex != 4) {
-      if (address != null && creditCard != null) {
-        ref.watch(goRouterProvider).push(Routes.dialogPaymentResult);
-      }
     }
   }
 }

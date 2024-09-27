@@ -126,3 +126,5 @@ final orderStatus =
     );
   }
 });
+
+final paymentStatus = StateProvider<bool>((ref) => true);

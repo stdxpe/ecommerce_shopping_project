@@ -83,8 +83,10 @@ class ProfileScreen extends ConsumerWidget {
               icon: TablerIcons.password_fingerprint,
             ),
             ProfileCardButton(
-              onPressed: () {},
-              buttonText: AppStrings.profileScreenButtonsListItemAboutUs,
+              onPressed: () {
+                // TODO: GitHub Project Link
+              },
+              buttonText: AppStrings.profileScreenButtonsListItemDeveloper,
               icon: TablerIcons.code,
             ),
             ProfileCardButton(

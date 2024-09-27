@@ -114,8 +114,8 @@ abstract class AppStrings {
   static const String profileScreenButtonsListItemNotifications =
       'Notifications';
   static const String profileScreenButtonsListItemChangePassword =
-      'ChangePassword';
-  static const String profileScreenButtonsListItemAboutUs = 'About Us';
+      'Change Password';
+  static const String profileScreenButtonsListItemDeveloper = 'Developer';
   static const String profileScreenButtonsListItemSignOut = 'Sign Out';
 
   static const String ordersScreenTitle = 'Orders';
@@ -265,10 +265,11 @@ abstract class AppStrings {
       'Please wait for the result.';
   static const String paymentScreenTitleSuccessResultMessage = 'Success!';
   static const String paymentScreenSubtitleSuccessResultMessage =
-      'Thank you for purchasing. Your order\nwill be shipped in 2-4 working days.';
+      'Thank you for purchasing.\nYour order will be shipped in 1-3 days.';
+
   static const String paymentScreenTitleFailedResultMessage = 'Failed!';
   static const String paymentScreenSubtitleFailedResultMessage =
-      'An error occured during the process. Please try again.';
+      'An error occured during the process.\nPlease try again later.';
 
   static const String paymentScreenShippingSheetButton = 'Continue';
   static const String paymentScreenPaymentSheetButton = 'Continue';

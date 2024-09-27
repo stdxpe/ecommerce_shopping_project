@@ -9,21 +9,20 @@ class BottomSheetButtonsPaymentResult extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.paddingHorizontal,
+    required this.useTransparentBg,
   });
 
   final Function() onPressed;
   final double? paddingHorizontal;
+  final bool useTransparentBg;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.colorPalette.sheetBackground,
-        boxShadow: [
-          BoxShadows.kBoxShadowBottomSheet(
-            color: context.colorPalette.shadowPrimary.withOpacity(0.2),
-          ),
-        ],
+        color: useTransparentBg
+            ? Colors.transparent
+            : context.colorPalette.sheetBackground,
       ),
       padding: EdgeInsets.only(
         left: paddingHorizontal ?? Constants.kButtonPaddingHorizontal.w,

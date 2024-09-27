@@ -19,10 +19,10 @@ Future<void> main() async {
   /// GetIt Implemented as Dependency Injection Solution
   initializeDependencyInjectionService();
 
-  /// DotEnv Implemented as ENV_VAR/Secret Solution
+  /// DotEnv Implemented as Environment Variable Solution
   await dotenv.load(fileName: Constants.envPath);
 
-  /// Device Screen Orientation is Portrait Mode Only
+  /// Device Screen Orientation Set to Portrait Mode
   setDeviceOrientation();
 
   /// Firebase Implemented as Cloud Solution
@@ -31,7 +31,6 @@ Future<void> main() async {
   /// Hive Implemented as Local Storage Service
   await Hive.initFlutter();
   await Hive.openBox(LocalDB.name);
-  // await Hive.openBox("user_config");
 
   /// Stripe Implemented as Payment Service
   StripePaymentService.initialize();
@@ -59,13 +58,13 @@ Future<void> main() async {
     ///   They should not be initialized by an external element such as a widget.
 
     /// TODO: Banners on Home & DB
-    /// TODO: Discover Screen
-    /// TODO: Divided Provider States
-    /// Internet Connection Check On Start
-    /// Profile Edit and Image Picker
+    /// TODO: Discover Screen - New Collections
     /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen
-    /// SMS or Email Verification
+
+    /// TODO: Divided Provider States
+    /// TODO: Internet Connection Check On Start
+    /// TODO: SMS or Email Verification
     /// Firebase Rules: Write only users collection, non-other
     /// FINAL REFACTOR
     /// Final Commit Message Adjustments

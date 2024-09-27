@@ -41,6 +41,7 @@ class TitleWithTextButton extends StatelessWidget {
               text: title,
               textStyle: context.textTheme.titleLarge!,
               color: context.colorPalette.title,
+              isHeightConstraintRelated: false,
             ),
           ),
           Flexible(
@@ -56,6 +57,7 @@ class TitleWithTextButton extends StatelessWidget {
                 textAlignCustom: TextAlign.end,
                 fontSizeCustom: 34,
                 fontWeightCustom: FontWeight.w500,
+                isHeightConstraintRelated: false,
               ),
             ),
           ),

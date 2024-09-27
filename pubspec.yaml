@@ -33,6 +33,7 @@ dependencies:
   hive: ^2.2.3                            # Local Database Service
   hive_flutter: ^1.1.0                    # Local Database Service Helper
 
+  lottie: ^3.1.2                          # Optimized JSON Animations
   flutter_randomcolor: ^1.0.15
   uuid: ^4.4.2                            # Random ID Generator
   intl: ^0.19.0                           # Date-Time Formatter
@@ -74,6 +75,7 @@ flutter:
     - assets/images/digital_wallet/
     - assets/icons/
     - assets/fonts/
+    - assets/lottie/
     - .env
 
   fonts:

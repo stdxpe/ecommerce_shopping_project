@@ -6,7 +6,7 @@ class CardImage extends StatelessWidget {
   const CardImage({
     super.key,
     required this.imageUrl,
-    required this.height,
+    this.height,
     required this.width,
     this.useFadeInAnimation = true,
     this.clipBehavior = Clip.none,
@@ -15,7 +15,7 @@ class CardImage extends StatelessWidget {
     this.alignment = Alignment.topCenter,
   });
   final String imageUrl;
-  final double height;
+  final double? height;
   final double width;
   final bool? useFadeInAnimation;
   final Clip? clipBehavior;

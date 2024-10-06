@@ -30,7 +30,7 @@ class ShoppingCartScreen extends ConsumerWidget {
                     TitleMain(
                       title: AppStrings.shoppingCartScreenTitle,
                       enableTitleAsBackButton: true,
-                      paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
+                      paddingTop: Constants.kMainTitleTopPaddingWithoutAppBar.h,
                       itemCount:
                           ref.watch(shoppingCartProvider).value?.length ?? 0,
                     ),

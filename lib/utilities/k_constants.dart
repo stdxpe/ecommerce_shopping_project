@@ -14,7 +14,7 @@ abstract class Constants {
 
   /// Main Title
   static const double kMainTitlePaddingTop = 20;
-  static const double kMainTitlePaddingTopWithoutAppBar = 85;
+  static const double kMainTitleTopPaddingWithoutAppBar = 85;
   static const double kMainTitlePaddingTopForHomeScreen = 77;
   static const double kMainTitlePaddingBottom = 60;
   static const double kMainTitleSpacingBTWItemsFoundBTWStepsVertical = 10;
@@ -53,9 +53,9 @@ abstract class Constants {
   static const double kStackCardSpacingBTWItemsVertical = 11;
 
   /// Details Screen Related
-  static const double kDetailsScreenTitlePaddingTop = 70;
-  static const double kDetailsScreenSpacingBTWItemsVertical = 50;
-  static const double kDetailsScreenMainPaddingHorizontal = 30;
+  static const double kDetailsTitlePaddingTop = 70;
+  static const double kDetailsSpacingBTWItemsVertical = 50;
+  static const double kDetailsMainPaddingHorizontal = 30;
   static const double kCollectionDetailsScreenSpacingBTWItemsVertical = 50;
 
   /// Profile Screen Related

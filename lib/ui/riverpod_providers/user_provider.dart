@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommerce_shopping_project/services/firebase_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ import 'package:ecommerce_shopping_project/services/global_services/dependency_i
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_in_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/sign_up_provider.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/exceptions/google_signin_exception.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 final userProvider =
@@ -64,6 +64,8 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
         );
 
         return tempUserModel;
+      } else {
+        return null;
       }
     });
   }

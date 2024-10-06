@@ -21,7 +21,7 @@ class WishlistScreen extends ConsumerWidget {
             TitleMain(
               title: AppStrings.wishlistScreenTitle,
               itemCount: ref.watch(wishlistProvider).value?.length ?? 0,
-              paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
+              paddingTop: Constants.kMainTitleTopPaddingWithoutAppBar.h,
             ),
             ListviewProductCardHorizontalMini(
               provider: wishlistProvider,

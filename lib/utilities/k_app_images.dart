@@ -11,6 +11,9 @@ abstract class AppImages {
   static const String lottieLoadingShimmer =
       "assets/lottie/loading_shimmer.json";
 
+  static const String discoverCardFemininity = "assets/images/femininity.jpg";
+  static const String discoverCardRedBox = "assets/images/redbox.jpg";
+
   static const String productImage0 = "assets/images/pose0.jpg";
   static const String productImage1 = "assets/images/pose1.jpg";
   static const String productImage2 = "assets/images/pose2.jpg";
@@ -25,12 +28,4 @@ abstract class AppImages {
   static const String productImage11 = "assets/images/pose11.jpg";
   static const String productImage12 = "assets/images/pose12.jpg";
   static const String productImage13 = "assets/images/pose13.jpg";
-
-  static const String creditCardBackground = "assets/images/world_map_dots.jpg";
-  static const String creditCardBackground2 =
-      'assets/images/credit_card_bg.png';
-
-  static const String creditCardBackgroundWide = "assets/images/world_map.jpg";
-
-  static const String blackBg = "assets/images/black_bg.png";
 }

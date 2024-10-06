@@ -23,7 +23,7 @@ class TrackingOrderScreen extends StatelessWidget {
             TitleMain(
               title: AppStrings.trackingOrderScreenTitle,
               enableTitleAsBackButton: true,
-              paddingTop: Constants.kMainTitlePaddingTopWithoutAppBar.h,
+              paddingTop: Constants.kMainTitleTopPaddingWithoutAppBar.h,
             ),
             ListviewOrderCardHorizontalDetailed(order: order),
             SizedBox(height: 125.h),

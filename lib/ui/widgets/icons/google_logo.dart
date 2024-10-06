@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// TODO: Remove Google Logo
 class GoogleLogo extends StatelessWidget {
   final double size;
   const GoogleLogo({super.key, this.size = 300});

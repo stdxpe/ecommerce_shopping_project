@@ -313,7 +313,7 @@ abstract class AppStrings {
 }
 
 abstract class LocalDB {
-  static const String name = "user_config";
+  static const String path = "user_config";
 
   static const String themeMode = "themeMode";
   static const String themeModeDark = "themeModeDark";

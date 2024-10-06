@@ -69,8 +69,10 @@ class ReviewCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Flexible(
-                            child:
-                                SwitchRatingStars(rating: review.productRating),
+                            child: SwitchRatingStars(
+                              rating: review.productRating,
+                              starSize: 35.h,
+                            ),
                           ),
                           Flexible(
                             child: SizedBox(
@@ -99,7 +101,8 @@ class ReviewCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                      height: Constants.kReviewCardSpacingBTWItemsVertical.h),
+                      height: Constants.kReviewCardSpacingBTWItemsVertical.h *
+                          1.25),
                   TextCustom(
                     text: review.text,
                     textStyle: context.textTheme.bodySmall!,

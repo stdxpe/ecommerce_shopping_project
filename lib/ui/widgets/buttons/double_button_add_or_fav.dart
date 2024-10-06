@@ -24,8 +24,8 @@ class DoubleButtonAddOrFav extends ConsumerWidget {
       padding: EdgeInsets.only(
         top: Constants.kButtonPaddingTop.h,
         bottom: Constants.kButtonPaddingBottom.h,
-        left: Constants.kDetailsScreenMainPaddingHorizontal.w,
-        right: Constants.kDetailsScreenMainPaddingHorizontal.w,
+        left: Constants.kDetailsMainPaddingHorizontal.w,
+        right: Constants.kDetailsMainPaddingHorizontal.w,
       ),
       child: Row(
         children: [

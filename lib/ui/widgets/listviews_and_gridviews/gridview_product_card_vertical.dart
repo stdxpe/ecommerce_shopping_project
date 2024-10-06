@@ -15,6 +15,7 @@ class GridviewProductCardVertical extends ConsumerWidget {
     required this.provider,
     required this.collection,
     this.itemCountOnRow = 3,
+    this.itemCount,
     this.isCardElevated = true,
   });
 
@@ -22,6 +23,7 @@ class GridviewProductCardVertical extends ConsumerWidget {
   final Collections collection;
   final int itemCountOnRow;
   final bool? isCardElevated;
+  final int? itemCount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,19 +44,16 @@ class GridviewProductCardVertical extends ConsumerWidget {
           maxCrossAxisExtent: card.totalWidth,
           mainAxisSpacing: card.spacingBTWCardsVertical,
           crossAxisSpacing: card.spacingBTWCardsHorizontal,
-          // mainAxisSpacing: card.spacingBTWCardsHorizontal,
-          // crossAxisSpacing: card.spacingBTWCardsVertical,
         ),
         physics: const NeverScrollableScrollPhysics(),
-        itemCount:
-            ref.watch(provider).value?[collectionIndex].products.length ?? 6,
+        itemCount: itemCount ??
+            ref.watch(provider).value?[collectionIndex].products.length ??
+            6,
         itemBuilder: (context, index) {
           return ref.watch(provider).when(
                 error: (error, stackTrace) => CardErrorVertical(card: card),
                 loading: () => CardPlaceholderVertical(card: card),
                 data: (data) {
-                  // return CardPlaceholderVertical(card: card);
-                  // return CardErrorVertical(card: card),
                   return ProductCardVertical(
                     product: data[collectionIndex].products[index],
                     card: card,

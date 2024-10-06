@@ -53,11 +53,9 @@ class ProductDetailsScreen extends ConsumerWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                              top: Constants.kDetailsScreenTitlePaddingTop.h,
-                              left: Constants
-                                  .kDetailsScreenMainPaddingHorizontal.w,
-                              right: Constants
-                                  .kDetailsScreenMainPaddingHorizontal.w,
+                              top: Constants.kDetailsTitlePaddingTop.h,
+                              left: Constants.kDetailsMainPaddingHorizontal.w,
+                              right: Constants.kDetailsMainPaddingHorizontal.w,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,11 +75,9 @@ class ProductDetailsScreen extends ConsumerWidget {
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                       top: Constants
-                                          .kDetailsScreenSpacingBTWItemsVertical
-                                          .h,
+                                          .kDetailsSpacingBTWItemsVertical.h,
                                       bottom: Constants
-                                          .kDetailsScreenSpacingBTWItemsVertical
-                                          .h,
+                                          .kDetailsSpacingBTWItemsVertical.h,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -124,7 +120,7 @@ class ProductDetailsScreen extends ConsumerWidget {
                                         ),
                                         SizedBox(
                                             height: Constants
-                                                .kDetailsScreenSpacingBTWItemsVertical
+                                                .kDetailsSpacingBTWItemsVertical
                                                 .h),
                                         Row(
                                           children: [

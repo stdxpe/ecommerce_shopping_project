@@ -37,11 +37,9 @@ class ReviewsScreen extends ConsumerWidget {
               card: card,
               onPressed: () => context.pop(),
             ),
-            SizedBox(
-                height: Constants.kDetailsScreenSpacingBTWItemsVertical.h * 2),
+            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h * 2),
             SwitchRatingSummary(product: product),
-            SizedBox(
-                height: Constants.kDetailsScreenSpacingBTWItemsVertical.h * 2),
+            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h * 2),
             Row(
               children: [
                 SizedBox(width: 30.w),
@@ -61,9 +59,9 @@ class ReviewsScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(height: Constants.kDetailsScreenSpacingBTWItemsVertical.h),
+            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
             VerticalListviewReviewCard(productId: product.id),
-            SizedBox(height: Constants.kDetailsScreenSpacingBTWItemsVertical.h),
+            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
           ],
         ),
       ),

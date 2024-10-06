@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
+import 'package:ecommerce_shopping_project/models/banner.dart' as model;
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
@@ -139,6 +142,54 @@ class CollectionManager extends ICollectionRepository {
     } on Error catch (_) {
       print(
           'CollectionManager getCollectionByFilter catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<model.Banner>> getAllBanners() async {
+    try {
+      debugPrint(
+          'CollectionManager getAllBanners try exception block exec, rethrowing');
+
+      List<model.Banner> tempBannersList = [];
+      tempBannersList = await _collectionService.getAllBanners();
+      return tempBannersList;
+    } on Exception catch (_) {
+      print(
+          'CollectionManager getAllBanners catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'CollectionManager getAllBanners catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Product> getProductById({required String productId}) async {
+    try {
+      print('CollectionManager getProductById try block exec');
+
+      Product? selectedProduct =
+          await _productService.getProductById(productId: productId);
+
+      if (selectedProduct != null) {
+        print('CollectionManager getProductById if block exec');
+
+        return selectedProduct;
+      } else {
+        print(
+            'CollectionManager getProductById else block exec. Collection is Null. throwing Exception');
+        throw Exception();
+      }
+    } on Exception catch (_) {
+      print(
+          'CollectionManager getProductById catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print(
+          'CollectionManager getProductById catch error block exec, rethrowing');
       rethrow;
     }
   }

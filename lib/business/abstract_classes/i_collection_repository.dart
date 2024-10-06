@@ -1,3 +1,4 @@
+import 'package:ecommerce_shopping_project/models/banner.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
@@ -7,4 +8,6 @@ abstract class ICollectionRepository {
   Future<Collection> getCollectionById({required String collectionId});
   Future<void> createCollection({required Collection collection});
   Future<List<Product>> getCollectionByFilter({required Filter filter});
+  Future<List<Banner>> getAllBanners();
+  Future<Product> getProductById({required String productId});
 }

@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+import 'package:flutter/material.dart';
 
+import 'package:ecommerce_shopping_project/models/banner.dart' as model;
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
+import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
 class FirebaseCollectionService extends ICollectionService {
   final _db = locator<FirebaseFirestore>();
@@ -51,5 +52,24 @@ class FirebaseCollectionService extends ICollectionService {
   Future<void> createCollection({required CollectionDto collectionDto}) async {
     debugPrint('FirebaseCollectionService createCollection exec');
     _db.doc('collections/${collectionDto.id}').set(collectionDto.toMap());
+  }
+
+  @override
+  Future<List<model.Banner>> getAllBanners() async {
+    var returnedCollectionSnapshot = await _db.collection('banners').get();
+    var returnedList = returnedCollectionSnapshot.docs;
+
+    List<model.Banner> tempList = [];
+
+    if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+      debugPrint(
+          'FirebaseCollectionService getAllBanners if block exec. List is NOT empty');
+
+      for (var doc in returnedList) {
+        var returnedMap = doc.data();
+        tempList.add(model.Banner.fromMap(returnedMap));
+      }
+    }
+    return tempList;
   }
 }

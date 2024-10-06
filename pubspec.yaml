@@ -53,7 +53,6 @@ dependencies:
   loading_animation_widget: ^1.2.1        # Animated Loading Progress Indicators 
   flutter_rating_bar: ^4.0.1              # Product Rating Bar
   msh_checkbox: ^2.0.1                    # Animated Checkbox Widget
-  flutter_any_logo: ^1.1.1                # Brand Logos
   cupertino_icons: ^1.0.6                 # UI Icons
   flutter_tabler_icons: ^1.35.0           # UI Icons
   unicons: ^2.1.2                         # UI Icons

@@ -1030,8 +1030,6 @@ PODS:
     - GoogleUtilities/Environment (~> 7.12)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - Flutter (1.0.0)
-  - flutter_any_logo (0.0.1):
-    - Flutter
   - flutter_credit_card (0.0.1):
     - Flutter
   - google_sign_in_ios (0.0.1):
@@ -1211,7 +1209,6 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
-  - flutter_any_logo (from `.symlinks/plugins/flutter_any_logo/ios`)
   - flutter_credit_card (from `.symlinks/plugins/flutter_credit_card/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
@@ -1265,8 +1262,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
-  flutter_any_logo:
-    :path: ".symlinks/plugins/flutter_any_logo/ios"
   flutter_credit_card:
     :path: ".symlinks/plugins/flutter_credit_card/ios"
   google_sign_in_ios:
@@ -1300,7 +1295,6 @@ SPEC CHECKSUMS:
   FirebaseSharedSwift: 20530f495084b8d840f78a100d8c5ee613375f6e
   FirebaseStorage: 436c30aa46f2177ba152f268fe4452118b8a4856
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_any_logo: 42f078f85b11aca59a029b03007f92301c4d7b86
   flutter_credit_card: 48fb35065294868bc6a3e7f18a42f28929b84f48
   google_sign_in_ios: 07375bfbf2620bc93a602c0e27160d6afc6ead38
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db

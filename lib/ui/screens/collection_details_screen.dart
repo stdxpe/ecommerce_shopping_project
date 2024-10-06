@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/collections_provider.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/app_bars/app_bar_main.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/gridview_product_card_vertical.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/card_image.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/text_custom.dart';
@@ -27,31 +26,16 @@ class CollectionDetailsScreen extends ConsumerWidget {
         bottom: false,
         child: Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: AppBarMain(
-            iconsColor: context.colorPalette.permaBlackColor,
-            useTransparentBackground: true,
-            automaticallyImplyLeading: true,
-            useSearchButton: false,
-          ),
           body: ListView(
             padding: EdgeInsets.zero,
             physics: const ClampingScrollPhysics(),
             children: [
-              ZoomOverlay(
-                modalBarrierColor: Colors.black12,
-                minScale: 0.5,
-                maxScale: 3.0,
-                animationCurve: Curves.fastOutSlowIn,
-                animationDuration: const Duration(
-                  milliseconds: 300,
-                ),
-                twoTouchOnly: true,
-                onScaleStart: () {},
-                onScaleStop: () {},
+              GestureDetector(
+                onTap: () => context.pop(),
                 child: CardImage(
                   imageUrl: collection.photo,
                   width: context.mediaQuery.size.width,
-                  height: context.mediaQuery.size.width * 0.8,
+                  height: context.mediaQuery.size.width * 1,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                       color: context.colorPalette.scaffoldBackground),
@@ -59,7 +43,6 @@ class CollectionDetailsScreen extends ConsumerWidget {
               ),
               TitleMain(
                 title: collection.title,
-                // itemCount: collection.products.length,
 
                 paddingTop: 55.h,
                 // paddingBottom: 77.h,
@@ -77,8 +60,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
                   isHeightConstraintRelated: false,
                 ),
               ),
-              SizedBox(
-                  height: Constants.kDetailsScreenSpacingBTWItemsVertical.h),
+              SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
               GridviewProductCardVertical(
                 itemCountOnRow: 3,
                 provider: collectionsProvider,

@@ -7,28 +7,47 @@ import 'package:ecommerce_shopping_project/business/abstract_classes/i_collectio
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
 
-enum Collections { autumn, spring, winter, summer, designer }
+enum Collections {
+  summer,
+  windsOfWinter,
+  fallEssentials,
+  dreamOfSpring,
+  designer,
+}
 
 final selectedCollectionIndex =
     Provider.family<int, Collections>((ref, collection) {
   return switch (collection) {
     Collections.summer => 0,
-    Collections.winter => 1,
-    Collections.autumn => 2,
-    Collections.spring => 3,
+    Collections.windsOfWinter => 1,
+    Collections.fallEssentials => 2,
+    Collections.dreamOfSpring => 3,
     Collections.designer => 4,
+  };
+});
+
+final getCollection =
+    Provider.family<Collection, Collections>((ref, collectionEnum) {
+  List<Collection> collections = ref.watch(collectionsProvider).value!;
+
+  return switch (collectionEnum) {
+    Collections.summer => collections[0],
+    Collections.windsOfWinter => collections[1],
+    Collections.fallEssentials => collections[2],
+    Collections.dreamOfSpring => collections[3],
+    Collections.designer => collections[4],
   };
 });
 
 final getCollectionEnum = Provider.family<Collections, String>((ref, title) {
   if (title.contains('Summer')) {
     return Collections.summer;
-  } else if (title.contains('Autumn')) {
-    return Collections.autumn;
+  } else if (title.contains('Fall')) {
+    return Collections.fallEssentials;
   } else if (title.contains('Spring')) {
-    return Collections.spring;
+    return Collections.dreamOfSpring;
   } else if (title.contains('Winter')) {
-    return Collections.winter;
+    return Collections.windsOfWinter;
   } else if (title.contains('Designer')) {
     return Collections.designer;
   } else {

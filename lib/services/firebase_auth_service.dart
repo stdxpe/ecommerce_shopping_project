@@ -3,7 +3,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_auth_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/exceptions/google_signin_exception.dart';
 
 class FirebaseAuthService extends IAuthService {
   final _authService = locator<FirebaseAuth>();
@@ -47,4 +46,9 @@ class FirebaseAuthService extends IAuthService {
       throw ExceptionGoogleSignInAborted('Google Sign In Popup Aborted');
     }
   }
+}
+
+class ExceptionGoogleSignInAborted implements Exception {
+  String cause;
+  ExceptionGoogleSignInAborted(this.cause);
 }

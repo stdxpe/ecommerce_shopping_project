@@ -4,7 +4,7 @@ import 'package:ecommerce_shopping_project/services/abstract_classes/i_local_db_
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
 class HiveLocalDBService extends ILocalDBService {
-  final Box box = Hive.box(LocalDB.name);
+  final Box box = Hive.box(LocalDB.path);
 
   @override
   Map<dynamic, dynamic> getAllData() => box.toMap();

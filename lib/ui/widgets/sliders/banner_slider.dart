@@ -11,16 +11,11 @@ import 'package:ecommerce_shopping_project/ui/widgets/minor_widgets/error_occure
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_standart.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-class BannerSlider extends ConsumerStatefulWidget {
+class BannerSlider extends ConsumerWidget {
   const BannerSlider({super.key});
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _BannerSliderState();
-}
 
-class _BannerSliderState extends ConsumerState<BannerSlider> {
-  int activeIndex = 0;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(bannerProvider).when(
           loading: () => CardPlaceholderStandart(width: 1.sw, height: 800.h),
           error: (error, stackTrace) => const ErrorOccuredWidget(),
@@ -38,14 +33,13 @@ class _BannerSliderState extends ConsumerState<BannerSlider> {
               ),
               child: Swiper(
                 fade: 1,
-                index: activeIndex,
+                index: 0,
                 itemCount: data.length,
                 autoplay: true,
                 autoplayDelay: 5000,
                 viewportFraction: 1,
                 scale: 1,
                 duration: 600,
-                onIndexChanged: (index) => setState(() => activeIndex = index),
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () => ref

@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:ecommerce_shopping_project/models/banner.dart' as model;
+import 'package:ecommerce_shopping_project/models/deal.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
@@ -68,6 +69,25 @@ class FirebaseCollectionService extends ICollectionService {
       for (var doc in returnedList) {
         var returnedMap = doc.data();
         tempList.add(model.Banner.fromMap(returnedMap));
+      }
+    }
+    return tempList;
+  }
+
+  @override
+  Future<List<Deal>> getAllDeals() async {
+    var returnedCollectionSnapshot = await _db.collection('deals').get();
+    var returnedList = returnedCollectionSnapshot.docs;
+
+    List<Deal> tempList = [];
+
+    if (returnedCollectionSnapshot.docs.isNotEmpty && returnedList.isNotEmpty) {
+      debugPrint(
+          'FirebaseCollectionService getAllDeals if block exec. List is NOT empty');
+
+      for (var doc in returnedList) {
+        var returnedMap = doc.data();
+        tempList.add(Deal.fromMap(returnedMap));
       }
     }
     return tempList;

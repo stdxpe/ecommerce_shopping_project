@@ -4,6 +4,7 @@ import 'package:ecommerce_shopping_project/business/abstract_classes/i_collectio
 import 'package:ecommerce_shopping_project/models/banner.dart' as model;
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/models/collection_dto.dart';
+import 'package:ecommerce_shopping_project/models/deal.dart';
 import 'package:ecommerce_shopping_project/models/filter.dart';
 import 'package:ecommerce_shopping_project/models/product.dart';
 import 'package:ecommerce_shopping_project/services/abstract_classes/i_collection_service.dart';
@@ -27,17 +28,17 @@ class CollectionManager extends ICollectionRepository {
         List<Product> tempProductList = [];
 
         /// TODO: Change into All Products (removed due to Firebase Costs)
-        // for (String productId in collectionDto.products) {
-        //   Product? selectedProduct =
-        //       await _productService.getProductById(productId: productId);
-        //   if (selectedProduct != null) tempProductList.add(selectedProduct);
-        // }
-        for (int i = 0; i <= 2; i++) {
-          String tempProductId = collectionDto.products[i];
+        for (String productId in collectionDto.products) {
           Product? selectedProduct =
-              await _productService.getProductById(productId: tempProductId);
+              await _productService.getProductById(productId: productId);
           if (selectedProduct != null) tempProductList.add(selectedProduct);
         }
+        // for (int i = 0; i <= 2; i++) {
+        //   String tempProductId = collectionDto.products[i];
+        //   Product? selectedProduct =
+        //       await _productService.getProductById(productId: tempProductId);
+        //   if (selectedProduct != null) tempProductList.add(selectedProduct);
+        // }
 
         /// TODO: END Change into All Products (removed due to Firebase Costs)
 
@@ -162,6 +163,25 @@ class CollectionManager extends ICollectionRepository {
     } on Error catch (_) {
       print(
           'CollectionManager getAllBanners catch error block exec, rethrowing');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<Deal>> getAllDeals() async {
+    try {
+      debugPrint(
+          'CollectionManager getAllDeals try exception block exec, rethrowing');
+
+      List<Deal> tempDealsList = [];
+      tempDealsList = await _collectionService.getAllDeals();
+      return tempDealsList;
+    } on Exception catch (_) {
+      print(
+          'CollectionManager getAllDeals catch exception block exec, rethrowing');
+      rethrow;
+    } on Error catch (_) {
+      print('CollectionManager getAllDeals catch error block exec, rethrowing');
       rethrow;
     }
   }

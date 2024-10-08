@@ -1,11 +1,31 @@
 import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:ecommerce_shopping_project/business/abstract_classes/i_collection_repository.dart';
 import 'package:ecommerce_shopping_project/models/collection.dart';
 import 'package:ecommerce_shopping_project/services/global_services/dependency_injection_service.dart';
+
+final collectionsProvider =
+    AsyncNotifierProvider<CollectionNotifier, List<Collection>>(
+        () => CollectionNotifier());
+
+class CollectionNotifier extends AsyncNotifier<List<Collection>> {
+  @override
+  FutureOr<List<Collection>> build() async {
+    getAllCollections();
+    return await future;
+  }
+
+  final _collectionManager = locator<ICollectionRepository>();
+
+  getAllCollections() async {
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+      () async => await _collectionManager.getAllCollections(),
+    );
+  }
+}
 
 enum Collections {
   summer,
@@ -39,6 +59,17 @@ final getCollection =
   };
 });
 
+final getCollectionTitle =
+    Provider.family<String, Collections>((ref, collection) {
+  return switch (collection) {
+    Collections.designer => AppStrings.designerCollection,
+    Collections.windsOfWinter => AppStrings.windsOfWinterCollection,
+    Collections.dreamOfSpring => AppStrings.dreamOfSpringCollection,
+    Collections.fallEssentials => AppStrings.fallEssentialsCollection,
+    Collections.summer => AppStrings.summerCollection,
+  };
+});
+
 final getCollectionEnum = Provider.family<Collections, String>((ref, title) {
   if (title.contains('Summer')) {
     return Collections.summer;
@@ -55,40 +86,26 @@ final getCollectionEnum = Provider.family<Collections, String>((ref, title) {
   }
 });
 
-final collectionsProvider =
-    AsyncNotifierProvider<CollectionNotifier, List<Collection>>(
-        () => CollectionNotifier());
+typedef CollectionCountInputs = ({
+  int? itemCount,
+  int itemStartIndex,
+  AsyncNotifierProvider provider,
+  int collectionIndex,
+});
 
-class CollectionNotifier extends AsyncNotifier<List<Collection>> {
-  @override
-  FutureOr<List<Collection>> build() async {
-    /// Initial State Setup Operation
-    getAllCollections();
-
-    /// Waiting for the inner method to be completed
-    return await future;
+final getCollectionItemCount =
+    StateProvider.family<int, CollectionCountInputs>((ref, inputs) {
+  int? productLength =
+      ref.watch(inputs.provider).value?[inputs.collectionIndex].products.length;
+  if (productLength == null) {
+    return inputs.itemCount ?? 6;
+  } else if (inputs.itemCount == null) {
+    return productLength - inputs.itemStartIndex;
+  } else if (inputs.itemCount != null) {
+    return ((productLength - inputs.itemStartIndex)) < inputs.itemCount!
+        ? (productLength - inputs.itemStartIndex)
+        : inputs.itemCount!;
+  } else {
+    return inputs.itemCount ?? 6;
   }
-
-  final _collectionManager = locator<ICollectionRepository>();
-
-  getAllCollections() async {
-    debugPrint('CollectionNotifier | getAllCollections() Executed');
-
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(
-      () async => await _collectionManager.getAllCollections(),
-    );
-    debugPrint('state: $state');
-  }
-
-  getCollectionById(String collectionId) async {
-    debugPrint('CollectionNotifier | getCollectionById() Executed');
-
-    var collection = await AsyncValue.guard(
-      () async => await _collectionManager.getCollectionById(
-          collectionId: collectionId),
-    );
-
-    return collection;
-  }
-}
+});

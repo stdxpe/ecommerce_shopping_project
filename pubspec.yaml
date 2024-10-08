@@ -42,7 +42,7 @@ dependencies:
   faker_dart: ^0.2.2                      # Random Fake Data Generator
   cached_network_image: ^3.4.0            # Network Image Cacher
   card_swiper: ^3.0.1                     # Carousel Image Slider
-  smooth_page_indicator: ^1.2.0           # Image Slider Pagination
+  smooth_page_indicator: ^1.2.0+3         # Image Slider Pagination
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
   flutter_animate: ^4.5.0                 # Advanced Animation Builder
   flutter_custom_carousel: ^0.1.0+1       # Advanced Built-In Slider Animations with flutter_animate package
@@ -72,7 +72,6 @@ flutter:
   assets:
     - assets/images/
     - assets/images/digital_wallet/
-    - assets/icons/
     - assets/fonts/
     - assets/lottie/
     - .env

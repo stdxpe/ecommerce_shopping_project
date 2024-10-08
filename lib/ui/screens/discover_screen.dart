@@ -13,7 +13,6 @@ import 'package:ecommerce_shopping_project/ui/widgets/listviews_and_gridviews/li
 import 'package:ecommerce_shopping_project/ui/widgets/titles/title_main.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 
-/// TODO: Listview range for 3 to 6 in Providers
 class DiscoverScreen extends ConsumerWidget {
   const DiscoverScreen({super.key});
 
@@ -38,27 +37,19 @@ class DiscoverScreen extends ConsumerWidget {
             CollectionCard(
               collection: ref.watch(getCollection(Collections.designer)),
             ),
-
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             CollectionCard(
               collection: ref.watch(getCollection(Collections.windsOfWinter)),
             ),
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             ListviewProductCardHorizontal(
               provider: collectionsProvider,
               collection: Collections.windsOfWinter,
               cardHeight: 200,
+              itemCount: 20,
+              startIndex: 2,
             ),
             SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             const DiscoverCard(photo: AppImages.discoverCardFemininity),
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             const DiscoverCard(photo: AppImages.discoverCardRedBox),
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             GridviewProductCardVertical(
               itemCountOnRow: 2,
               itemCount: 2,
@@ -70,14 +61,9 @@ class DiscoverScreen extends ConsumerWidget {
             CollectionCard(
               collection: ref.watch(getCollection(Collections.dreamOfSpring)),
             ),
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             CollectionCard(
               collection: ref.watch(getCollection(Collections.fallEssentials)),
             ),
-
-            SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             GridviewProductCardVertical(
               itemCountOnRow: 3,
               isCardElevated: true,
@@ -85,18 +71,9 @@ class DiscoverScreen extends ConsumerWidget {
               collection: Collections.fallEssentials,
             ),
             SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
             CollectionCard(
               collection: ref.watch(getCollection(Collections.summer)),
             ),
-            // SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-
-            /// TODO: StaggeredGridCardComponentLeft
-            // StaggeredGridCardComponentLeft(
-            //   // collection: dummyCollections[1],
-            //   collection: ref.watch(collectionsProvider).value![3],
-            // ),
-
             SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),

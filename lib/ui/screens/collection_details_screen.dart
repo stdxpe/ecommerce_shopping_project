@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
                       color: context.colorPalette.scaffoldBackground),
-                ),
+                ).animate().fadeIn(duration: 1000.ms),
               ),
               TitleMain(
                 title: collection.title,
@@ -58,7 +59,7 @@ class CollectionDetailsScreen extends ConsumerWidget {
                   color: context.colorPalette.text,
                   maxLines: 3,
                   isHeightConstraintRelated: false,
-                ),
+                ).animate().fadeIn(delay: 100.ms, duration: 750.ms),
               ),
               SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
               GridviewProductCardVertical(

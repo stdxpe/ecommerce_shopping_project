@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,22 +16,28 @@ class CollectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      child: GestureDetector(
-        onTap: () => context.push(Routes.collectionDetails, extra: collection),
-        child: CardImage(
-          imageUrl: collection.photo,
-          width: context.mediaQuery.size.width,
-          clipBehavior: Clip.hardEdge,
-          boxfit: BoxFit.fitWidth,
-          decoration: BoxDecoration(
-            color: context.colorPalette.scaffoldBackground,
-            borderRadius: BorderRadius.circular(Constants.kRadiusCardPrimary.r),
-            boxShadow: [
-              BoxShadows.kBoxShadowProductCard(
-                color: context.colorPalette.shadowPrimary,
-              ),
-            ],
-          ),
+      child: Padding(
+        padding: EdgeInsets.only(
+            bottom: Constants.kDetailsSpacingBTWItemsVertical.h),
+        child: GestureDetector(
+          onTap: () =>
+              context.push(Routes.collectionDetails, extra: collection),
+          child: CardImage(
+            imageUrl: collection.photo,
+            width: context.mediaQuery.size.width,
+            clipBehavior: Clip.hardEdge,
+            boxfit: BoxFit.fitWidth,
+            decoration: BoxDecoration(
+              color: context.colorPalette.scaffoldBackground,
+              borderRadius:
+                  BorderRadius.circular(Constants.kRadiusCardPrimary.r),
+              boxShadow: [
+                BoxShadows.kBoxShadowProductCard(
+                  color: context.colorPalette.shadowPrimary,
+                ),
+              ],
+            ),
+          ).animate().fadeIn(duration: 750.ms),
         ),
       ),
     );

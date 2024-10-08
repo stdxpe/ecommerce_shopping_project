@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -108,6 +109,6 @@ class TitleMain extends StatelessWidget {
             ),
         ],
       ),
-    );
+    ).animate().fadeIn(duration: 1000.ms);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -70,6 +71,6 @@ class CardPlaceholderVertical extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ).animate().fadeIn(duration: 750.ms);
   }
 }

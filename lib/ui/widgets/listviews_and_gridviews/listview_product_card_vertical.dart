@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,6 +18,8 @@ class ListviewProductCardVertical extends ConsumerWidget {
     this.cardWidth = 400,
     this.itemCountOnRow,
     this.isCardElevated = true,
+    this.itemCount,
+    this.startIndex = 0,
   });
 
   final AsyncNotifierProvider provider;
@@ -24,12 +27,20 @@ class ListviewProductCardVertical extends ConsumerWidget {
   final double? cardWidth;
   final int? itemCountOnRow;
   final bool? isCardElevated;
+  final int? itemCount;
+  final int? startIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var card = ref.watch(verticalCard(
         (cardWidth: cardWidth!, itemCountOnRow: itemCountOnRow, ctx: context)));
     var collectionIndex = ref.watch(selectedCollectionIndex(collection));
+    var count = ref.watch(getCollectionItemCount((
+      itemCount: itemCount,
+      itemStartIndex: startIndex!,
+      provider: provider,
+      collectionIndex: collectionIndex,
+    )));
 
     return SizedBox(
       width: context.mediaQuery.size.width,
@@ -40,8 +51,7 @@ class ListviewProductCardVertical extends ConsumerWidget {
         clipBehavior: Clip.none,
         padding: EdgeInsets.symmetric(
             horizontal: Constants.kMainPaddingHorizontal.w),
-        itemCount:
-            ref.watch(provider).value?[collectionIndex].products.length ?? 3,
+        itemCount: count,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(right: card.spacingBTWCardsHorizontal),
@@ -50,10 +60,13 @@ class ListviewProductCardVertical extends ConsumerWidget {
                   loading: () => CardPlaceholderVertical(card: card),
                   data: (data) {
                     return ProductCardVertical(
-                      product: data[collectionIndex].products[index],
+                      product:
+                          data[collectionIndex].products[index + startIndex!],
                       card: card,
                       isCardElevated: isCardElevated,
-                    );
+                    )
+                        .animate()
+                        .fadeIn(delay: (50 * index).ms, duration: 750.ms);
                   },
                 ),
           );

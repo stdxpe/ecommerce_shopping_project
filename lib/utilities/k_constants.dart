@@ -19,6 +19,7 @@ abstract class Constants {
   static const double kMainTitlePaddingBottom = 60;
   static const double kMainTitleSpacingBTWItemsFoundBTWStepsVertical = 10;
   static const double kAppTitleSpacingBTWAppSubtitleVertical = 25;
+  static const double kHomeScreenSpacingBTWItems = 75;
 
   /// Button
   static const double kButtonPaddingHorizontal = 90;
@@ -92,6 +93,7 @@ abstract class Constants {
   static const double kRadiusDialogPopups = 50;
   static const double kRadiusBottomSheets = 35;
   static const double kRadiusSliderCards = 30;
+  static const double kRadiusSliderDeals = 45;
   static const double kRadiusCreditCards = 35;
   static const double kRadiusCardPrimary = 25;
   static const double kRadiusCardSecondary = 15;

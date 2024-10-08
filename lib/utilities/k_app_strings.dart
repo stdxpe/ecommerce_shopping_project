@@ -89,6 +89,13 @@ abstract class AppStrings {
   static const String dialogPopupNewDealsTitle = 'Winter\nCollection';
   static const String dialogPopupNewDealsSubtitle = '20% Off Selected Brands';
 
+  /// COLLECTIONS
+  static const String designerCollection = 'Designer Collection';
+  static const String summerCollection = 'Summer Collection';
+  static const String dreamOfSpringCollection = 'Dream of Spring';
+  static const String windsOfWinterCollection = 'Winds of Winter';
+  static const String fallEssentialsCollection = 'Fall Essentials';
+
   /// WISHLIST SCREEN
   static const String wishlistScreenTitle = 'Wishlist';
 

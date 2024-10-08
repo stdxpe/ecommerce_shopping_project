@@ -13,6 +13,7 @@ class CardImage extends StatelessWidget {
     this.decoration,
     this.boxfit = BoxFit.cover,
     this.alignment = Alignment.topCenter,
+    this.padding,
   });
   final String imageUrl;
   final double? height;
@@ -22,12 +23,14 @@ class CardImage extends StatelessWidget {
   final BoxDecoration? decoration;
   final BoxFit? boxfit;
   final Alignment? alignment;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
+      margin: padding,
       clipBehavior: clipBehavior!,
       decoration: decoration,
       child: CachedNetworkImage(

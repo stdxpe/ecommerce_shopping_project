@@ -5,7 +5,6 @@ import 'package:ecommerce_shopping_project/ui/riverpod_providers/reviews_provide
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/ui_general_providers.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/review_card.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_error_horizontal.dart';
-import 'package:ecommerce_shopping_project/ui/widgets/placeholders/card_placeholder_horizontal.dart';
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:lottie/lottie.dart';
 
@@ -34,7 +33,6 @@ class VerticalListviewReviewCard extends ConsumerWidget {
         itemBuilder: (context, index) {
           return ref.watch(reviewsProvider(productId)).when(
                 error: (error, stackTrace) => CardErrorHorizontal(card: card),
-                // loading: () => CardPlaceholderHorizontal(card: card),
                 loading: () => Center(
                   child: Lottie.asset(
                     AppImages.lottieLoadingShimmer,

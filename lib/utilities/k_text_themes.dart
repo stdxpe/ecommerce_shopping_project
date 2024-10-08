@@ -77,7 +77,8 @@ abstract class AppTextThemes {
 
         /// BL: Card Primary
         bodyLarge: const TextStyle(
-          fontSize: 43.5,
+          // fontSize: 43.5,
+          fontSize: 40,
           fontWeight: FontWeight.w700,
           letterSpacing: -0.5,
           height: 1.05,

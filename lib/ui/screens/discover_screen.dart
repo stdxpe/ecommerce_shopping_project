@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:unicons/unicons.dart';
 
 import 'package:ecommerce_shopping_project/services/global_services/navigation_service.dart';
+import 'package:ecommerce_shopping_project/ui/riverpod_providers/banner_provider.dart';
 import 'package:ecommerce_shopping_project/ui/riverpod_providers/collections_provider.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/collection_card.dart';
 import 'package:ecommerce_shopping_project/ui/widgets/cards/discover_card.dart';
@@ -22,8 +23,6 @@ class DiscoverScreen extends ConsumerWidget {
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: EdgeInsets.symmetric(
-              horizontal: Constants.kMainPaddingHorizontal.w),
           physics: const ClampingScrollPhysics(),
           children: [
             TitleMain(
@@ -34,12 +33,8 @@ class DiscoverScreen extends ConsumerWidget {
               paddingRight: 13,
               onPressed: () => context.go(Routes.search),
             ),
-            CollectionCard(
-              collection: ref.watch(getCollection(Collections.designer)),
-            ),
-            CollectionCard(
-              collection: ref.watch(getCollection(Collections.windsOfWinter)),
-            ),
+            const CollectionCard(collection: Collections.designer),
+            const CollectionCard(collection: Collections.windsOfWinter),
             ListviewProductCardHorizontal(
               provider: collectionsProvider,
               collection: Collections.windsOfWinter,
@@ -58,12 +53,13 @@ class DiscoverScreen extends ConsumerWidget {
               collection: Collections.dreamOfSpring,
             ),
             SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-            CollectionCard(
-              collection: ref.watch(getCollection(Collections.dreamOfSpring)),
+            const CollectionCard(collection: Collections.dreamOfSpring),
+            DiscoverCard(
+              photo: AppImages.discoverBustier,
+              onPressed: () =>
+                  ref.read(bannerProvider.notifier).navigateToProduct(),
             ),
-            CollectionCard(
-              collection: ref.watch(getCollection(Collections.fallEssentials)),
-            ),
+            const CollectionCard(collection: Collections.fallEssentials),
             GridviewProductCardVertical(
               itemCountOnRow: 3,
               isCardElevated: true,
@@ -71,9 +67,7 @@ class DiscoverScreen extends ConsumerWidget {
               collection: Collections.fallEssentials,
             ),
             SizedBox(height: Constants.kDetailsSpacingBTWItemsVertical.h),
-            CollectionCard(
-              collection: ref.watch(getCollection(Collections.summer)),
-            ),
+            const CollectionCard(collection: Collections.summer),
             SizedBox(height: Constants.kMainSpacingEndOfScreen.h),
           ],
         ),

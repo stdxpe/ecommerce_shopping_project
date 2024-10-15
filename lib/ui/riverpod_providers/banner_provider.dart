@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -44,5 +45,11 @@ class BannerNotifier extends AsyncNotifier<List<model.Banner>> {
       // ignore: use_build_context_synchronously
       context.push(Routes.productDetails, extra: product);
     } else {}
+  }
+
+  navigateToProduct() async {
+    Product product = await _collectionManager.getProductById(
+        productId: Constants.bustierProductID);
+    ref.watch(goRouterProvider).push(Routes.productDetails, extra: product);
   }
 }

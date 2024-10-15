@@ -10,7 +10,7 @@ import 'package:ecommerce_shopping_project/ui/screens/collection_details_screen.
 import 'package:ecommerce_shopping_project/ui/screens/credit_cards_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/dialog_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/discover_screen.dart';
-import 'package:ecommerce_shopping_project/ui/screens/error_screen.dart';
+import 'package:ecommerce_shopping_project/ui/screens/error_404_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/forgot_password_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/home_screen.dart';
 import 'package:ecommerce_shopping_project/ui/screens/loading_screen.dart';
@@ -128,7 +128,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       // GoRoute(
       //     path: Routes.test,
-      //     builder: (context, state) => const LottieTestScreen()),
+      //     builder: (context, state) => TextfieldTestScreen()),
 
       /// Default Loading Screen
       GoRoute(

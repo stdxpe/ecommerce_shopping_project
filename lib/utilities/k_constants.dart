@@ -106,4 +106,7 @@ abstract class Constants {
 
   /// DotEnv File Extension
   static const String envPath = ".env";
+
+  /// Sample Product ID
+  static const String bustierProductID = "8ce031c3-7c3b-4bd6-98e5-fe16d222e2b6";
 }

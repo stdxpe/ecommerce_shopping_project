@@ -13,6 +13,7 @@ abstract class AppImages {
 
   static const String discoverCardFemininity = "assets/images/femininity.jpg";
   static const String discoverCardRedBox = "assets/images/redbox.jpg";
+  static const String discoverBustier = "assets/images/bustier.jpg";
 
   static const String productImage0 = "assets/images/pose0.jpg";
   static const String productImage1 = "assets/images/pose1.jpg";

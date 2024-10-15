@@ -119,3 +119,62 @@ class FirebaseProductService extends IProductService {
     return tempList;
   }
 }
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+////// IF NEW PRODUCT CREATION NEEDED WITHOUT BACKEND
+///
+// // String id = const Uuid().v4();
+// // String title = 'Cardigan slim fit with small studs';
+// // String summary =
+// //     'Cardigan slim fit with small studs. Round neck, central buttons for opening and long sleeves';
+// // String detailedDescription =
+// //     'COMPOSITION: VISCOSE 50% POLYESTER 28% NYLON 22%';
+// // List<String> keywords = [
+// //   'All',
+// //   ...title.toLowerCase().split(' '),
+// // ];
+// // Product newlyCreatedproduct = Product(
+// //   // id: const Uuid().v4(),
+// //   id: id,
+// //   title: title,
+// //   summary: summary,
+// //   detailedDescription: detailedDescription,
+// //   brand: 'Fracomina',
+// //   price: double.parse(
+// //       faker.commerce.price(symbol: '', min: 50, max: 1000)),
+// //   createdAt: createdAt,
+// //   mainPhoto: 'products/$id/cover.jpg',
+// //   photos: [
+// //     'products/$id/1.jpg',
+// //     'products/$id/2.jpg',
+// //     'products/$id/3.jpg',
+// //   ],
+// //   colors: colors,
+// //   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+// //   keywords: keywords,
+// //   totalOrdersCount: faker.datatype.number(min: 10, max: 500),
+// //   totalLikesCount: faker.datatype.number(min: 50, max: 1000),
+// //   totalRating:
+// //       faker.datatype.float(min: 0.5, max: 5, precision: 2),
+// //   storeId: const Uuid().v1(),
+// //   storeName: faker.company.companyName(),
+// //   stockCount: faker.datatype.number(min: 0, max: 500),
+// //   shippingFee: double.parse(
+// //       faker.commerce.price(symbol: '', min: 0, max: 15)),
+// //   estimatedShippingDurationInDays:
+// //       faker.datatype.number(min: 0, max: 5),
+// //   collections: [],
+// //   reviews: [],
+// // );
+// // print('newlyCreatedproduct: $newlyCreatedproduct');
+
+///////// await _productService.createProduct(product: newlyCreatedproduct);
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////

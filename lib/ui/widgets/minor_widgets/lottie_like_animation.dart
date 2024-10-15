@@ -57,7 +57,10 @@ class _LottieTestScreenState extends ConsumerState<LottieLikeAnimation>
                 fit: BoxFit.fill,
                 frameRate: const FrameRate(60),
               ),
-            ).animate().fadeOut(duration: 250.ms, delay: 750.ms)
+            )
+              .animate()
+              .fadeIn(duration: 175.ms)
+              .fadeOut(duration: 250.ms, delay: 750.ms)
           : const SizedBox(),
     );
   }

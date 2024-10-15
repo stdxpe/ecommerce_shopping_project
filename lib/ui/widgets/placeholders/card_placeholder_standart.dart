@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:ecommerce_shopping_project/utilities/utilities_library_imports.dart';
@@ -19,11 +21,14 @@ class CardPlaceholderStandart extends StatelessWidget {
         direction: ShimmerDirection.ltr,
         enabled: true,
         child: Container(
-          color: Colors.transparent,
           height: height,
           width: width,
+          decoration: BoxDecoration(
+            color: context.colorPalette.scaffoldBackground,
+            borderRadius: BorderRadius.circular(Constants.kRadiusCardPrimary.r),
+          ),
         ),
       ),
-    );
+    ).animate().fadeIn(duration: 750.ms);
   }
 }

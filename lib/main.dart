@@ -57,12 +57,10 @@ Future<void> main() async {
     ///   Providers should initialize themselves.
     ///   They should not be initialized by an external element such as a widget.
 
-    /// TODO: Discover Screen - New Collections
     /// TODO: Logo and Splash Screen
     /// TODO: Video BG Splash Screen
 
     /// TODO: Learn how to move HEAD tag inside VSCode
-    /// TODO: Divided Provider States
     /// TODO: Internet Connection Check On Start
     /// TODO: SMS or Email Verification
     /// Firebase Rules: Write only users collection, non-other

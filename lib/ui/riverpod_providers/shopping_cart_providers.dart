@@ -130,7 +130,7 @@ class ShoppingCartNotifier extends AsyncNotifier<List<CartProduct>> {
 
   double getShippingFee() {
     double totalShippingFee = 0;
-    if ((state.value != null || state.value!.isNotEmpty)) {
+    if ((state.value != null && state.value!.isNotEmpty)) {
       totalShippingFee = state.value!.first.selectedProduct.shippingFee;
     }
     return totalShippingFee;

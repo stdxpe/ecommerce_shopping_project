@@ -22,8 +22,8 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
   @override
   FutureOr<UserModel?> build() async {
     /// Initial State Setting Operation
-    getUserModel();
     print('UserNotifier | BUILD() Executed');
+    getUserModel();
 
     /// Waiting for above method to be completed
     return await future;
@@ -178,6 +178,7 @@ class UserNotifier extends AsyncNotifier<UserModel?> {
 
         /// TODO: Test Error Dialog Popup
         if (error is! ExceptionGoogleSignInAborted) {
+          print('ExceptionGoogleSignInAborted Dialog Popup');
           context.push(Routes.dialogError);
         }
 

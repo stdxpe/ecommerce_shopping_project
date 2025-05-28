@@ -1,4 +1,5 @@
 # ECommerce Shopping Project
+## E-Commerce Project : Premium Women Fashion Shopping App
 Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hive and Stripe
 
 ![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
@@ -71,6 +72,18 @@ Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hi
 ├── gitignore
 ├── ENV_VAR
 ```
+
+> E-Commerce Project : Premium Women Fashion Shopping App
+* Developed a fully functional e-commerce application from scratch using Flutter, showcasing 100+ visually appealing fashion products 
+* Integrated **Stripe API** for the secure payment processing, ensuring seamless checkout flows with reliable and real-time transactions
+* Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience 
+* Utilized **Riverpod** for State Management, get_it for Dependency Injection, and GoRouter for advanced Navigation/Routing service 
+* Created a custom multi-layered architecture to ensure scalability, separation of concerns, minimum dependency, and loose coupling 
+* Designed a modern, responsive UI with ScreenUtil and Figma, customized color palettes, dynamic theming, and Lottie animations 
+* Enabled Google Sign-In and Firebase Auth for real-time user authentication and smooth onboarding experience 
+* Implemented Firestore and Firebase Storage for cloud database solution, and Hive for local device storage and caching mechanism 
+
+
 Designed as Multi-Layered Architecture in Monolith Pattern, with strict “Separation of Concerns” logic between layers.
 
 Every service and manager class have derived from a separate abstract class/interface, to reduce layer dependencies to the absolute minimum. Therefore, changing an external source/package in the project can be easily managed by just switching Dependency Injection Service's (get_it) target abstract-concrete class selection, within seconds.

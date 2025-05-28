@@ -128,13 +128,11 @@ Designed as Multi-Layered Architecture in Monolith Pattern, with strict “Separ
 Every service and manager class have derived from a separate abstract class/interface, to reduce layer dependencies to the absolute minimum. Therefore, changing an external source/package in the project can be easily managed by just switching Dependency Injection Service's (get_it) target abstract-concrete class selection, within seconds.
 
 ```dart
-  locator
-      .registerLazySingleton<IStorageService>(() => FirebaseStorageService());
+locator.registerLazySingleton<IStorageService>() => FirebaseStorageService()
 ```
 to
 ```dart
-locator
-      .registerLazySingleton<IStorageService>(() => AWSStorageService());
+locator.registerLazySingleton<IStorageService>() => AmazonStorageService()
 
 ```
 

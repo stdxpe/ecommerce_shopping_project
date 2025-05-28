@@ -1,54 +1,75 @@
-# ECommerse Shopping Project
+# ECommerce Shopping Project
 Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hive and Stripe
 
 ![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
 
-(Videos/Gifs to-be-updated soon, dont mind the placeholders)
+(Videos/Gifs to-be-updated soon)
 
 ## Project Structure
 ```bash
 ├── lib                                                                                                                              
 │   ├── *models
-│   │   └── user_model.dart                                                                                                        
-│   │   └── post_model.dart                                                                                                             
-│   │   └── comment_model.dart
-│   │   └── profile_model.dart                                                                                                        
-│   └── *services                 
-│   │   └── navigation_service.dart
-│   │   └── locator_service.dart 
+│   │   └── product.dart   
+│   │   └── order.dart
+│   │   └── review.dart   
+│   │   └── collection.dart                                                                                                             
+│   │   └── collection_dto.dart, ...                                                                                               
+│   └── *services            
 │   │   └── auth_service.dart
-│   │   └── log_service.dart
-│   │   └── database_service.dart
-│   │   └── local_storage_service.dart
+│   │   └── user_service.dart
+│   │   └── navigation_service.dart
+│   │   └── storage_service.dart
+│   │   └── local_db_service.dart
+│   │   └── dependency_injection_service.dart 
+│   │   └── payment_service.dart 
 │   │   └── *abstract_classes 
-│   │       └── i_auth_service, ...                                                                                                         
-│   └── *viewmodels                                                                                                                           
-│   │   └── home_viewmodel.dart
-│   │   └── profile_viewmodel.dart                                                                                                      
-│   │   └── blocs/cubits 
-│   │   └── page_bloc.dart
-│   │       └── page_bloc_state_events.dart                                                                                          
+│   │       └── i_auth_service, i_user_service, ...                                                                                                         
+│   └── *business                                                                                                                           
+│   │   └── wishlist_manager.dart
+│   │   └── shopping_cart_manager.dart
+│   │   └── order_manager.dart
+│   │   └── user_manager.dart
+│   │   └── profile_manager.dart
+│   │   └── *abstract_classes 
+│   │       └── i_wishlist_repository.dart   
+│   │       └── i_shopping_cart_repository.dart, ...                                                                                          
 │   └── *ui                                                                                                                                    
-│   │   └── *pages
-│   │       └── home_page.dart
-│   │       └── profile_page.dart
-│   │       └── message_page.dart                                                                                                         
-│   │   └── *components.                                                                                                                    
-│   │       └── appbar_widget.dart
-│   │       └── navigation_bar_widget.dart                                                                                                        
-│   │       └── popup_widget.dart                                                                                                        
-│   │       └── listview_builder_widget.dart
+│   │   └── *screens
+│   │       └── splash_screen.dart
+│   │       └── onboarding_screen.dart
+│   │       └── discover_screen.dart
+│   │       └── search_screen.dart
+│   │       └── payment_screen.dart
+│   │       └── tracking_order_screen.dart                                                                                                    
+│   │       └── collection_details_screen.dart, ...
+│   │   └── *riverpod_providers                                                                                                                    
+│   │       └── user_provider.dart
+│   │       └── collection_provider.dart                                                                                                       
+│   │       └── filter_provider.dart
+│   │       └── theme_mode_provider.dart
+│   │       └── shopping_cart_providers.dart, ...
+│   │   └── *widgets
+│   │       └── *buttons/
+│   │       └── *sliders/
+│   │       └── *bottom_sheets/
+│   │       └── *dialog_popups/
+│   │       └── *listviews_and_gridviews/  ...
 │   └── *utilities
-│   │   └── constants.dart                                                                                                        
-│   │   └── themes.dart
+│   │   └── k_app_themes.dart
+│   │   └── k_text_themes.dart
+│   │   └── k_color_palettes.dart
+│   │   └── k_constants.dart
+│   │   └── k_extensions.dart
+│   │   └── k_validators.dart        
+│   │   └── k_text_input_formatters.dart, ...                                                                                                   
 │   └── *assets
-│   │   └── images/icons/svgs/fonts/...                                                                                                          
-│   ├── app.dart                                                                                                        
+│   │   └── images/ icons/ svgs/ lotties/ fonts/ ...                                                                                                           
+│   ├── app_configuration.dart
+│   ├── firebase_options.dart                                                                                                            
 │   └── main.dart                                                                                                        
 ├── pubspec.yaml
 ├── gitignore
-├── dockerfile
-├── dockercomposefile
+├── ENV_VAR
 ```
 Designed as Multi-Layered Architecture in Monolith Pattern, with strict “Separation of Concerns” logic between layers.
 

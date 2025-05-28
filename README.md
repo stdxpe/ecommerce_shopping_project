@@ -82,7 +82,7 @@ Every service and manager class have derived from a separate abstract class/inte
 
 ## Dependencies on pubspec.yaml
 ```yaml
-#############################################################################################################
+###########################################################################################
 
   flutter_riverpod: ^2.5.1                # State Management Solution
   get_it: ^7.7.0                          # Dependency Injection Service
@@ -95,17 +95,26 @@ Every service and manager class have derived from a separate abstract class/inte
   cloud_firestore: ^5.2.1                 # Firebase Cloud Database Service
   firebase_storage: ^12.1.3               # Firebase Cloud Storage Service
 
+  flutter_stripe: ^11.1.0                 # Payment Service
+  flutter_dotenv: ^5.1.0                  # Environment Variable Service
+  dio: ^5.7.0                             # HTTP Networking Service
+  hive: ^2.2.3                            # Local Database Service
+
+  lottie: ^3.1.2                          # Optimized JSON Animations
   uuid: ^4.4.2                            # Random ID Generator
   intl: ^0.19.0                           # Date-Time Formatter
   faker_dart: ^0.2.2                      # Random Fake Data Generator
+  cached_network_image: ^3.4.0            # Network Image Cacher
+  flutter_credit_card: ^4.0.1             # Credit Card Validation
   card_swiper: ^3.0.1                     # Carousel Image Slider
-  smooth_page_indicator: ^1.2.0           # Image Slider Pagination
+  smooth_page_indicator: ^1.2.0+3         # Image Slider Pagination
   flutter_animate: ^4.5.0                 # Advanced Animation Builder
+  image_picker: ^1.1.2                    # Upload from Device Gallery Functionality
+  shimmer: ^3.0.0                         # Animated Card Placeholders for Loading State
   flutter_slidable: ^3.1.1                # Advanced Version of Flutter Dismissible Widget
   zoom_pinch_overlay: ^1.4.3              # Advanced Version of Flutter Interactive Widget
   ...
-
-#############################################################################################################
+###########################################################################################
 ```
 
 Extra Note: Riverpod and get_it is alternative services to each other, in the terms of dependency injection and creating singleton objects when necessary. But using Riverpod-only and passing "ref" throughout the app and in/to all layers, is NOT sth I want particularly, which creates a huge dependency issue. Instead, I wanted Riverpod to be only responsible for updating UI. I tried to design in a way that we can change, even our State Management solution from Riverpod to Bloc with minimum effort, just by replacing Riverpod providers into Blocs/Cubits, and changing Consumers into BlocBuilders in the UI.

@@ -7,7 +7,8 @@ Fully functional e-commerce application for portfolio, using **Flutter**, **Rive
 
 > Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience
 
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
+![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/dark_mode.jpg)
+
 
 ## Project Structure
 ```bash
@@ -75,8 +76,9 @@ Fully functional e-commerce application for portfolio, using **Flutter**, **Rive
 ├── gitignore
 ├── ENV_VAR
 ```
-* Created a custom multi-layered architecture to ensure scalability, **separation of concerns**, minimum dependency, and loose coupling 
-
+* Created a custom multi-layered architecture to ensure scalability, **separation of concerns**, minimum dependency, and loose coupling
+  
+![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
 
 ## Dependencies (on pubspec.yaml)
 ```yaml

@@ -1,14 +1,13 @@
 # E-Commerce Project
-### **Premium Women Fashion Shopping App**  (with Flutter, Riverpod, Firebase, Hive and Stripe)
+### Premium Women Fashion Shopping App
+
+Fully functional e-commerce application for portfolio, using **Flutter**, **Riverpod**, **Firebase**, **Hive** and **Stripe**.
 
 ![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
 
-> Developed a fully functional e-commerce application from scratch, showcasing 100+ visually appealing fashion products
-
-![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
-
 > Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience
 
+![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
 
 ## Project Structure
 ```bash
@@ -188,20 +187,6 @@ class WishlistNotifier extends AsyncNotifier<List<Product>> {
   }
 ```
 
-```php
-namespace AR_Vuforia;
-    public function getDailyKnowledge(): array
-        return [
-            Php::class,
-            Javascript::class,
-            Laravel::class,
-            Vuejs::class,
-                  devOps: ["AWS", "Docker🐳", "Route53", "Nginx"],
-                  databases: ["mongo", "MySql", "sqlite"],
-                  misc: ["Firebase", "Socket.IO", "selenium", "open-cv", "php", "SuiteApp"]
-            mobileApp: {
-            native: ["Android Development"]
-```
 App wide globals handled elegantly under Utility classes:
 
  *** All text styles and color palette (both light and dark mode colors) implemented to Flutter's theming system, and used in the project accordingly
@@ -210,41 +195,9 @@ App wide globals handled elegantly under Utility classes:
 
  *** Language Internationalization's NOT implemented (not a big fan of code generation actually). But we can easily add a new language just by extending an abstract class, since app wide constant strings are derived from it.
 
-
-## To-Be-New-Section
-
-
-(Videos/Gifs to-be-updated soon, dont mind the placeholders)
-```
-namespace AR_Vuforia;
-    public function getDailyKnowledge():
-```
 ![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360low.gif)
 
 (Videos/Gifs to-be-updated soon, dont mind the placeholders)
-
-## To-Be-New-Section
-```javascript
-const anmol = {
-    pronouns: "He" | "Him",
-    code: ["Javascript", "Python", "Java", "PHP"],
-    askMeAbout: ["web dev", "tech", "app dev", "photography"],
-    technologies: {
-        backEnd: {
-            js: ["Node", "Fastify", "Express"],
-        },
-        mobileApp: {
-            native: ["Android Development"]
-        },
-        devOps: ["AWS", "Docker🐳", "Route53", "Nginx"],
-        databases: ["mongo", "MySql", "sqlite"],
-        misc: ["Firebase", "Socket.IO", "selenium", "open-cv", "php", "SuiteApp"]
-    },
-    architecture: ["Serverless Architecture", "Progressive web applications", "Single page applications"],
-    currentFocus: "No Focus point at this time",
-    funFact: "There are two ways to write error-free programs; only the third one works"
-};
-```
 
 ## To-Be-New-Section
 ![alt-text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps480low.gif)
@@ -253,13 +206,17 @@ const anmol = {
 
 ## To-Be-New-Section
 
-
 # E-Commerce Project
-### Premium Women Fashion Shopping App
+### **Premium Women Fashion Shopping App**  (with Flutter, Riverpod, Firebase, Hive and Stripe)
 
-> Fully functional e-commerce application for portfolio, using Flutter, Riverpod, Firebase, Hive and Stripe.
+![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
 
-> Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience 
+> Developed a fully functional e-commerce application from scratch, showcasing 100+ visually appealing fashion products
+
+![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
+
+> Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience
+
 
 ## E-Commerce Project : Premium Women Fashion Shopping App
 Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hive and Stripe

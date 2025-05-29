@@ -77,8 +77,8 @@ Fully functional e-commerce application for portfolio, using **Flutter**, **Rive
 ├── ENV_VAR
 ```
 * Created a custom multi-layered architecture to ensure scalability, **separation of concerns**, minimum dependency, and loose coupling
-  
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
+
+![Alternate Text](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/login_60fps.gif)
 
 ## Dependencies (on pubspec.yaml)
 ```yaml
@@ -122,7 +122,7 @@ Fully functional e-commerce application for portfolio, using **Flutter**, **Rive
 * Enabled **Google Sign-In** and **Firebase Auth** for real-time user authentication and smooth onboarding experience 
 * Implemented **Firestore** and **Firebase Storage** for cloud database solution, and **Hive** for local device storage and caching mechanism 
 
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
+![Alternate Text](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/payment_60fps.gif)
 
 Designed as Multi-Layered Architecture in Monolith Pattern, with strict “Separation of Concerns” logic between layers.
 
@@ -197,35 +197,9 @@ App wide globals handled elegantly under Utility classes:
 
  *** Language Internationalization's NOT implemented (not a big fan of code generation actually). But we can easily add a new language just by extending an abstract class, since app wide constant strings are derived from it.
 
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360low.gif)
-
-(Videos/Gifs to-be-updated soon, dont mind the placeholders)
-
-## To-Be-New-Section
-![alt-text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps480low.gif)
-
-(Videos/Gifs to-be-updated soon, dont mind the placeholders)
-
-## To-Be-New-Section
-
-# E-Commerce Project
-### **Premium Women Fashion Shopping App**  (with Flutter, Riverpod, Firebase, Hive and Stripe)
-
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
-
-> Developed a fully functional e-commerce application from scratch, showcasing 100+ visually appealing fashion products
-
-![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
-
-> Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience
 
 
-## E-Commerce Project : Premium Women Fashion Shopping App
-Complete ECommerce Fashion Shopping Project with Flutter, Riverpod, Firebase, Hive and Stripe
 
-Developed a fully functional e-commerce application from scratch using Flutter, showcasing 100+ visually appealing fashion products 
 
-![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
 
-(Videos/Gifs to-be-updated soon)
 

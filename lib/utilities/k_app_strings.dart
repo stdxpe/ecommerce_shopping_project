@@ -1,0 +1,332 @@
+part of 'utilities_library_imports.dart';
+
+abstract class AppStrings {
+  /// [APP WIDE GLOBAL VARIABLE]
+  /// ALL STATIC STRINGS - EN
+
+  static const String appTitle = 'fshx.';
+  static const String appBarTitle = 'fshx.';
+  static const String appSubtitle = 'Best Fashion Shopping App';
+  static const String projectName = 'ECommerce Shopping Project';
+
+  static const String signUp = 'Sign Up';
+  static const String signIn = 'Sign In';
+  static const String logIn = 'Log In';
+  static const String signUpWithEmail = 'Sign Up with Email';
+  static const String continueWithGoogle = 'Continue with Google';
+  static const String alreadyHaveAnAccount = 'Already have an account?   ';
+  static const String dontHaveAnAccount = 'Don\'t have an account?   ';
+  static const String continueButton = 'Continue';
+  static const String forgotYourPassword = 'Forgot your password?';
+
+  static const String collectionTitleRightButton = 'See all';
+  static const String itemsFound = ' items found';
+  static const String itemFound = ' item found';
+  static const String noItemsFound = 'No Items Found';
+
+  static const String globalStateErrorMessage =
+      'An Error Occured.\nPlease Try Again';
+
+  static const String error404Title = '404';
+  static const String error404Subtitle = 'Page not found';
+
+  static const String textfieldEmailErrorMessage = 'Enter a valid email';
+  static const String textfieldPasswordErrorMessage =
+      'Password must be 8 characters long, with upper and lower case characters, at least one number and no symbol';
+  static const String textfieldConfirmPasswordErrorMessage =
+      'Passwords dont match';
+  static const String textfieldPhoneErrorMessage = 'Enter a valid phone number';
+  static const String textfieldVerificationCodeErrorMessage =
+      'Enter a valid verification code';
+
+  static const String firebaseErrorWrongEmailOrPassword =
+      'Wrong email or password';
+
+  static const String dialogPopupErrorTitle = 'An Error Occured';
+  static const String dialogPopupErrorSubtitle = 'Please try again';
+  static const String dialogPopupErrorButton = 'OK';
+
+  static const String cardNewTag = 'NEW';
+  static const String cardOnSaleTag = 'ON SALE';
+
+  /// ONBOARDING SCREEN
+  static const String onboardingScreenTitle = 'Swipe to browse';
+  static const String onboardingScreenSubtitle =
+      'Discover products easily by swiping from\none category to another';
+  static const String onboardingScreenButton = 'Start Shopping';
+
+  /// SIGN IN SCREEN
+  static const String signInScreenTitle = 'Log into\nyour account';
+  static const String signInScreenTextFieldEmail = 'Email';
+  static const String signInScreenTextFieldPassword = 'Password';
+  static const String signInScreenCheckboxRememberMe = 'Remember Me';
+
+  /// SIGN UP SCREEN
+  static const String signUpScreenTitle = 'Create\nyour account';
+  static const String signUpScreenTextFieldEmail = 'Email';
+  static const String signUpScreenTextFieldPassword = 'Password';
+  static const String signUpScreenTextFieldConfirmPassword = 'Confirm Password';
+  static const String signUpScreenCheckboxPolicy =
+      'By signing up, you agree to the terms of service\nand our privacy policy';
+
+  /// FORGOT PASSWORD SCREEN
+  static const String forgotPasswordScreenTitle = 'Forgot Password?';
+  static const String forgotPasswordScreenSubtitle =
+      'If you need help resetting your password,\nwe can help by sending you a link to reset it.';
+  static const String forgotPasswordScreenButton = 'Send';
+  static const String forgotPasswordScreenTextField = 'Phone';
+
+  /// VERIFICATION SCREEN
+  static const String verificationScreenTitle =
+      'Enter the Code\nto Verify Your Phone';
+  static const String verificationScreenSubtitle =
+      'We have sent you an SMS with a code \nto the number';
+  static const String verificationScreenButton = 'Send a new code';
+
+  /// HOME SCREEN
+  static const String dealsOfTheWeek = 'Deals of the Week';
+  static const String dialogPopupNewDealsButtonText = 'Check Out';
+  static const String dialogPopupNewDealsTitle = 'Winter\nCollection';
+  static const String dialogPopupNewDealsSubtitle = '20% Off Selected Brands';
+
+  /// COLLECTIONS
+  static const String designerCollection = 'Designer Collection';
+  static const String summerCollection = 'Summer Collection';
+  static const String dreamOfSpringCollection = 'Dream of Spring';
+  static const String windsOfWinterCollection = 'Winds of Winter';
+  static const String fallEssentialsCollection = 'Fall Essentials';
+
+  /// WISHLIST SCREEN
+  static const String wishlistScreenTitle = 'Wishlist';
+
+  /// SHOPPING CART SCREEN
+  static const String shoppingCartScreenTitle = 'Shopping Cart';
+  static const String shoppingCartScreenButton = 'Continue to Payment';
+  static const String totalAmount = 'Total Amount';
+
+  /// PROFILE SCREEN
+  static const String profileScreenButtonSaveProfile = 'Save Profile';
+  static const String profileScreenButtonDelete = 'Delete';
+
+  static const String hintProfileUsername = 'Name';
+  static const String hintProfileEmail = 'Email';
+  static const String hintProfilePhoneNumber = 'Phone Number';
+  static const String hintProfileBirthday = 'Birthday';
+
+  static const String profileScreenButtonsListItemOrders = 'Orders';
+  static const String profileScreenButtonsListItemAddresses =
+      'Shipping Addresses';
+  static const String profileScreenButtonsListItemCreditCards = 'Credit Cards';
+  static const String profileScreenButtonsListItemDarkMode = 'Dark Mode';
+  static const String profileScreenButtonsListItemNotifications =
+      'Notifications';
+  static const String profileScreenButtonsListItemChangePassword =
+      'Change Password';
+  static const String profileScreenButtonsListItemDeveloper = 'Developer';
+  static const String profileScreenButtonsListItemSignOut = 'Sign Out';
+
+  static const String ordersScreenTitle = 'Orders';
+  static const String aordersScreenEmptyMessage =
+      'You haven\t added any orders yet';
+
+  static const String trackingOrderScreenTitle = 'Tracking Order';
+  static const String orderStatusStepReceived = 'Received';
+  static const String orderStatusStepPrepared = 'Prepared';
+  static const String orderStatusStepOnTheWay = 'On the Way';
+  static const String orderStatusStepDelivered = 'Delivered';
+
+  static const String orderStatusReceivedMessage =
+      'Store has received your order.';
+  static const String orderStatusPreparedMessage =
+      'Your order is being prepared for shipment.';
+  static const String orderStatusOnTheWayMessage =
+      'Your order is on the way!\nClick here to track shipment status';
+  static const String orderStatusDeliveredMessage =
+      'Your order has been delivered.';
+
+  static const String addressesScreenTitle = 'Addresses';
+  static const String addressesScreenSectionEditButton = 'Edit';
+  static const String addressesScreenCreateButton = 'Create';
+  static const String addressesScreenUpdateButton = 'Update';
+  static const String addressesScreenDeleteButton = 'Delete';
+  static const String addressesScreenEmptyMessage =
+      'You haven\t added any addresses yet';
+  static const String addressesAddressTextfieldText = 'Address';
+  static const String addressesCityTextfieldText = 'City';
+  static const String addressesZipCodeTextfieldText = 'Zip Code';
+  static const String addressesCountyTextfieldText = 'Country';
+  static const String addressesAddressTextfieldHintText = 'Detailed Address';
+  static const String addressesCityTextfieldHintText = 'City or Town';
+  static const String addressesZipCodeTextfieldHintText = 'Zip Code';
+  static const String addressesCountyTextfieldHintText = 'Country';
+
+  static const String creditCardsScreenTitle = 'Credit Cards';
+  static const String creditCardsScreenSectionEditButton = 'Edit';
+  static const String creditCardsScreenSectionSaveButton = 'Save';
+  static const String creditCardsScreenSectionDeleteButton = 'Delete';
+
+  static const String creditCardScreenEmptyMessage =
+      'You haven\t added any credit card yet';
+  static const String creditCardsScreenButton = 'Save Credit Card';
+  static const String creditCardsCardHolderTextfieldText = 'Card Holder';
+  static const String creditCardsCardNumberTextfieldText = 'Card Number';
+  static const String creditCardsExpDateTextfieldText = 'Exp.Date';
+  static const String creditCardsCvvTextfieldText = 'CVV';
+  static const String creditCardsCardHolderTextfieldHintText = 'JANE DOE';
+  static const String creditCardsCardNumberTextfieldHintText =
+      '1234567891234567';
+  static const String creditCardsExpDateTextfieldHintText = '0123';
+  static const String creditCardsCvvTextfieldHintText = '123';
+
+  /// DETAILS SCREEN
+  static const String productDetailsScreenReviews = 'Reviews';
+  static const String productDetailsScreenLikes = 'Likes';
+  static const String productDetailsScreenOrders = 'Orders';
+
+  static const String detailsScreenButtonAddToShoppingCart =
+      'Add to Shopping Cart';
+  static const String productDetailsScreenDialogPopupAddedToWishlistMessage =
+      'You\'ve added\nthis item to wishlist';
+  static const String
+      productDetailsScreenDialogPopupAddedToShoppingCartMessage =
+      'Success! You\'ve added\nthis item to your cart.';
+  static const String productDetailsScreenPopupButtonGoToShoppingCart =
+      'Go to Shopping Cart';
+  static const String productDetailsScreenPopupButtonContinueShopping =
+      'Continue Shopping';
+
+  /// REVIEWS SCREEN
+  static const String reviewsScreenButtonAddToShoppingCart =
+      'Add to Shopping Cart';
+
+  static const String reviewsScreenRatingOutOf = 'out of 5';
+  static const String reviewsScreenReviews = 'reviews';
+
+  /// DISCOVER SCREEN
+  static const String discoverScreenTitle = 'Discover';
+
+  /// SEARCH SCREEN
+  static const String searchScreenTitle = 'Search';
+  static const String searchScreenSearchBoxTextfieldHintText = 'Search';
+  static const String searchScreenInitialText = 'Please search for a product';
+
+  /// FILTERS SCREEN
+  static const String filtersScreenTitle = 'Filters';
+  static const String filtersScreenButtonClear = 'Clear';
+  static const String filtersScreenButtonApply = 'Apply';
+  static const double filtersScreenMinPrice = 150;
+  static const double filtersScreenMaxPrice = 750;
+  static const String filtersScreenPriceRange = 'Price Range';
+  static const String filtersScreenSize = 'Size';
+  static const String filtersScreenColor = 'Color';
+  static const String filtersScreenCollections = 'Collections';
+  static const String filtersScreenBrands = 'Brands';
+  static const String filtersScreenRating = 'Rating';
+  static const String filtersScreenSortBy = 'Sort By';
+
+  static const String filterSizeXS = 'XS';
+  static const String filterSizeS = 'S';
+  static const String filterSizeM = 'M';
+  static const String filterSizeL = 'L';
+  static const String filterSizeXL = 'XL';
+  static const List<String> filterSizeList = [
+    AppStrings.filterSizeXS,
+    AppStrings.filterSizeS,
+    AppStrings.filterSizeM,
+    AppStrings.filterSizeL,
+    AppStrings.filterSizeXL,
+  ];
+
+  static const String filterSortByRating = 'Rating';
+  static const String filterSortByNewest = 'Newest';
+  static const String filterSortByPriceHigh = 'Price High';
+  static const String filterSortByPriceLow = 'Price Low';
+  static const String filterSortByPopular = 'Popular';
+
+  static const List<String> filterSortByList = [
+    AppStrings.filterSortByRating,
+    AppStrings.filterSortByNewest,
+    AppStrings.filterSortByPriceHigh,
+    AppStrings.filterSortByPriceLow,
+    AppStrings.filterSortByPopular,
+  ];
+
+  static const String filterCollectionAll = 'All';
+  static const String filterCollectionAutumn = 'Autumn';
+  static const String filterCollectionWinter = 'Winter';
+  static const String filterCollectionSpring = 'Spring';
+  static const String filterCollectionSummer = 'Summer';
+  static const String filterCollectionSelected = 'Selected';
+
+  static const List<String> filterCollectionsList = [
+    AppStrings.filterCollectionAll,
+    AppStrings.filterCollectionAutumn,
+    AppStrings.filterCollectionWinter,
+    AppStrings.filterCollectionSpring,
+    AppStrings.filterCollectionSummer,
+    AppStrings.filterCollectionSelected,
+  ];
+
+  /// PAYMENT SCREEN
+  static const String paymentStep = 'Step ';
+  static const String paymentScreenTitleShipping = 'Shipping';
+  static const String paymentScreenTitlePayment = 'Payment';
+  static const String paymentScreenTitleSummary = 'Summary';
+  static const String paymentScreenTitleResult = 'Result';
+  static const String paymentScreenTitleWaitingResultMessage = 'Waiting...';
+  static const String paymentScreenSubtitleWaitingResultMessage =
+      'Please wait for the result.';
+  static const String paymentScreenTitleSuccessResultMessage = 'Success!';
+  static const String paymentScreenSubtitleSuccessResultMessage =
+      'Thank you for purchasing.\nYour order will be shipped in 1-3 days.';
+
+  static const String paymentScreenTitleFailedResultMessage = 'Failed!';
+  static const String paymentScreenSubtitleFailedResultMessage =
+      'An error occured during the process.\nPlease try again later.';
+
+  static const String paymentScreenShippingSheetButton = 'Continue';
+  static const String paymentScreenPaymentSheetButton = 'Continue';
+  static const String paymentScreenSummarySheetButton = 'Pay ';
+  static const String paymentScreenResultSheetButton = 'Continue';
+
+  static const String paymentScreenSummarySheetSectionButtonChange = 'Change';
+  static const String paymentScreenSummarySheetSectionAddress =
+      'Shipping Address';
+  static const String paymentScreenSummarySheetSectionPayment = 'Payment';
+
+  static const String paymentScreenResultMessageButton = 'Continue';
+
+  static const String hintAddressFullName = 'Full Name';
+  static const String hintAddressTitle = 'Address Title';
+  static const String hintAddressText = 'Address';
+  static const String hintAddressCity = 'City';
+  static const String hintAddressZipCode = 'Zip Code';
+  static const String hintAddressCountry = 'Country';
+  static const String saveAddressCheckbox = 'Save this address';
+  static const String newAddressChip = 'New';
+
+  static const String hintCreditCardHolder = 'Card Holder';
+  static const String hintCreditCardNumber = 'Card Number';
+  static const String hintCreditCardValidThru = 'Valid Thru';
+  static const String hintCreditCardCvv = 'CVV';
+  static const String saveCreditCardCheckBox = 'Save this credit card';
+
+  /// Bottom Navigation Bar Related
+  static const String bottomNavBarHome = 'Home';
+  static const String bottomNavBarDiscover = 'Discover';
+  static const String bottomNavBarCart = 'Cart';
+  static const String bottomNavBarWishlist = 'Wishlist';
+  static const String bottomNavBarProfile = 'Profile';
+}
+
+abstract class LocalDB {
+  static const String path = "user_config";
+
+  static const String themeMode = "themeMode";
+  static const String themeModeDark = "themeModeDark";
+  static const String themeModeLight = "themeModeLight";
+
+  static const String notificationMode = "notificationMode";
+  static const String notificationsON = "notificationsON";
+  static const String notificationsOFF = "notificationsOFF";
+}

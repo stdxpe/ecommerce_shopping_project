@@ -3,11 +3,11 @@
 
 Fully functional e-commerce application for portfolio, using **Flutter**, **Riverpod**, **Firebase**, **Hive** and **Stripe**.
 
-![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
+![](https://github.com/stdxpe/ecommerce_shopping_project/blob/dev/readme_doc/readme_top_banner.jpg)
 
 > Delivered core features, including wishlist, shopping cart, searching, advanced filtering and sorting, exploring latest trends, dynamic product collections, product reviews and ratings, order tracking capabilities and more, to provide an immersive shopping experience
 
-![](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/50fps360high.gif)
+![Alternate Text](https://github.com/stdxpe/Augmented-Reality-Project-Kinematic-Analysis-and-Programming-of-Industrial-Robotic-Arms/blob/main/4ktest.gif)
 
 ## Project Structure
 ```bash
